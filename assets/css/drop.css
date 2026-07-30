@@ -22,7 +22,7 @@
 }
 
 *{margin:0;padding:0;box-sizing:border-box}
-html{-webkit-text-size-adjust:100%}
+html{-webkit-text-size-adjust:100%;overflow-x:clip}
 @media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
 body{
   background:var(--ink);color:var(--bone);
@@ -84,9 +84,11 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .emblem-stage > *{display:block;width:100%;height:100%;opacity:.82}
 .hero-core{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;gap:22px}
 .hero-kick{color:var(--champ)}
+/* set in caps — needs positive tracking, where the mixed-case version wanted negative */
 .wm{
-  font-weight:500;line-height:.9;letter-spacing:-.03em;
-  font-size:clamp(52px,12vw,148px);text-wrap:balance;
+  font-weight:500;line-height:.94;letter-spacing:.012em;
+  text-transform:uppercase;
+  font-size:clamp(44px,10.5vw,132px);text-wrap:balance;
 }
 .hero-sub{
   font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;
@@ -209,14 +211,17 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .reveal{opacity:0;transform:translateY(20px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
 .reveal.in{opacity:1;transform:none}
 
-/* ---------- splash (variant C) ---------- */
-.is-splash{height:100svh;overflow:hidden}
+/* ---------- splash (the home page's first screen) ---------- */
 .splash{
-  position:relative;height:100svh;
+  position:relative;min-height:100svh;
   display:grid;grid-template-rows:1fr auto auto;
-  padding:clamp(28px,5vh,56px) var(--gut) clamp(18px,3vh,30px);
+  padding:clamp(48px,7vh,84px) var(--gut) clamp(20px,3.5vh,36px);
   max-width:1360px;margin-inline:auto;
 }
+/* inside the splash the cue is a row of the grid, not an overlay */
+.splash .scrollcue{position:static;transform:none;margin:clamp(18px,2.6vh,30px) auto 0}
+.splash .scrollcue__line{height:26px}
+.splash .scrollcue:hover{color:var(--champ)}
 /* the splash has almost no copy to protect, so it can carry the mark bigger and cleaner */
 .splash .emblem-stage{
   width:min(62vh,88vw,620px);height:min(62vh,88vw,620px);top:38%;
@@ -227,7 +232,15 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
   position:relative;z-index:1;align-self:center;
   display:flex;flex-direction:column;align-items:center;gap:16px;text-align:center;
 }
-.splash .wm{font-size:clamp(48px,10.5vw,132px)}
+/* soft ink scrim so the lattice reads *around* the name rather than through the small type */
+.splash-core::before{
+  content:"";position:absolute;left:50%;top:50%;z-index:-1;
+  width:min(132%,100vw);height:168%;transform:translate(-50%,-50%);pointer-events:none;
+  background:radial-gradient(ellipse at center,
+    rgba(10,10,11,.80) 0%, rgba(10,10,11,.66) 38%, rgba(10,10,11,.28) 62%, rgba(10,10,11,0) 80%);
+}
+.splash .wm{font-size:clamp(42px,9.4vw,120px)}
+.splash .hero-sub{margin-top:2px}
 .quad{
   position:relative;z-index:1;
   display:grid;grid-template-columns:repeat(4,1fr);
@@ -247,14 +260,8 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .quad-tag{color:var(--bone-faint)}
 .quad-go{color:var(--champ);margin-top:auto;padding-top:10px;transition:transform .45s var(--ease)}
 .quad-cell:hover .quad-go{transform:translateX(5px)}
-.splash-base{
-  position:relative;z-index:1;
-  display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;
-  padding-top:16px;color:var(--bone-faint);
-}
 @media(max-width:860px){
-  .is-splash{height:auto;overflow:visible}
-  .splash{height:auto;min-height:100svh;grid-template-rows:auto auto auto;gap:34px;padding-top:clamp(64px,12vh,110px)}
+  .splash{min-height:100svh;gap:30px;padding-top:clamp(56px,11vh,98px)}
   .quad{grid-template-columns:repeat(2,1fr)}
   .quad-cell:nth-child(3),.quad-cell:nth-child(4){border-top:1px solid var(--line)}
   .quad-cell:nth-child(odd){border-left:0}
@@ -264,21 +271,6 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
   .quad-cell{border-left:0;border-top:1px solid var(--line)}
   .quad-cell:first-child{border-top:0}
 }
-
-/* ---------- variant chrome (preview only — stripped before launch) ---------- */
-.vbar{
-  position:fixed;left:50%;bottom:18px;transform:translateX(-50%);z-index:70;
-  display:flex;align-items:center;gap:4px;
-  background:rgba(18,18,20,.94);border:1px solid var(--line-2);
-  padding:6px;backdrop-filter:blur(10px);
-}
-.vbar__lbl{font-family:var(--mono);font-size:9px;letter-spacing:.13em;text-transform:uppercase;color:var(--bone-faint);padding:0 10px 0 8px}
-.vbar a{
-  font-family:var(--mono);font-size:10px;letter-spacing:.09em;text-transform:uppercase;
-  padding:8px 13px;color:var(--bone-dim);transition:background .3s var(--ease),color .3s var(--ease);
-}
-.vbar a:hover{color:var(--champ)}
-.vbar a.on{background:var(--champ);color:var(--ink)}
 
 @media (prefers-reduced-motion:reduce){
   *{animation-duration:.01ms!important;transition-duration:.01ms!important}

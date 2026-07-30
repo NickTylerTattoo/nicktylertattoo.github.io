@@ -48,16 +48,4 @@ if (!STILL && !REDUCED && 'IntersectionObserver' in window){
 
 const yr = document.getElementById('yr');
 if (yr) yr.textContent = new Date().getFullYear();
-
-/* preview-only variant switcher — deleted when this ships as the real home page */
-const bar = document.getElementById('vbar');
-if (bar){
-  const here = (location.pathname.match(/\/([abc])\/?$/) || [])[1] || 'a';
-  bar.innerHTML =
-    '<span class="vbar__lbl">Home layout</span>' +
-    ['a', 'b', 'c'].map(v =>
-      `<a href="../${v}/" class="${v === here ? 'on' : ''}">${
-        {a:'A · Four doors', b:'B · Flash-forward', c:'C · Splash'}[v]
-      }</a>`).join('');
-}
 })();
