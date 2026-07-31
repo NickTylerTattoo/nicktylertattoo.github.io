@@ -1,0 +1,503 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="ntt-page" content="events">
+<title>NTT Private Events — Wedding &amp; Bachelorette Tattoo Events · Long Island, Hamptons, NYC</title>
+<meta name="description" content="Private fine line tattoo events for weddings, bachelorettes, and showers. Nick Tyler brings the full studio to your venue across Long Island, the Hamptons, and NYC. Something old, something new, something permanent.">
+<meta name="theme-color" content="#090706">
+<meta property="og:title" content="NTT Private Events — Something Permanent">
+<meta property="og:description" content="Private fine line flash events for weddings and bachelorettes. The studio comes to your party. Limited 2026 dates, now booking 2027.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 20'%3E%3Ccircle cx='14' cy='10' r='8' fill='none' stroke='%23B8A98A' stroke-width='2'/%3E%3Ccircle cx='23' cy='10' r='8' fill='none' stroke='%23B8A98A' stroke-width='2' transform='rotate(12 23 10)'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ===== NTT PRIVATE EVENTS — Something Permanent · one-page site =====
+   Tokens matched to home.nicktylertattoo.com / OTAAT live-brand:
+   bg #090706 · cream #f5ebe0 · champagne #b8a98a · borders = gold @ ~16-32%
+   Instrument Serif (one italic-gold word per headline) + DM Sans
+   0px radius everywhere · dashed-gold ghost buttons · grain overlay */
+:root{
+  --ink:#090706; --surface:#13110f; --surface-2:#181614;
+  --bone:#f5ebe0; --bone-dim:rgba(247,232,218,.68); --bone-faint:rgba(247,232,218,.46); --bone-ghost:rgba(247,232,218,.16);
+  --gold:#b8a98a; --gold-rich:#c3b499;
+  --line:rgba(184,169,138,.16); --line-2:rgba(184,169,138,.32);
+  --sans:'DM Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+  --mono:'DM Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+  --serif:'Instrument Serif','Cormorant Garamond','Times New Roman',serif;
+  --ease:cubic-bezier(.16,1,.3,1);
+  --container:1280px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+@media (prefers-reduced-motion: no-preference){html{scroll-behavior:smooth}}
+body{background:var(--ink);color:var(--bone);font-family:var(--sans);font-weight:300;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+.mono{font-family:var(--mono);font-weight:500}
+.ser{font-family:var(--serif);font-style:italic;font-weight:400;letter-spacing:0}
+.dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--gold);margin-right:.55em;vertical-align:middle;animation:pulse 2.4s var(--ease) infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.45;transform:scale(.7)}}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+section{padding:clamp(64px,9vw,120px) clamp(22px,5vw,64px)}
+
+.grain-overlay{pointer-events:none;z-index:150;opacity:.035;position:fixed;inset:0;background-repeat:repeat;background-size:300px 300px;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='300' height='300'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>")}
+
+/* BUTTONS */
+.btn{display:inline-flex;align-items:center;gap:.6em;font-family:var(--mono);font-weight:600;font-size:.68rem;letter-spacing:.22em;text-transform:uppercase;padding:1.15em 1.9em;transition:transform .3s var(--ease),background .3s,color .3s,border-color .3s}
+.btn--solid{background:var(--gold);color:var(--ink);border:1px solid var(--gold)}
+.btn--solid:hover{background:var(--bone);border-color:var(--bone)}
+.btn--ghost{border:1px dashed var(--line-2);color:var(--bone)}
+.btn--ghost:hover{border-color:var(--gold);color:var(--gold)}
+
+/* NAV */
+.nav{position:fixed;top:0;left:0;right:0;z-index:120;display:flex;align-items:center;justify-content:space-between;
+  padding:18px clamp(22px,5vw,64px);transition:background .4s,backdrop-filter .4s,padding .4s,border-color .4s;border-bottom:1px solid transparent}
+.nav.is-stuck{background:rgba(9,7,6,.85);backdrop-filter:blur(14px);padding-top:13px;padding-bottom:13px;border-bottom-color:var(--line)}
+.nav-logo{display:flex;align-items:center;gap:.7em}
+.nav-logo__txt{font-family:var(--serif);font-weight:400;font-size:.94rem;letter-spacing:.16em;text-transform:uppercase;white-space:nowrap}
+.nav-logo__txt b{font-weight:400;color:var(--gold)}
+.nav-links{display:flex;align-items:center;gap:clamp(14px,2.2vw,28px)}
+.nav-link{font-size:.88rem;font-weight:400;color:var(--bone-dim);position:relative;transition:color .3s;white-space:nowrap}
+.nav-link::after{content:"";position:absolute;left:0;bottom:-4px;width:0;height:1px;background:var(--gold);transition:width .35s var(--ease)}
+.nav-link:hover{color:var(--bone)}.nav-link:hover::after{width:100%}
+.nav-cta{font-family:var(--mono);font-weight:600;font-size:.66rem;letter-spacing:.22em;text-transform:uppercase;border:1px dashed var(--line-2);padding:.85em 1.3em;transition:background .3s,color .3s,border-color .3s;white-space:nowrap}
+.nav-cta:hover{background:var(--gold);color:var(--ink);border-color:var(--gold);border-style:solid}
+@media(max-width:900px){.nav-links{display:none}}
+@media(max-width:520px){.nav-cta{display:none}}
+
+/* HERO */
+.hero{position:relative;min-height:100vh;min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;overflow:hidden;padding:120px 22px 90px}
+.hero-bg{position:absolute;inset:0;z-index:0}
+.hero-bg img{width:100%;height:100%;object-fit:cover;object-position:62% 30%}
+.hero-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(9,7,6,.82) 0%,rgba(9,7,6,.62) 34%,rgba(9,7,6,.66) 62%,rgba(9,7,6,.94) 100%)}
+.hero-core{position:relative;z-index:3;max-width:var(--container)}
+.hero-rings{margin:0 auto 30px;display:block;filter:drop-shadow(0 2px 14px rgba(9,7,6,.6))}
+.hero-kick{font-size:.66rem;font-weight:500;letter-spacing:.32em;text-transform:uppercase;color:var(--gold);margin-bottom:26px;text-shadow:0 1px 10px rgba(9,7,6,.7)}
+.wm{font-family:var(--serif);font-weight:400;font-size:clamp(3rem,10.5vw,8rem);line-height:1;letter-spacing:-.01em;text-shadow:0 6px 50px rgba(9,7,6,.65)}
+.wm em{font-style:italic;color:var(--gold)}
+.hero-sub{margin-top:26px;font-size:clamp(.66rem,1.4vw,.88rem);font-weight:500;letter-spacing:.44em;text-indent:.44em;text-transform:uppercase;color:var(--bone-dim);text-shadow:0 1px 10px rgba(9,7,6,.7)}
+.hero-line{margin-top:20px;font-size:clamp(1rem,2vw,1.25rem);font-weight:400;color:var(--bone-dim);text-shadow:0 1px 12px rgba(9,7,6,.7)}
+.hero-line em{font-family:var(--serif);font-style:italic;color:var(--gold);font-size:1.14em}
+.hero-cta{margin-top:34px;display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.hero-meta{margin-top:34px;display:flex;gap:8px 26px;justify-content:center;flex-wrap:wrap;font-size:.64rem;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:var(--bone-faint);text-shadow:0 1px 8px rgba(9,7,6,.8)}
+.scrollcue{position:absolute;bottom:26px;left:50%;transform:translateX(-50%);z-index:3;display:flex;flex-direction:column;align-items:center;gap:10px;font-size:.58rem;font-weight:500;letter-spacing:.3em;text-transform:uppercase;color:var(--bone-faint)}
+.scrollcue__line{width:1px;height:42px;background:linear-gradient(var(--gold),transparent);animation:cue 1.8s var(--ease) infinite}
+@keyframes cue{0%{transform:scaleY(0);transform-origin:top}45%{transform:scaleY(1);transform-origin:top}55%{transform:scaleY(1);transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+@media(max-width:640px){.hero-cta .btn{width:100%;justify-content:center}.scrollcue{display:none}}
+
+/* MARQUEE */
+.marquee{overflow:hidden;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:16px 0;background:var(--surface)}
+.marquee__track{display:flex;gap:3.4em;white-space:nowrap;font-family:var(--serif);font-size:1.05rem;letter-spacing:.22em;text-transform:uppercase;color:var(--bone-faint);animation:marq 46s linear infinite;width:max-content}
+.marquee__track em{font-style:italic;color:var(--gold)}
+@keyframes marq{to{transform:translateX(-50%)}}
+
+/* SECTION HEADERS */
+.shead{max-width:var(--container);margin:0 auto 44px}
+.sidx{font-size:.64rem;font-weight:500;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:16px}
+.stitle{font-family:var(--serif);font-weight:400;font-size:clamp(2.1rem,4.6vw,3.6rem);line-height:1.06;letter-spacing:-.01em}
+.stitle em{font-style:italic;color:var(--gold)}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
+.reveal.is-in{opacity:1;transform:none}
+
+/* 001 WHAT IT IS */
+.what-grid{max-width:var(--container);margin:0 auto;display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(28px,4vw,64px);align-items:center}
+.what-big{font-family:var(--serif);font-weight:400;font-size:clamp(1.5rem,2.8vw,2.2rem);line-height:1.3}
+.what-big em{font-style:italic;color:var(--gold)}
+.what-sub{margin-top:22px;font-size:1.02rem;color:var(--bone-dim);max-width:34em}
+.what-sub b{color:var(--bone);font-weight:500}
+.what-tags{margin-top:28px;display:flex;flex-wrap:wrap;gap:10px}
+.what-tag{font-family:var(--mono);font-weight:500;font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--bone-dim);border:1px dashed var(--line-2);padding:.7em 1.1em}
+.what-photo{position:relative;border:1px solid var(--line)}
+.what-photo img{width:100%;height:100%;object-fit:cover;aspect-ratio:4/3.4}
+.photo-tag{position:absolute;left:14px;bottom:14px;font-family:var(--mono);font-weight:500;font-size:.58rem;letter-spacing:.24em;text-transform:uppercase;color:var(--bone);background:rgba(9,7,6,.72);backdrop-filter:blur(6px);padding:.7em 1em}
+@media(max-width:900px){.what-grid{grid-template-columns:1fr}}
+
+/* 002 HOW IT WORKS */
+.how{background:var(--surface)}
+.how-grid{max-width:var(--container);margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+.how-card{background:var(--surface-2);padding:clamp(24px,2.6vw,38px)}
+.how-card .n{font-family:var(--serif);font-size:2rem;color:var(--gold)}
+.how-card h3{margin-top:14px;font-family:var(--serif);font-weight:400;font-size:1.35rem}
+.how-card p{margin-top:10px;font-size:.94rem;color:var(--bone-dim)}
+@media(max-width:980px){.how-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.how-grid{grid-template-columns:1fr}}
+
+/* 003 FLASH MENU */
+.menu-grid{max-width:var(--container);margin:0 auto;display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(28px,4vw,64px);align-items:center}
+.menu-photo{position:relative;border:1px solid var(--line)}
+.menu-photo img{width:100%;object-fit:cover;aspect-ratio:4/4.6}
+.menu-rows{border-top:1px solid var(--line-2)}
+.menu-row{display:flex;align-items:baseline;gap:18px;padding:22px 4px;border-bottom:1px solid var(--line-2)}
+.menu-row .d{color:var(--gold);font-size:.8rem;flex:none}
+.menu-row .t{font-family:var(--serif);font-weight:400;font-size:clamp(1.4rem,2.4vw,1.9rem)}
+.menu-row .s{margin-left:auto;text-align:right;font-size:.86rem;color:var(--bone-faint)}
+.menu-foot{margin-top:18px;font-family:var(--mono);font-weight:500;font-size:.64rem;letter-spacing:.24em;text-transform:uppercase;color:var(--bone-faint)}
+@media(max-width:900px){.menu-grid{grid-template-columns:1fr}.menu-photo{order:2}}
+
+/* 004 PRICING */
+.pricing{background:var(--surface)}
+.tiers{max-width:var(--container);margin:0 auto}
+.tier{display:flex;align-items:baseline;gap:24px;padding:clamp(22px,3vw,34px) 4px;border-top:1px solid var(--line-2)}
+.tier:last-of-type{border-bottom:1px solid var(--line-2)}
+.tier-info{flex:1}
+.tier-name{font-family:var(--serif);font-weight:400;font-size:clamp(1.6rem,3vw,2.3rem)}
+.tier-spec{margin-top:8px;font-family:var(--mono);font-weight:500;font-size:.66rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold)}
+.tier-desc{margin-top:12px;font-size:.96rem;color:var(--bone-dim);max-width:34em}
+.tier-price{text-align:right;white-space:nowrap}
+.tier-price .from{display:block;font-family:var(--mono);font-weight:500;font-size:.6rem;letter-spacing:.24em;text-transform:uppercase;color:var(--bone-faint);margin-bottom:6px}
+.tier-price .amt{font-family:var(--serif);font-size:clamp(2rem,4vw,3rem);color:var(--gold);line-height:1}
+.tier-price .psub{display:block;margin-top:10px;margin-left:auto;max-width:200px;white-space:normal;font-family:var(--mono);font-weight:500;font-size:.58rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);line-height:1.7}
+.band{max-width:var(--container);margin:44px auto 0;border:1px dashed var(--line-2);background:rgba(184,169,138,.05);padding:clamp(24px,3vw,38px);display:flex;gap:clamp(20px,3vw,44px);align-items:center}
+.band-big{font-family:var(--serif);font-weight:400;font-size:clamp(1.7rem,3.2vw,2.5rem);line-height:1.1;white-space:nowrap}
+.band-big em{font-style:italic;color:var(--gold)}
+.band p{font-size:.96rem;color:var(--bone-dim)}
+@media(max-width:760px){.tier{flex-direction:column;gap:14px}.tier-price{text-align:left}.tier-price .from{margin-bottom:4px}.tier-price .psub{margin-left:0}.band{flex-direction:column;align-items:flex-start}.band-big{white-space:normal}}
+
+/* ADD-ONS */
+.addons{max-width:var(--container);margin:70px auto 0}
+.addons-head{display:flex;align-items:baseline;gap:20px;flex-wrap:wrap;margin-bottom:22px}
+.addons-head h3{font-family:var(--serif);font-weight:400;font-size:clamp(1.6rem,3vw,2.2rem)}
+.addons-head h3 em{font-style:italic;color:var(--gold)}
+.addons-incl{font-family:var(--mono);font-weight:500;font-size:.64rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold)}
+.ad-row{display:flex;align-items:baseline;gap:16px;padding:17px 4px;border-top:1px solid var(--line-2)}
+.ad-row:last-of-type{border-bottom:1px solid var(--line-2)}
+.ad-row .d{color:var(--gold);font-size:.7rem;flex:none}
+.ad-row .t{font-family:var(--serif);font-weight:400;font-size:clamp(1.15rem,2vw,1.4rem)}
+.ad-row .s{font-size:.84rem;color:var(--bone-faint)}
+.ad-row .p{margin-left:auto;font-family:var(--serif);font-size:clamp(1.2rem,2vw,1.5rem);color:var(--gold);white-space:nowrap}
+.ad-note{margin-top:14px;font-family:var(--mono);font-weight:500;font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--bone-faint)}
+@media(max-width:640px){.ad-row{flex-wrap:wrap}.ad-row .s{width:100%;padding-left:26px}}
+
+/* 005 DONE RIGHT */
+.right-grid{max-width:var(--container);margin:0 auto;display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(28px,4vw,64px);align-items:start}
+.checks{border-top:1px solid var(--line-2)}
+.check{display:flex;gap:16px;padding:18px 4px;border-bottom:1px solid var(--line-2);font-size:.98rem;color:var(--bone-dim)}
+.check b{color:var(--bone);font-weight:500}
+.check .m{color:var(--gold);font-family:var(--serif);flex:none}
+.fine{border:1px dashed var(--line-2);background:rgba(184,169,138,.04);padding:clamp(22px,3vw,34px)}
+.fine .k{font-family:var(--mono);font-weight:500;font-size:.62rem;letter-spacing:.26em;text-transform:uppercase;color:var(--gold);margin-bottom:14px}
+.fine p{font-size:.94rem;color:var(--bone-dim);line-height:1.7}
+.fine p b{color:var(--bone);font-weight:500}
+.fine p + p{margin-top:12px}
+@media(max-width:900px){.right-grid{grid-template-columns:1fr}}
+
+/* 006 INQUIRE */
+.inquire{position:relative;overflow:hidden;text-align:center}
+.inquire-bg{position:absolute;inset:0;z-index:0}
+.inquire-bg img{width:100%;height:100%;object-fit:cover;object-position:50% 32%}
+.inquire-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(9,7,6,.9) 0%,rgba(9,7,6,.72) 45%,rgba(9,7,6,.92) 100%)}
+.inquire-core{position:relative;z-index:2;max-width:900px;margin:0 auto;padding:clamp(30px,5vw,60px) 0}
+.inquire-title{font-family:var(--serif);font-weight:400;font-size:clamp(2.4rem,6vw,4.6rem);line-height:1.05;text-shadow:0 4px 40px rgba(9,7,6,.7)}
+.inquire-title em{font-style:italic;color:var(--gold)}
+.inquire-sub{margin-top:20px;font-size:1.02rem;color:var(--bone-dim);text-shadow:0 1px 12px rgba(9,7,6,.7)}
+.inquire-cta{margin-top:34px;display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.inquire-meta{margin-top:34px;display:flex;gap:8px 26px;justify-content:center;flex-wrap:wrap;font-size:.64rem;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:var(--bone-faint);text-shadow:0 1px 8px rgba(9,7,6,.8)}
+@media(max-width:640px){.inquire-cta .btn{width:100%;justify-content:center}}
+
+/* FOOTER */
+.footer{border-top:1px solid var(--line);padding:clamp(44px,6vw,70px) clamp(22px,5vw,64px) 34px;background:var(--ink)}
+.footer-grid{max-width:var(--container);margin:0 auto;display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:clamp(24px,4vw,48px)}
+.footer-brand{display:flex;flex-direction:column;gap:14px}
+.footer-logo{display:flex;align-items:center;gap:.7em;font-family:var(--serif);font-size:.94rem;letter-spacing:.16em;text-transform:uppercase}
+.footer-logo b{font-weight:400;color:var(--gold)}
+.footer-tag{font-family:var(--serif);font-style:italic;color:var(--bone-dim);font-size:1.05rem}
+.footer h4{font-family:var(--mono);font-weight:500;font-size:.62rem;letter-spacing:.26em;text-transform:uppercase;color:var(--gold);margin-bottom:14px}
+.footer p, .footer a{font-size:.92rem;color:var(--bone-dim);line-height:2}
+.footer a:hover{color:var(--gold)}
+.footer-base{max-width:var(--container);margin:44px auto 0;padding-top:22px;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-family:var(--mono);font-weight:500;font-size:.58rem;letter-spacing:.22em;text-transform:uppercase;color:var(--bone-faint)}
+@media(max-width:860px){.footer-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:520px){.footer-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<div class="grain-overlay" aria-hidden="true"></div>
+
+<!-- NAV -->
+<header class="nav" id="nav">
+  <a class="nav-logo" href="/" aria-label="NTT Private Events — home">
+    <svg viewBox="0 0 40 20" width="40" height="20" aria-hidden="true">
+      <circle cx="14" cy="10" r="8.4" fill="none" stroke="#B8A98A" stroke-width="1.7"/>
+      <circle cx="23" cy="10" r="8.4" fill="none" stroke="#B8A98A" stroke-width="1.7" transform="rotate(12 23 10)"/>
+    </svg>
+    <span class="nav-logo__txt">NTT <b>Private Events</b></span>
+  </a>
+  <nav class="nav-links" aria-label="Primary">
+    <a href="#what" class="nav-link">What It Is</a>
+    <a href="#how" class="nav-link">How It Works</a>
+    <a href="#menu" class="nav-link">The Flash Menu</a>
+    <a href="#pricing" class="nav-link">Pricing</a>
+    <a href="#right" class="nav-link">The Fine Print</a>
+  </nav>
+  <a href="https://instagram.com/nicktylertattoo" target="_blank" rel="noopener" class="nav-cta">DM to inquire <span aria-hidden="true">→</span></a>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero" id="hero">
+    <div class="hero-bg" aria-hidden="true"><img src="assets/hero-terrace.jpg" alt="" fetchpriority="high"></div>
+    <div class="hero-core">
+      <svg class="hero-rings" viewBox="0 0 40 20" width="96" height="48" aria-hidden="true">
+        <circle cx="14" cy="10" r="8.4" fill="none" stroke="#B8A98A" stroke-width="1.1"/>
+        <circle cx="23" cy="10" r="8.4" fill="none" stroke="#B8A98A" stroke-width="1.1" transform="rotate(12 23 10)"/>
+      </svg>
+      <div class="hero-kick mono">Nick Tyler Tattoo presents · Something old · Something new · Something borrowed</div>
+      <h1 class="wm">Something<br><em>permanent.</em></h1>
+      <div class="hero-sub">Private fine line flash events · Weddings &amp; bachelorettes</div>
+      <p class="hero-line">Make your special day truly unforgettable with <em>a permanent souvenir.</em></p>
+      <div class="hero-cta">
+        <a href="https://instagram.com/nicktylertattoo" target="_blank" rel="noopener" class="btn btn--solid">DM to inquire</a>
+        <a href="#pricing" class="btn btn--ghost">See pricing</a>
+      </div>
+      <div class="hero-meta mono">
+        <span><span class="dot"></span>Limited remaining 2026 dates</span>
+        <span>Now booking 2027</span>
+        <span>Long Island · Hamptons · NYC</span>
+      </div>
+    </div>
+    <div class="scrollcue mono" aria-hidden="true"><span>Scroll</span><span class="scrollcue__line"></span></div>
+  </section>
+
+  <!-- MARQUEE -->
+  <div class="marquee" aria-hidden="true"><div class="marquee__track" id="marquee"></div></div>
+
+  <!-- 001 WHAT IT IS -->
+  <section id="what">
+    <div class="shead reveal">
+      <div class="sidx mono">001 — What it is</div>
+      <h2 class="stitle">The studio comes <em>to your party.</em></h2>
+    </div>
+    <div class="what-grid">
+      <div>
+        <p class="what-big reveal">A private tiny tattoo flash session at your wedding venue, shower, bachelorette party, <em>or the after party.</em></p>
+        <p class="what-sub reveal">I bring the full studio to you. Your guests pick small fine line pieces from a flash menu drawn for the occasion, spend 15 to 25 minutes in the chair, and get back to the party with a souvenir they will never lose. <b>One flat rate for the event. No per-tattoo surprises for your guests.</b></p>
+        <div class="what-tags reveal">
+          <span class="what-tag">Weddings</span>
+          <span class="what-tag">Bachelorettes</span>
+          <span class="what-tag">Bridal showers</span>
+          <span class="what-tag">Engagement parties</span>
+          <span class="what-tag">After parties</span>
+        </div>
+      </div>
+      <figure class="what-photo reveal">
+        <img src="assets/what-lawn.jpg" alt="Bride laughing with champagne while getting a tiny fine line tattoo at a golden hour wedding reception" loading="lazy">
+        <figcaption class="photo-tag">The experience is the point</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- 002 HOW IT WORKS -->
+  <section class="how" id="how">
+    <div class="shead reveal">
+      <div class="sidx mono">002 — How it works</div>
+      <h2 class="stitle">Four steps. <em>Zero chaos.</em></h2>
+    </div>
+    <div class="how-grid">
+      <article class="how-card reveal">
+        <div class="n">01</div>
+        <h3>Lock your date</h3>
+        <p>A retainer holds your date, confirmed in writing. Suffolk County events need at least 3 weeks of lead time for county permits.</p>
+      </article>
+      <article class="how-card reveal">
+        <div class="n">02</div>
+        <h3>Guests pick early</h3>
+        <p>Everyone chooses their piece from the flash menu before the party, so there is no line and nobody decides under pressure.</p>
+      </article>
+      <article class="how-card reveal">
+        <div class="n">03</div>
+        <h3>I bring the studio</h3>
+        <p>Full mobile setup, single use everything, sealed and opened in front of you. Setup and breakdown are invisible to your timeline.</p>
+      </article>
+      <article class="how-card reveal">
+        <div class="n">04</div>
+        <h3>Back to the party</h3>
+        <p>15 to 25 minutes per guest, then straight back to the celebration. The champagne stays cold.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- 003 FLASH MENU -->
+  <section id="menu">
+    <div class="shead reveal">
+      <div class="sidx mono">003 — The flash menu</div>
+      <h2 class="stitle">Drawn for <em>the occasion.</em></h2>
+    </div>
+    <div class="menu-grid">
+      <figure class="menu-photo reveal">
+        <img src="assets/menu-closeup.jpg" alt="Close-up of a delicate wildflower fine line tattoo in progress beside a champagne coupe and white roses" loading="lazy">
+        <figcaption class="photo-tag">Fine line, single needle</figcaption>
+      </figure>
+      <div>
+        <div class="menu-rows reveal">
+          <div class="menu-row"><span class="d">◆</span><span class="t">Bridal Botanicals</span><span class="s">the signature</span></div>
+          <div class="menu-row"><span class="d">◆</span><span class="t">Ornamental</span><span class="s">elegant fineline</span></div>
+          <div class="menu-row"><span class="d">◆</span><span class="t">Ceremony</span><span class="s">rings, hearts, and champagne</span></div>
+          <div class="menu-row"><span class="d">◆</span><span class="t">Matching Sets</span><span class="s">for the whole group</span></div>
+        </div>
+        <div class="menu-foot reveal">12 to 24 designs per event · Every piece 1 to 3 inches</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 004 PRICING -->
+  <section class="pricing" id="pricing">
+    <div class="shead reveal">
+      <div class="sidx mono">004 — Pricing</div>
+      <h2 class="stitle">Priced <em>simply.</em></h2>
+    </div>
+    <div class="tiers">
+      <div class="tier reveal">
+        <div class="tier-info">
+          <div class="tier-name">The Party Block</div>
+          <div class="tier-spec">2 hours on site · Up to 6 tattoos</div>
+          <p class="tier-desc">Perfect for bridal showers, engagement parties, and intimate bachelorettes.</p>
+        </div>
+        <div class="tier-price"><span class="from">Flat</span><span class="amt">$1,000</span></div>
+      </div>
+      <div class="tier reveal">
+        <div class="tier-info">
+          <div class="tier-name">The Main Event</div>
+          <div class="tier-spec">4 hours on site · Up to 12 tattoos</div>
+          <p class="tier-desc">The bachelorette standard. Room for the whole group without rushing a single piece.</p>
+        </div>
+        <div class="tier-price"><span class="from">Flat</span><span class="amt">$1,800</span></div>
+      </div>
+      <div class="tier reveal">
+        <div class="tier-info">
+          <div class="tier-name">The Wedding &amp; All Day</div>
+          <div class="tier-spec">4 hours on site · Your date reserved &amp; planned around</div>
+          <p class="tier-desc">The full experience for the day itself. Includes a planning call, venue coordination, and a flash menu themed to your wedding. Groups larger than 12 book here.</p>
+        </div>
+        <div class="tier-price"><span class="from">From</span><span class="amt">$3,500</span><span class="psub">Includes one complimentary $500 add on</span></div>
+      </div>
+    </div>
+
+    <div class="band reveal">
+      <div class="band-big">Not priced <em>per guest.</em></div>
+      <p>Whether the party is 8 people or the wedding is 200, the rate covers the session itself. Whoever wants ink claims a piece from the flash menu, up to your block's tattoo cap, and your guests never open their wallets.</p>
+    </div>
+
+    <div class="addons">
+      <div class="addons-head reveal">
+        <h3>Wedding &amp; all day <em>add-ons.</em></h3>
+        <span class="addons-incl">( Any one $500 add on included free )</span>
+      </div>
+      <div class="reveal">
+        <div class="ad-row"><span class="d">◆</span><span class="t">Additional hour</span><span class="s">up to 3 more tattoos</span><span class="p">$500</span></div>
+        <div class="ad-row"><span class="d">◆</span><span class="t">Bride &amp; groom custom pieces</span><span class="s">1 to 3 inches, drawn just for you two</span><span class="p">$500</span></div>
+        <div class="ad-row"><span class="d">◆</span><span class="t">Custom wedding flash sheet</span><span class="s">designed around your story and your date</span><span class="p">$500</span></div>
+        <div class="ad-row"><span class="d">◆</span><span class="t">Weekend extension*</span><span class="s">2 hour rehearsal dinner mini session</span><span class="p">$900</span></div>
+        <div class="ad-note">*Permit pending based on venue selection</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 005 DONE RIGHT -->
+  <section id="right">
+    <div class="shead reveal">
+      <div class="sidx mono">005 — The fine print that matters</div>
+      <h2 class="stitle">The flash party trend, <em>done right.</em></h2>
+    </div>
+    <div class="right-grid">
+      <div class="checks reveal">
+        <div class="check"><span class="m">✓</span><span><b>Licensed, insured studio artist</b> with 250+ five-star reviews</span></div>
+        <div class="check"><span class="m">✓</span><span><b>Full mobile studio,</b> single use everything, sealed and opened in front of you</span></div>
+        <div class="check"><span class="m">✓</span><span><b>Curated flash menu,</b> 12 to 24 designs, every piece 1 to 3 inches</span></div>
+        <div class="check"><span class="m">✓</span><span><b>ID checks and signed consent</b> before the bar opens, 18+ only</span></div>
+        <div class="check"><span class="m">✓</span><span><b>Real aftercare</b> for every guest, so it heals as clean as it went on</span></div>
+      </div>
+      <div class="fine reveal">
+        <div class="k">The honest fine print</div>
+        <p><b>I tattoo up to 3 pieces per hour, and that cap is firm.</b> It is the pace that keeps every piece clean, and it is why the tattoos from these events look like studio work instead of party favors.</p>
+        <p>Groups larger than 12 belong in the Wedding &amp; All Day tier so nobody gets rushed. Every guest is 18+, ID checked, and signs consent while sober. Events in Suffolk County need the date locked at least 3 weeks out for county permits, so the earlier you reach out, the better.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 006 INQUIRE -->
+  <section class="inquire" id="inquire">
+    <div class="inquire-bg" aria-hidden="true"><img src="assets/cta-afterparty.jpg" alt="" loading="lazy"></div>
+    <div class="inquire-core">
+      <div class="sidx mono reveal">006 — Check your date</div>
+      <h2 class="inquire-title reveal">Ready to make it <em>permanent?</em></h2>
+      <p class="inquire-sub reveal">DM me on Instagram with your date and your venue. If it is open, a retainer locks it. Remaining fall and winter 2026 dates are limited, and the 2027 season is booking now.</p>
+      <div class="inquire-cta reveal">
+        <a href="https://instagram.com/nicktylertattoo" target="_blank" rel="noopener" class="btn btn--solid">DM @nicktylertattoo</a>
+        <a href="tel:+16316007871" class="btn btn--ghost">Call the studio</a>
+      </div>
+      <div class="inquire-meta mono reveal">
+        <span><span class="dot"></span>Weddings · Bachelorettes · Showers</span>
+        <span>Long Island · Hamptons · NYC</span>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="footer-logo">
+        <svg viewBox="0 0 40 20" width="40" height="20" aria-hidden="true">
+          <circle cx="14" cy="10" r="8.4" fill="none" stroke="#B8A98A" stroke-width="1.7"/>
+          <circle cx="23" cy="10" r="8.4" fill="none" stroke="#B8A98A" stroke-width="1.7" transform="rotate(12 23 10)"/>
+        </svg>
+        NTT <b>Private Events</b>
+      </div>
+      <div class="footer-tag">Something old, something new, something permanent.</div>
+    </div>
+    <div>
+      <h4>Find us</h4>
+      <p><a href="https://instagram.com/nicktylertattoo" target="_blank" rel="noopener">@nicktylertattoo</a><br>
+      <a href="https://nicktylertattoo.com" target="_blank" rel="noopener">nicktylertattoo.com</a><br>
+      <a href="tel:+16316007871">+1 (631) 600-7871</a></p>
+    </div>
+    <div>
+      <h4>Events</h4>
+      <p>Weddings<br>Bachelorettes<br>Showers &amp; engagements</p>
+    </div>
+    <div>
+      <h4>Service area</h4>
+      <p>Long Island<br>The Hamptons<br>New York City</p>
+    </div>
+  </div>
+  <div class="footer-base">
+    <span>© 2026 Nick Tyler Tattoo · A Nick Tyler Tattoo service</span>
+    <span>18+ only · Licensed &amp; insured</span>
+  </div>
+</footer>
+
+<script>
+/* ?still — freeze all motion (screenshot/QC mode) */
+if (new URLSearchParams(location.search).has('still')){
+  const s = document.createElement('style');
+  s.textContent = '*{animation:none!important;transition:none!important}.reveal{opacity:1!important;transform:none!important}';
+  document.head.appendChild(s);
+}
+
+/* nav stuck state */
+const nav = document.getElementById('nav');
+const onScroll = () => nav.classList.toggle('is-stuck', scrollY > 24);
+addEventListener('scroll', onScroll, {passive:true}); onScroll();
+
+/* marquee fill */
+const seq = 'Something old · Something new · Something borrowed · <em>Something permanent</em> · ';
+document.getElementById('marquee').innerHTML = seq.repeat(6);
+
+/* reveals */
+const io = new IntersectionObserver(es => es.forEach(e => {
+  if (e.isIntersecting){ e.target.classList.add('is-in'); io.unobserve(e.target); }
+}), {threshold:.14, rootMargin:'0px 0px -6% 0px'});
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+</body>
+</html>

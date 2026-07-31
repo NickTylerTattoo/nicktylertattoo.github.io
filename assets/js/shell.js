@@ -1,11 +1,11 @@
-/* ===== shared shell: mark sprite, marquee, variant bar, year ===== */
+/* ===== shared shell: mark sprite, marquee, reveals, year ===== */
 (() => {
 'use strict';
 const STILL = new URLSearchParams(location.search).has('still');
 const REDUCED = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 /* inject the door-mark sprite once (kept in one file so the four marks stay a family).
-   Resolved from this script's own URL so it works from /preview/ and /preview/a/ alike. */
+   Resolved from this script's own URL so it works from any path depth. */
 const MARKS = new URL('../marks.html', document.currentScript.src).href;
 fetch(MARKS)
   .then(r => r.ok ? r.text() : '')
@@ -15,9 +15,17 @@ fetch(MARKS)
 /* marquee */
 const track = document.getElementById('marquee');
 if (track){
-  const unit = '<span>One-of-one<i>&#9670;</i>Once it&rsquo;s booked it&rsquo;s gone'
-             + '<i>&#9670;</i>Fine line &middot; Ornamental &middot; Floral &middot; Blackwork &middot; Geometric'
-             + '<i>&#9670;</i>Long Island, NY<i>&#9670;</i></span>';
+  /* Apex marquee: what's true of every path. Scarcity copy ("once it's booked
+     it's gone") lives on /flash/, where it actually applies. */
+  const BEATS = [
+    'Fine line &middot; Ornamental &middot; Floral &middot; Blackwork &middot; Geometric',
+    'By appointment &middot; Long Island, NY',
+    '5.0 &#9733; &middot; 250+ Google reviews',
+    'No charge for design or prep',
+    'Private suite &middot; Est. 2022',
+    'Travel sessions available'
+  ];
+  const unit = '<span>' + BEATS.join('<i>&#9670;</i>') + '<i>&#9670;</i></span>';
   track.innerHTML = unit;
   let guard = 0;
   while (track.scrollWidth < innerWidth * 2 && guard++ < 12) track.innerHTML += unit;

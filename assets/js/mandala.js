@@ -125,7 +125,12 @@ function render(t, bloom){
 }
 const clamp = v => v < 0 ? 0 : v > 1 ? 1 : v;
 
+/* the lattice composites every frame — don't burn GPU on a backgrounded tab */
+let pageVisible = !document.hidden;
+document.addEventListener('visibilitychange', () => { pageVisible = !document.hidden; }, {passive:true});
+
 function loop(now){
+  if (!pageVisible){ requestAnimationFrame(loop); return; }
   const t = now / 1000;
   const bloom = BLOOM ? clamp((now - T0) / BLOOM) : 1;
   mx += (tmx - mx) * 0.045;

@@ -1,0 +1,332 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="ntt-page" content="otaat">
+<title>One Tattoo At A Time — Free recovery tattoos · Nick Tyler Tattoo, Selden NY</title>
+<meta name="description" content="A completely free monthly tattoo event honoring addiction recovery, remembrance, and the people who stand beside them. Numbers and dates, typewriter style, one client at a time. Returns August 2026.">
+<meta name="theme-color" content="#090706">
+<meta property="og:title" content="One Tattoo At A Time — a Nick Tyler Tattoo initiative">
+<meta property="og:description" content="One story. One number. One tattoo at a time. Free recovery tattoos + a live wall of anonymous messages of hope.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 20'%3E%3Ccircle cx='13' cy='10' r='8' fill='none' stroke='%23B8A98A' stroke-width='2'/%3E%3Ccircle cx='22' cy='10' r='8' fill='none' stroke='%23B8A98A' stroke-width='2'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:wght@300;400;500;600;700&family=Special+Elite&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<noscript>
+  <style>
+    /* JS failed or disabled: kill the preloader and show everything —
+       the crisis info must never be hidden. */
+    .preloader{display:none!important}
+    body[data-loading]{overflow:auto!important;height:auto!important}
+    .reveal,.crisis,.note,.piece{opacity:1!important;transform:none!important}
+    .wm .ch{opacity:1!important;transform:none!important}
+    .ink,.cursor{display:none!important}
+  </style>
+</noscript>
+</head>
+<body data-loading>
+
+  <!-- PRELOADER -->
+  <div class="preloader" id="preloader" aria-hidden="true">
+    <svg class="pre-mark" viewBox="0 0 120 74" width="120" height="74">
+      <circle class="pre-o pre-o1" cx="46" cy="37" r="29" fill="none" stroke="#B8A98A" stroke-width="2"/>
+      <circle class="pre-o pre-o2" cx="74" cy="37" r="29" fill="none" stroke="#B8A98A" stroke-width="2"/>
+    </svg>
+    <div class="pre-count"><span id="preCount">0</span></div>
+    <div class="pre-word">One Tattoo At A Time · Loading</div>
+  </div>
+
+  <!-- CUSTOM CURSOR -->
+  <div class="cursor" id="cursor" aria-hidden="true"></div>
+
+  <!-- BACKGROUND CONSTELLATION FIELD -->
+  <canvas class="ink" id="ink" aria-hidden="true"></canvas>
+
+  <a class="skip" href="#wall">Skip to the wall</a>
+
+  <!-- NAV -->
+  <header class="nav" id="nav">
+    <a class="nav-logo" href="/" data-cursor="link" aria-label="One Tattoo At A Time — home">
+      <svg class="nav-oo" viewBox="0 0 40 20" width="40" height="20" aria-hidden="true">
+        <circle cx="13" cy="10" r="8.4" fill="none" stroke="#B8A98A" stroke-width="1.7"/>
+        <circle cx="22" cy="10" r="8.4" fill="none" stroke="#B8A98A" stroke-width="1.7"/>
+      </svg>
+      <span class="nav-logo__txt">One Tattoo <b>At A Time</b></span>
+    </a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="#story" class="nav-link" data-cursor="link">The Story</a>
+      <a href="#wall" class="nav-link" data-cursor="link">The Wall</a>
+      <a href="#collection" class="nav-link" data-cursor="link">The Collection</a>
+      <a href="#july" class="nav-link" data-cursor="link">Attend</a>
+      <a href="#atlas" class="nav-link" data-cursor="link">Artists</a>
+      <span class="nav-stat mono"><span class="dot"></span><span id="navMsgs">0</span> on the wall</span>
+    </nav>
+    <a href="#wall" class="nav-cta" data-cursor="link">Leave a message <span aria-hidden="true">→</span></a>
+  </header>
+
+  <main id="top">
+
+    <!-- HERO -->
+    <section class="hero" id="hero">
+      <div class="emblem-stage" id="emblemStage">
+        <canvas class="emblem" id="emblem" aria-hidden="true"></canvas>
+      </div>
+      <div class="hero-core">
+        <div class="hero-kick mono">A Nick Tyler Tattoo initiative · Selden, NY · Free, always</div>
+        <h1 class="wm" id="wm"><span class="wm-line" data-split>One Tattoo</span><br><span class="wm-line" data-split>At A Time</span></h1>
+        <div class="hero-sub">Recovery · Remembrance · Resilience</div>
+        <div class="hero-type mono" aria-hidden="true"><span class="hero-type__label">YOUR NUMBER —&nbsp;</span><span id="typeOut"></span><span class="caret"></span></div>
+        <p class="hero-line">One story. One number. <em>One tattoo at a time.</em></p>
+        <div class="hero-cta">
+          <a href="#wall" class="btn btn--solid" data-cursor="view">Read the wall</a>
+          <a href="#ritual" class="btn btn--ghost" data-cursor="link">How it works</a>
+        </div>
+        <div class="hero-meta mono">
+          <span><span class="dot"></span>Returns August 2026</span>
+          <span>No cost, ever</span>
+          <span>One client at a time</span>
+        </div>
+      </div>
+      <button class="scrollcue mono" id="scrollcue" data-cursor="view" aria-label="Scroll to the story">
+        <span>Scroll</span><span class="scrollcue__line" aria-hidden="true"></span>
+      </button>
+    </section>
+
+    <!-- MARQUEE -->
+    <div class="marquee" aria-hidden="true"><div class="marquee__track" id="marquee"></div></div>
+
+    <!-- 001 — THE STORY -->
+    <section class="story" id="story">
+      <div class="shead reveal">
+        <div>
+          <div class="sidx mono">001 — Why this exists</div>
+          <h2 class="stitle">Ink that says: <em class="ser">still here.</em></h2>
+        </div>
+      </div>
+      <p class="story-big reveal">#OneTattooAtATime is a <em class="ser">completely free</em> monthly tattoo event aimed at changing the way the world views <em class="ser">addiction, relapse, loss, and recovery.</em></p>
+      <p class="story-sub reveal">Every piece is a number or a date — clean time, a milestone, the day everything changed, the person you carry. Ten characters, typewriter style, tattooed in a private studio. One story at a time.</p>
+
+      <div class="who-grid">
+        <article class="who reveal" data-cursor="link">
+          <div class="who__n mono">I</div>
+          <h3 class="who__t">In recovery</h3>
+          <p class="who__p">You're marking your own clean time — whether it's 24 hours or 24 years. Every day counts, and yours deserves ink.</p>
+          <div class="who__tag mono">24 HOURS</div>
+        </article>
+        <article class="who reveal" data-cursor="link">
+          <div class="who__n mono">II</div>
+          <h3 class="who__t">Loved ones &amp; family</h3>
+          <p class="who__p">You've watched someone you love fight addiction — or you've lost them to it. Their date is yours to carry.</p>
+          <div class="who__tag mono">11.09.18</div>
+        </article>
+        <article class="who reveal" data-cursor="link">
+          <div class="who__n mono">III</div>
+          <h3 class="who__t">Friends &amp; supporters</h3>
+          <p class="who__p">You stand beside someone in recovery. Your mark says what words can't: they don't stand alone.</p>
+          <div class="who__tag mono">1 DAY</div>
+        </article>
+      </div>
+
+      <div class="statrow reveal">
+        <div class="stat"><div class="stat__num mono">$<span data-count="0">0</span></div><div class="stat__lbl mono">Cost — forever</div></div>
+        <div class="stat"><div class="stat__num mono"><span data-count="1">0</span></div><div class="stat__lbl mono">Client in studio at a time</div></div>
+        <div class="stat"><div class="stat__num mono"><span data-count="10">0</span></div><div class="stat__lbl mono">Characters, a number or date</div></div>
+        <div class="stat"><div class="stat__num mono">∞</div><div class="stat__lbl mono">Stories worth telling</div></div>
+      </div>
+    </section>
+
+    <!-- 002 — HOW IT WORKS -->
+    <section class="ritual" id="ritual">
+      <div class="ritual-left">
+        <div class="shead reveal">
+          <div>
+            <div class="sidx mono">002 — How it works</div>
+            <h2 class="stitle">Simple. Sacred.<br>First come, first served.</h2>
+            <p class="slead">No applications, no gatekeeping — an honor system for people who need it.</p>
+          </div>
+        </div>
+        <ul class="steps">
+          <li class="reveal"><span class="steps__n mono">01</span><div><b>The announcement</b><p>At the start of each month the event date is announced on Instagram <a href="https://instagram.com/nicktylertattoo" target="_blank" rel="noopener" data-cursor="link">@nicktylertattoo</a>.</p></div></li>
+          <li class="reveal"><span class="steps__n mono">02</span><div><b>Registration</b><p>A sign-up link is shared the day before the event. Spots are limited — first come, first served, on the honor system.</p></div></li>
+          <li class="reveal"><span class="steps__n mono">03</span><div><b>Arrive &amp; receive</b><p>Come as you are — sober and ready. Only one client in the studio at a time, so your story stays yours.</p></div></li>
+        </ul>
+        <div class="rules reveal">
+          <div class="rules__head mono">The rules — read before you register</div>
+          <ul class="rules__list mono">
+            <li>Numbers or dates <b>only</b></li>
+            <li>Max <b>10 characters</b></li>
+            <li>Typewriter-style font</li>
+            <li>Completely free — no tipping required</li>
+            <li>Sober, substance-free event</li>
+            <li>One client in the studio at a time</li>
+            <li>Must connect to addiction, recovery, or loss</li>
+          </ul>
+          <p class="rules__note">Birthdays, anniversaries and angel numbers don't qualify — this ink is reserved for the fight.</p>
+        </div>
+      </div>
+      <div class="ritual-right reveal">
+        <div class="stencil" id="stencil">
+          <div class="stencil__head mono">Try it — type your number</div>
+          <input id="stencilIn" class="stencil__in mono" type="text" maxlength="10" placeholder="24 HOURS" autocomplete="off" spellcheck="false" aria-label="Type your number or date, max 10 characters">
+          <div class="stencil__plate">
+            <span class="stencil__ink" id="stencilOut">24 HOURS</span>
+          </div>
+          <div class="stencil__foot mono"><span id="stencilCount">8</span>/10 characters · typewriter style · actual stencil sized to you</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 003 — THE WALL -->
+    <section class="wall" id="wall">
+      <div class="shead reveal">
+        <div>
+          <div class="sidx mono">003 — The Wall</div>
+          <h2 class="stitle">Words for the ones <em class="ser">still fighting.</em></h2>
+          <p class="slead">Leave an anonymous message for someone in recovery, someone grieving, someone on day one. It stays here — live, for as long as the needle keeps moving.</p>
+        </div>
+        <div class="dstat">
+          <div class="dstat__num"><span id="wallCount">0</span></div>
+          <div class="dstat__lbl mono"><span class="dot"></span>Messages · live</div>
+        </div>
+      </div>
+
+      <form class="composer reveal" id="composer">
+        <label class="composer__field">
+          <span class="mono">Your message · anonymous</span>
+          <textarea id="msgText" maxlength="280" rows="3" placeholder="Say the thing you'd want to hear on your hardest day…" required aria-label="Your anonymous message"></textarea>
+        </label>
+        <div class="composer__row">
+          <label class="composer__from">
+            <span class="mono">Sign it (optional)</span>
+            <input id="msgFrom" type="text" maxlength="40" placeholder="Anonymous" autocomplete="off">
+          </label>
+          <div class="composer__count mono"><span id="msgCount">0</span>/280</div>
+          <button class="btn btn--solid" id="msgSend" type="submit" data-cursor="view">Post to the wall</button>
+        </div>
+        <div class="composer__note mono">No account. No name. No trace — just kindness. Messages appear instantly for everyone reading.</div>
+        <div class="composer__err mono" id="msgErr" role="alert" hidden></div>
+      </form>
+
+      <div class="wall-grid" id="wallGrid"></div>
+      <p class="noresults mono" id="wallEmpty" hidden>The wall is waiting for its first words — leave them.</p>
+
+      <aside class="crisis reveal">
+        <div class="crisis__pulse" aria-hidden="true"><svg viewBox="0 0 120 24" width="120" height="24"><path id="pulsePath" d="M0 12 H30 L38 12 44 3 52 21 58 8 63 12 H120" fill="none" stroke="#B8A98A" stroke-width="1.6"/></svg></div>
+        <p><b>Struggling right now?</b> You don't have to wait for an event. Call or text <a href="tel:988" data-cursor="link"><b>988</b></a> (Suicide &amp; Crisis Lifeline) or SAMHSA's National Helpline <a href="tel:18006624357" data-cursor="link"><b>1-800-662-HELP</b></a> — free, confidential, 24/7.</p>
+      </aside>
+    </section>
+
+    <!-- 004 — THE COLLECTION -->
+    <section class="collection" id="collection">
+      <div class="shead reveal">
+        <div>
+          <div class="sidx mono">004 — The Collection</div>
+          <h2 class="stitle">Marks worth <em class="ser">making.</em></h2>
+          <p class="slead">Every number tattooed at OTAAT is a day somebody chose to keep going — or a person somebody refuses to forget. The first marks from the inaugural event are here — the plates beside them show what belongs, and new marks arrive this August.</p>
+        </div>
+        <div class="dstat">
+          <div class="dstat__num"><span id="collCount">0</span></div>
+          <div class="dstat__lbl mono">Marks · six from the first events</div>
+        </div>
+      </div>
+      <div class="coll-grid" id="collGrid"></div>
+    </section>
+
+    <!-- 005 — THE RETURN -->
+    <section class="july" id="july">
+      <div class="july-banner reveal">
+        <div class="sidx mono">005 — The return</div>
+        <h2 class="july-big">OTAAT is back<br><em class="ser">this August.</em></h2>
+        <p class="july-lead">The next event date drops on Instagram at the start of the month. The registration link goes live the day before — free, first come, first served.</p>
+        <div class="hero-cta">
+          <a href="https://instagram.com/nicktylertattoo" target="_blank" rel="noopener" class="btn btn--solid" data-cursor="view">Follow for the announcement</a>
+          <a href="#ritual" class="btn btn--ghost" data-cursor="link">Read the rules first</a>
+        </div>
+      </div>
+
+      <div class="artists reveal" id="artists">
+        <div class="artists-left">
+          <div class="sidx mono">For tattoo artists</div>
+          <h3 class="artists-title">Give an hour.<br>Change a story.</h3>
+          <p class="slead">OTAAT is bigger than one studio — artists in other cities are joining in. If you're a licensed artist who wants to donate time at a future event, in Selden or your own city, put your name down.</p>
+        </div>
+        <form class="aform" id="aform">
+          <div class="aform__row">
+            <label class="field"><span>Name *</span><input id="aName" type="text" maxlength="80" required autocomplete="name"></label>
+            <label class="field"><span>Email *</span><input id="aEmail" type="email" maxlength="120" required autocomplete="email"></label>
+          </div>
+          <div class="aform__row">
+            <label class="field"><span>Instagram</span><input id="aIg" type="text" maxlength="60" placeholder="@handle"></label>
+            <label class="field"><span>Studio</span><input id="aStudio" type="text" maxlength="80"></label>
+          </div>
+          <label class="field"><span>City / State</span><input id="aLoc" type="text" maxlength="80" placeholder="Selden, NY"></label>
+          <button class="btn btn--solid btn--full" type="submit" data-cursor="view">Count me in</button>
+          <div class="composer__err mono" id="aErr" role="alert" hidden></div>
+          <div class="aform__ok" id="aOk" role="status" tabindex="-1" hidden>
+            <b>You're on the list.</b>
+            <p>Nick will reach out before the next event. Thank you for giving your needle to this.</p>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <!-- 006 — THE ATLAS -->
+    <section class="atlas" id="atlas">
+      <div class="shead reveal">
+        <div>
+          <div class="sidx mono">006 — The artists</div>
+          <h2 class="stitle">One needle became <em class="ser">a network.</em></h2>
+          <p class="slead">OTAAT started in one room in Selden. Then one story spread, and artists from Long Island to Ontario to Poland opened their chairs to the same promise. Spin the globe, find a glowing light, tap it — and read, in their own words, why they said yes.</p>
+          <p class="atlas-promise reveal">“I will put together a database of participating artists, their locations, and their handles — to make sure as many non-local requests get realized as possible.”<b>— Nick, from the FREE stories · this globe is that promise</b></p>
+        </div>
+        <div class="dstat">
+          <div class="dstat__num"><span id="atlasCount">0</span></div>
+          <div class="dstat__lbl mono">Artists · 3 countries · and counting</div>
+        </div>
+      </div>
+      <div class="atlas-grid">
+        <div class="atlas-stage reveal" id="atlasStage">
+          <canvas id="globe" class="atlas-globe" role="img" aria-label="Interactive world globe showing participating artist locations — drag to spin, tap a glowing dot for the artist's contact card"></canvas>
+          <div class="atlas-hint mono" aria-hidden="true">Drag to spin · tap a glowing light</div>
+        </div>
+        <div class="atlas-side reveal">
+          <div class="acard" id="acard" aria-live="polite"></div>
+          <div class="alist" id="alist" role="group" aria-label="Participating artists"></div>
+          <p class="atlas-join mono">Want your city glowing on this map? <a href="#aform" data-cursor="link">Put your name down above</a>.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="foot" id="foot">
+      <div class="foot-cta reveal">
+        <div class="sidx mono">007 — Add your voice</div>
+        <a href="#wall" class="foot-big" data-cursor="view">Leave a message on the wall<span aria-hidden="true"> ↗</span></a>
+      </div>
+      <div class="foot-cols mono">
+        <div><b>The event</b><p>Free recovery tattoos · monthly<br>Numbers &amp; dates · typewriter style<br>Returns August 2026</p></div>
+        <div><b>The studio</b><p>Private home studio · Selden, NY<br>Suffolk County · Long Island<br>One client at a time, always</p></div>
+        <div><b>Find us</b><p><a href="https://instagram.com/nicktylertattoo" data-cursor="link">@nicktylertattoo</a><br><a href="https://nicktylertattoo.com" data-cursor="link">nicktylertattoo.com</a></p></div>
+        <div><b>Need help now</b><p>Call or text <a href="tel:988" data-cursor="link">988</a> · 24/7<br>SAMHSA <a href="tel:18006624357" data-cursor="link">1-800-662-HELP</a></p></div>
+      </div>
+      <div class="foot-base mono">
+        <span>© <span id="yr"></span> Nick Tyler Tattoo</span>
+        <span>One story. One number. One tattoo at a time.</span>
+      </div>
+    </footer>
+  </main>
+
+  <!-- STICKY MOBILE CTA BAR -->
+  <nav class="mobilebar" id="mobilebar" aria-label="Quick actions">
+    <a href="#collection" class="mobilebar__btn mobilebar__btn--ghost" data-cursor="link">The Collection</a>
+    <a href="#wall" class="mobilebar__btn mobilebar__btn--solid" data-cursor="link">Leave a message</a>
+  </nav>
+
+  <div class="srlive" id="srlive" aria-live="polite"></div>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
