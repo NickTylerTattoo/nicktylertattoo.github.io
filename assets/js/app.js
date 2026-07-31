@@ -437,7 +437,7 @@ function customForm(){
 /* ---------- FAQ (three tiles + accordion) ---------- */
 const FAQ = {
   flash: [
-    ['How do I book a flash design?', "Pick any design from The Drop and hit Claim — the booking calendar opens right there. Choose your date and leave a $50 deposit to lock it in. The deposit credits toward your session."],
+    ['How do I book a flash design?', "Pick any design from The Collection and hit Claim — the booking calendar opens right there. Choose your date and leave a $50 deposit to lock it in. The deposit credits toward your session."],
     ['Are the flash designs really one-of-one?', "Yes. Each design is tattooed once, then retired for good. Once it's claimed, it's gone — so if one speaks to you, grab it."],
     ['Can I change the size or placement?', "Small adjustments to suit your body, absolutely. If you want to change the design itself, start a custom request instead and we'll build something around it."],
     ['What does a flash piece cost?', "Each design shows its starting price. Most pieces land between $250 and $1,200 depending on size and placement; the $50 deposit comes off your total."],

@@ -1,7 +1,7 @@
 /* ===== Nick Tyler Tattoo — 3D sacred-geometry hero mark =====
    Flower of Life: 19 circles on a hex lattice + containing ring,
    rotated in 3D and stroked in four passes for an engraved-gold read.
-   Replaces the interlocking-"OO" emblem from The Drop.
+   Replaces the interlocking-"OO" emblem from the old one-page site.
    ?still  freezes on a settled frame (screenshot mode).            */
 (() => {
 'use strict';
