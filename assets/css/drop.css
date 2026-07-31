@@ -35,7 +35,10 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 :focus-visible{outline:2px solid var(--champ);outline-offset:3px}
 
 .mono{font-family:var(--mono);font-weight:400;letter-spacing:.09em;text-transform:uppercase;font-size:11px}
-.ser{font-family:var(--serif);font-style:italic;font-weight:500;letter-spacing:0;color:var(--champ)}
+/* Accent word in a headline. Was Cormorant italic; the light serif read thin
+   next to Space Grotesk 700, so the accent is carried by colour alone and
+   inherits the headline's face and weight. */
+.ser{color:var(--champ)}
 .wrap{max-width:var(--wrap);margin-inline:auto;padding-inline:var(--gut)}
 .dot{display:inline-block;width:5px;height:5px;border-radius:50%;background:var(--champ);margin-right:7px;vertical-align:1px}
 

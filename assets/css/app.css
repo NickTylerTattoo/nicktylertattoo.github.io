@@ -361,7 +361,11 @@ main > section:first-of-type{padding-top:clamp(104px,12vw,158px)}
 
 /* Italic accent word in a headline. Defined in drop.css for the apex home;
    flash/custom load this sheet instead, so it needs its own copy. */
-.ser{font-family:var(--serif);font-style:italic;font-weight:500;letter-spacing:0;color:var(--gold)}
+/* Accent word in a headline. Was Cormorant italic; the light serif read thin
+   next to Space Grotesk 700, so on these pages the accent is carried by colour
+   alone and inherits the headline's face and weight. Events and OTAAT keep a
+   real italic serif — that's their voice, not this one. */
+.ser{color:var(--gold)}
 
 /* Shared home lockup. Same mark + wordmark on /flash/, /custom/, /events/
    and /otaat/ so the top-left always reads as one site. Caps want positive
