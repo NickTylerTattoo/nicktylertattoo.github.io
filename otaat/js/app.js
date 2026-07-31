@@ -4,6 +4,29 @@
 const $ = (s, c = document) => c.querySelector(s);
 const $$ = (s, c = document) => [...c.querySelectorAll(s)];
 const params = new URLSearchParams(location.search);
+
+/* POST to the wall API and always come back with a human error.
+   These endpoints only exist on the Node server. On the published static
+   copy they answer 405 with an HTML body, so a bare r.json() throws a
+   parser error and the visitor gets shown "Unexpected token '<'...".
+   Until the API is hosted for real, fail with something a person can act on. */
+async function apiPost(path, body, offlineMsg){
+  let r;
+  try {
+    r = await fetch(path, body === undefined
+      ? { method:'POST' }
+      : { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(body) });
+  } catch { throw new Error(offlineMsg); }
+  if (r.status === 404 || r.status === 405 || r.status === 501) throw new Error(offlineMsg);
+  const type = r.headers.get('content-type') || '';
+  if (!type.includes('json')) throw new Error(offlineMsg);
+  let data;
+  try { data = await r.json(); } catch { throw new Error(offlineMsg); }
+  if (!r.ok) throw new Error(data.error || offlineMsg);
+  return data;
+}
+const WALL_OFFLINE   = "The wall isn't taking new messages right now. DM @nicktylertattoo and I'll put yours up.";
+const ARTIST_OFFLINE = "The sign-up isn't going through right now. DM @nicktylertattoo and I'll get you on the list.";
 /* FROZEN — ?still screenshot mode: no motion, no interaction.
    REDUCED — OS "reduce motion": no autonomous motion (spins, pulses,
    marquee, typewriter), but user-driven interaction still works.
@@ -464,11 +487,7 @@ function composer(){
     if (body.text.length < 4){ fail('Say a little more — even one kind sentence matters.'); return; }
     send.disabled = true; send.textContent = 'Posting…';
     try {
-      const r = await fetch('/api/messages', {
-        method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(body)
-      });
-      const data = await r.json();
-      if (!r.ok) throw new Error(data.error || 'Could not post right now.');
+      const data = await apiPost('/api/messages', body, WALL_OFFLINE);
       if (addMessage(data.message, {prepend:true, fresh:true})) setWallCounts(wallTotal + 1);
       text.value = ''; from.value = ''; count.textContent = 0;
       $('#srlive').textContent = 'Your message is on the wall';
@@ -853,11 +872,7 @@ function artists(){
     };
     send.disabled = true;
     try {
-      const r = await fetch('/api/artists', {
-        method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(body)
-      });
-      const data = await r.json();
-      if (!r.ok) throw new Error(data.error || 'Could not send right now.');
+      await apiPost('/api/artists', body, ARTIST_OFFLINE);
       // success: retire the form controls under the overlay and move focus to it
       $$('input, button', form).forEach(el => { if (el.closest('#aOk') === null) el.disabled = true; });
       const ok = $('#aOk');
