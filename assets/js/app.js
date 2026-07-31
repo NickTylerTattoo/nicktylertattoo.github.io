@@ -20,7 +20,7 @@ const MOBILE = innerWidth < 700;
 const CAT = [
   ['01','Serpent & Sigil Triptych','versatile','Any Placement','5–7 in','3–4 hr',500,'live'],
   ['02','Ornamental Crest','versatile','Any Placement','4–5 in','2–3 hr',500,'claimed'],
-  ['03','Lotus Filigree','versatile','Any Placement','4–6 in','2–3 hr',500,'live'],
+  ['03','Lotus Filigree','versatile','Any Placement','4–6 in','2–3 hr',500,'claimed'],
   ['04','Dotwork Diadem','versatile','Any Placement','4–5 in','2–3 hr',500,'live'],
   ['05','Veiled Mandala','versatile','Any Placement','5–6 in','3 hr',500,'live'],
   ['06b','Cathedral Sleeve','sleeve','Outer Sleeve','Single sleeve','2 sessions',1400,'live'],
