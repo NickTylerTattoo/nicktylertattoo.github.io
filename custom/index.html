@@ -128,6 +128,31 @@
 
   <div class="srlive" id="srlive" aria-live="polite"></div>
 
+  <script>
+  /* GHL form embed: own the reveal instead of trusting form_embed.js.
+     The stock script attaches its listener after a cached iframe has already
+     posted its size, so the reveal never fires and the form stays
+     visibility:hidden at left:-9999px — an invisible lead form. Caught live on
+     this page 2026-07-31; /events/ has carried the same fix since 7/21. */
+  (function(){
+    var ID = 'inline-3AkoAcnNx29uAvO2x7n3';
+    function show(h){
+      var f = document.getElementById(ID);
+      if (f) f.style.cssText = 'display:block;width:100%;border:0;border-radius:2px;height:' + h + 'px';
+    }
+    window.addEventListener('message', function(ev){
+      if (typeof ev.data === 'string' && ev.data.indexOf('[iFrameSizer]' + ID + ':') === 0){
+        var h = parseInt(ev.data.split(':')[1], 10);
+        if (h > 200) show(h);
+      }
+    });
+    /* last-resort fixed height if no size message ever arrives */
+    setTimeout(function(){
+      var f = document.getElementById(ID);
+      if (f && getComputedStyle(f).visibility === 'hidden') show(2000);
+    }, 4000);
+  })();
+  </script>
   <script src="https://link.inkedin.tools/js/form_embed.js"></script>
   <script src="/assets/js/app.js"></script>
 </body>
