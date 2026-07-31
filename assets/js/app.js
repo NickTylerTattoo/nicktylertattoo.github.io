@@ -443,16 +443,22 @@ const FAQ = {
     ['What does a flash piece cost?', "Each design shows its starting price. Most pieces land between $250 and $1,200 depending on size and placement; the $50 deposit comes off your total."],
     ['What if the design I want is already claimed?', "It won't come back — but tell me in a custom request and I'll draw something new in the same spirit, just for you."]
   ],
+  /* Answers mirror custom.nicktylertattoo.com, the page carrying the paid
+     traffic. Keep them aligned: the flow is request → approval → private
+     booking link, and approval is never automatic. */
   custom: [
-    ['How do I request a custom tattoo?', "Fill out the custom form with your idea, placement, and any reference images. The more you share about what it means to you, the better the result."],
-    ['Is there a charge for the design or drawing?', "No. There's no charge for design or prep — you only place a deposit once we've locked in the concept together."],
-    ['How long until I hear back?', "I read every request and usually reply within 24–48 hours. Custom pieces typically book around 3–5 weeks out."],
-    ["What's the deposit for a custom piece?", "$100 for most custom work, $200 for large-scale pieces — credited toward your session. I'll confirm the amount when we finalize the concept."],
-    ['What styles do you take on?', "Fine line, ornamental, floral, blackwork, geometric and detailed illustrative work. I don't do color or realism (rare exceptions)."]
+    ['How long does it take to hear back after I submit?', "Most requests get a response within 1 to 3 business days. During especially busy stretches it can take a little longer, but every form is read personally and thoroughly."],
+    ['Does submitting the form guarantee I can book?', "No. The form is a request, not an automatic booking. I prioritize projects that suit my style, fit the schedule, and leave enough time to get you the result you're after."],
+    ['What kinds of tattoos do you take on?', "Fine line, ornamental, geometric and detailed illustrative custom work. Larger projects like half or full sleeves and full backs get priority. If your idea isn't the right fit for me I'll tell you, and I may suggest changes or point you to another artist I trust."],
+    ['When do I see my design?', "At your appointment, with time set aside for small adjustments together. The form is what lets us agree on direction beforehand, so the session goes on tattooing rather than designing from scratch. I show up prepared with a ready-to-tattoo design based on what you sent."],
+    ['How do I get an estimate?', "The request form gives me everything I need to price it accurately, so start there. If an estimate is all you're after right now, say so in the notes."]
   ],
   general: [
     ['Where are you located?', "A private studio in Suffolk County, Long Island, NY. By appointment only — the exact address is shared 24 hours before your appointment."],
-    ['What are your rates?', "$250 per hour, with most pieces between $250 and $1,200. There's no charge for design or prep."],
+    /* NOTE: custom.nicktylertattoo.com frames this as "custom pieces start at $250"
+       and routes pricing through the request form. It makes no "free design" claim,
+       so that line was dropped here rather than left contradicting the live page. */
+    ['What are your rates?', "Custom pieces start at $250, with most work landing between $250 and $1,200 depending on size, placement and detail. Send your references through the request form and ask for an estimate and I'll give you an accurate number."],
     ["It's my first tattoo — anything I should know?", "You're in good hands. Ask anything, take breaks whenever you need, and never apologize — just communicate. Your comfort comes first, always."],
     ['Do you travel or do guest spots?', "Yes — travel sessions are available, with up to a $500 travel credit. Mention where you are in your request."],
     ["What's your cancellation policy?", "Life happens — give me as much notice as you can. Deposits are non-refundable but they hold your spot, and I'll work with you to reschedule."],
