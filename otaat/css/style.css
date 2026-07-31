@@ -1,14 +1,14 @@
 /* ===== Nick Tyler Tattoo — ONE TATTOO AT A TIME · one-page site =====
    Live-brand champagne system (matches the 07/2026 carousel):
-   Instrument Serif display · DM Sans text/labels · Special Elite typewriter */
+   Space Grotesk display · Space Mono labels · Cormorant italic accent · Special Elite typewriter */
 :root{
   --ink:#090706; --surface:#13110f; --surface-2:#1a1714;
   --bone:#f5ebe0; --bone-dim:rgba(247,232,218,.66); --bone-faint:rgba(247,232,218,.45); --bone-ghost:rgba(247,232,218,.16);
   --gold:#B8A98A; --gold-rich:#C2A25E; --steel:#6a625a;
   --line:rgba(184,169,138,.22); --line-2:rgba(184,169,138,.38);
-  --sans:'DM Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
-  --mono:'DM Sans',-apple-system,'Segoe UI',sans-serif;   /* label face — tracked uppercase DM Sans, carousel-style */
-  --serif:'Instrument Serif','Times New Roman',serif;
+  --sans:'Space Grotesk',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+  --mono:'Space Mono',ui-monospace,Menlo,monospace;   /* label face — tracked uppercase, carousel-style */
+  --serif:'Cormorant Garamond','Times New Roman',serif;
   --type:'Special Elite','Courier New',monospace;
   --ease:cubic-bezier(.16,1,.3,1);
   --container:1280px;
@@ -54,7 +54,7 @@ body:not([data-loading]) .preloader{opacity:0;visibility:hidden;pointer-events:n
   padding:18px clamp(22px,5vw,64px);transition:background .4s,backdrop-filter .4s,padding .4s,border-color .4s;border-bottom:1px solid transparent}
 .nav.is-stuck{background:rgba(9,7,6,.85);backdrop-filter:blur(14px);padding-top:13px;padding-bottom:13px;border-bottom-color:var(--line)}
 .nav-logo{display:flex;align-items:center;gap:.6em}
-.nav-logo__txt{font-family:var(--serif);font-weight:400;font-size:.92rem;letter-spacing:.14em;text-transform:uppercase;white-space:nowrap}
+.nav-logo__txt{font-family:var(--sans);font-weight:500;font-size:.92rem;letter-spacing:.14em;text-transform:uppercase;white-space:nowrap}
 .nav-logo__txt b{font-weight:400;color:var(--gold)}
 .nav-links{display:flex;align-items:center;gap:clamp(14px,2.2vw,28px)}
 .nav-link{font-size:.92rem;color:var(--bone-dim);position:relative;transition:color .3s;white-space:nowrap}
@@ -75,7 +75,7 @@ body:not([data-loading]) .preloader{opacity:0;visibility:hidden;pointer-events:n
 .hero-core{position:relative;z-index:3;max-width:var(--container);padding:0 16px}
 .hero-core::before{content:"";position:absolute;left:50%;top:48%;transform:translate(-50%,-50%);width:140%;height:150%;background:radial-gradient(ellipse at center,rgba(9,7,6,.7) 18%,transparent 64%);z-index:-1}
 .hero-kick{font-size:.72rem;letter-spacing:.24em;text-transform:uppercase;color:var(--bone-faint);margin-bottom:24px}
-.wm{font-family:var(--serif);font-weight:400;text-transform:uppercase;font-size:clamp(2.7rem,11vw,8.6rem);line-height:.96;letter-spacing:-.01em;text-shadow:0 6px 50px rgba(9,7,6,.65)}
+.wm{font-family:var(--sans);font-weight:700;text-transform:uppercase;font-size:clamp(2.7rem,11vw,8.6rem);line-height:.9;letter-spacing:-.045em;text-shadow:0 6px 50px rgba(9,7,6,.65)}
 .wm .ch{display:inline-block;transform:translateY(1.1em);opacity:0}
 .wm .sp{display:inline-block;width:.26em}
 .hero-sub{margin-top:24px;font-size:clamp(.74rem,1.6vw,1rem);letter-spacing:.5em;text-indent:.5em;text-transform:uppercase;color:var(--bone-dim)}
@@ -110,7 +110,7 @@ body:not([data-loading]) .preloader{opacity:0;visibility:hidden;pointer-events:n
 /* SECTION HEADS (shared) */
 .shead{display:flex;justify-content:space-between;align-items:flex-end;gap:30px;flex-wrap:wrap;margin-bottom:34px}
 .sidx{font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:12px}
-.stitle{font-family:var(--serif);font-weight:400;font-size:clamp(2.2rem,5.8vw,4.1rem);letter-spacing:-.01em;line-height:1.06}
+.stitle{font-family:var(--sans);font-weight:500;font-size:clamp(2.2rem,5.8vw,4.1rem);letter-spacing:-.01em;line-height:1.06}
 .stitle .ser{font-size:1em;color:var(--gold)}
 .slead{margin-top:14px;color:var(--bone-dim);max-width:52ch}
 .dstat{text-align:right;flex:none}
@@ -224,11 +224,11 @@ body:not([data-loading]) .preloader{opacity:0;visibility:hidden;pointer-events:n
 /* 005 — JULY / RETURN */
 .july{position:relative;z-index:2;background:var(--ink);max-width:1280px;margin:0 auto;border-top:1px solid var(--line)}
 .july-banner{text-align:center;padding-bottom:clamp(48px,7vw,90px)}
-.july-big{font-family:var(--serif);font-weight:400;font-size:clamp(2.8rem,8.4vw,6.4rem);letter-spacing:-.01em;line-height:1.02;margin-top:6px}
+.july-big{font-family:var(--sans);font-weight:700;text-transform:uppercase;font-size:clamp(2.8rem,8.4vw,6.4rem);letter-spacing:-.01em;line-height:1.02;margin-top:6px}
 .july-big .ser{color:var(--gold);font-size:1em}
 .july-lead{margin:22px auto 30px;color:var(--bone-dim);max-width:52ch;font-size:clamp(.98rem,1.8vw,1.15rem)}
 .artists{display:grid;grid-template-columns:1fr 1.05fr;gap:clamp(30px,5vw,72px);align-items:start;border-top:1px solid var(--line);padding-top:clamp(40px,6vw,70px)}
-.artists-title{font-family:var(--serif);font-weight:400;font-size:clamp(1.9rem,3.8vw,2.8rem);letter-spacing:-.01em;line-height:1.08;margin:10px 0 14px}
+.artists-title{font-family:var(--sans);font-weight:500;font-size:clamp(1.9rem,3.8vw,2.8rem);letter-spacing:-.01em;line-height:1.08;margin:10px 0 14px}
 .aform{display:flex;flex-direction:column;gap:14px;background:var(--surface);border:1px solid var(--line);padding:clamp(22px,3vw,34px);position:relative}
 .aform__row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
 .field{display:flex;flex-direction:column;gap:7px}
@@ -250,7 +250,7 @@ body:not([data-loading]) .preloader{opacity:0;visibility:hidden;pointer-events:n
 .atlas-side{display:flex;flex-direction:column;gap:18px}
 .acard{border:1px solid var(--line);background:var(--surface);padding:clamp(22px,3vw,32px);display:flex;flex-direction:column;gap:12px;min-height:250px}
 .acard__chip{align-self:flex-start;font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);border:1px solid var(--line-2);padding:.5em .8em}
-.acard__name{font-family:var(--serif);font-weight:400;font-size:clamp(1.7rem,2.8vw,2.2rem);letter-spacing:-.005em;line-height:1.05}
+.acard__name{font-family:var(--sans);font-weight:500;font-size:clamp(1.7rem,2.8vw,2.2rem);letter-spacing:-.005em;line-height:1.05}
 .acard__handle{font-size:.82rem;letter-spacing:.08em;color:var(--gold);align-self:flex-start;border-bottom:1px solid transparent;transition:border-color .3s}
 .acard__handle:hover{border-color:var(--gold)}
 .acard__loc{font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;color:var(--bone-dim)}
@@ -274,7 +274,7 @@ body:not([data-loading]) .preloader{opacity:0;visibility:hidden;pointer-events:n
 /* FOOTER */
 .foot{position:relative;z-index:2;background:var(--ink);border-top:1px solid var(--line);padding:clamp(50px,7vw,90px) clamp(22px,5vw,64px)}
 .foot-cta{margin-bottom:46px}
-.foot-big{display:inline-block;font-family:var(--serif);font-weight:400;font-size:clamp(1.9rem,5.8vw,4.5rem);letter-spacing:-.01em;line-height:1.08;transition:color .3s}
+.foot-big{display:inline-block;font-family:var(--sans);font-weight:700;text-transform:uppercase;font-size:clamp(1.9rem,5.8vw,4.5rem);letter-spacing:-.01em;line-height:1.08;transition:color .3s}
 .foot-big:hover{color:var(--gold)}
 .foot-cols{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;border-top:1px solid var(--line);padding-top:34px;font-size:.74rem;letter-spacing:.04em}
 .foot-cols b{display:block;color:var(--gold);text-transform:uppercase;font-weight:400;letter-spacing:.14em;margin-bottom:10px;font-size:.66rem}
