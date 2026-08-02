@@ -424,3 +424,11 @@ main > section:first-of-type{padding-top:clamp(104px,12vw,158px)}
   .nav-logo__txt{font-size:.84rem;letter-spacing:.06em}
   .nav-cta{white-space:nowrap;font-size:.6rem;letter-spacing:.1em;padding:.75em .85em}
 }
+
+/* Below ~370px the wordmark and the CTA no longer both fit, and the CTA was
+   being clipped. The nav is position:fixed so this never showed up as page
+   overflow. Drop the wordmark text; the OO mark is still the home link and
+   still a 44px target. */
+@media(max-width:370px){
+  .nav-logo__txt{display:none}
+}

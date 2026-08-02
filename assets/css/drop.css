@@ -269,10 +269,25 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
   .quad-cell:nth-child(3),.quad-cell:nth-child(4){border-top:1px solid var(--line)}
   .quad-cell:nth-child(odd){border-left:0}
 }
+/* Stay 2x2 all the way down rather than collapsing to a stack. Four stacked
+   cells ran the splash to roughly three screens and pushed the doors under the
+   mandala; the grid keeps them on one screen and clear of it. */
 @media(max-width:460px){
-  .quad{grid-template-columns:1fr}
-  .quad-cell{border-left:0;border-top:1px solid var(--line)}
-  .quad-cell:first-child{border-top:0}
+  /* Pull the lattice in and fade it earlier. At full size it ran down over the
+     style line and the first row of doors, which is what made them hard to read
+     when the cells were stacked. */
+  .splash .emblem-stage{
+    width:min(46vh,74vw,420px);height:min(46vh,74vw,420px);top:31%;
+    -webkit-mask-image:linear-gradient(to bottom,#000 0%,#000 46%,rgba(0,0,0,.3) 74%,transparent 94%);
+    mask-image:linear-gradient(to bottom,#000 0%,#000 46%,rgba(0,0,0,.3) 74%,transparent 94%);
+  }
+  .splash .emblem-stage > *{opacity:.7}
+  .quad{grid-template-columns:repeat(2,1fr)}
+  .quad-cell{padding:18px 14px;gap:7px}
+  .quad-cell .door-mark{width:32px;height:32px}
+  .quad-name{font-size:15px;line-height:1.2;text-wrap:balance}
+  .quad-tag{font-size:9px;letter-spacing:.1em}
+  .quad-go{font-size:9px;letter-spacing:.09em;padding-top:8px}
 }
 
 @media (prefers-reduced-motion:reduce){
