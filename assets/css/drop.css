@@ -88,10 +88,14 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .hero-core{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;gap:22px}
 .hero-kick{color:var(--champ)}
 /* set in caps — needs positive tracking, where the mixed-case version wanted negative */
+/* Set to fill the measure, not sit inside it: 700, tight tracking, tight
+   leading. Caps at this weight want negative tracking where the medium
+   weight wanted a touch of positive. */
 .wm{
-  font-weight:500;line-height:.94;letter-spacing:.012em;
+  font-weight:700;line-height:.86;letter-spacing:-.03em;
   text-transform:uppercase;
-  font-size:clamp(44px,10.5vw,132px);text-wrap:balance;
+  font-size:clamp(46px,13vw,200px);text-wrap:balance;
+  white-space:nowrap;
 }
 .hero-sub{
   font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;
@@ -225,12 +229,16 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .splash .scrollcue{position:static;transform:none;margin:clamp(18px,2.6vh,30px) auto 0}
 .splash .scrollcue__line{height:26px}
 .splash .scrollcue:hover{color:var(--champ)}
-/* the splash has almost no copy to protect, so it can carry the mark bigger and cleaner */
+/* The lattice frames the wordmark rather than peeking from behind it, so its
+   diameter has to beat the wordmark's width (949px at 1440). That means it
+   outgrows the viewport vertically, so the mask fades it out well before the
+   doors: solid through the name, gone by the rule above the grid. */
 .splash .emblem-stage{
-  width:min(62vh,88vw,620px);height:min(62vh,88vw,620px);top:38%;
-  -webkit-mask-image:linear-gradient(to bottom,#000 0%,#000 62%,rgba(0,0,0,.4) 86%,transparent 100%);
-  mask-image:linear-gradient(to bottom,#000 0%,#000 62%,rgba(0,0,0,.4) 86%,transparent 100%);
+  width:min(112vh,94vw,1180px);height:min(112vh,94vw,1180px);top:34%;
+  -webkit-mask-image:linear-gradient(to bottom,transparent 0%,rgba(0,0,0,.55) 12%,#000 26%,#000 46%,rgba(0,0,0,.38) 58%,transparent 68%);
+  mask-image:linear-gradient(to bottom,transparent 0%,rgba(0,0,0,.55) 12%,#000 26%,#000 46%,rgba(0,0,0,.38) 58%,transparent 68%);
 }
+.splash .emblem-stage > *{opacity:.9}
 .splash-core{
   position:relative;z-index:1;align-self:center;
   display:flex;flex-direction:column;align-items:center;gap:16px;text-align:center;
@@ -242,7 +250,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
   background:radial-gradient(ellipse at center,
     rgba(10,10,11,.80) 0%, rgba(10,10,11,.66) 38%, rgba(10,10,11,.28) 62%, rgba(10,10,11,0) 80%);
 }
-.splash .wm{font-size:clamp(42px,9.4vw,120px)}
+.splash .wm{font-size:clamp(44px,13vw,190px)}
 .splash .hero-sub{margin-top:2px}
 .quad{
   position:relative;z-index:1;
