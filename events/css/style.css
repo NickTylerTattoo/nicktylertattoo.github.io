@@ -399,3 +399,20 @@ h2{font-family:var(--serif);font-weight:400;letter-spacing:-.01em;line-height:1.
   .modal__panel{inset:3vh 50% auto;height:94vh}
   .custom__form iframe{height:1050px}
 }
+
+/* ===== Touch targets (audited at 390px, 2026-07-31) ===== */
+@media(max-width:900px){
+  .nav__brand{min-height:44px;display:inline-flex;align-items:center}
+  .nav__cta{min-height:44px;display:inline-flex;align-items:center}
+  .plate__claim{min-height:44px;display:inline-flex;align-items:center;justify-content:center}
+  .footer__brand{min-height:44px;display:inline-flex;align-items:center}
+}
+
+/* Footer links and the phone number get a real hit area without changing
+   the line rhythm of the copy they sit in. */
+@media(max-width:900px){
+  a[href^="tel:"]{position:relative;display:inline-block}
+  a[href^="tel:"]::after{content:"";position:absolute;left:-6px;right:-6px;top:50%;transform:translateY(-50%);height:44px;z-index:1}
+  .footer a{position:relative;display:inline-block}
+  .footer a::after{content:"";position:absolute;left:-4px;right:-4px;top:50%;transform:translateY(-50%);height:40px}
+}

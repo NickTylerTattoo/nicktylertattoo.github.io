@@ -317,14 +317,19 @@ html{-webkit-text-size-adjust:100%}
   .hero-line{font-size:1.02rem}
   .hero-cta{flex-direction:column;align-items:stretch;width:100%;gap:10px}
   .hero-cta .btn{width:100%;justify-content:center}
-  /* filter bar: compact, non-sticky, horizontally scrollable chips */
-  .filterbar{position:static;flex-direction:column;align-items:stretch;gap:12px}
-  .filters{flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:4px;scrollbar-width:none}
+  /* filter bar: compact, non-sticky, horizontally scrollable chips.
+     min-width:0 is load-bearing — a flex item defaults to min-width:auto and
+     refuses to shrink below its content, so overflow-x:auto never scrolls and
+     the pill row pushes the whole page 180px wide instead. Same for .filt-right,
+     which holds the search field. */
+  .filterbar{position:static;flex-direction:column;align-items:stretch;gap:12px;min-width:0}
+  .filters{flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:4px;scrollbar-width:none;min-width:0;max-width:100%}
   .filters::-webkit-scrollbar{display:none}
   .filt{flex:0 0 auto;min-height:42px;display:flex;align-items:center}
-  .filt-right{width:100%;gap:10px}
-  .search{flex:1}.search input{width:100%}
-  .sortsel{flex:0 0 auto}
+  .filt-right{width:100%;gap:10px;min-width:0}
+  .search{flex:1 1 auto;min-width:0;min-height:44px}
+  .search input{width:100%;min-width:0}
+  .sortsel{flex:0 0 auto;min-height:44px}
   /* bigger tap targets */
   .faq-tab{min-height:50px}
   .nav-cta{padding:.85em 1em}
@@ -372,3 +377,37 @@ main > section:first-of-type{padding-top:clamp(104px,12vw,158px)}
    tracking where the old mixed-case setting wanted negative. */
 .nav-logo__txt{text-transform:uppercase;letter-spacing:.14em;font-size:.92rem;white-space:nowrap}
 @media(max-width:820px){.nav-logo__txt{font-size:.8rem;letter-spacing:.1em}}
+
+/* ===== Touch targets (audited at 390px, 2026-07-31) =====
+   Anything you tap gets 44px of height. Inline links inside a sentence are
+   left alone on purpose — WCAG 2.5.8 exempts them, and padding them out
+   would wreck the line rhythm in the footer copy. */
+@media(max-width:900px){
+  .plate__claim{min-height:44px;display:inline-flex;align-items:center;justify-content:center;width:100%}
+  .nav-logo{min-height:44px;display:flex;align-items:center}
+  .nav-cta{min-height:44px;display:inline-flex;align-items:center;gap:.45em}
+  .skip{min-height:44px;display:flex;align-items:center}
+  .search{min-height:44px}
+  .search input{min-height:44px;font-size:16px}      /* 16px stops iOS zooming on focus */
+  .sortsel{min-height:44px;font-size:16px}
+  .toggle{min-height:44px;display:flex;align-items:center;gap:8px}
+  .toggle input{width:20px;height:20px;flex:0 0 auto}
+  .lb__close,.bk__close{min-width:44px;min-height:44px}
+  .lb__nav button{min-height:44px}
+  .faq-q{min-height:44px}
+}
+
+/* Footer links get a real hit area without changing the line rhythm. */
+@media(max-width:900px){
+  .foot-cols a{position:relative;display:inline-block}
+  .foot-cols a::after{content:"";position:absolute;left:-4px;right:-4px;top:50%;transform:translateY(-50%);height:40px}
+}
+
+/* At 390px the wordmark and the CTA met at exactly 0px gap and the CTA wrapped
+   to two lines. Shrink both a touch and stop the wrap so they sit apart. */
+@media(max-width:480px){
+  .nav{gap:12px}
+  .nav-logo{gap:.45em}
+  .nav-logo__txt{font-size:.84rem;letter-spacing:.06em}
+  .nav-cta{white-space:nowrap;font-size:.6rem;letter-spacing:.1em;padding:.75em .85em}
+}
