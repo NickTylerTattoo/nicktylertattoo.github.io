@@ -309,3 +309,49 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
   .quad-cell{min-height:44px}
   .btn{min-height:44px}
 }
+
+/* ---------- about the artist ---------- */
+.bio{
+  display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.5fr);
+  gap:clamp(24px,5vw,72px);align-items:start;
+}
+.bio__lead .stitle{margin-top:2px}
+.bio__p{color:var(--bone-dim);font-size:clamp(15px,1.55vw,17px);line-height:1.78;max-width:62ch}
+.bio__p + .bio__p{margin-top:17px}
+.bio__link{
+  color:var(--champ);border-bottom:1px solid var(--line-2);
+  transition:border-color .35s var(--ease),color .35s var(--ease);
+}
+.bio__link:hover{border-bottom-color:var(--champ);color:var(--champ-lift)}
+@media(max-width:860px){.bio{grid-template-columns:1fr;gap:20px}}
+
+/* ---------- reviews ---------- */
+.reviews{border-top:1px solid var(--line)}
+.reviews__head{
+  display:flex;justify-content:space-between;align-items:flex-end;
+  gap:clamp(20px,4vw,40px);flex-wrap:wrap;margin-bottom:clamp(26px,3.6vw,44px);
+}
+.rgrid{
+  list-style:none;display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(266px,1fr));
+  gap:12px;
+}
+.rcard{
+  display:flex;flex-direction:column;gap:12px;
+  border:1px solid var(--line);
+  padding:clamp(20px,2.2vw,28px);
+  background:linear-gradient(180deg,rgba(184,169,138,.035),transparent 62%);
+  transition:border-color .45s var(--ease),background .45s var(--ease);
+}
+.rcard:hover{border-color:var(--line-2);background:linear-gradient(180deg,rgba(184,169,138,.07),transparent 62%)}
+.rcard__stars{color:var(--champ);letter-spacing:.16em;font-size:12px;line-height:1}
+.rcard__q{color:var(--bone-dim);font-size:15px;line-height:1.62;font-style:normal}
+.rcard__by{
+  margin-top:auto;padding-top:4px;color:var(--bone-dim);font-style:normal;
+  display:flex;align-items:baseline;gap:9px;
+}
+.rcard__by i{font-style:normal;color:var(--champ);opacity:.75;font-size:10px;letter-spacing:.1em}
+@media(max-width:520px){
+  .rgrid{grid-template-columns:1fr}
+  .reviews__head{align-items:flex-start}
+}
