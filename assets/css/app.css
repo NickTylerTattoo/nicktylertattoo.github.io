@@ -177,7 +177,20 @@ body:not([data-loading]) .preloader{opacity:0;visibility:hidden;pointer-events:n
 .cform-success svg{margin-bottom:6px}
 .cform-success h3{font-weight:700;font-size:1.8rem;letter-spacing:-.02em}
 .cform-success p{color:var(--bone-dim);max-width:38ch}
-@media(max-width:860px){.custom{grid-template-columns:1fr}}
+/* Single column: the form used to land 1.4 screens down, behind the headline,
+   all three steps and the reassurance block. .custom-left is a bare wrapper with
+   no box styling, so display:contents dissolves it and lets its children be
+   ordered individually against the form. Result: intro, form, then the detail
+   that supports it. Desktop is untouched — the form already sits level with the
+   headline in the right column. */
+@media(max-width:860px){
+  .custom{grid-template-columns:1fr}
+  .custom-left{display:contents}
+  .custom .sidx,.custom .stitle,.custom .slead{order:1}
+  .cform-embed{order:2;margin-top:26px}
+  .custom .steps,.custom .factbar,.custom .reassure{order:3}
+  .custom .steps{margin-top:34px}
+}
 
 /* FOOTER */
 .foot{position:relative;z-index:2;background:var(--ink);border-top:1px solid var(--line);padding:clamp(50px,7vw,90px) clamp(22px,5vw,64px)}
