@@ -8,7 +8,7 @@
   --panel-2:#171719;
   --bone:#F2ECE1;
   --bone-dim:rgba(242,236,225,.66);
-  --bone-faint:rgba(242,236,225,.42);
+  --bone-faint:rgba(242,236,225,.60);
   --champ:#B8A98A;
   --champ-lift:#D6C8A9;
   --line:rgba(184,169,138,.16);
@@ -34,7 +34,7 @@ a{color:inherit;text-decoration:none}
 button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 :focus-visible{outline:2px solid var(--champ);outline-offset:3px}
 
-.mono{font-family:var(--mono);font-weight:400;letter-spacing:.09em;text-transform:uppercase;font-size:11px}
+.mono{font-family:var(--mono);font-weight:400;letter-spacing:.08em;text-transform:uppercase;font-size:12px}
 /* Accent word in a headline. Was Cormorant italic; the light serif read thin
    next to Space Grotesk 700, so the accent is carried by colour alone and
    inherits the headline's face and weight. */
@@ -98,8 +98,8 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
   white-space:nowrap;
 }
 .hero-sub{
-  font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;
-  color:var(--bone-faint);
+  font-family:var(--mono);font-size:13px;letter-spacing:.11em;text-transform:uppercase;
+  color:var(--bone-dim);line-height:1.7;
 }
 .hero-line{max-width:36ch;color:var(--bone-dim);font-size:clamp(15px,1.7vw,18px);text-wrap:balance}
 .hero-cta{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:4px}
@@ -118,8 +118,8 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .scrollcue{
   position:absolute;bottom:28px;left:50%;transform:translateX(-50%);z-index:1;
   display:flex;flex-direction:column;align-items:center;gap:10px;
-  font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;
-  color:var(--bone-faint);
+  font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--bone-dim);
 }
 .scrollcue__line{width:1px;height:34px;background:linear-gradient(var(--champ),transparent)}
 
@@ -179,7 +179,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 
 /* ---------- marquee ---------- */
 .marquee{overflow:hidden;border-block:1px solid var(--line);padding:15px 0}
-.marquee__track{display:flex;white-space:nowrap;font-family:var(--mono);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--bone-faint)}
+.marquee__track{display:flex;white-space:nowrap;font-family:var(--mono);font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--bone-dim)}
 .marquee__track span{padding-right:0}
 .marquee__track i{color:var(--champ);font-style:normal;padding:0 22px}
 
@@ -293,9 +293,9 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
   .quad{grid-template-columns:repeat(2,1fr)}
   .quad-cell{padding:18px 14px;gap:7px}
   .quad-cell .door-mark{width:32px;height:32px}
-  .quad-name{font-size:15px;line-height:1.2;text-wrap:balance}
-  .quad-tag{font-size:9px;letter-spacing:.1em}
-  .quad-go{font-size:9px;letter-spacing:.09em;padding-top:8px}
+  .quad-name{font-size:16px;line-height:1.22;text-wrap:balance}
+  .quad-tag{font-size:11px;letter-spacing:.07em;line-height:1.4}
+  .quad-go{font-size:11px;letter-spacing:.07em;padding-top:9px}
 }
 
 @media (prefers-reduced-motion:reduce){
