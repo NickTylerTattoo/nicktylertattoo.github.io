@@ -264,7 +264,7 @@ addEventListener('load', () => setTimeout(hideLoader, 1200));
   $('#proofList').innerHTML = REVIEWS.map(([by, text]) => `
     <figure class="quote" data-reveal>
       <blockquote class="quote__text">${text}</blockquote>
-      <figcaption class="quote__by"><b>${by}</b> — Google review</figcaption>
+      <figcaption class="quote__by"><b>${by}</b> · Google review</figcaption>
     </figure>`).join('');
 })();
 

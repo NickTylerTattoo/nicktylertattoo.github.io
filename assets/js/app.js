@@ -266,7 +266,7 @@ function plateHTML(d){
   return `<article class="plate${gone?' is-gone':''}${d.status==='feat'?' plate--feat':''}" data-n="${d.n}">
     <button class="plate__art" data-view="${d.n}" data-cursor="view" aria-label="View ${d.title}">
       <span class="plate__no">No. ${String(d.n).padStart(2,'0')}</span>${statusStamp(d.status)}
-      <img src="${d.thumb}" alt="${d.title} — ${d.style} flash" loading="lazy" width="480" height="600">
+      <img src="${d.thumb}" alt="${d.title}, ${d.style} flash" loading="lazy" width="480" height="600">
     </button>
     <div class="plate__body">
       <div class="plate__name">${d.title}</div>
@@ -344,7 +344,7 @@ function openLightbox(n){
   const claim=$('#lbClaim');
   if(d.available){ claim.disabled=false; claim.textContent='Claim this design'; claim.style.display=''; }
   else { claim.style.display='none'; }
-  $('#lbNote').textContent = d.available ? "One-of-one. $50 deposit reserves it — credited to your session." : 'This one has been claimed — start a custom request for something similar.';
+  $('#lbNote').textContent = d.available ? "One-of-one. $50 deposit reserves it, credited to your session." : 'This one has been claimed. Start a custom request for something similar.';
   const lb=$('#lightbox'); lb.hidden=false; requestAnimationFrame(()=>lb.classList.add('show'));
   $('#lbClose').focus();
   track('view_design',{design:d.title,no:d.n,status:d.status,price:d.price});
@@ -380,7 +380,7 @@ function openBooking(n,src){
   $('#bkChip').textContent = d ? `◆ ${d.title} · From ${money(d.price)}` : 'New booking';
   $('#bkTitle').textContent = d ? 'Claim ' + d.title : 'Reserve your slot';
   // load the calendar immediately, prefilled with the design — straight to date + deposit
-  $('#bkFrame').innerHTML=`<iframe src="${bookingUrl(d)}" title="Booking calendar — pick a date and pay your deposit" loading="eager"></iframe>`;
+  $('#bkFrame').innerHTML=`<iframe src="${bookingUrl(d)}" title="Booking calendar: pick a date and pay your deposit" loading="eager"></iframe>`;
   const bk=$('#booking'); bk.hidden=false; requestAnimationFrame(()=>bk.classList.add('show'));
   $('#bkClose').focus();
   track('claim_click',{design:d?d.title:'',no:d?d.n:'',price:d?d.price:'',source:src});
@@ -437,11 +437,11 @@ function customForm(){
 /* ---------- FAQ (three tiles + accordion) ---------- */
 const FAQ = {
   flash: [
-    ['How do I book a flash design?', "Pick any design from The Collection and hit Claim — the booking calendar opens right there. Choose your date and leave a $50 deposit to lock it in. The deposit credits toward your session."],
-    ['Are the flash designs really one-of-one?', "Yes. Each design is tattooed once, then retired for good. Once it's claimed, it's gone — so if one speaks to you, grab it."],
+    ['How do I book a flash design?', "Pick any design from The Collection and hit Claim. The booking calendar opens right there. Choose your date and leave a $50 deposit to lock it in. The deposit credits toward your session."],
+    ['Are the flash designs really one-of-one?', "Yes. Each design is tattooed once, then retired for good. Once it's claimed, it's gone, so if one speaks to you, grab it."],
     ['Can I change the size or placement?', "Small adjustments to suit your body, absolutely. If you want to change the design itself, start a custom request instead and we'll build something around it."],
     ['What does a flash piece cost?', "Each design shows its starting price. Most pieces land between $250 and $1,200 depending on size and placement; the $50 deposit comes off your total."],
-    ['What if the design I want is already claimed?', "It won't come back — but tell me in a custom request and I'll draw something new in the same spirit, just for you."]
+    ['What if the design I want is already claimed?', "It won't come back, but tell me in a custom request and I'll draw something new in the same spirit, just for you."]
   ],
   /* Answers mirror custom.nicktylertattoo.com, the page carrying the paid
      traffic. Keep them aligned: the flow is request → approval → private
@@ -454,14 +454,14 @@ const FAQ = {
     ['How do I get an estimate?', "The request form gives me everything I need to price it accurately, so start there. If an estimate is all you're after right now, say so in the notes."]
   ],
   general: [
-    ['Where are you located?', "A private studio in Suffolk County, Long Island, NY. By appointment only — the exact address is shared 24 hours before your appointment."],
+    ['Where are you located?', "A private studio in Suffolk County, Long Island, NY. By appointment only. The exact address is shared 24 hours before your appointment."],
     /* NOTE: custom.nicktylertattoo.com frames this as "custom pieces start at $250"
        and routes pricing through the request form. It makes no "free design" claim,
        so that line was dropped here rather than left contradicting the live page. */
     ['What are your rates?', "Custom pieces start at $250, with most work landing between $250 and $1,200 depending on size, placement and detail. Send your references through the request form and ask for an estimate and I'll give you an accurate number."],
-    ["It's my first tattoo — anything I should know?", "You're in good hands. Ask anything, take breaks whenever you need, and never apologize — just communicate. Your comfort comes first, always."],
-    ['Do you travel or do guest spots?', "Yes — travel sessions are available, with up to a $500 travel credit. Mention where you are in your request."],
-    ["What's your cancellation policy?", "Life happens — give me as much notice as you can. Deposits are non-refundable but they hold your spot, and I'll work with you to reschedule."],
+    ["It's my first tattoo. Anything I should know?", "You're in good hands. Ask anything, take breaks whenever you need, and never apologize, just communicate. Your comfort comes first, always."],
+    ['Do you travel or do guest spots?', "Yes. Travel sessions are available, with up to a $500 travel credit. Mention where you are in your request."],
+    ["What's your cancellation policy?", "Life happens. Give me as much notice as you can. Deposits are non-refundable but they hold your spot, and I'll work with you to reschedule."],
     ['How do I care for it afterward?', "You'll get full aftercare instructions at your appointment, and I'm a text away if anything comes up while it heals."]
   ]
 };

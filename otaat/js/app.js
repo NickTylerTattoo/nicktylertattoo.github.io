@@ -67,7 +67,7 @@ const COLLECTION = [
 const ARTIST_MAP = [
   { name: 'Nick Tyler', handle: 'nicktylertattoo', ig: 'https://instagram.com/nicktylertattoo',
     loc: 'Selden, New York · USA', role: 'Founder & host', lat: 40.87, lon: -73.04,
-    quote: 'Every DM will be answered, and every single tattoo will be done. For free. As promised. One tattoo at a time — even if it takes the rest of my career.' },
+    quote: 'Every DM will be answered, and every single tattoo will be done. For free. As promised. One tattoo at a time, even if it takes the rest of my career.' },
   { name: 'Natasha', handle: 'tuffpuppytattoos', ig: 'https://instagram.com/tuffpuppytattoos',
     loc: 'Lyndhurst, New Jersey · USA', role: 'Participating artist · Afflicted Ink', lat: 40.81, lon: -74.12,
     quote: 'My chair is open to you. For free. Always.' },
@@ -76,10 +76,10 @@ const ARTIST_MAP = [
     quote: 'This story touched my soul. If you want a sobriety tattoo like this, I will do this for free.' },
   { name: 'Rae Null', handle: 'raeofsunshine.ink', ig: 'https://instagram.com/raeofsunshine.ink',
     loc: 'St. Louis, Missouri · USA', role: 'Participating artist', lat: 38.63, lon: -90.20,
-    quote: 'I am going to do this. What a life saving thing — my brother O.D. at age 20. Spread the word.' },
+    quote: 'I am going to do this. What a life saving thing. My brother O.D. at age 20. Spread the word.' },
   { name: 'Nico Winter Buccione', handle: 'badvibestattoos', ig: 'https://instagram.com/badvibestattoos',
     loc: 'Ottawa, Ontario · Canada', role: 'Participating artist', lat: 45.42, lon: -75.70,
-    quote: 'I’m going to offer the same thing for my Canadian friends. Message me with your numbers — I’d be honoured to do this for you.' },
+    quote: 'I’m going to offer the same thing for my Canadian friends. Message me with your numbers. I’d be honoured to do this for you.' },
   { name: 'Chloë Kyron', handle: 'artist.chloekyron', ig: 'https://instagram.com/artist.chloekyron',
     loc: 'Oshawa, Ontario · Canada', role: 'Participating artist · Chloë’s Studio', lat: 43.95, lon: -78.86,
     quote: 'I want to do days of sobriety tattoos, for free. They will always be free.' },
@@ -355,7 +355,7 @@ function noteEl(m, fresh){
   const meta = document.createElement('div');
   meta.className = 'note__meta';
   const from = document.createElement('b');
-  from.textContent = '— ' + (m.from || 'Anonymous');
+  from.textContent = m.from || 'Anonymous';
   const when = document.createElement('span');
   when.className = 'note__when';
   when.dataset.ts = m.ts;
@@ -369,7 +369,7 @@ function noteEl(m, fresh){
   light.dataset.light = m.id;
   light.setAttribute('data-cursor', 'link');
   light.setAttribute('aria-pressed', isLit ? 'true' : 'false');
-  light.setAttribute('aria-label', `Hold a light for this message — ${m.lights || 0} held`);
+  light.setAttribute('aria-label', `Hold a light for this message, ${m.lights || 0} held`);
   light.innerHTML = FLAME_SVG + '<span class="light__n">' + (m.lights || 0) + '</span>';
 
   foot.append(meta, light);
@@ -415,7 +415,7 @@ async function loadWall(){
     }
   } catch {
     $('#wallEmpty').hidden = false;
-    $('#wallEmpty').textContent = 'The wall is offline right now — start the OTAAT server to see it live.';
+    $('#wallEmpty').textContent = 'The wall is offline right now. Start the OTAAT server to see it live.';
   }
 }
 
@@ -484,7 +484,7 @@ function composer(){
     e.preventDefault();
     clearErr();
     const body = { text: text.value.trim(), from: from.value.trim() };
-    if (body.text.length < 4){ fail('Say a little more — even one kind sentence matters.'); return; }
+    if (body.text.length < 4){ fail('Say a little more. Even one kind sentence matters.'); return; }
     send.disabled = true; send.textContent = 'Posting…';
     try {
       const data = await apiPost('/api/messages', body, WALL_OFFLINE);
@@ -533,7 +533,7 @@ function lights(){
       if (!r.ok) throw new Error();
       if (data.lights != null) n.textContent = data.lights;
       litStore.add(id); saveLit();                 // commit only once the server counted it
-      btn.setAttribute('aria-label', `Light held — ${n.textContent} held`);
+      btn.setAttribute('aria-label', `Light held, ${n.textContent} held`);
       $('#srlive').textContent = 'Light held';
     } catch {
       btn.classList.remove('lit');                 // roll back so they can try again
@@ -551,7 +551,7 @@ function collection(){
     const no = String(i+1).padStart(2,'0');
     if (img){
       return `<figure class="piece" data-cursor="link">
-        <img src="${img}" alt="OTAAT tattoo — ${num}, ${cat}" loading="lazy">
+        <img src="${img}" alt="OTAAT tattoo, ${num}, ${cat}" loading="lazy">
         <span class="piece__no mono">No. ${no}</span>
         <figcaption class="piece__veil">${num} · ${cat}</figcaption>
       </figure>`;
@@ -801,7 +801,7 @@ function atlas(){
       <h3 class="acard__name">${a.name}</h3>
       <a class="acard__handle mono" href="${a.ig}" target="_blank" rel="noopener" data-cursor="link">@${a.handle}</a>
       <div class="acard__loc mono">◆ ${a.loc}</div>
-      ${a.quote ? `<blockquote class="acard__quote">“${a.quote}”<span class="acard__quote-src mono">— in their own words</span></blockquote>` : ''}
+      ${a.quote ? `<blockquote class="acard__quote">“${a.quote}”<span class="acard__quote-src mono">in their own words</span></blockquote>` : ''}
       <a class="btn btn--solid btn--full" href="${a.ig}" target="_blank" rel="noopener" data-cursor="view">View on Instagram</a>`;
   }
   function select(i, rotate){
@@ -818,7 +818,7 @@ function atlas(){
   }
   const list = $('#alist');
   list.innerHTML = ARTIST_MAP.map((a, i) =>
-    `<button class="alist__btn mono${i === 0 ? ' is-active' : ''}" data-artist="${i}" data-cursor="link">${a.name} — ${a.loc.split('·')[0].trim()}</button>`
+    `<button class="alist__btn mono${i === 0 ? ' is-active' : ''}" data-artist="${i}" data-cursor="link">${a.name} · ${a.loc.split('·')[0].trim()}</button>`
   ).join('');
   list.addEventListener('click', e => {
     const b = e.target.closest('[data-artist]');
@@ -878,7 +878,7 @@ function artists(){
       const ok = $('#aOk');
       ok.hidden = false;
       ok.focus();
-      $('#srlive').textContent = "You're on the list — Nick will reach out before the next event.";
+      $('#srlive').textContent = "You're on the list. Nick will reach out before the next event.";
     } catch (ex){
       err.textContent = ex.message; err.hidden = false;
       send.disabled = false;
