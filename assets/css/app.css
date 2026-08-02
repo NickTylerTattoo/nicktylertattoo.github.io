@@ -186,10 +186,15 @@ body:not([data-loading]) .preloader{opacity:0;visibility:hidden;pointer-events:n
 @media(max-width:860px){
   .custom{grid-template-columns:1fr}
   .custom-left{display:contents}
+  /* intro, then the three steps, then the form - which still has to break the
+     fold, so the steps are kept tight enough to leave the top of it showing. */
   .custom .sidx,.custom .stitle,.custom .slead{order:1}
-  .cform-embed{order:2;margin-top:26px}
-  .custom .steps,.custom .factbar,.custom .reassure{order:3}
-  .custom .steps{margin-top:34px}
+  .custom .slead{margin-bottom:0}
+  .custom .steps{order:2;margin:16px 0 0;gap:11px}
+  .custom .steps p{margin-top:2px}
+  .cform-embed{order:3;margin-top:16px}
+  .custom .factbar,.custom .reassure{order:4}
+  .custom .factbar{margin-top:26px}
 }
 
 /* FOOTER */
@@ -431,4 +436,16 @@ main > section:first-of-type{padding-top:clamp(104px,12vw,158px)}
    still a 44px target. */
 @media(max-width:370px){
   .nav-logo__txt{display:none}
+}
+
+/* Short phones: the intro, three steps and a form peek do not all fit in
+   ~780px of viewport at full spacing, so compress the block that sits above
+   the form rather than let the form drop out of the fold entirely. */
+@media(max-width:860px) and (max-height:820px){
+  main > section:first-of-type{padding-top:86px}
+  .custom .stitle{font-size:clamp(26px,7.4vw,34px)}
+  .custom .slead{font-size:.94rem}
+  .custom .steps{gap:9px;margin-top:12px}
+  .custom .steps p{font-size:.86rem;line-height:1.45}
+  .cform-embed{margin-top:12px}
 }
