@@ -35,6 +35,9 @@ const FROZEN = params.has('still');
 const REDUCED = !FROZEN && matchMedia('(prefers-reduced-motion: reduce)').matches && !params.has('motion');
 const STILL = FROZEN || REDUCED;
 if (STILL) document.body.classList.add('still');
+/* Screenshot mode only. Reduce Motion must not strip navigation: it is a
+   motion preference, not a request to remove the sticky bar. */
+if (FROZEN) document.body.classList.add('frozen');
 let heroVisible = true;               // gates hero canvases when scrolled away
 const MOBILE = innerWidth < 700;
 

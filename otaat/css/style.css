@@ -307,8 +307,8 @@ body.still *,body.still *::before,body.still *::after{animation:none!important;t
 body.still .cursor,body.still .ink{display:none!important}
 body.still .reveal,body.still .note,body.still .piece{opacity:1!important;transform:none!important}
 body.still .wm .ch{opacity:1!important;transform:none!important}
-body.still .mobilebar{display:none!important}
-body.still{padding-bottom:0!important}
+body.frozen .mobilebar{display:none!important}
+body.frozen{padding-bottom:0!important}
 body.still #pulsePath{stroke-dashoffset:0!important}
 
 /* ===== Mobile ===== */
