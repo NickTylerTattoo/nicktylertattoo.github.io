@@ -260,7 +260,7 @@ addEventListener('load', () => setTimeout(hideLoader, 1200));
    Reviews
    ================================================================ */
 (() => {
-  $('#proofBadge').innerHTML = `★★★★★&ensp;5.0 on Google · 100+ reviews · Selden, NY`;
+  $('#proofBadge').innerHTML = `★★★★★&ensp;5.0 on Google · 116 reviews · Selden, NY`;
   $('#proofList').innerHTML = REVIEWS.map(([by, text]) => `
     <figure class="quote" data-reveal>
       <blockquote class="quote__text">${text}</blockquote>

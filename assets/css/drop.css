@@ -310,12 +310,35 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
   .btn{min-height:44px}
 }
 
-/* ---------- about the artist ---------- */
-.bio{
-  display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.5fr);
-  gap:clamp(24px,5vw,72px);align-items:start;
+/* ---------- studio: the artist and the proof, one composition ----------
+   Was two stacked sections (a two-column bio, then a five-card review grid).
+   Now a single grid: identity + rating in the narrow rail, his words then
+   their words in the wide column. The reviews lost their boxes and became
+   hairline-ruled rows, which is the language the doors already speak — one
+   fewer card style on the site, and a lot less chrome on the page. */
+.studio__grid{
+  display:grid;grid-template-columns:minmax(0,.78fr) minmax(0,1.55fr);
+  gap:clamp(26px,5.5vw,86px);align-items:start;
 }
-.bio__lead .stitle{margin-top:2px}
+@media(max-width:900px){.studio__grid{grid-template-columns:1fr;gap:clamp(26px,5vw,38px)}}
+
+.studio__lead .stitle{margin-top:2px}
+
+/* The rating, unboxed — it sits under his name rather than in a bordered card.
+   Named .rating, not .proof: the older `.proof` grid above is still in this
+   file and would have forced these children into two columns. */
+.rating{margin-top:clamp(22px,3vw,34px);padding-top:20px;border-top:1px solid var(--line)}
+.rating__row{display:flex;align-items:baseline;gap:12px}
+.rating__num{font-size:38px;font-weight:500;color:var(--champ);line-height:1;font-variant-numeric:tabular-nums}
+.rating__stars{color:var(--champ);letter-spacing:.14em;font-size:12px}
+.rating__link{
+  display:inline-block;margin-top:13px;color:var(--champ);
+  border-bottom:1px solid var(--line-2);padding-bottom:3px;
+  transition:color .35s var(--ease),border-color .35s var(--ease);
+}
+.rating__link:hover{color:var(--champ-lift);border-bottom-color:var(--champ)}
+.rating__note{margin-top:14px;color:var(--bone-faint);font-size:13px;line-height:1.66;max-width:36ch}
+
 .bio__p{color:var(--bone-dim);font-size:clamp(15px,1.55vw,17px);line-height:1.78;max-width:62ch}
 .bio__p + .bio__p{margin-top:17px}
 .bio__link{
@@ -323,35 +346,51 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
   transition:border-color .35s var(--ease),color .35s var(--ease);
 }
 .bio__link:hover{border-bottom-color:var(--champ);color:var(--champ-lift)}
-@media(max-width:860px){.bio{grid-template-columns:1fr;gap:20px}}
 
-/* ---------- reviews ---------- */
-.reviews{border-top:1px solid var(--line)}
-.reviews__head{
-  display:flex;justify-content:space-between;align-items:flex-end;
-  gap:clamp(20px,4vw,40px);flex-wrap:wrap;margin-bottom:clamp(26px,3.6vw,44px);
+/* their words, directly under his */
+.said{margin-top:clamp(30px,4vw,48px)}
+.quotes{list-style:none;border-top:1px solid var(--line)}
+.quote{
+  display:grid;grid-template-columns:minmax(0,1fr) auto;
+  gap:6px clamp(18px,3vw,44px);align-items:baseline;
+  padding:clamp(15px,1.9vw,21px) 0;border-bottom:1px solid var(--line);
 }
-.rgrid{
-  list-style:none;display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(266px,1fr));
-  gap:12px;
+.quote__q{color:var(--bone-dim);font-size:15px;line-height:1.66;max-width:64ch}
+.quote__by{
+  font-style:normal;color:var(--bone-faint);white-space:nowrap;
+  font-size:10px;letter-spacing:.1em;
 }
-.rcard{
-  display:flex;flex-direction:column;gap:12px;
-  border:1px solid var(--line);
-  padding:clamp(20px,2.2vw,28px);
-  background:linear-gradient(180deg,rgba(184,169,138,.035),transparent 62%);
-  transition:border-color .45s var(--ease),background .45s var(--ease);
+@media(max-width:620px){
+  .quote{grid-template-columns:1fr;gap:9px}
+  .quote__by{white-space:normal}
 }
-.rcard:hover{border-color:var(--line-2);background:linear-gradient(180deg,rgba(184,169,138,.07),transparent 62%)}
-.rcard__stars{color:var(--champ);letter-spacing:.16em;font-size:12px;line-height:1}
-.rcard__q{color:var(--bone-dim);font-size:15px;line-height:1.62;font-style:normal}
-.rcard__by{
-  margin-top:auto;padding-top:4px;color:var(--bone-dim);font-style:normal;
-  display:flex;align-items:baseline;gap:9px;
+
+/* ---------- gift card ---------- */
+.giftband{border-top:1px solid var(--line)}
+.gift{
+  position:relative;display:grid;grid-template-columns:minmax(0,1fr) auto;
+  align-items:center;gap:clamp(16px,3vw,44px);
+  max-width:var(--wrap);margin-inline:auto;
+  padding:clamp(26px,3.4vw,40px) var(--gut);
+  transition:background .5s var(--ease);
 }
-.rcard__by i{font-style:normal;color:var(--champ);opacity:.75;font-size:10px;letter-spacing:.1em}
-@media(max-width:520px){
-  .rgrid{grid-template-columns:1fr}
-  .reviews__head{align-items:flex-start}
+.gift::after{
+  content:"";position:absolute;left:0;bottom:0;height:1px;width:0;
+  background:var(--champ);transition:width .6s var(--ease);
+}
+.gift:hover{background:rgba(184,169,138,.038)}
+.gift:hover::after{width:100%}
+.gift__body{display:flex;flex-direction:column;min-width:0}
+.gift__idx{color:var(--champ);margin-bottom:11px}
+.gift__name{font-size:clamp(20px,2.6vw,30px);font-weight:500;letter-spacing:-.015em;line-height:1.14}
+.gift__desc{margin-top:8px;color:var(--bone-dim);font-size:15px;max-width:46ch;text-wrap:balance}
+.gift__go{
+  color:var(--champ);white-space:nowrap;
+  font-size:11px;letter-spacing:.1em;
+  transition:transform .45s var(--ease);
+}
+.gift:hover .gift__go{transform:translateX(6px)}
+@media(max-width:640px){
+  .gift{grid-template-columns:1fr;gap:16px}
+  .gift__go{justify-self:start}
 }

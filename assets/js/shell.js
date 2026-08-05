@@ -20,7 +20,7 @@ if (track){
   const BEATS = [
     'Fine line &middot; Ornamental &middot; Floral &middot; Blackwork &middot; Geometric',
     'By appointment &middot; Long Island, NY',
-    '5.0 &#9733; &middot; 250+ Google reviews',
+    '5.0 &#9733; &middot; 116 Google reviews',
     'No charge for design or prep',
     'Private suite &middot; Est. 2022',
     'Travel sessions available'
