@@ -77,81 +77,119 @@
     </a>
   </section>
 
-  <!-- The artist and the proof are one composition: his voice on the right,
-       theirs directly beneath it, the rating carried quietly by the left rail.
-       Ruled rows rather than cards, so the reviews speak the same language as
-       the doors above them. -->
+  <!-- Three bands where there used to be one two-column block. His name and a
+       spec rail on the left, his voice on the right; then the 5.0 pulled out of
+       the rail into a full-bleed tally row, because a rating that good was
+       sitting structurally underneath a bio; then their words, with one quote
+       set large so the eye has an entry point instead of five rows of equal
+       weight. Closes on a row that behaves like a door. -->
   <section class="sec studio" id="about">
     <div class="wrap studio__grid">
 
       <div class="studio__lead reveal">
         <div class="sidx mono">The artist</div>
         <h2 class="stitle">Hi, I&rsquo;m <span class="ser">Nick</span>.</h2>
-
-        <div class="rating">
-          <div class="rating__row" role="img" aria-label="Rated 5.0 out of 5">
-            <span class="rating__num" aria-hidden="true">5.0</span>
-            <span class="rating__stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
-          </div>
-          <a class="rating__link mono" href="https://www.google.com/search?q=Nick+Tyler+Tattoo+Selden+NY+reviews" target="_blank" rel="noopener">116 reviews on Google &rarr;</a>
-          <p class="rating__note">About a hundred more came in on JotForm before I moved my reviews over to Google.</p>
-        </div>
       </div>
 
       <div class="studio__body reveal">
-        <p class="bio__p">I tattoo out of a private studio in Suffolk County, one client at a time and by appointment only. My work is fine line and ornamental: florals, geometry, blackwork, the kind of detail that rewards a second look. I draw every piece myself, and there&rsquo;s no charge for the design, because the drawing is the part I care most about getting right. Once a month I close the books for <a href="otaat/" class="bio__link">One Tattoo At A Time</a>, a free night for people marking recovery, remembrance and resilience.</p>
-
-        <div class="said">
-          <div class="sidx mono">In their words</div>
-          <ul class="quotes">
-            <li class="quote">
-              <blockquote class="quote__q">10/10 experience with Nick today. Loved how smooth and easy the process was. He made me feel really comfortable and the place was super clean. Line work is amazing!</blockquote>
-              <cite class="quote__by mono">Jamie B. &middot; Google</cite>
-            </li>
-            <li class="quote">
-              <blockquote class="quote__q">Nick did my first tattoo and it came out exactly how I imagined it. The whole process felt seamless and easy&hellip; I&rsquo;m beyond happy with it and will definitely be going back.</blockquote>
-              <cite class="quote__by mono">Gabrielle N. &middot; Google</cite>
-            </li>
-            <li class="quote">
-              <blockquote class="quote__q">Nicholas made me feel welcomed and comfortable. Did not rush the tattoo, and very attentive to details. I highly recommend Nick Tyler Tattoo.</blockquote>
-              <cite class="quote__by mono">Edward A. &middot; Google</cite>
-            </li>
-            <li class="quote">
-              <blockquote class="quote__q">It&rsquo;s clear that Nick takes pride in his work and genuinely cares about giving his clients a great experience. Already booking for the next piece!</blockquote>
-              <cite class="quote__by mono">Cristian S. &middot; Google</cite>
-            </li>
-            <li class="quote">
-              <blockquote class="quote__q">Super responsive with all questions and very helpful. Works quickly while still having amazing end results! Genuinely such a great experience!</blockquote>
-              <cite class="quote__by mono">Remmy B. &middot; Google</cite>
-            </li>
-          </ul>
-        </div>
+        <p class="bio__p">I tattoo out of a private studio in Suffolk County, one client at a time and by appointment only. My work is fine line and ornamental: florals, geometry, blackwork, the kind of detail that rewards a second look.</p>
+        <p class="bio__p">I draw every piece myself, because the drawing is the part I care most about getting right.</p>
+        <p class="bio__p">Once a month I close the books for <a href="otaat/" class="bio__link">One Tattoo At A Time</a>, a free night for people marking recovery, remembrance and resilience.</p>
       </div>
 
+      <!-- Sits under his name in the left rail on desktop, but after the bio in
+           source order, so on a phone he gets to speak before the spec sheet. -->
+      <dl class="spec reveal">
+        <div class="spec__row"><dt class="spec__k mono">Studio</dt><dd class="spec__v">Selden, NY</dd></div>
+        <div class="spec__row"><dt class="spec__k mono">Since</dt><dd class="spec__v">2022</dd></div>
+        <div class="spec__row"><dt class="spec__k mono">Rate</dt><dd class="spec__v">$250/hr</dd></div>
+        <div class="spec__row"><dt class="spec__k mono">Booking</dt><dd class="spec__v">By appointment only</dd></div>
+      </dl>
+
+    </div>
+
+    <!-- the tally: full-bleed, and finally at the scale of a total -->
+    <div class="tally reveal">
+      <div class="wrap tally__grid">
+        <div class="tally__figure" role="img" aria-label="Rated 5.0 out of 5">
+          <span class="tally__num" aria-hidden="true">5.0</span>
+          <span class="tally__stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+        </div>
+        <p class="tally__say">100+ five star reviews on Google.</p>
+      </div>
+    </div>
+
+    <div class="wrap said reveal">
+      <div class="sidx mono">In their words</div>
+
+      <blockquote class="rev rev--lead">
+        <p class="rev__q">Nick is fantastic! Super talented, with such a clean and professional space. The first session I wasn&rsquo;t feeling well about 3-4 hours in and he was very accommodating with making a second appointment. He&rsquo;ll check in as he&rsquo;s working to make sure the pain isn&rsquo;t too much, showing his consideration.</p>
+        <p class="rev__q">His booking is SO easy and the aftercare instructions are great, plus he provides a soap and moisturizer if you want to use them. 10/10 experience!!!</p>
+        <cite class="rev__by mono">Kristin N. &middot; Google</cite>
+      </blockquote>
+
+      <ul class="revs">
+        <li>
+          <blockquote class="rev">
+            <p class="rev__q">10/10 experience with Nick today. Loved how smooth and easy the process was. He made me feel really comfortable and the place was super clean. Line work is amazing!</p>
+            <cite class="rev__by mono">Jamie B. &middot; Google</cite>
+          </blockquote>
+        </li>
+        <li>
+          <blockquote class="rev">
+            <p class="rev__q">Nick did my first tattoo and it came out exactly how I imagined it. The whole process felt seamless and easy&hellip; I&rsquo;m beyond happy with it and will definitely be going back.</p>
+            <cite class="rev__by mono">Gabrielle N. &middot; Google</cite>
+          </blockquote>
+        </li>
+        <li>
+          <blockquote class="rev">
+            <p class="rev__q">Nicholas made me feel welcomed and comfortable. Did not rush the tattoo, and very attentive to details. I highly recommend Nick Tyler Tattoo.</p>
+            <cite class="rev__by mono">Edward A. &middot; Google</cite>
+          </blockquote>
+        </li>
+        <li>
+          <blockquote class="rev">
+            <p class="rev__q">It&rsquo;s clear that Nick takes pride in his work and genuinely cares about giving his clients a great experience. Already booking for the next piece!</p>
+            <cite class="rev__by mono">Cristian S. &middot; Google</cite>
+          </blockquote>
+        </li>
+        <li>
+          <blockquote class="rev">
+            <p class="rev__q">Super responsive with all questions and very helpful. Works quickly while still having amazing end results! Genuinely such a great experience!</p>
+            <cite class="rev__by mono">Remmy B. &middot; Google</cite>
+          </blockquote>
+        </li>
+      </ul>
+
+      <a class="allrev" href="https://www.google.com/search?q=Nick+Tyler+Tattoo+Selden+NY+reviews" target="_blank" rel="noopener">
+        <span class="allrev__txt">Read all 116 on Google</span>
+        <span class="allrev__go mono">Open &rarr;</span>
+      </a>
     </div>
   </section>
 
-  <!-- Gift card: a single ruled row in the same idiom as the doors. No fifth
-       door mark, because the four marks are a closed family. -->
+  <!-- Gift card: boxed to match the review cards, rather than the full-bleed
+       ruled row it used to be. No fifth door mark, because the four marks are
+       a closed family. -->
   <div class="giftband">
-    <a class="gift reveal" href="https://link.inkedin.tools/gift-card/698a83a04731627193f65eb0" target="_blank" rel="noopener">
-      <span class="gift__body">
-        <span class="gift__idx mono">Gift card</span>
-        <span class="gift__name">Someone else&rsquo;s next piece, on you.</span>
-        <span class="gift__desc">Six amounts from $50 to $750. They pick the design and the date.</span>
-      </span>
-      <span class="gift__go mono">Buy one &rarr;</span>
-    </a>
+    <div class="wrap">
+      <a class="gift reveal" href="https://link.inkedin.tools/gift-card/698a83a04731627193f65eb0" target="_blank" rel="noopener">
+        <span class="gift__body">
+          <span class="gift__idx mono">Gift card</span>
+          <span class="gift__name">Someone else&rsquo;s next piece, on you.</span>
+          <span class="gift__desc">Six amounts from $50 to $750. They pick the design and the date.</span>
+        </span>
+        <span class="gift__go mono">Buy one &rarr;</span>
+      </a>
+    </div>
   </div>
-
-  <div class="marquee" aria-hidden="true"><div class="marquee__track" id="marquee"></div></div>
 
   <footer class="foot">
     <div class="wrap">
       <div class="foot-cols mono">
         <div><b>Studio</b><p>By appointment &middot; private suite<br>Suffolk County &middot; Long Island, NY</p></div>
         <div><b>Booking</b><p>The Collection &middot; Jul&ndash;Sep 2026<br>Custom &middot; 3&ndash;5 weeks out</p></div>
-        <div><b>Rates</b><p>$250/hr &middot; most pieces $250&ndash;$1,200<br>No charge for design<br><a href="https://link.inkedin.tools/gift-card/698a83a04731627193f65eb0" target="_blank" rel="noopener">Gift cards &rarr;</a></p></div>
+        <div><b>Rates</b><p>$250/hr &middot; most pieces $250&ndash;$1,200<br><a href="https://link.inkedin.tools/gift-card/698a83a04731627193f65eb0" target="_blank" rel="noopener">Gift cards &rarr;</a></p></div>
         <div><b>Find me</b><p><a href="https://instagram.com/nicktylertattoo">@nicktylertattoo</a><br>5.0 &#9733; on Google</p></div>
       </div>
       <div class="foot-base mono">

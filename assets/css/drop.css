@@ -17,6 +17,7 @@
   --mono:'Space Mono',ui-monospace,'SFMono-Regular',Menlo,monospace;
   --serif:'Cormorant Garamond','Times New Roman',serif;
   --ease:cubic-bezier(.16,1,.3,1);
+  --r:12px;
   --wrap:1200px;
   --gut:clamp(20px,5vw,64px);
 }
@@ -310,34 +311,49 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
   .btn{min-height:44px}
 }
 
-/* ---------- studio: the artist and the proof, one composition ----------
-   Was two stacked sections (a two-column bio, then a five-card review grid).
-   Now a single grid: identity + rating in the narrow rail, his words then
-   their words in the wide column. The reviews lost their boxes and became
-   hairline-ruled rows, which is the language the doors already speak — one
-   fewer card style on the site, and a lot less chrome on the page. */
+/* ---------- studio: the artist, the tally, their words ----------
+   Was one two-column block: identity + rating in a narrow rail, bio then five
+   equal review rows in the wide column. Three problems with that. The 5.0 sat
+   in the rail, structurally subordinate to a paragraph, when it's the strongest
+   thing on the page. The bio was one 100-word brick. And five rows of identical
+   weight gave the eye nowhere to land, so the reviews read as a wall.
+   Now three bands: rail + voice, then a full-bleed tally, then their words with
+   one quote pulled up to display size. Still hairline rules and no cards, so it
+   speaks the same language as the doors above it. */
 .studio__grid{
-  display:grid;grid-template-columns:minmax(0,.78fr) minmax(0,1.55fr);
-  gap:clamp(26px,5.5vw,86px);align-items:start;
+  display:grid;grid-template-columns:minmax(0,.82fr) minmax(0,1.5fr);
+  gap:clamp(24px,3.2vw,36px) clamp(26px,5.5vw,86px);align-items:start;
 }
-@media(max-width:900px){.studio__grid{grid-template-columns:1fr;gap:clamp(26px,5vw,38px)}}
+/* Explicit placement, because the spec rail is after the bio in source order
+   (see the note in index.html) but belongs under his name on a wide screen. */
+@media(min-width:901px){
+  .studio__lead{grid-column:1;grid-row:1}
+  .spec{grid-column:1;grid-row:2}
+  .studio__body{grid-column:2;grid-row:1/span 2}
+}
+/* stacked, the rail would otherwise run the full 1200px and strand its values
+   against a lot of empty right-hand space */
+@media(max-width:900px){
+  .studio__grid{grid-template-columns:1fr}
+  .spec{max-width:560px}
+}
 
 .studio__lead .stitle{margin-top:2px}
 
-/* The rating, unboxed — it sits under his name rather than in a bordered card.
-   Named .rating, not .proof: the older `.proof` grid above is still in this
-   file and would have forced these children into two columns. */
-.rating{margin-top:clamp(22px,3vw,34px);padding-top:20px;border-top:1px solid var(--line)}
-.rating__row{display:flex;align-items:baseline;gap:12px}
-.rating__num{font-size:38px;font-weight:500;color:var(--champ);line-height:1;font-variant-numeric:tabular-nums}
-.rating__stars{color:var(--champ);letter-spacing:.14em;font-size:12px}
-.rating__link{
-  display:inline-block;margin-top:13px;color:var(--champ);
-  border-bottom:1px solid var(--line-2);padding-bottom:3px;
-  transition:color .35s var(--ease),border-color .35s var(--ease);
+/* spec rail: the hard facts as a ledger, mono key against a bone value. Puts
+   rate and booking terms where someone deciding actually looks, instead of
+   only in the footer. */
+.spec{border-top:1px solid var(--line)}
+.spec__row{
+  display:grid;grid-template-columns:78px minmax(0,1fr);
+  gap:6px 16px;align-items:baseline;
+  padding:12px 0;border-bottom:1px solid var(--line);
 }
-.rating__link:hover{color:var(--champ-lift);border-bottom-color:var(--champ)}
-.rating__note{margin-top:14px;color:var(--bone-faint);font-size:13px;line-height:1.66;max-width:36ch}
+.spec__k{color:var(--champ);font-size:10px;letter-spacing:.1em}
+.spec__v{color:var(--bone-dim);font-size:14px;line-height:1.5}
+/* keep the two columns down to phone width — the values all clear 250px */
+@media(max-width:640px){.spec__row{grid-template-columns:68px minmax(0,1fr);gap:6px 12px}}
+@media(max-width:340px){.spec__row{grid-template-columns:1fr;gap:4px}}
 
 .bio__p{color:var(--bone-dim);font-size:clamp(15px,1.55vw,17px);line-height:1.78;max-width:62ch}
 .bio__p + .bio__p{margin-top:17px}
@@ -347,39 +363,108 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 }
 .bio__link:hover{border-bottom-color:var(--champ);color:var(--champ-lift)}
 
-/* their words, directly under his */
-.said{margin-top:clamp(30px,4vw,48px)}
-.quotes{list-style:none;border-top:1px solid var(--line)}
-.quote{
-  display:grid;grid-template-columns:minmax(0,1fr) auto;
-  gap:6px clamp(18px,3vw,44px);align-items:baseline;
-  padding:clamp(15px,1.9vw,21px) 0;border-bottom:1px solid var(--line);
+/* the tally — full-bleed hairline band, the number at the scale of a total.
+   The faint champagne wash only reaches a third of the way across, so the band
+   reads as weighted toward the figure rather than as a panel. */
+.tally{
+  margin-top:clamp(46px,6vw,84px);
+  border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  background:linear-gradient(90deg,rgba(184,169,138,.055),transparent 58%);
 }
-.quote__q{color:var(--bone-dim);font-size:15px;line-height:1.66;max-width:64ch}
-.quote__by{
-  font-style:normal;color:var(--bone-faint);white-space:nowrap;
-  font-size:10px;letter-spacing:.1em;
+.tally__grid{
+  display:grid;grid-template-columns:auto minmax(0,1fr);
+  gap:8px clamp(24px,4.5vw,68px);align-items:center;
+  padding-block:clamp(26px,3.6vw,46px);
 }
-@media(max-width:620px){
-  .quote{grid-template-columns:1fr;gap:9px}
-  .quote__by{white-space:normal}
+/* stars sit under the number, not beside it: on the same baseline they crowd
+   the zero at display size */
+.tally__figure{display:flex;flex-direction:column;gap:11px}
+.tally__num{
+  font-size:clamp(56px,8.5vw,104px);font-weight:500;color:var(--champ);
+  line-height:.82;letter-spacing:-.035em;font-variant-numeric:tabular-nums;
+}
+.tally__stars{color:var(--champ);letter-spacing:.2em;font-size:13px}
+.tally__say{
+  font-size:clamp(19px,2.5vw,30px);font-weight:500;
+  letter-spacing:-.018em;line-height:1.18;text-wrap:balance;
+}
+@media(max-width:640px){
+  .tally__grid{grid-template-columns:1fr;gap:14px}
+  .tally__num{font-size:52px}
 }
 
-/* ---------- gift card ---------- */
-.giftband{border-top:1px solid var(--line)}
+/* their words */
+.said{margin-top:clamp(46px,6vw,80px)}
+
+/* Reviews as cards. They were hairline rows; boxes give each one an edge, so a
+   review reads as a discrete thing rather than a paragraph in a list. The lead
+   is the same card in a lighter panel at display size, and the four below it
+   pair up on a wide screen so the band stops running so long. */
+.rev{
+  background:var(--panel);
+  border:1px solid var(--line);border-radius:var(--r);
+  padding:clamp(20px,2.4vw,28px);
+  transition:border-color .45s var(--ease),background .45s var(--ease);
+}
+.rev:hover{border-color:var(--line-2);background:var(--panel-2)}
+.rev__q{color:var(--bone-dim);font-size:15px;line-height:1.68}
+.rev__by{
+  display:block;margin-top:16px;font-style:normal;
+  color:var(--bone-faint);font-size:10px;letter-spacing:.1em;
+}
+
+.rev--lead{
+  margin-top:14px;background:var(--panel-2);border-color:var(--line-2);
+  padding:clamp(24px,3.2vw,42px);
+}
+.rev--lead:hover{border-color:var(--champ);background:var(--panel-2)}
+/* sized for a long spotlight: a 90-word quote at 29px runs off the screen */
+.rev--lead .rev__q{
+  color:var(--bone);font-size:clamp(17px,1.9vw,23px);font-weight:400;
+  letter-spacing:-.014em;line-height:1.42;max-width:54ch;text-wrap:pretty;
+}
+.rev--lead .rev__q + .rev__q{margin-top:clamp(12px,1.4vw,17px)}
+.rev--lead .rev__by{margin-top:clamp(18px,2.2vw,24px);color:var(--champ)}
+
+.revs{
+  list-style:none;margin-top:clamp(14px,1.6vw,20px);
+  display:grid;grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:clamp(14px,1.6vw,20px);
+}
+.revs > li{display:flex}
+.revs .rev{flex:1}
+/* odd count: the last card spans rather than stranding a half-empty row */
+.revs > li:last-child:nth-child(odd){grid-column:1/-1}
+@media(max-width:760px){.revs{grid-template-columns:1fr}}
+
+/* the exit: same box, no fill, so it reads as an action and not a sixth review */
+.allrev{
+  display:grid;grid-template-columns:minmax(0,1fr) auto;
+  align-items:center;gap:20px;
+  margin-top:clamp(14px,1.6vw,20px);
+  padding:clamp(17px,2vw,23px) clamp(20px,2.4vw,28px);
+  border:1px solid var(--line);border-radius:var(--r);
+  transition:border-color .45s var(--ease),background .45s var(--ease);
+}
+.allrev:hover{border-color:var(--champ);background:rgba(184,169,138,.05)}
+.allrev__txt{font-size:clamp(15px,1.7vw,18px);font-weight:500;letter-spacing:-.01em}
+.allrev__go{color:var(--champ);white-space:nowrap;transition:transform .45s var(--ease)}
+.allrev:hover .allrev__go{transform:translateX(6px)}
+@media(max-width:900px){.allrev{min-height:44px}}
+
+/* ---------- gift card ----------
+   Boxed to match the review cards. The wrap now sits outside it, so the gutter
+   is the card's margin rather than its padding. */
+.giftband{border-top:1px solid var(--line);padding:clamp(38px,5vw,66px) 0}
 .gift{
-  position:relative;display:grid;grid-template-columns:minmax(0,1fr) auto;
+  display:grid;grid-template-columns:minmax(0,1fr) auto;
   align-items:center;gap:clamp(16px,3vw,44px);
-  max-width:var(--wrap);margin-inline:auto;
-  padding:clamp(26px,3.4vw,40px) var(--gut);
-  transition:background .5s var(--ease);
+  padding:clamp(24px,3vw,38px);
+  background:var(--panel);
+  border:1px solid var(--line);border-radius:var(--r);
+  transition:border-color .45s var(--ease),background .45s var(--ease);
 }
-.gift::after{
-  content:"";position:absolute;left:0;bottom:0;height:1px;width:0;
-  background:var(--champ);transition:width .6s var(--ease);
-}
-.gift:hover{background:rgba(184,169,138,.038)}
-.gift:hover::after{width:100%}
+.gift:hover{border-color:var(--champ);background:var(--panel-2)}
 .gift__body{display:flex;flex-direction:column;min-width:0}
 .gift__idx{color:var(--champ);margin-bottom:11px}
 .gift__name{font-size:clamp(20px,2.6vw,30px);font-weight:500;letter-spacing:-.015em;line-height:1.14}

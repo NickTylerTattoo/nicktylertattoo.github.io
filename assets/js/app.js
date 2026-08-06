@@ -440,7 +440,7 @@ const FAQ = {
     ['How do I book a flash design?', "Pick any design from The Collection and hit Claim. The booking calendar opens right there. Choose your date and leave a $50 deposit to lock it in. The deposit credits toward your session."],
     ['Are the flash designs really one-of-one?', "Yes. Each design is tattooed once, then retired for good. Once it's claimed, it's gone, so if one speaks to you, grab it."],
     ['Can I change the size or placement?', "Small adjustments to suit your body, absolutely. If you want to change the design itself, start a custom request instead and we'll build something around it."],
-    ['What does a flash piece cost?', "Each design shows its starting price. Most pieces land between $250 and $1,200 depending on size and placement; the $50 deposit comes off your total."],
+    ['What does each flash piece cost?', "Each design shows its starting price. Final cost typically lands close to this range, but may vary depending on each client."],
     ['What if the design I want is already claimed?', "It won't come back, but tell me in a custom request and I'll draw something new in the same spirit, just for you."]
   ],
   /* Answers mirror custom.nicktylertattoo.com, the page carrying the paid
@@ -460,7 +460,7 @@ const FAQ = {
        so that line was dropped here rather than left contradicting the live page. */
     ['What are your rates?', "Custom pieces start at $250, with most work landing between $250 and $1,200 depending on size, placement and detail. Send your references through the request form and ask for an estimate and I'll give you an accurate number."],
     ["It's my first tattoo. Anything I should know?", "You're in good hands. Ask anything, take breaks whenever you need, and never apologize, just communicate. Your comfort comes first, always."],
-    ['Do you travel or do guest spots?', "Yes. Travel sessions are available, with up to a $500 travel credit. Mention where you are in your request."],
+    ['Do you travel or do guest spots?', "My home studio is where I do my best work. For those traveling from out of state or over 100 miles away, I offer extended sessions, with a discount of up to $500 to cover your travel expenses to get to my studio. Ask me about my extended sessions in your request form for more information!"],
     ["What's your cancellation policy?", "Life happens. Give me as much notice as you can. Deposits are non-refundable but they hold your spot, and I'll work with you to reschedule."],
     ['How do I care for it afterward?', "You'll get full aftercare instructions at your appointment, and I'm a text away if anything comes up while it heals."]
   ]
