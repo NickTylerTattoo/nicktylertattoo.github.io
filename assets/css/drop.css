@@ -325,11 +325,10 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
   gap:clamp(24px,3.2vw,36px) clamp(26px,5.5vw,86px);align-items:start;
 }
 /* Explicit placement, because the spec rail is after the bio in source order
-   (see the note in index.html) but belongs under his name on a wide screen. */
+   (see the note in index.html) but belongs in the left rail on a wide screen. */
 @media(min-width:901px){
-  .studio__lead{grid-column:1;grid-row:1}
-  .spec{grid-column:1;grid-row:2}
-  .studio__body{grid-column:2;grid-row:1/span 2}
+  .spec{grid-column:1;grid-row:1}
+  .studio__body{grid-column:2;grid-row:1}
 }
 /* stacked, the rail would otherwise run the full 1200px and strand its values
    against a lot of empty right-hand space */
@@ -338,7 +337,56 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
   .spec{max-width:560px}
 }
 
-.studio__lead .stitle{margin-top:2px}
+/* Meet your artist as an Instagram profile header: avatar, handle, the three
+   counts, follow. The counts sit on a hairline rule rather than in a card, so
+   the block reads as part of the same ruled system as the spec rail below it
+   rather than as a pasted-in widget. */
+.ig{margin-bottom:clamp(30px,4vw,52px)}
+.ig__handle{font-size:clamp(26px,4vw,46px);font-weight:500;letter-spacing:-.02em;line-height:1.06}
+.ig__handle a{
+  color:var(--bone);border-bottom:1px solid transparent;
+  transition:color .35s var(--ease),border-color .35s var(--ease);
+}
+.ig__handle a:hover{color:var(--champ);border-bottom-color:var(--line-2)}
+
+.ig__bar{
+  margin-top:clamp(20px,2.6vw,30px);padding-top:clamp(18px,2.4vw,26px);
+  border-top:1px solid var(--line);
+  display:flex;align-items:center;flex-wrap:wrap;gap:clamp(16px,3vw,36px);
+}
+.ig__pic{
+  /* height:auto is load-bearing — the width/height attributes are there to
+     reserve layout space, but the height one is a presentational hint that
+     otherwise pins this to 150px and renders the circle as an ellipse */
+  width:clamp(72px,9vw,104px);height:auto;aspect-ratio:1;flex:0 0 auto;
+  border-radius:50%;object-fit:cover;
+  border:2px solid rgba(184,169,138,.5);
+}
+.ig__stats{display:flex;align-items:center;gap:clamp(20px,3.4vw,48px);flex:1 1 auto;min-width:0}
+.ig__stat{display:flex;flex-direction:column;gap:5px}
+.ig__n{
+  font-size:clamp(21px,2.6vw,30px);font-weight:500;color:var(--bone);
+  line-height:1;letter-spacing:-.02em;font-variant-numeric:tabular-nums;
+}
+.ig__l{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--bone-faint)}
+.ig__follow{
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;flex:0 0 auto;
+  background:var(--champ);color:var(--ink);border:1px solid var(--champ);
+  padding:.95em 1.5em;font-size:11px;letter-spacing:.12em;text-transform:uppercase;
+  transition:background .35s var(--ease),border-color .35s var(--ease);
+}
+.ig__follow:hover{background:var(--champ-lift);border-color:var(--champ-lift)}
+.ig__glyph{flex:0 0 auto}
+/* the follow drops to its own full-width row before the counts start crowding */
+@media(max-width:640px){
+  .ig__bar{gap:14px 18px}
+  .ig__stats{gap:clamp(14px,5vw,24px)}
+  .ig__follow{width:100%;min-height:44px}
+}
+
+/* the reviews block gets the line the tally band used to carry full-bleed —
+   the 5.0 is a stat in the profile header now, so it is not said twice */
+.said__head{margin-bottom:clamp(20px,2.8vw,32px);max-width:24ch}
 
 /* spec rail: the hard facts as a ledger, mono key against a bone value. Puts
    rate and booking terms where someone deciding actually looks, instead of
@@ -362,36 +410,6 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
   transition:border-color .35s var(--ease),color .35s var(--ease);
 }
 .bio__link:hover{border-bottom-color:var(--champ);color:var(--champ-lift)}
-
-/* the tally — full-bleed hairline band, the number at the scale of a total.
-   The faint champagne wash only reaches a third of the way across, so the band
-   reads as weighted toward the figure rather than as a panel. */
-.tally{
-  margin-top:clamp(46px,6vw,84px);
-  border-top:1px solid var(--line);border-bottom:1px solid var(--line);
-  background:linear-gradient(90deg,rgba(184,169,138,.055),transparent 58%);
-}
-.tally__grid{
-  display:grid;grid-template-columns:auto minmax(0,1fr);
-  gap:8px clamp(24px,4.5vw,68px);align-items:center;
-  padding-block:clamp(26px,3.6vw,46px);
-}
-/* stars sit under the number, not beside it: on the same baseline they crowd
-   the zero at display size */
-.tally__figure{display:flex;flex-direction:column;gap:11px}
-.tally__num{
-  font-size:clamp(56px,8.5vw,104px);font-weight:500;color:var(--champ);
-  line-height:.82;letter-spacing:-.035em;font-variant-numeric:tabular-nums;
-}
-.tally__stars{color:var(--champ);letter-spacing:.2em;font-size:13px}
-.tally__say{
-  font-size:clamp(19px,2.5vw,30px);font-weight:500;
-  letter-spacing:-.018em;line-height:1.18;text-wrap:balance;
-}
-@media(max-width:640px){
-  .tally__grid{grid-template-columns:1fr;gap:14px}
-  .tally__num{font-size:52px}
-}
 
 /* their words */
 .said{margin-top:clamp(46px,6vw,80px)}

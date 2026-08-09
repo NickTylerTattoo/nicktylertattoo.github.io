@@ -77,19 +77,42 @@
     </a>
   </section>
 
-  <!-- Three bands where there used to be one two-column block. His name and a
-       spec rail on the left, his voice on the right; then the 5.0 pulled out of
-       the rail into a full-bleed tally row, because a rating that good was
-       sitting structurally underneath a bio; then their words, with one quote
-       set large so the eye has an entry point instead of five rows of equal
-       weight. Closes on a row that behaves like a door. -->
+  <!-- Three bands: an Instagram-style profile header, then the spec rail beside
+       his voice, then their words with one quote set large so the eye has an
+       entry point instead of five rows of equal weight. The 5.0 that used to
+       occupy a full-bleed tally band is a stat in the header now, so the rating
+       is stated once. Closes on a row that behaves like a door. -->
   <section class="sec studio" id="about">
-    <div class="wrap studio__grid">
+    <div class="wrap">
 
-      <div class="studio__lead reveal">
-        <div class="sidx mono">The artist</div>
-        <h2 class="stitle">Hi, I&rsquo;m <span class="ser">Nick</span>.</h2>
+      <!-- The artist as an Instagram profile: avatar, handle, three counts and
+           a follow, mirroring the block on home.nicktylertattoo.com. Counts are
+           his real ones as of Aug 2026 and are hardcoded — there is no Instagram
+           API here, so they need a hand edit when they drift. -->
+      <div class="ig reveal">
+        <div class="sidx mono">Meet your artist</div>
+        <h2 class="ig__handle"><a href="https://instagram.com/nicktylertattoo" target="_blank" rel="noopener" data-track="ig_handle">@nicktylertattoo</a></h2>
+
+        <div class="ig__bar">
+          <img class="ig__pic" src="assets/artist.jpg" width="150" height="150" alt="Nick Tyler in the studio" loading="lazy" decoding="async">
+          <dl class="ig__stats">
+            <div class="ig__stat"><dt class="ig__n">684</dt><dd class="ig__l mono">Posts</dd></div>
+            <div class="ig__stat"><dt class="ig__n">52K</dt><dd class="ig__l mono">Followers</dd></div>
+            <div class="ig__stat"><dt class="ig__n">5.0</dt><dd class="ig__l mono">Rating</dd></div>
+          </dl>
+          <a class="ig__follow mono" href="https://instagram.com/nicktylertattoo" target="_blank" rel="noopener" data-track="ig_follow">
+            <svg class="ig__glyph" viewBox="0 0 24 24" width="15" height="15" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7">
+              <rect x="3" y="3" width="18" height="18" rx="5"/>
+              <circle cx="12" cy="12" r="4"/>
+              <circle cx="17.4" cy="6.6" r="1.15" fill="currentColor" stroke="none"/>
+            </svg>Follow
+          </a>
+        </div>
       </div>
+
+    </div>
+
+    <div class="wrap studio__grid">
 
       <div class="studio__body reveal">
         <p class="bio__p">I tattoo out of a private studio in Suffolk County, one client at a time and by appointment only. My work is fine line and ornamental: florals, geometry, blackwork, the kind of detail that rewards a second look.</p>
@@ -108,19 +131,9 @@
 
     </div>
 
-    <!-- the tally: full-bleed, and finally at the scale of a total -->
-    <div class="tally reveal">
-      <div class="wrap tally__grid">
-        <div class="tally__figure" role="img" aria-label="Rated 5.0 out of 5">
-          <span class="tally__num" aria-hidden="true">5.0</span>
-          <span class="tally__stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
-        </div>
-        <p class="tally__say">100+ five star reviews on Google.</p>
-      </div>
-    </div>
-
     <div class="wrap said reveal">
       <div class="sidx mono">In their words</div>
+      <h2 class="stitle said__head">100+ five star reviews on Google.</h2>
 
       <blockquote class="rev rev--lead">
         <p class="rev__q">Nick is fantastic! Super talented, with such a clean and professional space. The first session I wasn&rsquo;t feeling well about 3-4 hours in and he was very accommodating with making a second appointment. He&rsquo;ll check in as he&rsquo;s working to make sure the pain isn&rsquo;t too much, showing his consideration.</p>
@@ -176,10 +189,10 @@
       <a class="gift reveal" href="https://link.inkedin.tools/gift-card/698a83a04731627193f65eb0" target="_blank" rel="noopener">
         <span class="gift__body">
           <span class="gift__idx mono">Gift card</span>
-          <span class="gift__name">Someone else&rsquo;s next piece, on you.</span>
-          <span class="gift__desc">Six amounts from $50 to $750. They pick the design and the date.</span>
+          <span class="gift__name">Gift a Tattoo</span>
+          <span class="gift__desc">Send a digital gift card &mdash; schedule delivery, add a personal note, trackable balance. Redeemable for deposits or tattoo cost.</span>
         </span>
-        <span class="gift__go mono">Buy one &rarr;</span>
+        <span class="gift__go mono">Send gift card &rarr;</span>
       </a>
     </div>
   </div>
