@@ -232,13 +232,32 @@ body:not([data-loading]) .preloader{opacity:0;visibility:hidden;pointer-events:n
 .lb__title{font-weight:700;font-size:clamp(1.5rem,3vw,2.3rem);letter-spacing:-.02em;margin:.4em 0 1em;line-height:1.02}
 .lb__spec{display:flex;flex-direction:column;gap:0;margin-bottom:18px}
 .lb__spec div{display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid var(--line);font-size:.74rem;letter-spacing:.04em;text-transform:uppercase}
+.lb__spec div[hidden]{display:none}   /* the display:flex above outranks the UA [hidden] rule */
 .lb__spec dt{color:var(--bone-faint)}.lb__spec dd{color:var(--bone)}
 .lb__price{color:var(--gold)!important;font-size:1rem}
 .lb__note{font-size:.66rem;letter-spacing:.04em;color:var(--bone-faint);margin-bottom:18px;line-height:1.6;text-transform:uppercase}
 .lb__actions{display:flex;flex-direction:column;gap:10px}
 .lb__nav{display:flex;justify-content:space-between;margin-top:18px;font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;color:var(--bone-faint)}
 .lb__nav button:hover{color:var(--gold)}
-@media(max-width:720px){.lb__inner{grid-template-columns:1fr;max-height:90vh;overflow-y:auto}.lb__img img{min-height:auto;aspect-ratio:4/5}}
+/* Mobile lightbox. The panel scrolled on every phone — 120px over on a tall
+   one, 212px on a 640px screen — which pushed the claim button off the one
+   view that exists to sell the piece. The image was taking a fixed 4/5 of the
+   width no matter how short the screen was; it now takes whatever is left
+   after the panel, and the panel is tightened to fit unscrolled. The image
+   floors at 80px and the inner keeps auto overflow, so a genuinely tiny
+   viewport degrades to a scroll rather than clipping the button. */
+@media(max-width:720px){
+  .lb__inner{grid-template-columns:1fr;grid-template-rows:minmax(80px,1fr) auto;max-height:92vh;overflow-y:auto}
+  .lb__img{min-height:0}
+  .lb__img img{min-height:0;height:100%;aspect-ratio:auto;object-fit:contain}
+  .lb__panel{overflow:visible;padding:14px 18px 18px}
+  .lb__title{font-size:1.32rem;margin:.25em 0 .5em}
+  .lb__spec{margin-bottom:12px}
+  .lb__spec div{padding:6px 0;font-size:.7rem}
+  .lb__note{margin-bottom:12px;line-height:1.45}
+  .lb__actions{gap:8px}
+  .lb__nav{margin-top:12px}
+}
 
 /* BOOKING MODAL */
 .bk__inner{max-width:640px;width:100%;background:var(--surface);border:1px solid var(--line);padding:clamp(22px,3.5vw,38px);max-height:90vh;overflow-y:auto;transform:scale(.96);transition:transform .4s var(--ease)}

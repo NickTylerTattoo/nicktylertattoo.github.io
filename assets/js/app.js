@@ -336,6 +336,10 @@ function openLightbox(n){
   $('#lbNo').textContent='No. '+String(d.n).padStart(2,'0')+(d.status==='feat'?' · Featured':'');
   $('#lbTitle').textContent=d.title;
   $('#lbPlace').textContent=d.style; $('#lbSize').textContent=d.size; $('#lbTime').textContent=d.time;
+  /* Large-scale work is sized by the body part, not by inches — sleeves read
+     "Single sleeve", backs repeat the placement verbatim. That row says nothing
+     the one above it hasn't, so it only shows for a real measurement. */
+  $('#lbSize').parentNode.hidden = !/\d/.test(d.size);
   $('#lbPrice').textContent='From '+money(d.price);
   const st=$('#lbStamp'); st.className='lb__stamp mono '+(d.available?(d.status==='feat'?'st-feat':'st-live'):'st-claimed');
   st.textContent=d.available?(d.status==='feat'?'★ Featured':'● Live'):'Claimed';
