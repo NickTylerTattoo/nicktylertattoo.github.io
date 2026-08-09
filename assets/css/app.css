@@ -58,6 +58,18 @@ body:not([data-loading]) .preloader{opacity:0;visibility:hidden;pointer-events:n
 .nav-cta{font-family:var(--mono);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;border:1px solid var(--line-2);padding:.75em 1.15em;transition:background .3s,color .3s,border-color .3s}
 .nav-cta:hover{background:var(--gold);color:var(--ink);border-color:var(--gold)}
 @media(max-width:640px){.nav-links{display:none}}
+/* The Collection's CTA is seven characters longer than the one the other
+   pages use. A flex item shrinks by default, so from roughly 640px up to
+   1000px the nav squeezed the button until its label wrapped onto a second
+   line, which grew the header and pushed the button flush against the OTAAT
+   link. Hold the button at its natural width and let the nav links take the
+   squeeze instead — they already wrap by design. */
+.nav--longcta .nav-cta{white-space:nowrap;flex:0 0 auto}
+@media(min-width:641px) and (max-width:1000px){
+  .nav--longcta .nav-cta{letter-spacing:.09em;padding:.75em .9em;margin-left:18px}
+  .nav--longcta .nav-links{gap:clamp(10px,1.5vw,18px)}
+  .nav--longcta .nav-link{font-size:.88rem}
+}
 
 /* HERO */
 .hero{position:relative;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;overflow:hidden;z-index:1}
@@ -110,10 +122,6 @@ body:not([data-loading]) .preloader{opacity:0;visibility:hidden;pointer-events:n
 .filt:hover{border-color:var(--line-2);color:var(--bone)}
 .filt.is-active{background:var(--bone);color:var(--ink);border-color:var(--bone)}
 .filt-right{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
-.search{display:flex;align-items:center;gap:8px;border:1px solid var(--line);padding:.55em .8em;color:var(--bone-faint);transition:border-color .3s}
-.search:focus-within{border-color:var(--gold);color:var(--bone)}
-.search input{background:none;border:none;color:var(--bone);font-family:var(--mono);font-size:.74rem;width:130px;outline:none}
-.search input::placeholder{color:var(--bone-faint)}
 .sortsel{background:var(--surface);border:1px solid var(--line);color:var(--bone-dim);font-size:.7rem;letter-spacing:.06em;text-transform:uppercase;padding:.6em .7em}
 .toggle{display:flex;align-items:center;gap:7px;font-size:.66rem;letter-spacing:.08em;text-transform:uppercase;color:var(--bone-dim)}
 .toggle input{accent-color:var(--gold)}
@@ -335,18 +343,16 @@ html{-webkit-text-size-adjust:100%}
   .hero-line{font-size:1.02rem}
   .hero-cta{flex-direction:column;align-items:stretch;width:100%;gap:10px}
   .hero-cta .btn{width:100%;justify-content:center}
-  /* filter bar: compact, non-sticky, horizontally scrollable chips.
-     min-width:0 is load-bearing — a flex item defaults to min-width:auto and
-     refuses to shrink below its content, so overflow-x:auto never scrolls and
-     the pill row pushes the whole page 180px wide instead. Same for .filt-right,
-     which holds the search field. */
+  /* filter bar: compact, non-sticky. The pills used to be one nowrap row you
+     scrolled sideways, which hid the later placements behind a gesture nobody
+     makes. They wrap onto two or three lines instead, so all six are visible
+     at once. min-width:0 stays load-bearing — a flex item defaults to
+     min-width:auto and refuses to shrink below its content, which is what
+     pushed the whole page 180px wide before. */
   .filterbar{position:static;flex-direction:column;align-items:stretch;gap:12px;min-width:0}
-  .filters{flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:4px;scrollbar-width:none;min-width:0;max-width:100%}
-  .filters::-webkit-scrollbar{display:none}
+  .filters{flex-wrap:wrap;gap:8px;min-width:0;max-width:100%}
   .filt{flex:0 0 auto;min-height:42px;display:flex;align-items:center}
   .filt-right{width:100%;gap:10px;min-width:0}
-  .search{flex:1 1 auto;min-width:0;min-height:44px}
-  .search input{width:100%;min-width:0}
   .sortsel{flex:0 0 auto;min-height:44px}
   /* bigger tap targets */
   .faq-tab{min-height:50px}
@@ -405,8 +411,6 @@ main > section:first-of-type{padding-top:clamp(104px,12vw,158px)}
   .nav-logo{min-height:44px;display:flex;align-items:center}
   .nav-cta{min-height:44px;display:inline-flex;align-items:center;gap:.45em}
   .skip{min-height:44px;display:flex;align-items:center}
-  .search{min-height:44px}
-  .search input{min-height:44px;font-size:16px}      /* 16px stops iOS zooming on focus */
   .sortsel{min-height:44px;font-size:16px}
   .toggle{min-height:44px;display:flex;align-items:center;gap:8px}
   .toggle input{width:20px;height:20px;flex:0 0 auto}
@@ -436,6 +440,14 @@ main > section:first-of-type{padding-top:clamp(104px,12vw,158px)}
    still a 44px target. */
 @media(max-width:370px){
   .nav-logo__txt{display:none}
+}
+
+/* The Collection's CTA reads "Start a custom request", seven characters longer
+   than the "Start a request" the other pages use, so it hits the clipping
+   described above at ~430px instead of ~370px. Same fix, earlier: on that
+   header only, drop the wordmark text and let the OO mark carry the brand. */
+@media(max-width:430px){
+  .nav--longcta .nav-logo__txt{display:none}
 }
 
 /* Short phones: the intro, three steps and a form peek do not all fit in

@@ -254,7 +254,7 @@ function nav(){
 }
 
 /* ---------- Catalog render + filter ---------- */
-const state={filter:'all',q:'',sort:'num',availOnly:false};
+const state={filter:'all',sort:'num',availOnly:false};
 let current=[];   // currently displayed list (for lightbox nav)
 function statusStamp(s){
   if(s==='feat') return '<span class="plate__stamp st-feat">★ Featured</span>';
@@ -283,7 +283,6 @@ function applyList(){
   let list=CAT.filter(d=>{
     if(state.filter!=='all' && d.cat!==state.filter) return false;
     if(state.availOnly && !d.available) return false;
-    if(state.q && !((d.title+' '+d.style+' No. '+d.n).toLowerCase().includes(state.q))) return false;
     return true;
   });
   if(state.sort==='price-asc') list.sort((a,b)=>a.price-b.price);
@@ -318,7 +317,6 @@ function catalog(){
     b.classList.add('is-active'); b.setAttribute('aria-selected','true');
     state.filter=b.dataset.filter; applyList(); track('filter_change',{filter:state.filter});
   }));
-  let qt; $('#search').addEventListener('input',e=>{ clearTimeout(qt); qt=setTimeout(()=>{state.q=e.target.value.trim().toLowerCase();applyList();},160); });
   $('#sort').addEventListener('change',e=>{state.sort=e.target.value;applyList();});
   $('#availOnly').addEventListener('change',e=>{state.availOnly=e.target.checked;applyList();});
   // delegated clicks
@@ -517,7 +515,7 @@ function init(){
   need(['#emblem','#emblemStage'], emblem);
   need('#marquee', marquee);
   need('#nav', nav);
-  need(['#flashGrid','#search','#sort','#availOnly','#navAvail','#availCount','#drop'], catalog);
+  need(['#flashGrid','#sort','#availOnly','#navAvail','#availCount','#drop'], catalog);
   need('#lightbox', lightbox);
   need('#booking', booking);
   need('#faqList', faq);
