@@ -264,7 +264,11 @@ function typewriter(){
 
 /* ---------- Marquee ---------- */
 function marquee(){
+  /* The marquee markup was removed from every page. init() calls this
+     unguarded and ahead of preloader(), so a throw here left data-loading set
+     and the preloader covering the whole page. Bail instead. */
   const track = $('#marquee');
+  if (!track) return;
   const unit = '<span>One story<i>◆</i>One number<i>◆</i>One tattoo at a time<i>◆</i>Free, forever<i>◆</i>Recovery · Remembrance · Resilience<i>◆</i></span>';
   track.innerHTML = unit;
   while (track.scrollWidth < innerWidth*2) track.innerHTML += unit;

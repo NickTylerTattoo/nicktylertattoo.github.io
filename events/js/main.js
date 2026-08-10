@@ -242,7 +242,12 @@ addEventListener('load', () => setTimeout(hideLoader, 1200));
    Marquee — duplicate content for a seamless -50% loop
    ================================================================ */
 (() => {
+  /* The marquee markup was removed from every page. These are sequential
+     top-level IIFEs in one file, so a throw here takes out nav, reviews and
+     every section below it, leaving the page rendered only as far as the
+     hero. Bail instead. */
   const inner = $('#marqueeInner');
+  if (!inner || !inner.firstElementChild) return;
   inner.appendChild(inner.firstElementChild.cloneNode(true));
 })();
 
