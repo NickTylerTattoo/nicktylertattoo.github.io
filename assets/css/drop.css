@@ -342,7 +342,15 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
    the block reads as part of the same ruled system as the spec rail below it
    rather than as a pasted-in widget. */
 .ig{margin-bottom:clamp(30px,4vw,52px)}
-.ig__handle{font-size:clamp(26px,4vw,46px);font-weight:500;letter-spacing:-.02em;line-height:1.06}
+.ig__handle{
+  font-size:clamp(26px,4vw,46px);font-weight:500;letter-spacing:-.02em;line-height:1.06;
+  display:flex;align-items:center;gap:.26em;flex-wrap:wrap;
+}
+/* Instagram sizes its badge near 1:1 with the username because that sits at
+   body size. Against a display-size handle the same ratio would be a 46px
+   badge shouting over the name, so it is held to a fifth of that and floored
+   so it stays legible on a phone. */
+.ig__verified{width:clamp(15px,1.9vw,21px);height:auto;flex:0 0 auto}
 .ig__handle a{
   color:var(--bone);border-bottom:1px solid transparent;
   transition:color .35s var(--ease),border-color .35s var(--ease);
