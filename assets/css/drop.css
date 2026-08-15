@@ -423,7 +423,75 @@ body.still .ig__piclink::before{animation:none}
 
 /* the reviews block gets the line the tally band used to carry full-bleed —
    the 5.0 is a stat in the profile header now, so it is not said twice */
-.said__head{margin-bottom:clamp(20px,2.8vw,32px);max-width:24ch}
+/* ---------- the award ----------
+   The one third-party judgement on a page that is otherwise his own voice and
+   his own clients', so it leads the section and takes the champagne. Panel and
+   a soft champagne wash off the left edge, weighted toward the medal. */
+.award{
+  position:relative;overflow:hidden;
+  display:flex;align-items:center;gap:clamp(16px,2.6vw,30px);
+  margin-top:clamp(16px,2vw,24px);
+  padding:clamp(20px,2.6vw,32px) clamp(20px,3vw,36px);
+  border:1px solid var(--line-2);border-radius:var(--r);
+  background:radial-gradient(120% 170% at 0% 50%,rgba(184,169,138,.11),transparent 62%),var(--panel);
+}
+.award__medal{width:clamp(50px,5.8vw,72px);height:auto;color:var(--champ);flex:0 0 auto}
+.award__body{min-width:0}
+.award__rank{color:var(--champ);font-size:11px;letter-spacing:.2em;text-transform:uppercase}
+.award__name{
+  margin-top:7px;font-size:clamp(19px,2.5vw,30px);font-weight:500;
+  letter-spacing:-.018em;line-height:1.14;text-wrap:balance;
+}
+.award__by{margin-top:9px;color:var(--bone-faint);font-size:11px;letter-spacing:.08em}
+.award__by a{color:var(--champ);border-bottom:1px solid var(--line-2);transition:border-color .35s var(--ease)}
+.award__by a:hover{border-bottom-color:var(--champ)}
+/* one slow pass of light every several seconds. The only thing on the page that
+   catches light, which is more or less what an award is for. */
+.award::after{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(104deg,transparent 38%,rgba(214,200,169,.13) 50%,transparent 62%);
+  transform:translateX(-130%);
+  animation:sheen 7.5s ease-in-out 1s infinite;
+}
+@keyframes sheen{0%{transform:translateX(-130%)}52%,100%{transform:translateX(130%)}}
+@media(max-width:560px){.award{flex-direction:column;align-items:flex-start}}
+
+/* ---------- the rating line ---------- */
+.rate{
+  display:flex;align-items:baseline;flex-wrap:wrap;
+  gap:8px clamp(12px,1.7vw,20px);
+  margin-top:clamp(22px,2.8vw,34px);
+  padding-bottom:clamp(15px,1.9vw,21px);border-bottom:1px solid var(--line);
+}
+.rate__num{
+  font-size:clamp(30px,4.2vw,48px);font-weight:500;color:var(--champ);
+  line-height:1;letter-spacing:-.03em;font-variant-numeric:tabular-nums;
+}
+.rate__stars{display:inline-flex;gap:3px;font-size:clamp(13px,1.5vw,17px)}
+.rate__stars i{font-style:normal;color:var(--champ);opacity:0;transform:scale(.5) rotate(-20deg)}
+.rate__say{color:var(--bone-dim);font-size:clamp(14px,1.5vw,16px)}
+
+/* Motion is driven off the block's own reveal, so nothing moves until the
+   section is actually on screen: five stars land in sequence, then the quotes
+   rise in behind them. --i on each element sets its place in the queue. */
+.said.in .rate__stars i{animation:starpop .55s var(--ease) forwards;animation-delay:calc(.2s + var(--i)*.085s)}
+@keyframes starpop{to{opacity:1;transform:none}}
+.rev--lead,.revs > li{opacity:0;transform:translateY(16px)}
+.said.in .rev--lead,.said.in .revs > li{
+  animation:rise .75s var(--ease) forwards;
+  animation-delay:calc(.12s + var(--i)*.075s);
+}
+@keyframes rise{to{opacity:1;transform:none}}
+
+/* Both still mode and reduced-motion want this parked. Without these the
+   staggered items would sit at opacity:0 forever in a screenshot, because
+   their reveal fires but the animation is what actually makes them visible. */
+@media(prefers-reduced-motion:reduce){
+  .award::after{animation:none}
+  .rate__stars i,.rev--lead,.revs > li{opacity:1;transform:none;animation:none}
+}
+body.still .award::after{animation:none}
+body.still .rate__stars i,body.still .rev--lead,body.still .revs > li{opacity:1;transform:none;animation:none}
 
 /* spec rail: the hard facts as a ledger, mono key against a bone value. Puts
    rate and booking terms where someone deciding actually looks, instead of

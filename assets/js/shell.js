@@ -3,6 +3,10 @@
 'use strict';
 const STILL = new URLSearchParams(location.search).has('still');
 const REDUCED = matchMedia('(prefers-reduced-motion: reduce)').matches;
+/* The pages with their own app.js set this themselves; the home page only loads
+   this shell, so ?still=1 was reading as "no animation" to the reveal code below
+   while body.still never landed and CSS animations kept running anyway. */
+if (STILL) document.body.classList.add('still');
 
 /* inject the door-mark sprite once (kept in one file so the four marks stay a family).
    Resolved from this script's own URL so it works from any path depth. */
