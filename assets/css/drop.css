@@ -532,7 +532,20 @@ body.still .ig__piclink::before{animation:none}
 @media(prefers-reduced-motion:reduce){
   .award::after,.revscroll__track{animation:none}
   .rate__stars i{opacity:1;transform:none;animation:none}
-  .revscroll{overflow-x:auto}
+  /* A stopped lane still overflows, so this used to hand back overflow-x:auto
+     — which is a scrollbar, and a scrollbar is not a quieter version of the
+     animation, it is a different component. Lay the cards out as a grid
+     instead: nothing moves, nothing is clipped, and there is no bar to drag.
+     Costs vertical space, but only for the people who asked for less motion. */
+  .revscroll{overflow:visible;-webkit-mask-image:none;mask-image:none}
+  .revscroll__track{
+    width:auto;display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(258px,1fr));
+  }
+  /* the second set only exists to make the loop seamless; with no loop running
+     it would just print every review twice */
+  .revscroll__track .rcard[aria-hidden="true"]{display:none}
+  .rcard{width:auto}
 }
 body.still .award::after,body.still .revscroll__track{animation:none}
 body.still .rate__stars i{opacity:1;transform:none;animation:none}
