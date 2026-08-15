@@ -362,14 +362,43 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
   border-top:1px solid var(--line);
   display:flex;align-items:center;flex-wrap:wrap;gap:clamp(16px,3vw,36px);
 }
+/* Instagram's story ring. The gradient is theirs verbatim, read off Instagram's
+   own stylesheet rather than eyeballed. It stays a 125deg linear gradient — the
+   ring is a square of it, oversized and clipped to the circle, turning slowly —
+   so the colour ramp is exactly Instagram's and only its angle moves. Rebuilding
+   it as a conic gradient would have spread the same stops around the circle and
+   changed where each colour lands. */
+.ig__piclink{
+  position:relative;flex:0 0 auto;display:block;
+  border-radius:50%;padding:3px;overflow:hidden;
+}
+/* Only 6% oversize. A square turning about its centre always covers its own
+   inscribed circle, so 112% of the ring box is plenty of margin — and keeping
+   it tight matters, because the gradient ramp spans this element: at 150% the
+   15% gold and 85% purple stops fell outside the visible ring and it degraded
+   to orange-through-magenta, losing two of Instagram's five colours. */
+.ig__piclink::before{
+  content:"";position:absolute;inset:-6%;
+  background:linear-gradient(125deg,#ffd600 15%,#ff7a00 30%,#ff0169,#d300c5 70%,#7638fa 85%);
+  animation:igring 8s linear infinite;
+}
+@keyframes igring{to{rotate:360deg}}
+.ig__piclink:hover::before{animation-duration:3.2s}
+
 .ig__pic{
   /* height:auto is load-bearing — the width/height attributes are there to
      reserve layout space, but the height one is a presentational hint that
      otherwise pins this to 150px and renders the circle as an ellipse */
-  width:clamp(72px,9vw,104px);height:auto;aspect-ratio:1;flex:0 0 auto;
+  position:relative;display:block;
+  width:clamp(72px,9vw,104px);height:auto;aspect-ratio:1;
   border-radius:50%;object-fit:cover;
-  border:2px solid rgba(184,169,138,.5);
+  /* the gap that separates ring from photo, the way Instagram's does */
+  border:2px solid var(--ink);
 }
+/* the page's own still mode is used for screenshots; reduced-motion is the
+   accessibility case. Both want the ring parked rather than spinning. */
+@media(prefers-reduced-motion:reduce){.ig__piclink::before{animation:none}}
+body.still .ig__piclink::before{animation:none}
 .ig__stats{display:flex;align-items:center;gap:clamp(20px,3.4vw,48px);flex:1 1 auto;min-width:0}
 .ig__stat{display:flex;flex-direction:column;gap:5px}
 .ig__n{
