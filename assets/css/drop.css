@@ -472,26 +472,70 @@ body.still .ig__piclink::before{animation:none}
 .rate__say{color:var(--bone-dim);font-size:clamp(14px,1.5vw,16px)}
 
 /* Motion is driven off the block's own reveal, so nothing moves until the
-   section is actually on screen: five stars land in sequence, then the quotes
-   rise in behind them. --i on each element sets its place in the queue. */
+   section is actually on screen: five stars land in sequence. --i sets each
+   one's place in the queue. */
 .said.in .rate__stars i{animation:starpop .55s var(--ease) forwards;animation-delay:calc(.2s + var(--i)*.085s)}
 @keyframes starpop{to{opacity:1;transform:none}}
-.rev--lead,.revs > li{opacity:0;transform:translateY(16px)}
-.said.in .rev--lead,.said.in .revs > li{
-  animation:rise .75s var(--ease) forwards;
-  animation-delay:calc(.12s + var(--i)*.075s);
+
+/* ---------- the review lane ----------
+   Six quotes stacked ran most of a screen. One lane holds them to a single
+   card height. The track carries the set twice and travels exactly -50%, so
+   the second copy arrives where the first began and the loop has no seam;
+   change the number of cards and it still lines up, because the distance is
+   a proportion of the track rather than a pixel count. */
+.revscroll{
+  position:relative;overflow:hidden;
+  margin-top:clamp(18px,2.2vw,26px);
+  /* the lane runs full width and fades at both ends rather than stopping at a
+     hard edge, so cards enter and leave instead of popping */
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent);
+          mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent);
 }
-@keyframes rise{to{opacity:1;transform:none}}
+.revscroll__track{
+  display:flex;width:max-content;gap:clamp(12px,1.5vw,18px);
+  animation:lane 64s linear infinite;
+}
+.revscroll:hover .revscroll__track,
+.revscroll:focus-within .revscroll__track{animation-play-state:paused}
+@keyframes lane{to{transform:translateX(-50%)}}
+
+.rcard{
+  flex:0 0 auto;width:clamp(266px,25vw,344px);
+  display:flex;flex-direction:column;
+  padding:clamp(18px,2vw,24px);
+  background:var(--panel);border:1px solid var(--line);border-radius:var(--r);
+  transition:border-color .45s var(--ease),background .45s var(--ease);
+}
+.rcard:hover{border-color:var(--line-2);background:var(--panel-2)}
+.rcard__q{color:var(--bone-dim);font-size:14.5px;line-height:1.62;flex:1}
+.rcard__foot{
+  display:flex;align-items:flex-end;justify-content:space-between;
+  gap:12px;margin-top:16px;padding-top:13px;border-top:1px solid var(--line);
+}
+.rcard__who{display:flex;flex-direction:column;gap:4px;min-width:0}
+.rcard__name{color:var(--bone);font-size:13px;letter-spacing:-.01em}
+/* Kept for the review dates, which are not on these cards yet: the only place
+   they exist is Google itself, and the copies on the Manus page are hardcoded
+   "N months ago" strings with no anchor date, so there is nothing here to
+   derive a real date from. Add a .rcard__date span under the name and it lands
+   correctly. */
+.rcard__date{color:var(--bone-faint);font-size:10px;letter-spacing:.08em}
+.rcard__src{display:flex;align-items:center;gap:6px;flex:0 0 auto}
+.rcard__g{width:14px;height:14px;flex:0 0 auto}
+.rcard__ok{color:var(--bone-faint);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase}
 
 /* Both still mode and reduced-motion want this parked. Without these the
-   staggered items would sit at opacity:0 forever in a screenshot, because
-   their reveal fires but the animation is what actually makes them visible. */
+   stars would sit at opacity:0 forever in a screenshot, because their reveal
+   fires but the animation is what actually makes them visible. The lane stops
+   too — a strip that never stops moving is the exact thing reduced-motion is
+   asking not to see. */
 @media(prefers-reduced-motion:reduce){
-  .award::after{animation:none}
-  .rate__stars i,.rev--lead,.revs > li{opacity:1;transform:none;animation:none}
+  .award::after,.revscroll__track{animation:none}
+  .rate__stars i{opacity:1;transform:none;animation:none}
+  .revscroll{overflow-x:auto}
 }
-body.still .award::after{animation:none}
-body.still .rate__stars i,body.still .rev--lead,body.still .revs > li{opacity:1;transform:none;animation:none}
+body.still .award::after,body.still .revscroll__track{animation:none}
+body.still .rate__stars i{opacity:1;transform:none;animation:none}
 
 /* spec rail: the hard facts as a ledger, mono key against a bone value. Puts
    rate and booking terms where someone deciding actually looks, instead of

@@ -173,44 +173,220 @@
         <span class="rate__say">100+ five star reviews on Google</span>
       </div>
 
-      <blockquote class="rev rev--lead" style="--i:0">
-        <p class="rev__q">Nick is fantastic! Super talented, with such a clean and professional space. The first session I wasn&rsquo;t feeling well about 3-4 hours in and he was very accommodating with making a second appointment. He&rsquo;ll check in as he&rsquo;s working to make sure the pain isn&rsquo;t too much, showing his consideration.</p>
-        <p class="rev__q">His booking is SO easy and the aftercare instructions are great, plus he provides a soap and moisturizer if you want to use them. 10/10 experience!!!</p>
-        <cite class="rev__by mono">Kristin N. &middot; Google</cite>
-      </blockquote>
-
-      <ul class="revs">
-        <li style="--i:1">
-          <blockquote class="rev">
-            <p class="rev__q">10/10 experience with Nick today. Loved how smooth and easy the process was. He made me feel really comfortable and the place was super clean. Line work is amazing!</p>
-            <cite class="rev__by mono">Jamie B. &middot; Google</cite>
-          </blockquote>
-        </li>
-        <li style="--i:2">
-          <blockquote class="rev">
-            <p class="rev__q">Nick did my first tattoo and it came out exactly how I imagined it. The whole process felt seamless and easy&hellip; I&rsquo;m beyond happy with it and will definitely be going back.</p>
-            <cite class="rev__by mono">Gabrielle N. &middot; Google</cite>
-          </blockquote>
-        </li>
-        <li style="--i:3">
-          <blockquote class="rev">
-            <p class="rev__q">Nicholas made me feel welcomed and comfortable. Did not rush the tattoo, and very attentive to details. I highly recommend Nick Tyler Tattoo.</p>
-            <cite class="rev__by mono">Edward A. &middot; Google</cite>
-          </blockquote>
-        </li>
-        <li style="--i:4">
-          <blockquote class="rev">
-            <p class="rev__q">It&rsquo;s clear that Nick takes pride in his work and genuinely cares about giving his clients a great experience. Already booking for the next piece!</p>
-            <cite class="rev__by mono">Cristian S. &middot; Google</cite>
-          </blockquote>
-        </li>
-        <li style="--i:5">
-          <blockquote class="rev">
-            <p class="rev__q">Super responsive with all questions and very helpful. Works quickly while still having amazing end results! Genuinely such a great experience!</p>
-            <cite class="rev__by mono">Remmy B. &middot; Google</cite>
-          </blockquote>
-        </li>
-      </ul>
+      <!-- Reviews as one horizontal lane instead of a lead card plus a grid.
+           Six quotes stacked ran most of a screen; this holds them to one card
+           height. The track carries the set twice — the second copy is
+           aria-hidden so screen readers get six reviews, not twelve — and
+           translating it exactly -50% lands copy two where copy one began, so
+           the loop has no seam. -->
+      <div class="revscroll" aria-label="Recent Google reviews">
+        <div class="revscroll__track">
+        <article class="rcard">
+          <p class="rcard__q">Nick is fantastic! Super talented, with such a clean and professional space. He&rsquo;ll check in as he&rsquo;s working to make sure the pain isn&rsquo;t too much, showing his consideration. His booking is SO easy and the aftercare instructions are great. 10/10 experience!!!</p>
+          <footer class="rcard__foot">
+            <div class="rcard__who">
+              <span class="rcard__name">Kristin N.</span>
+            </div>
+            <div class="rcard__src" title="Verified Google review">
+              <svg class="rcard__g" viewBox="0 0 48 48" aria-hidden="true">
+              <path fill="#FFC107" d="M43.611 20.083H42V20H24v8h11.303c-1.649 4.657-6.08 8-11.303 8-6.627 0-12-5.373-12-12s5.373-12 12-12c3.059 0 5.842 1.154 7.961 3.039l5.657-5.657C34.046 6.053 29.268 4 24 4 12.955 4 4 12.955 4 24s8.955 20 20 20 20-8.955 20-20c0-1.341-.138-2.65-.389-3.917z"/>
+              <path fill="#FF3D00" d="m6.306 14.691 6.571 4.819C14.655 15.108 18.961 12 24 12c3.059 0 5.842 1.154 7.961 3.039l5.657-5.657C34.046 6.053 29.268 4 24 4 16.318 4 9.656 8.337 6.306 14.691z"/>
+              <path fill="#4CAF50" d="M24 44c5.166 0 9.86-1.977 13.409-5.192l-6.19-5.238C29.211 35.091 26.715 36 24 36c-5.202 0-9.619-3.317-11.283-7.946l-6.522 5.025C9.505 39.556 16.227 44 24 44z"/>
+              <path fill="#1976D2" d="M43.611 20.083H42V20H24v8h11.303a12.04 12.04 0 0 1-4.087 5.571l6.19 5.238C36.971 39.205 44 34 44 24c0-1.341-.138-2.65-.389-3.917z"/>
+            </svg>
+              <span class="rcard__ok mono">Verified</span>
+            </div>
+          </footer>
+        </article>
+        <article class="rcard">
+          <p class="rcard__q">10/10 experience with Nick today. Loved how smooth and easy the process was. He made me feel really comfortable and the place was super clean. Line work is amazing!</p>
+          <footer class="rcard__foot">
+            <div class="rcard__who">
+              <span class="rcard__name">Jamie B.</span>
+            </div>
+            <div class="rcard__src" title="Verified Google review">
+              <svg class="rcard__g" viewBox="0 0 48 48" aria-hidden="true">
+              <path fill="#FFC107" d="M43.611 20.083H42V20H24v8h11.303c-1.649 4.657-6.08 8-11.303 8-6.627 0-12-5.373-12-12s5.373-12 12-12c3.059 0 5.842 1.154 7.961 3.039l5.657-5.657C34.046 6.053 29.268 4 24 4 12.955 4 4 12.955 4 24s8.955 20 20 20 20-8.955 20-20c0-1.341-.138-2.65-.389-3.917z"/>
+              <path fill="#FF3D00" d="m6.306 14.691 6.571 4.819C14.655 15.108 18.961 12 24 12c3.059 0 5.842 1.154 7.961 3.039l5.657-5.657C34.046 6.053 29.268 4 24 4 16.318 4 9.656 8.337 6.306 14.691z"/>
+              <path fill="#4CAF50" d="M24 44c5.166 0 9.86-1.977 13.409-5.192l-6.19-5.238C29.211 35.091 26.715 36 24 36c-5.202 0-9.619-3.317-11.283-7.946l-6.522 5.025C9.505 39.556 16.227 44 24 44z"/>
+              <path fill="#1976D2" d="M43.611 20.083H42V20H24v8h11.303a12.04 12.04 0 0 1-4.087 5.571l6.19 5.238C36.971 39.205 44 34 44 24c0-1.341-.138-2.65-.389-3.917z"/>
+            </svg>
+              <span class="rcard__ok mono">Verified</span>
+            </div>
+          </footer>
+        </article>
+        <article class="rcard">
+          <p class="rcard__q">Nick did my first tattoo and it came out exactly how I imagined it. The whole process felt seamless and easy&hellip; I&rsquo;m beyond happy with it and will definitely be going back.</p>
+          <footer class="rcard__foot">
+            <div class="rcard__who">
+              <span class="rcard__name">Gabrielle N.</span>
+            </div>
+            <div class="rcard__src" title="Verified Google review">
+              <svg class="rcard__g" viewBox="0 0 48 48" aria-hidden="true">
+              <path fill="#FFC107" d="M43.611 20.083H42V20H24v8h11.303c-1.649 4.657-6.08 8-11.303 8-6.627 0-12-5.373-12-12s5.373-12 12-12c3.059 0 5.842 1.154 7.961 3.039l5.657-5.657C34.046 6.053 29.268 4 24 4 12.955 4 4 12.955 4 24s8.955 20 20 20 20-8.955 20-20c0-1.341-.138-2.65-.389-3.917z"/>
+              <path fill="#FF3D00" d="m6.306 14.691 6.571 4.819C14.655 15.108 18.961 12 24 12c3.059 0 5.842 1.154 7.961 3.039l5.657-5.657C34.046 6.053 29.268 4 24 4 16.318 4 9.656 8.337 6.306 14.691z"/>
+              <path fill="#4CAF50" d="M24 44c5.166 0 9.86-1.977 13.409-5.192l-6.19-5.238C29.211 35.091 26.715 36 24 36c-5.202 0-9.619-3.317-11.283-7.946l-6.522 5.025C9.505 39.556 16.227 44 24 44z"/>
+              <path fill="#1976D2" d="M43.611 20.083H42V20H24v8h11.303a12.04 12.04 0 0 1-4.087 5.571l6.19 5.238C36.971 39.205 44 34 44 24c0-1.341-.138-2.65-.389-3.917z"/>
+            </svg>
+              <span class="rcard__ok mono">Verified</span>
+            </div>
+          </footer>
+        </article>
+        <article class="rcard">
+          <p class="rcard__q">Nicholas made me feel welcomed and comfortable. Did not rush the tattoo, and very attentive to details. I highly recommend Nick Tyler Tattoo.</p>
+          <footer class="rcard__foot">
+            <div class="rcard__who">
+              <span class="rcard__name">Edward A.</span>
+            </div>
+            <div class="rcard__src" title="Verified Google review">
+              <svg class="rcard__g" viewBox="0 0 48 48" aria-hidden="true">
+              <path fill="#FFC107" d="M43.611 20.083H42V20H24v8h11.303c-1.649 4.657-6.08 8-11.303 8-6.627 0-12-5.373-12-12s5.373-12 12-12c3.059 0 5.842 1.154 7.961 3.039l5.657-5.657C34.046 6.053 29.268 4 24 4 12.955 4 4 12.955 4 24s8.955 20 20 20 20-8.955 20-20c0-1.341-.138-2.65-.389-3.917z"/>
+              <path fill="#FF3D00" d="m6.306 14.691 6.571 4.819C14.655 15.108 18.961 12 24 12c3.059 0 5.842 1.154 7.961 3.039l5.657-5.657C34.046 6.053 29.268 4 24 4 16.318 4 9.656 8.337 6.306 14.691z"/>
+              <path fill="#4CAF50" d="M24 44c5.166 0 9.86-1.977 13.409-5.192l-6.19-5.238C29.211 35.091 26.715 36 24 36c-5.202 0-9.619-3.317-11.283-7.946l-6.522 5.025C9.505 39.556 16.227 44 24 44z"/>
+              <path fill="#1976D2" d="M43.611 20.083H42V20H24v8h11.303a12.04 12.04 0 0 1-4.087 5.571l6.19 5.238C36.971 39.205 44 34 44 24c0-1.341-.138-2.65-.389-3.917z"/>
+            </svg>
+              <span class="rcard__ok mono">Verified</span>
+            </div>
+          </footer>
+        </article>
+        <article class="rcard">
+          <p class="rcard__q">It&rsquo;s clear that Nick takes pride in his work and genuinely cares about giving his clients a great experience. Already booking for the next piece!</p>
+          <footer class="rcard__foot">
+            <div class="rcard__who">
+              <span class="rcard__name">Cristian S.</span>
+            </div>
+            <div class="rcard__src" title="Verified Google review">
+              <svg class="rcard__g" viewBox="0 0 48 48" aria-hidden="true">
+              <path fill="#FFC107" d="M43.611 20.083H42V20H24v8h11.303c-1.649 4.657-6.08 8-11.303 8-6.627 0-12-5.373-12-12s5.373-12 12-12c3.059 0 5.842 1.154 7.961 3.039l5.657-5.657C34.046 6.053 29.268 4 24 4 12.955 4 4 12.955 4 24s8.955 20 20 20 20-8.955 20-20c0-1.341-.138-2.65-.389-3.917z"/>
+              <path fill="#FF3D00" d="m6.306 14.691 6.571 4.819C14.655 15.108 18.961 12 24 12c3.059 0 5.842 1.154 7.961 3.039l5.657-5.657C34.046 6.053 29.268 4 24 4 16.318 4 9.656 8.337 6.306 14.691z"/>
+              <path fill="#4CAF50" d="M24 44c5.166 0 9.86-1.977 13.409-5.192l-6.19-5.238C29.211 35.091 26.715 36 24 36c-5.202 0-9.619-3.317-11.283-7.946l-6.522 5.025C9.505 39.556 16.227 44 24 44z"/>
+              <path fill="#1976D2" d="M43.611 20.083H42V20H24v8h11.303a12.04 12.04 0 0 1-4.087 5.571l6.19 5.238C36.971 39.205 44 34 44 24c0-1.341-.138-2.65-.389-3.917z"/>
+            </svg>
+              <span class="rcard__ok mono">Verified</span>
+            </div>
+          </footer>
+        </article>
+        <article class="rcard">
+          <p class="rcard__q">Super responsive with all questions and very helpful. Works quickly while still having amazing end results! Genuinely such a great experience!</p>
+          <footer class="rcard__foot">
+            <div class="rcard__who">
+              <span class="rcard__name">Remmy B.</span>
+            </div>
+            <div class="rcard__src" title="Verified Google review">
+              <svg class="rcard__g" viewBox="0 0 48 48" aria-hidden="true">
+              <path fill="#FFC107" d="M43.611 20.083H42V20H24v8h11.303c-1.649 4.657-6.08 8-11.303 8-6.627 0-12-5.373-12-12s5.373-12 12-12c3.059 0 5.842 1.154 7.961 3.039l5.657-5.657C34.046 6.053 29.268 4 24 4 12.955 4 4 12.955 4 24s8.955 20 20 20 20-8.955 20-20c0-1.341-.138-2.65-.389-3.917z"/>
+              <path fill="#FF3D00" d="m6.306 14.691 6.571 4.819C14.655 15.108 18.961 12 24 12c3.059 0 5.842 1.154 7.961 3.039l5.657-5.657C34.046 6.053 29.268 4 24 4 16.318 4 9.656 8.337 6.306 14.691z"/>
+              <path fill="#4CAF50" d="M24 44c5.166 0 9.86-1.977 13.409-5.192l-6.19-5.238C29.211 35.091 26.715 36 24 36c-5.202 0-9.619-3.317-11.283-7.946l-6.522 5.025C9.505 39.556 16.227 44 24 44z"/>
+              <path fill="#1976D2" d="M43.611 20.083H42V20H24v8h11.303a12.04 12.04 0 0 1-4.087 5.571l6.19 5.238C36.971 39.205 44 34 44 24c0-1.341-.138-2.65-.389-3.917z"/>
+            </svg>
+              <span class="rcard__ok mono">Verified</span>
+            </div>
+          </footer>
+        </article>
+        <article class="rcard" aria-hidden="true">
+          <p class="rcard__q">Nick is fantastic! Super talented, with such a clean and professional space. He&rsquo;ll check in as he&rsquo;s working to make sure the pain isn&rsquo;t too much, showing his consideration. His booking is SO easy and the aftercare instructions are great. 10/10 experience!!!</p>
+          <footer class="rcard__foot">
+            <div class="rcard__who">
+              <span class="rcard__name">Kristin N.</span>
+            </div>
+            <div class="rcard__src" title="Verified Google review">
+              <svg class="rcard__g" viewBox="0 0 48 48" aria-hidden="true">
+              <path fill="#FFC107" d="M43.611 20.083H42V20H24v8h11.303c-1.649 4.657-6.08 8-11.303 8-6.627 0-12-5.373-12-12s5.373-12 12-12c3.059 0 5.842 1.154 7.961 3.039l5.657-5.657C34.046 6.053 29.268 4 24 4 12.955 4 4 12.955 4 24s8.955 20 20 20 20-8.955 20-20c0-1.341-.138-2.65-.389-3.917z"/>
+              <path fill="#FF3D00" d="m6.306 14.691 6.571 4.819C14.655 15.108 18.961 12 24 12c3.059 0 5.842 1.154 7.961 3.039l5.657-5.657C34.046 6.053 29.268 4 24 4 16.318 4 9.656 8.337 6.306 14.691z"/>
+              <path fill="#4CAF50" d="M24 44c5.166 0 9.86-1.977 13.409-5.192l-6.19-5.238C29.211 35.091 26.715 36 24 36c-5.202 0-9.619-3.317-11.283-7.946l-6.522 5.025C9.505 39.556 16.227 44 24 44z"/>
+              <path fill="#1976D2" d="M43.611 20.083H42V20H24v8h11.303a12.04 12.04 0 0 1-4.087 5.571l6.19 5.238C36.971 39.205 44 34 44 24c0-1.341-.138-2.65-.389-3.917z"/>
+            </svg>
+              <span class="rcard__ok mono">Verified</span>
+            </div>
+          </footer>
+        </article>
+        <article class="rcard" aria-hidden="true">
+          <p class="rcard__q">10/10 experience with Nick today. Loved how smooth and easy the process was. He made me feel really comfortable and the place was super clean. Line work is amazing!</p>
+          <footer class="rcard__foot">
+            <div class="rcard__who">
+              <span class="rcard__name">Jamie B.</span>
+            </div>
+            <div class="rcard__src" title="Verified Google review">
+              <svg class="rcard__g" viewBox="0 0 48 48" aria-hidden="true">
+              <path fill="#FFC107" d="M43.611 20.083H42V20H24v8h11.303c-1.649 4.657-6.08 8-11.303 8-6.627 0-12-5.373-12-12s5.373-12 12-12c3.059 0 5.842 1.154 7.961 3.039l5.657-5.657C34.046 6.053 29.268 4 24 4 12.955 4 4 12.955 4 24s8.955 20 20 20 20-8.955 20-20c0-1.341-.138-2.65-.389-3.917z"/>
+              <path fill="#FF3D00" d="m6.306 14.691 6.571 4.819C14.655 15.108 18.961 12 24 12c3.059 0 5.842 1.154 7.961 3.039l5.657-5.657C34.046 6.053 29.268 4 24 4 16.318 4 9.656 8.337 6.306 14.691z"/>
+              <path fill="#4CAF50" d="M24 44c5.166 0 9.86-1.977 13.409-5.192l-6.19-5.238C29.211 35.091 26.715 36 24 36c-5.202 0-9.619-3.317-11.283-7.946l-6.522 5.025C9.505 39.556 16.227 44 24 44z"/>
+              <path fill="#1976D2" d="M43.611 20.083H42V20H24v8h11.303a12.04 12.04 0 0 1-4.087 5.571l6.19 5.238C36.971 39.205 44 34 44 24c0-1.341-.138-2.65-.389-3.917z"/>
+            </svg>
+              <span class="rcard__ok mono">Verified</span>
+            </div>
+          </footer>
+        </article>
+        <article class="rcard" aria-hidden="true">
+          <p class="rcard__q">Nick did my first tattoo and it came out exactly how I imagined it. The whole process felt seamless and easy&hellip; I&rsquo;m beyond happy with it and will definitely be going back.</p>
+          <footer class="rcard__foot">
+            <div class="rcard__who">
+              <span class="rcard__name">Gabrielle N.</span>
+            </div>
+            <div class="rcard__src" title="Verified Google review">
+              <svg class="rcard__g" viewBox="0 0 48 48" aria-hidden="true">
+              <path fill="#FFC107" d="M43.611 20.083H42V20H24v8h11.303c-1.649 4.657-6.08 8-11.303 8-6.627 0-12-5.373-12-12s5.373-12 12-12c3.059 0 5.842 1.154 7.961 3.039l5.657-5.657C34.046 6.053 29.268 4 24 4 12.955 4 4 12.955 4 24s8.955 20 20 20 20-8.955 20-20c0-1.341-.138-2.65-.389-3.917z"/>
+              <path fill="#FF3D00" d="m6.306 14.691 6.571 4.819C14.655 15.108 18.961 12 24 12c3.059 0 5.842 1.154 7.961 3.039l5.657-5.657C34.046 6.053 29.268 4 24 4 16.318 4 9.656 8.337 6.306 14.691z"/>
+              <path fill="#4CAF50" d="M24 44c5.166 0 9.86-1.977 13.409-5.192l-6.19-5.238C29.211 35.091 26.715 36 24 36c-5.202 0-9.619-3.317-11.283-7.946l-6.522 5.025C9.505 39.556 16.227 44 24 44z"/>
+              <path fill="#1976D2" d="M43.611 20.083H42V20H24v8h11.303a12.04 12.04 0 0 1-4.087 5.571l6.19 5.238C36.971 39.205 44 34 44 24c0-1.341-.138-2.65-.389-3.917z"/>
+            </svg>
+              <span class="rcard__ok mono">Verified</span>
+            </div>
+          </footer>
+        </article>
+        <article class="rcard" aria-hidden="true">
+          <p class="rcard__q">Nicholas made me feel welcomed and comfortable. Did not rush the tattoo, and very attentive to details. I highly recommend Nick Tyler Tattoo.</p>
+          <footer class="rcard__foot">
+            <div class="rcard__who">
+              <span class="rcard__name">Edward A.</span>
+            </div>
+            <div class="rcard__src" title="Verified Google review">
+              <svg class="rcard__g" viewBox="0 0 48 48" aria-hidden="true">
+              <path fill="#FFC107" d="M43.611 20.083H42V20H24v8h11.303c-1.649 4.657-6.08 8-11.303 8-6.627 0-12-5.373-12-12s5.373-12 12-12c3.059 0 5.842 1.154 7.961 3.039l5.657-5.657C34.046 6.053 29.268 4 24 4 12.955 4 4 12.955 4 24s8.955 20 20 20 20-8.955 20-20c0-1.341-.138-2.65-.389-3.917z"/>
+              <path fill="#FF3D00" d="m6.306 14.691 6.571 4.819C14.655 15.108 18.961 12 24 12c3.059 0 5.842 1.154 7.961 3.039l5.657-5.657C34.046 6.053 29.268 4 24 4 16.318 4 9.656 8.337 6.306 14.691z"/>
+              <path fill="#4CAF50" d="M24 44c5.166 0 9.86-1.977 13.409-5.192l-6.19-5.238C29.211 35.091 26.715 36 24 36c-5.202 0-9.619-3.317-11.283-7.946l-6.522 5.025C9.505 39.556 16.227 44 24 44z"/>
+              <path fill="#1976D2" d="M43.611 20.083H42V20H24v8h11.303a12.04 12.04 0 0 1-4.087 5.571l6.19 5.238C36.971 39.205 44 34 44 24c0-1.341-.138-2.65-.389-3.917z"/>
+            </svg>
+              <span class="rcard__ok mono">Verified</span>
+            </div>
+          </footer>
+        </article>
+        <article class="rcard" aria-hidden="true">
+          <p class="rcard__q">It&rsquo;s clear that Nick takes pride in his work and genuinely cares about giving his clients a great experience. Already booking for the next piece!</p>
+          <footer class="rcard__foot">
+            <div class="rcard__who">
+              <span class="rcard__name">Cristian S.</span>
+            </div>
+            <div class="rcard__src" title="Verified Google review">
+              <svg class="rcard__g" viewBox="0 0 48 48" aria-hidden="true">
+              <path fill="#FFC107" d="M43.611 20.083H42V20H24v8h11.303c-1.649 4.657-6.08 8-11.303 8-6.627 0-12-5.373-12-12s5.373-12 12-12c3.059 0 5.842 1.154 7.961 3.039l5.657-5.657C34.046 6.053 29.268 4 24 4 12.955 4 4 12.955 4 24s8.955 20 20 20 20-8.955 20-20c0-1.341-.138-2.65-.389-3.917z"/>
+              <path fill="#FF3D00" d="m6.306 14.691 6.571 4.819C14.655 15.108 18.961 12 24 12c3.059 0 5.842 1.154 7.961 3.039l5.657-5.657C34.046 6.053 29.268 4 24 4 16.318 4 9.656 8.337 6.306 14.691z"/>
+              <path fill="#4CAF50" d="M24 44c5.166 0 9.86-1.977 13.409-5.192l-6.19-5.238C29.211 35.091 26.715 36 24 36c-5.202 0-9.619-3.317-11.283-7.946l-6.522 5.025C9.505 39.556 16.227 44 24 44z"/>
+              <path fill="#1976D2" d="M43.611 20.083H42V20H24v8h11.303a12.04 12.04 0 0 1-4.087 5.571l6.19 5.238C36.971 39.205 44 34 44 24c0-1.341-.138-2.65-.389-3.917z"/>
+            </svg>
+              <span class="rcard__ok mono">Verified</span>
+            </div>
+          </footer>
+        </article>
+        <article class="rcard" aria-hidden="true">
+          <p class="rcard__q">Super responsive with all questions and very helpful. Works quickly while still having amazing end results! Genuinely such a great experience!</p>
+          <footer class="rcard__foot">
+            <div class="rcard__who">
+              <span class="rcard__name">Remmy B.</span>
+            </div>
+            <div class="rcard__src" title="Verified Google review">
+              <svg class="rcard__g" viewBox="0 0 48 48" aria-hidden="true">
+              <path fill="#FFC107" d="M43.611 20.083H42V20H24v8h11.303c-1.649 4.657-6.08 8-11.303 8-6.627 0-12-5.373-12-12s5.373-12 12-12c3.059 0 5.842 1.154 7.961 3.039l5.657-5.657C34.046 6.053 29.268 4 24 4 12.955 4 4 12.955 4 24s8.955 20 20 20 20-8.955 20-20c0-1.341-.138-2.65-.389-3.917z"/>
+              <path fill="#FF3D00" d="m6.306 14.691 6.571 4.819C14.655 15.108 18.961 12 24 12c3.059 0 5.842 1.154 7.961 3.039l5.657-5.657C34.046 6.053 29.268 4 24 4 16.318 4 9.656 8.337 6.306 14.691z"/>
+              <path fill="#4CAF50" d="M24 44c5.166 0 9.86-1.977 13.409-5.192l-6.19-5.238C29.211 35.091 26.715 36 24 36c-5.202 0-9.619-3.317-11.283-7.946l-6.522 5.025C9.505 39.556 16.227 44 24 44z"/>
+              <path fill="#1976D2" d="M43.611 20.083H42V20H24v8h11.303a12.04 12.04 0 0 1-4.087 5.571l6.19 5.238C36.971 39.205 44 34 44 24c0-1.341-.138-2.65-.389-3.917z"/>
+            </svg>
+              <span class="rcard__ok mono">Verified</span>
+            </div>
+          </footer>
+        </article>
+        </div>
+      </div>
 
       <a class="allrev" href="https://www.google.com/search?q=Nick+Tyler+Tattoo+Selden+NY+reviews" target="_blank" rel="noopener">
         <span class="allrev__txt">Read all 116 on Google</span>
