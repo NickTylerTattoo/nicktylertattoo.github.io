@@ -327,14 +327,14 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 /* Explicit placement, because the spec rail is after the bio in source order
    (see the note in index.html) but belongs in the left rail on a wide screen. */
 @media(min-width:901px){
-  .spec{grid-column:1;grid-row:1}
+  .styles{grid-column:1;grid-row:1}
   .studio__body{grid-column:2;grid-row:1}
 }
 /* stacked, the rail would otherwise run the full 1200px and strand its values
    against a lot of empty right-hand space */
 @media(max-width:900px){
   .studio__grid{grid-template-columns:1fr}
-  .spec{max-width:560px}
+  .styles{max-width:560px}
 }
 
 /* Meet your artist as an Instagram profile header: avatar, handle, the three
@@ -550,20 +550,21 @@ body.still .ig__piclink::before{animation:none}
 body.still .award::after,body.still .revscroll__track{animation:none}
 body.still .rate__stars i{opacity:1;transform:none;animation:none}
 
-/* spec rail: the hard facts as a ledger, mono key against a bone value. Puts
-   rate and booking terms where someone deciding actually looks, instead of
-   only in the footer. */
-.spec{border-top:1px solid var(--line)}
-.spec__row{
-  display:grid;grid-template-columns:78px minmax(0,1fr);
-  gap:6px 16px;align-items:baseline;
-  padding:12px 0;border-bottom:1px solid var(--line);
+/* Styles, as a set of tags rather than the key/value ledger that was here.
+   A ledger is for facts that pair with a label; these are one list of six
+   equal things, so they get equal weight and wrap as a group. Pill outlines
+   rather than the hairline rows, because a row per style would run the rail
+   twice as long for half the information. */
+.styles{border-top:1px solid var(--line);padding-top:clamp(15px,1.9vw,19px)}
+.styles__k{color:var(--champ);font-size:10px;letter-spacing:.1em;text-transform:uppercase;margin-bottom:13px}
+.styles__list{list-style:none;display:flex;flex-wrap:wrap;gap:8px}
+.styles__list li{
+  font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--bone-dim);padding:.66em .92em;
+  border:1px solid var(--line);border-radius:999px;
+  transition:border-color .4s var(--ease),color .4s var(--ease);
 }
-.spec__k{color:var(--champ);font-size:10px;letter-spacing:.1em}
-.spec__v{color:var(--bone-dim);font-size:14px;line-height:1.5}
-/* keep the two columns down to phone width — the values all clear 250px */
-@media(max-width:640px){.spec__row{grid-template-columns:68px minmax(0,1fr);gap:6px 12px}}
-@media(max-width:340px){.spec__row{grid-template-columns:1fr;gap:4px}}
+.styles__list li:hover{border-color:var(--champ);color:var(--bone)}
 
 .bio__p{color:var(--bone-dim);font-size:clamp(15px,1.55vw,17px);line-height:1.78;max-width:62ch}
 .bio__p + .bio__p{margin-top:17px}
