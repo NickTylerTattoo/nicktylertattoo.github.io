@@ -473,7 +473,9 @@ function liveWall(){
 
 /* composer */
 function composer(){
-  const form = $('#composer'), text = $('#msgText'), from = $('#msgFrom'),
+  const form = $('#composer');
+  if (!form) return;   // messages are added on the Instagram post now, curated onto the wall by hand
+  const text = $('#msgText'), from = $('#msgFrom'),
         count = $('#msgCount'), err = $('#msgErr'), send = $('#msgSend');
   text.addEventListener('input', () => count.textContent = text.value.length);
   const fail = msg => {
