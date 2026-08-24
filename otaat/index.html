@@ -272,23 +272,24 @@
           <h3 class="artists-title">Give an hour.<br>Change a story.</h3>
           <p class="slead">OTAAT is bigger than one studio. Artists in other cities are joining in. If you're a licensed artist who wants to donate time at a future event, in Selden or your own city, put your name down.</p>
         </div>
-        <form class="aform" id="aform">
-          <div class="aform__row">
-            <label class="field"><span>Name *</span><input id="aName" type="text" maxlength="80" required autocomplete="name"></label>
-            <label class="field"><span>Email *</span><input id="aEmail" type="email" maxlength="120" required autocomplete="email"></label>
-          </div>
-          <div class="aform__row">
-            <label class="field"><span>Instagram</span><input id="aIg" type="text" maxlength="60" placeholder="@handle"></label>
-            <label class="field"><span>Studio</span><input id="aStudio" type="text" maxlength="80"></label>
-          </div>
-          <label class="field"><span>City / State</span><input id="aLoc" type="text" maxlength="80" placeholder="Selden, NY"></label>
-          <button class="btn btn--solid btn--full" type="submit" data-cursor="view">Count me in</button>
-          <div class="composer__err mono" id="aErr" role="alert" hidden></div>
-          <div class="aform__ok" id="aOk" role="status" tabindex="-1" hidden>
-            <b>You're on the list.</b>
-            <p>Nick will reach out before the next event. Thank you for giving your needle to this.</p>
-          </div>
-        </form>
+        <div class="aform" id="aform">
+          <iframe
+            src="https://link.inkedin.tools/widget/form/gx3VnwxXp6ZQAenquBms"
+            style="width:100%;height:100%;border:none;border-radius:3px"
+            id="inline-gx3VnwxXp6ZQAenquBms"
+            data-layout="{'id':'INLINE'}"
+            data-trigger-type="alwaysShow"
+            data-trigger-value=""
+            data-activation-type="alwaysActivated"
+            data-activation-value=""
+            data-deactivation-type="neverDeactivate"
+            data-deactivation-value=""
+            data-form-name="#OTAAT Participating Artist Form"
+            data-height="724"
+            data-layout-iframe-id="inline-gx3VnwxXp6ZQAenquBms"
+            data-form-id="gx3VnwxXp6ZQAenquBms"
+            title="#OTAAT Participating Artist Form"></iframe>
+        </div>
       </div>
     </section>
 
@@ -346,6 +347,32 @@
 
   <div class="srlive" id="srlive" aria-live="polite"></div>
 
-  <script src="js/app.js?v=4"></script>
+  <script>
+  /* GHL form embed: own the reveal instead of trusting form_embed.js.
+     The stock script attaches its listener after a cached iframe has already
+     posted its size, so the reveal never fires and the form stays
+     visibility:hidden at left:-9999px — an invisible form. Same fix as
+     /custom/ (2026-07-31) and /events/ (7/21). */
+  (function(){
+    var ID = 'inline-gx3VnwxXp6ZQAenquBms';
+    function show(h){
+      var f = document.getElementById(ID);
+      if (f) f.style.cssText = 'display:block;width:100%;border:0;border-radius:2px;height:' + h + 'px';
+    }
+    window.addEventListener('message', function(ev){
+      if (typeof ev.data === 'string' && ev.data.indexOf('[iFrameSizer]' + ID + ':') === 0){
+        var h = parseInt(ev.data.split(':')[1], 10);
+        if (h > 200) show(h);
+      }
+    });
+    /* last-resort fixed height if no size message ever arrives */
+    setTimeout(function(){
+      var f = document.getElementById(ID);
+      if (f && getComputedStyle(f).visibility === 'hidden') show(724);
+    }, 4000);
+  })();
+  </script>
+  <script src="https://link.inkedin.tools/js/form_embed.js"></script>
+  <script src="js/app.js?v=5"></script>
 </body>
 </html>

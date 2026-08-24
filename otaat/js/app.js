@@ -895,7 +895,10 @@ function init(){
   splitWordmark();
   cursor(); constellation(); emblem(); typewriter(); marquee(); nav();
   stencil(); stats(); reveals();
-  collection(); artists(); atlas();
+  collection(); atlas();
+  // artists() retired 2026-08-24 — the sign-up is a GHL form embed now
+  // (#OTAAT Participating Artist Form), revealed by the inline listener in
+  // index.html; submissions flow into GHL, not /api/artists.
   // The wall was retired 2026-08-24 — the comments live in static markup in
   // 003 · The Post now, so composer/lights/loadWall/liveWall are never called.
   // ?peek=<y> — shift the page up by <y> px after content is built.
