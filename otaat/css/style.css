@@ -380,6 +380,5 @@ body.still #pulsePath{stroke-dashoffset:0!important}
 /* Specimen box holds its height across the type/delete cycle so the CTAs
    below never shift; emblem dimmed so the hero text reads over it. */
 .hero-type{min-height:2.78em}
-#typeOut{outline:none}
-.hero-type.user .caret{display:none}
 .emblem{opacity:.45}
+#stencil{scroll-margin-top:90px}
