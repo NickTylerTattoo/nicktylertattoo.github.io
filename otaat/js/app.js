@@ -901,15 +901,15 @@ function init(){
   splitWordmark();
   cursor(); constellation(); emblem(); typewriter(); marquee(); nav();
   stencil(); stats(); reveals();
-  collection(); composer(); lights(); artists(); atlas();
-  loadWall().then(liveWall).then(() => {
-    // ?peek=<y> — shift the page up by <y> px after content is built.
-    // Uses a transform (not scroll) so headless screenshot tools rasterize it.
-    if (params.has('peek')){
-      document.documentElement.style.background = '#0A0A0B';
-      document.body.style.transform = `translateY(-${+params.get('peek') || 0}px)`;
-    }
-  });
+  collection(); artists(); atlas();
+  // The wall was retired 2026-08-24 — the comments live in static markup in
+  // 003 · The Post now, so composer/lights/loadWall/liveWall are never called.
+  // ?peek=<y> — shift the page up by <y> px after content is built.
+  // Uses a transform (not scroll) so headless screenshot tools rasterize it.
+  if (params.has('peek')){
+    document.documentElement.style.background = '#0A0A0B';
+    document.body.style.transform = `translateY(-${+params.get('peek') || 0}px)`;
+  }
   const heroEl = $('#hero');
   if (heroEl && 'IntersectionObserver' in window && !STILL){
     new IntersectionObserver(es => { heroVisible = es[0].isIntersecting; }, {threshold:0}).observe(heroEl);
