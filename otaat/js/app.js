@@ -53,13 +53,7 @@ const COLLECTION = [
   ['2,590', 'Counted in days', 'assets/collection/otaat-03.jpg'],
   ['03.05.2024', 'One date, carried together', 'assets/collection/otaat-04.jpg'],
   ['03.05.2024', 'One date, carried together', 'assets/collection/otaat-05.jpg'],
-  ['09.20', 'Marked 6.29.26', 'assets/collection/otaat-06.jpg'],
-  ['24 HOURS', 'Day one', null],
-  ['10 YEARS', 'Sobriety milestone', null],
-  ['11.09.18', 'In remembrance', null],
-  ['365 DAYS', 'One year clean', null],
-  ['18 MONTHS', 'Milestone', null],
-  ['1 DAY', 'Day one', null]
+  ['09.20', 'Marked 6.29.26', 'assets/collection/otaat-06.jpg']
 ];
 
 /* ---------- Participating artists — the world map ----------
