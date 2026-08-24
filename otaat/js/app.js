@@ -243,9 +243,29 @@ function emblem(){
 const PHRASES = ['24 HOURS','03.22.2026','1 DAY','10 YEARS','5,475 DAYS','365 DAYS'];
 function typewriter(){
   const out = $('#typeOut');
+  const box = $('#typewriter');
+  let userMode = false;
+  /* "Try your own" hands the specimen to the visitor: the loop stops and the
+     span becomes editable so their number renders in the same style. Wired
+     before the STILL bail so it works under reduce-motion too. */
+  const btn = $('#tryOwn');
+  if (btn) btn.addEventListener('click', e => {
+    e.preventDefault();
+    userMode = true;
+    box.classList.add('user');
+    box.removeAttribute('aria-hidden');
+    out.setAttribute('contenteditable', 'true');
+    out.setAttribute('spellcheck', 'false');
+    out.setAttribute('role', 'textbox');
+    out.setAttribute('aria-label', 'Type your number to see it in the tattoo style');
+    out.textContent = '';
+    box.scrollIntoView({behavior: STILL ? 'auto' : 'smooth', block: 'center'});
+    out.focus();
+  });
   if (STILL){ out.textContent = PHRASES[0]; return; }
   let pi = 0, ci = 0, deleting = false;
   function step(){
+    if (userMode) return;
     const phrase = PHRASES[pi];
     if (!deleting){
       ci++;
