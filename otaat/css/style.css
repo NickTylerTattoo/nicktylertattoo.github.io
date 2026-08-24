@@ -406,3 +406,6 @@ body.still #pulsePath{stroke-dashoffset:0!important}
   .post-grid{grid-template-columns:1fr}
   .postcard{max-width:460px;margin:0 auto;transform:rotate(-1deg)}
 }
+/* The specimen reserves the full 10-character slot up front, so the box is
+   born at final size and never resizes while phrases type and delete. */
+.hero-type__slot{display:inline-block;min-width:12ch;text-align:left;white-space:nowrap}
