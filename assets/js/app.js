@@ -476,14 +476,20 @@ function processTimeline(){
   }
 }
 
-/* ---------- Mobile CTA bar: appears once the hero is scrolled past ---------- */
+/* ---------- Mobile CTA bar: appears once the hero is scrolled past, and
+   stands down again while the form itself is on screen — no point pointing
+   at something the visitor is already looking at ---------- */
 function mobilebarReveal(){
   const bar = $('#mobilebar'), hero = $('.chero');
   if (!bar || !hero || !bar.classList.contains('mobilebar--scroll')) return;
   if (STILL) return;
-  new IntersectionObserver(es => {
-    bar.classList.toggle('is-up', !es[0].isIntersecting);
-  }, {rootMargin:'-56px 0px 0px 0px'}).observe(hero);
+  let pastHero = false, formOn = false;
+  const apply = () => bar.classList.toggle('is-up', pastHero && !formOn);
+  new IntersectionObserver(es => { pastHero = !es[0].isIntersecting; apply(); },
+    {rootMargin:'-56px 0px 0px 0px'}).observe(hero);
+  const form = $('#custom');
+  if (form) new IntersectionObserver(es => { formOn = es[0].isIntersecting; apply(); },
+    {rootMargin:'0px 0px -15% 0px'}).observe(form);
 }
 
 /* ---------- FAQ (three tiles + accordion) ---------- */
