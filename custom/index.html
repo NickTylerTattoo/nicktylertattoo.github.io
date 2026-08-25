@@ -46,22 +46,26 @@
   <main id="top">
 
     <section class="chero" id="intro">
-      <div class="sidx mono">Custom tattoo booking &middot; Selden, NY</div>
-      <h1 class="stitle stitle--hero">Let&rsquo;s design your <span class="ser">custom tattoo</span>.</h1>
-      <p class="slead">Full sleeves or palm-sized pieces. The process is simple and guided, from first idea to finished tattoo.</p>
-      <div class="crate">
-        <span class="crate__num">5.0</span>
-        <span class="crate__stars" role="img" aria-label="Rated 5.0 out of 5">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
-        <span class="crate__say">116 five star reviews on Google</span>
-      </div>
-      <div class="chero-cta">
-        <a href="#custom" class="btn btn--solid" data-cursor="link" data-track="hero_cta">Submit my tattoo idea <span aria-hidden="true">&rarr;</span></a>
-        <a href="#process" class="btn btn--ghost" data-cursor="link" data-track="hero_how">How it works</a>
-      </div>
-      <div class="chero-meta mono">
-        <span><span class="dot"></span>Now booking &middot; 3 to 5 weeks out</span>
-        <span>Custom pieces from $250</span>
-        <span>Replies in 1 to 3 business days</span>
+      <img class="chero__bg" src="/assets/custom-hero.jpg" alt="" aria-hidden="true" fetchpriority="high" decoding="async">
+      <div class="chero__scrim" aria-hidden="true"></div>
+      <div class="chero__in">
+        <div class="sidx mono">Custom tattoo booking &middot; Selden, NY</div>
+        <h1 class="stitle stitle--hero">Let&rsquo;s design your <span class="ser">custom tattoo</span>.</h1>
+        <p class="slead">Full sleeves or palm-sized pieces. The process is simple and guided, from first idea to finished tattoo.</p>
+        <div class="crate">
+          <span class="crate__num">5.0</span>
+          <span class="crate__stars" role="img" aria-label="Rated 5.0 out of 5">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+          <span class="crate__say">116 five star reviews on Google</span>
+        </div>
+        <div class="chero-cta">
+          <a href="#custom" class="btn btn--solid" data-cursor="link" data-track="hero_cta">Request a tattoo <span aria-hidden="true">&rarr;</span></a>
+          <a href="#process" class="btn btn--ghost" data-cursor="link" data-track="hero_how">How it works</a>
+        </div>
+        <div class="chero-meta mono">
+          <span><span class="dot"></span>Now booking &middot; 3 to 5 weeks out</span>
+          <span>Custom pieces from $250</span>
+          <span>Replies in 1 to 3 business days</span>
+        </div>
       </div>
     </section>
 
@@ -86,9 +90,57 @@
       </div>
       <div class="pvideo">
         <div class="pvideo__frame">
-          <video id="processVideo" src="/assets/custom-flow.mp4" poster="/assets/custom-flow-poster.jpg" muted loop playsinline preload="metadata" width="1080" height="1350" aria-label="Walkthrough of the custom request process: submit the form, get approval by text, then book with a private link"></video>
+          <video id="processVideo" src="/assets/custom-flow.mp4" poster="/assets/custom-flow-poster.jpg" muted loop playsinline preload="metadata" width="880" height="1920" aria-label="Walkthrough of the custom request process: submit the form, get approval by text, then book with a private link"></video>
         </div>
-        <button class="btn btn--ghost btn--full pvideo__play" id="processPlay" hidden data-cursor="link">Play the walkthrough</button>
+      </div>
+    </section>
+
+    <section class="cform-sec" id="custom">
+      <div class="sec-head">
+        <div class="sidx mono">Custom request form</div>
+        <h2 class="stitle">Tell me about <span class="ser">your tattoo</span>.</h2>
+        <p class="slead">Every field marked with an asterisk is required. Approval comes by text, so double-check your phone number.</p>
+      </div>
+      <div class="cform-grid">
+        <div class="cform-embed">
+          <iframe
+            src="https://link.inkedin.tools/widget/form/3AkoAcnNx29uAvO2x7n3"
+            style="width:100%;border:0;border-radius:2px;display:block"
+            id="inline-3AkoAcnNx29uAvO2x7n3"
+            data-layout="{'id':'INLINE'}"
+            data-trigger-type="alwaysShow"
+            data-trigger-value=""
+            data-activation-type="alwaysActivated"
+            data-activation-value=""
+            data-deactivation-type="neverDeactivate"
+            data-deactivation-value=""
+            data-form-name=".02 Custom Request Form"
+            data-height="2511"
+            data-layout-iframe-id="inline-3AkoAcnNx29uAvO2x7n3"
+            data-form-id="3AkoAcnNx29uAvO2x7n3"
+            title=".02 Custom Request Form"
+            height="2511"
+            scrolling="no"></iframe>
+        </div>
+        <aside class="cform-aside">
+          <div class="factbar">
+            <div class="fact">
+              <span class="fact__k mono">Now booking</span>
+              <span class="fact__v">3 to 5 weeks out</span>
+              <span class="fact__n">Approved requests are scheduled in the order they come in. Submit early to lock in your preferred timeframe.</span>
+            </div>
+            <div class="fact">
+              <span class="fact__k mono">Investment</span>
+              <span class="fact__v">From $250</span>
+              <span class="fact__n">Ask for a personalized estimate in the form and I&rsquo;ll send one once I&rsquo;ve seen your references.</span>
+            </div>
+          </div>
+          <div class="reassure mono">
+            <span><span class="dot"></span>Most requests get a reply in 1 to 3 business days</span>
+            <span>Submitting a request doesn&rsquo;t guarantee an appointment</span>
+            <span>Approval comes by text, so check your number twice</span>
+          </div>
+        </aside>
       </div>
     </section>
 
@@ -177,61 +229,12 @@
 
     <section class="fromnick" id="note">
       <div class="fromnick__in">
-        <img class="fromnick__pic" src="/assets/artist.jpg" width="150" height="150" alt="Nick Tyler in the studio" loading="lazy" decoding="async">
+        <img class="fromnick__pic" src="/assets/custom-nick.jpg" width="320" height="320" alt="Nick Tyler" loading="lazy" decoding="async">
         <div>
           <div class="sidx mono">From Nick</div>
           <p class="fromnick__txt">Tattoos are permanent, often meaningful, and sometimes expensive. The experience should live up to that. I&rsquo;ve built my booking process and my studio so you&rsquo;ll have the smoothest experience you&rsquo;ve ever had getting a tattoo. Thank you for your trust.</p>
           <span class="fromnick__sig mono">Nick Tyler &middot; @nicktylertattoo</span>
         </div>
-      </div>
-    </section>
-
-    <section class="cform-sec" id="custom">
-      <div class="sec-head">
-        <div class="sidx mono">Custom request form</div>
-        <h2 class="stitle">Tell me about <span class="ser">your tattoo</span>.</h2>
-        <p class="slead">Every field marked with an asterisk is required. Approval comes by text, so double-check your phone number.</p>
-      </div>
-      <div class="cform-grid">
-        <div class="cform-embed">
-          <iframe
-            src="https://link.inkedin.tools/widget/form/3AkoAcnNx29uAvO2x7n3"
-            style="width:100%;border:0;border-radius:2px;display:block"
-            id="inline-3AkoAcnNx29uAvO2x7n3"
-            data-layout="{'id':'INLINE'}"
-            data-trigger-type="alwaysShow"
-            data-trigger-value=""
-            data-activation-type="alwaysActivated"
-            data-activation-value=""
-            data-deactivation-type="neverDeactivate"
-            data-deactivation-value=""
-            data-form-name=".02 Custom Request Form"
-            data-height="2511"
-            data-layout-iframe-id="inline-3AkoAcnNx29uAvO2x7n3"
-            data-form-id="3AkoAcnNx29uAvO2x7n3"
-            title=".02 Custom Request Form"
-            height="2511"
-            scrolling="no"></iframe>
-        </div>
-        <aside class="cform-aside">
-          <div class="factbar">
-            <div class="fact">
-              <span class="fact__k mono">Now booking</span>
-              <span class="fact__v">3 to 5 weeks out</span>
-              <span class="fact__n">Approved requests are scheduled in the order they come in. Submit early to lock in your preferred timeframe.</span>
-            </div>
-            <div class="fact">
-              <span class="fact__k mono">Investment</span>
-              <span class="fact__v">From $250</span>
-              <span class="fact__n">Ask for a personalized estimate in the form and I&rsquo;ll send one once I&rsquo;ve seen your references.</span>
-            </div>
-          </div>
-          <div class="reassure mono">
-            <span><span class="dot"></span>Most requests get a reply in 1 to 3 business days</span>
-            <span>Submitting a request doesn&rsquo;t guarantee an appointment</span>
-            <span>Approval comes by text, so check your number twice</span>
-          </div>
-        </aside>
       </div>
     </section>
 
@@ -267,9 +270,9 @@
     </footer>
   </main>
 
-  <nav class="mobilebar" id="mobilebar" aria-label="Quick actions">
+  <nav class="mobilebar mobilebar--scroll" id="mobilebar" aria-label="Quick actions">
     <a href="/flash/" class="mobilebar__btn mobilebar__btn--ghost" data-cursor="link" data-track="mbar_browse">Browse the Collection</a>
-    <a href="#custom" class="mobilebar__btn mobilebar__btn--solid" data-cursor="link" data-track="mbar_request">Start a request</a>
+    <a href="#custom" class="mobilebar__btn mobilebar__btn--solid" data-cursor="link" data-track="mbar_request">Request a tattoo</a>
   </nav>
 
   <div class="srlive" id="srlive" aria-live="polite"></div>

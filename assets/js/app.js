@@ -458,14 +458,9 @@ function processTimeline(){
   v.addEventListener('timeupdate', paint);
   paint();
   if (STILL) return;
-  const play = $('#processPlay');
   if (matchMedia('(prefers-reduced-motion: reduce)').matches){
-    /* no autoplay: poster + an explicit control (what Nick's desktop shows) */
-    play.hidden = false;
-    play.addEventListener('click', () => {
-      if (v.paused){ v.play(); play.textContent = 'Pause'; }
-      else { v.pause(); play.textContent = 'Play the walkthrough'; }
-    });
+    /* no autoplay: poster + the platform's own controls, no custom button */
+    v.controls = true;
   } else {
     /* plays only while on screen, same gating idea as the hero canvases */
     new IntersectionObserver(es => {
@@ -473,6 +468,16 @@ function processTimeline(){
       else v.pause();
     }, {threshold:.25}).observe(v);
   }
+}
+
+/* ---------- Mobile CTA bar: appears once the hero is scrolled past ---------- */
+function mobilebarReveal(){
+  const bar = $('#mobilebar'), hero = $('.chero');
+  if (!bar || !hero || !bar.classList.contains('mobilebar--scroll')) return;
+  if (STILL) return;
+  new IntersectionObserver(es => {
+    bar.classList.toggle('is-up', !es[0].isIntersecting);
+  }, {rootMargin:'-56px 0px 0px 0px'}).observe(hero);
 }
 
 /* ---------- FAQ (three tiles + accordion) ---------- */
@@ -563,6 +568,7 @@ function init(){
   need('#booking', booking);
   need('#faqList', faq);
   need(['#processVideo','#ptlFill'], processTimeline);
+  need('#mobilebar', mobilebarReveal);
   customForm();          // already no-ops when the embed is absent
   reveals();
 

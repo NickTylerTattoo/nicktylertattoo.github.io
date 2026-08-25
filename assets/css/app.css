@@ -153,7 +153,19 @@ body:not([data-loading]) .preloader{opacity:0;visibility:hidden;pointer-events:n
 
 /* ===== CUSTOM (restructured 2026-08-25 to mirror the old Manus page:
    hero → process cards → reviews → note → form → FAQ) ===== */
-.chero{position:relative;z-index:2;background:var(--ink);max-width:1280px;margin:0 auto}
+.chero{position:relative;z-index:2;background:var(--ink);overflow:hidden}
+/* full-bleed photo of Nick sketching on the iPad (from the old Manus hero),
+   scrimmed left-to-right so the copy keeps contrast, fading to ink at the
+   bottom so the section seam disappears */
+.chero__bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:72% 30%;z-index:0}
+.chero__scrim{position:absolute;inset:0;z-index:1;background:
+  linear-gradient(90deg,rgba(10,10,11,.94) 0%,rgba(10,10,11,.82) 42%,rgba(10,10,11,.5) 100%),
+  linear-gradient(rgba(10,10,11,.2),rgba(10,10,11,.05) 55%,var(--ink) 100%)}
+.chero__in{position:relative;z-index:2;max-width:1280px;margin:0 auto}
+@media(max-width:700px){
+  .chero__bg{object-position:68% 28%}
+  .chero__scrim{background:linear-gradient(rgba(10,10,11,.86),rgba(10,10,11,.72) 55%,var(--ink) 100%)}
+}
 .stitle--hero{font-size:clamp(2.5rem,6.5vw,4.6rem);line-height:.96;max-width:15ch}
 .chero .slead{max-width:52ch;font-size:clamp(1rem,1.6vw,1.15rem)}
 .crate{display:flex;align-items:center;gap:12px;margin-top:24px;flex-wrap:wrap}
@@ -183,10 +195,9 @@ body:not([data-loading]) .preloader{opacity:0;visibility:hidden;pointer-events:n
 .ptl__step.is-done{color:var(--bone-dim)}
 .ptl__step.is-active{color:var(--bone)}
 .ptl__step.is-active .ptl__n{color:var(--gold)}
-.pvideo{max-width:460px;margin:0 auto}
+.pvideo{max-width:500px;margin:0 auto}
 .pvideo__frame{border:1px solid var(--line);background:var(--surface);overflow:hidden}
-.pvideo video{width:100%;height:auto;aspect-ratio:4/5;display:block}
-.pvideo__play{margin-top:10px}
+.pvideo video{width:100%;height:auto;aspect-ratio:11/24;display:block}
 @media(max-width:600px){
   .ptl__t{font-size:.76rem}
   .ptl__n{font-size:.58rem}
@@ -218,7 +229,9 @@ body:not([data-loading]) .preloader{opacity:0;visibility:hidden;pointer-events:n
 /* note from Nick */
 .fromnick{position:relative;z-index:2;background:var(--ink);max-width:940px;margin:0 auto;border-top:1px solid var(--line)}
 .fromnick__in{display:flex;gap:clamp(20px,3vw,34px);align-items:flex-start}
-.fromnick__pic{width:76px;height:76px;border:1px solid var(--line-2);flex:none}
+/* circular on purpose (his call, 2026-08-25) — the one exception to the
+   square-corners rule, matching how the photo appears on Instagram itself */
+.fromnick__pic{width:84px;height:84px;border:1px solid var(--line-2);border-radius:50%;object-fit:cover;flex:none}
 .fromnick__txt{font-size:clamp(1.05rem,1.9vw,1.3rem);line-height:1.6;color:var(--bone);max-width:52ch}
 .fromnick__sig{display:block;margin-top:16px;font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold)}
 @media(max-width:560px){.fromnick__in{flex-direction:column}}
@@ -390,7 +403,16 @@ body.still .faq-a{max-height:none!important}
 
 /* STICKY MOBILE CTA BAR */
 .mobilebar{position:fixed;left:0;right:0;bottom:0;z-index:90;display:none;gap:10px;padding:10px 12px;background:rgba(10,10,11,.92);backdrop-filter:blur(12px);border-top:1px solid var(--line)}
-.mobilebar__btn{flex:1;text-align:center;font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;padding:1.05em;border-radius:4px}
+/* flex centering, one line per label: at 390px the old .72rem/.1em setting
+   wrapped "Browse the Collection" to two lines and left the other label
+   top-anchored in a stretched box */
+.mobilebar__btn{flex:1;display:flex;align-items:center;justify-content:center;white-space:nowrap;text-align:center;font-family:var(--mono);font-size:.66rem;letter-spacing:.05em;text-transform:uppercase;padding:1.05em .5em;border-radius:4px}
+@media(max-width:350px){.mobilebar__btn{font-size:.58rem;letter-spacing:.02em}}
+/* variant that stays tucked away until the visitor scrolls past the hero
+   (app.js toggles is-up); pages without the modifier keep the always-on bar */
+.mobilebar--scroll{transform:translateY(110%);transition:transform .45s var(--ease)}
+.mobilebar--scroll.is-up{transform:none}
+@media(prefers-reduced-motion: reduce){.mobilebar--scroll{transition:none}}
 .mobilebar__btn--ghost{border:1px solid var(--line-2);color:var(--bone)}
 .mobilebar__btn--solid{background:var(--gold);color:var(--ink)}
 @media(max-width:700px){.mobilebar{display:flex}body{padding-bottom:64px}}
