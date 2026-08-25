@@ -195,10 +195,18 @@ body:not([data-loading]) .preloader{opacity:0;visibility:hidden;pointer-events:n
 .ptl__step.is-done{color:var(--bone-dim)}
 .ptl__step.is-active{color:var(--bone)}
 .ptl__step.is-active .ptl__n{color:var(--gold)}
-.pvideo{max-width:500px;margin:0 auto}
+/* Sized from the viewport height so the timeline AND the whole animation share
+   one screen with no scrolling: width = ratio x (viewport minus the nav, the
+   timeline and, on phones, the CTA bar). --flowr is each video's w/h ratio
+   (custom 880/1920, flash 968/1920 via .howblock). The plain min() line is the
+   fallback for browsers without svh. */
+.pvideo{margin:0 auto;width:min(100%,500px)}
+.pvideo{width:clamp(240px,calc(var(--flowr,.4583)*(100svh - var(--flow-reserve,235px))),min(100%,500px))}
+.howblock .pvideo{--flowr:.5042}
+@media(max-width:700px){.pvideo{--flow-reserve:300px}}
 .pvideo__frame{border:1px solid var(--line);background:var(--surface);overflow:hidden}
 /* no aspect-ratio here: each page's video carries width/height attributes and
-   the browser derives the ratio from those (custom 880x1920, flash 968x1920) */
+   the browser derives the ratio from those */
 .pvideo video{width:100%;height:auto;display:block}
 /* /flash/: the how-it-works band sits inside the catalog section, between the
    headline and the filter pills */
