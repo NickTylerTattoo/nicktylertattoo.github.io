@@ -307,6 +307,10 @@ function countUp(el, to){
   let v=0; const step=()=>{ v+=Math.max(1,Math.round((to-v)/6)); if(v>=to){el.textContent=to;return;} el.textContent=v; setTimeout(step,40); }; step();
 }
 function catalog(){
+  /* the pill marked is-active in the HTML is the opening filter — the page
+     opens on Sleeve rather than rendering all 35 plates up front */
+  const act = $('.filt.is-active');
+  if (act) state.filter = act.dataset.filter;
   applyList();
   const avail=CAT.filter(d=>d.available).length;
   $('#navAvail').textContent=avail;
