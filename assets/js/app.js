@@ -88,7 +88,7 @@ const Track = (() => {
     return a;
   }
   const A = attribution();
-  const FB_STD = { view_design:'ViewContent', claim_click:'AddToCart', booking_open:'InitiateCheckout', custom_form_open:'Lead' };
+  const FB_STD = { view_design:'ViewContent', claim_click:'AddToCart', booking_open:'InitiateCheckout' };  /* no browser Lead ever — Lead comes from GHL CAPI only, 1:1 with real form submissions */
   function track(event, data = {}){
     const payload = { event, ...data, lead_id: A.lead_id, ts: new Date().toISOString() };
     window.dataLayer.push(payload);
