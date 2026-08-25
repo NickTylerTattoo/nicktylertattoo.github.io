@@ -496,7 +496,7 @@ function faq(){
 
 /* ---------- Generic reveals ---------- */
 function reveals(){
-  const els=$$('.shead, .custom-left, .artist-intro, .faq-head, .foot-cta, .reassure');
+  const els=$$('.shead, .sec-head, .artist-intro, .faq-head, .foot-cta, .reassure');
   els.forEach(e=>e.classList.add('reveal'));
   if(STILL){ els.forEach(e=>e.classList.add('in')); return; }
   const io=new IntersectionObserver(es=>es.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } }),{rootMargin:'0px 0px -10% 0px'});

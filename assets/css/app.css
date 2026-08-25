@@ -151,14 +151,68 @@ body:not([data-loading]) .preloader{opacity:0;visibility:hidden;pointer-events:n
 .plate--feat{outline:1px solid var(--gold);outline-offset:-1px}
 .noresults{text-align:center;color:var(--bone-faint);letter-spacing:.1em;text-transform:uppercase;padding:50px 0}
 
-/* CUSTOM */
-.custom{position:relative;z-index:2;background:var(--ink);display:grid;grid-template-columns:1fr 1.05fr;gap:clamp(30px,5vw,72px);align-items:start;max-width:1280px;margin:0 auto;border-top:1px solid var(--line)}
-.custom-left .slead{max-width:42ch}
-.steps{list-style:none;margin:34px 0;display:flex;flex-direction:column;gap:22px}
-.steps li{display:flex;gap:16px}
-.steps__n{font-size:.8rem;color:var(--gold);flex:none;padding-top:.2em}
-.steps li b{font-weight:500;font-size:1.05rem}
-.steps li p{color:var(--bone-dim);font-size:.92rem;margin-top:3px}
+/* ===== CUSTOM (restructured 2026-08-25 to mirror the old Manus page:
+   hero → process cards → reviews → note → form → FAQ) ===== */
+.chero{position:relative;z-index:2;background:var(--ink);max-width:1280px;margin:0 auto}
+.stitle--hero{font-size:clamp(2.5rem,6.5vw,4.6rem);line-height:.96;max-width:15ch}
+.chero .slead{max-width:52ch;font-size:clamp(1rem,1.6vw,1.15rem)}
+.crate{display:flex;align-items:center;gap:12px;margin-top:24px;flex-wrap:wrap}
+.crate__num{font-weight:700;font-size:1.6rem;letter-spacing:-.03em;line-height:1}
+.crate__stars{color:var(--gold);letter-spacing:.14em;font-size:.95rem}
+.crate__say{font-family:var(--mono);font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;color:var(--bone-dim)}
+.chero-cta{margin-top:30px;display:flex;gap:12px;flex-wrap:wrap}
+.chero-meta{margin-top:30px;display:flex;flex-wrap:wrap;gap:10px 28px;font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--bone-faint);border-top:1px solid var(--line);padding-top:20px}
+
+/* section head used by the custom page sections; app.js reveals .sec-head */
+.sec-head{margin-bottom:34px}
+
+/* process cards */
+.process{position:relative;z-index:2;background:var(--ink);max-width:1280px;margin:0 auto;border-top:1px solid var(--line)}
+.pgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.pcard{border:1px solid var(--line);background:var(--surface);padding:clamp(22px,2.6vw,34px);display:flex;flex-direction:column;gap:12px;transition:border-color .3s}
+.pcard:hover{border-color:var(--line-2)}
+.pcard__n{font-size:.72rem;letter-spacing:.18em;color:var(--gold)}
+.pcard h3{font-weight:500;font-size:1.15rem;letter-spacing:-.01em}
+.pcard p{color:var(--bone-dim);font-size:.92rem;line-height:1.65}
+@media(max-width:860px){.pgrid{grid-template-columns:1fr}}
+
+/* reviews */
+.reviews{position:relative;z-index:2;background:var(--ink);max-width:1280px;margin:0 auto;border-top:1px solid var(--line)}
+.rgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.rvw{border:1px solid var(--line);background:var(--surface);padding:22px;display:flex;flex-direction:column;gap:12px;transition:border-color .3s}
+.rvw:hover{border-color:var(--line-2)}
+.rvw__top{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.rvw__stars{color:var(--gold);letter-spacing:.18em;font-size:.8rem}
+.rvw__tag{font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);border:1px solid var(--line-2);padding:.35em .6em;white-space:nowrap}
+.rvw__q{color:var(--bone-dim);font-size:.9rem;line-height:1.65;flex:1}
+.rvw__foot{display:flex;justify-content:space-between;align-items:flex-end;gap:10px;border-top:1px solid var(--line);padding-top:12px}
+.rvw__name{display:block;font-size:.86rem}
+.rvw__date{display:block;font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:var(--bone-faint);margin-top:3px}
+.rvw__src{display:flex;align-items:center;gap:6px}
+.rvw__g{width:14px;height:14px}
+.rvw__ok{font-size:.56rem;letter-spacing:.12em;text-transform:uppercase;color:var(--bone-faint)}
+.rev-all{display:flex;justify-content:space-between;align-items:center;gap:14px;border:1px solid var(--line);padding:16px 20px;margin-top:14px;transition:border-color .3s,background .3s}
+.rev-all:hover{border-color:var(--gold);background:rgba(184,169,138,.05)}
+.rev-all b{font-weight:500;letter-spacing:-.01em}
+.rev-all span{color:var(--gold);transition:transform .45s var(--ease)}
+.rev-all:hover span{transform:translateX(6px)}
+@media(max-width:1000px){.rgrid{grid-template-columns:1fr 1fr}}
+@media(max-width:640px){.rgrid{grid-template-columns:1fr}}
+
+/* note from Nick */
+.fromnick{position:relative;z-index:2;background:var(--ink);max-width:940px;margin:0 auto;border-top:1px solid var(--line)}
+.fromnick__in{display:flex;gap:clamp(20px,3vw,34px);align-items:flex-start}
+.fromnick__pic{width:76px;height:76px;border:1px solid var(--line-2);flex:none}
+.fromnick__txt{font-size:clamp(1.05rem,1.9vw,1.3rem);line-height:1.6;color:var(--bone);max-width:52ch}
+.fromnick__sig{display:block;margin-top:16px;font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold)}
+@media(max-width:560px){.fromnick__in{flex-direction:column}}
+
+/* form section: embed left, facts + reassurance right */
+.cform-sec{position:relative;z-index:2;background:var(--ink);max-width:1280px;margin:0 auto;border-top:1px solid var(--line)}
+.cform-grid{display:grid;grid-template-columns:1.35fr .75fr;gap:clamp(20px,3vw,40px);align-items:start}
+.cform-aside{position:sticky;top:96px;display:flex;flex-direction:column;gap:22px}
+.cform-aside .factbar{grid-template-columns:1fr;margin:0}
+@media(max-width:940px){.cform-grid{grid-template-columns:1fr}.cform-aside{position:static}}
 .reassure{display:flex;flex-direction:column;gap:10px;font-size:.72rem;letter-spacing:.04em;color:var(--bone-dim);border-top:1px solid var(--line);padding-top:22px}
 /* Frame around the GoHighLevel embed. The form's own colours live in the GHL
    builder (cross-origin iframe - our CSS cannot reach the fields); this just
@@ -185,25 +239,6 @@ body:not([data-loading]) .preloader{opacity:0;visibility:hidden;pointer-events:n
 .cform-success svg{margin-bottom:6px}
 .cform-success h3{font-weight:700;font-size:1.8rem;letter-spacing:-.02em}
 .cform-success p{color:var(--bone-dim);max-width:38ch}
-/* Single column: the form used to land 1.4 screens down, behind the headline,
-   all three steps and the reassurance block. .custom-left is a bare wrapper with
-   no box styling, so display:contents dissolves it and lets its children be
-   ordered individually against the form. Result: intro, form, then the detail
-   that supports it. Desktop is untouched — the form already sits level with the
-   headline in the right column. */
-@media(max-width:860px){
-  .custom{grid-template-columns:1fr}
-  .custom-left{display:contents}
-  /* intro, then the three steps, then the form - which still has to break the
-     fold, so the steps are kept tight enough to leave the top of it showing. */
-  .custom .sidx,.custom .stitle,.custom .slead{order:1}
-  .custom .slead{margin-bottom:0}
-  .custom .steps{order:2;margin:16px 0 0;gap:11px}
-  .custom .steps p{margin-top:2px}
-  .cform-embed{order:3;margin-top:16px}
-  .custom .factbar,.custom .reassure{order:4}
-  .custom .factbar{margin-top:26px}
-}
 
 /* FOOTER */
 .foot{position:relative;z-index:2;background:var(--ink);border-top:1px solid var(--line);padding:clamp(50px,7vw,90px) clamp(22px,5vw,64px)}
@@ -469,14 +504,8 @@ main > section:first-of-type{padding-top:clamp(104px,12vw,158px)}
   .nav--longcta .nav-logo__txt{display:none}
 }
 
-/* Short phones: the intro, three steps and a form peek do not all fit in
-   ~780px of viewport at full spacing, so compress the block that sits above
-   the form rather than let the form drop out of the fold entirely. */
+/* Short phones: pull the hero up so headline, rating and CTA share the fold */
 @media(max-width:860px) and (max-height:820px){
   main > section:first-of-type{padding-top:86px}
-  .custom .stitle{font-size:clamp(26px,7.4vw,34px)}
-  .custom .slead{font-size:.94rem}
-  .custom .steps{gap:9px;margin-top:12px}
-  .custom .steps p{font-size:.86rem;line-height:1.45}
-  .cform-embed{margin-top:12px}
+  .stitle--hero{font-size:clamp(30px,8.4vw,40px)}
 }
