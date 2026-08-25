@@ -197,7 +197,12 @@ body:not([data-loading]) .preloader{opacity:0;visibility:hidden;pointer-events:n
 .ptl__step.is-active .ptl__n{color:var(--gold)}
 .pvideo{max-width:500px;margin:0 auto}
 .pvideo__frame{border:1px solid var(--line);background:var(--surface);overflow:hidden}
-.pvideo video{width:100%;height:auto;aspect-ratio:11/24;display:block}
+/* no aspect-ratio here: each page's video carries width/height attributes and
+   the browser derives the ratio from those (custom 880x1920, flash 968x1920) */
+.pvideo video{width:100%;height:auto;display:block}
+/* /flash/: the how-it-works band sits inside the catalog section, between the
+   headline and the filter pills */
+.howblock{border-block:1px solid var(--line);padding:clamp(36px,5vw,56px) 0;margin-bottom:34px}
 @media(max-width:600px){
   .ptl__t{font-size:.76rem}
   .ptl__n{font-size:.58rem}

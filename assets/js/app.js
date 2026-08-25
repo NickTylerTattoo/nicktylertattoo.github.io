@@ -440,16 +440,18 @@ function customForm(){
   }
 }
 
-/* ---------- Custom process animation + synced step timeline ----------
-   The video is the IG booking-flow carousel (16 Instagram Posts). CUTS are the
-   moments each act starts, as fractions of the runtime: submit 0s, approval
-   ~11s, booking ~20s of 33s. The bar fills one third per act, so the fill
-   reaches a node exactly as that step begins. Fractions, not seconds, so a
-   re-encode that shifts duration slightly cannot desync it. */
+/* ---------- Process animation + synced step timeline ----------
+   Shared by /custom/ (booking-flow carousel) and /flash/ (predrawn flow),
+   both from 16 Instagram Posts. The video's data-cuts attribute names the
+   moments acts two and three start, as fractions of the runtime; the bar
+   fills one third per act, so the fill reaches a node exactly as that step
+   begins. Fractions, not seconds, so a re-encode that shifts duration
+   slightly cannot desync it. */
 function processTimeline(){
   const v = $('#processVideo'), fill = $('#ptlFill');
   const steps = $$('.ptl__step'), nodes = $$('.ptl__node');
-  const CUTS = [0, 11/33, 20/33, 1];
+  const c = (v.dataset.cuts || '0.333,0.606').split(',').map(Number);
+  const CUTS = [0, c[0], c[1], 1];
   function paint(){
     const d = v.duration || 33;
     const p = Math.min(1, (v.currentTime || 0) / d);
