@@ -427,6 +427,10 @@ body.still .ig__piclink::before{animation:none}
    The one third-party judgement on a page that is otherwise his own voice and
    his own clients', so it leads the section and takes the champagne. Panel and
    a soft champagne wash off the left edge, weighted toward the medal. */
+/* the award band between the hero and Meet your artist runs tighter than a
+   full .sec so the badge reads as a ribbon, not a chapter */
+.sec--award{padding:clamp(26px,4.5vw,52px) 0}
+.sec--award .award{margin-top:0}
 .award{
   position:relative;overflow:hidden;
   display:flex;align-items:center;gap:clamp(16px,2.6vw,30px);
