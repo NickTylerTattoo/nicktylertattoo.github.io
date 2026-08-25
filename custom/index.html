@@ -71,22 +71,24 @@
         <h2 class="stitle">Three easy steps, <span class="ser">one finished piece</span>.</h2>
         <p class="slead">All custom work starts with one simple form. It lets us agree on direction and style early, so I show up on session day with the best possible tattoo ready for you.</p>
       </div>
-      <div class="pgrid">
-        <article class="pcard">
-          <span class="pcard__n mono">Step 01</span>
-          <h3>Submit your request</h3>
-          <p>Complete the form with your idea, references, placement, size and budget. The more detail you share, the closer the result lands to what you pictured.</p>
-        </article>
-        <article class="pcard">
-          <span class="pcard__n mono">Step 02</span>
-          <h3>Wait for approval</h3>
-          <p>I review every request personally. If I&rsquo;m the right artist for your idea, you&rsquo;ll get approval by text with a private booking link.</p>
-        </article>
-        <article class="pcard">
-          <span class="pcard__n mono">Step 03</span>
-          <h3>Book your session</h3>
-          <p>Your link is self-guided. Choose the date that works and place a deposit to secure it.</p>
-        </article>
+      <div class="ptl" id="ptl">
+        <div class="ptl__track">
+          <div class="ptl__fill" id="ptlFill"></div>
+          <span class="ptl__node" style="left:0"></span>
+          <span class="ptl__node" style="left:calc(33.333% - 4px)"></span>
+          <span class="ptl__node" style="left:calc(66.667% - 4px)"></span>
+        </div>
+        <ol class="ptl__steps">
+          <li class="ptl__step"><span class="ptl__n mono">Step 01</span><span class="ptl__t">Submit your request</span></li>
+          <li class="ptl__step"><span class="ptl__n mono">Step 02</span><span class="ptl__t">Wait for approval</span></li>
+          <li class="ptl__step"><span class="ptl__n mono">Step 03</span><span class="ptl__t">Book your session</span></li>
+        </ol>
+      </div>
+      <div class="pvideo">
+        <div class="pvideo__frame">
+          <video id="processVideo" src="/assets/custom-flow.mp4" poster="/assets/custom-flow-poster.jpg" muted loop playsinline preload="metadata" width="1080" height="1350" aria-label="Walkthrough of the custom request process: submit the form, get approval by text, then book with a private link"></video>
+        </div>
+        <button class="btn btn--ghost btn--full pvideo__play" id="processPlay" hidden data-cursor="link">Play the walkthrough</button>
       </div>
     </section>
 

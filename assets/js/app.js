@@ -436,6 +436,45 @@ function customForm(){
   }
 }
 
+/* ---------- Custom process animation + synced step timeline ----------
+   The video is the IG booking-flow carousel (16 Instagram Posts). CUTS are the
+   moments each act starts, as fractions of the runtime: submit 0s, approval
+   ~11s, booking ~20s of 33s. The bar fills one third per act, so the fill
+   reaches a node exactly as that step begins. Fractions, not seconds, so a
+   re-encode that shifts duration slightly cannot desync it. */
+function processTimeline(){
+  const v = $('#processVideo'), fill = $('#ptlFill');
+  const steps = $$('.ptl__step'), nodes = $$('.ptl__node');
+  const CUTS = [0, 11/33, 20/33, 1];
+  function paint(){
+    const d = v.duration || 33;
+    const p = Math.min(1, (v.currentTime || 0) / d);
+    let i = 2; if (p < CUTS[1]) i = 0; else if (p < CUTS[2]) i = 1;
+    const local = (p - CUTS[i]) / (CUTS[i+1] - CUTS[i]);
+    fill.style.width = (((i + local) / 3) * 100).toFixed(2) + '%';
+    steps.forEach((s, k) => { s.classList.toggle('is-active', k === i); s.classList.toggle('is-done', k < i); });
+    nodes.forEach((n, k) => n.classList.toggle('is-on', k <= i));
+  }
+  v.addEventListener('timeupdate', paint);
+  paint();
+  if (STILL) return;
+  const play = $('#processPlay');
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches){
+    /* no autoplay: poster + an explicit control (what Nick's desktop shows) */
+    play.hidden = false;
+    play.addEventListener('click', () => {
+      if (v.paused){ v.play(); play.textContent = 'Pause'; }
+      else { v.pause(); play.textContent = 'Play the walkthrough'; }
+    });
+  } else {
+    /* plays only while on screen, same gating idea as the hero canvases */
+    new IntersectionObserver(es => {
+      if (es[0].isIntersecting && pageVisible) v.play().catch(()=>{});
+      else v.pause();
+    }, {threshold:.25}).observe(v);
+  }
+}
+
 /* ---------- FAQ (three tiles + accordion) ---------- */
 const FAQ = {
   flash: [
@@ -523,6 +562,7 @@ function init(){
   need('#lightbox', lightbox);
   need('#booking', booking);
   need('#faqList', faq);
+  need(['#processVideo','#ptlFill'], processTimeline);
   customForm();          // already no-ops when the embed is absent
   reveals();
 
