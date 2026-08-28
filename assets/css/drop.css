@@ -76,11 +76,11 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
   display:flex;flex-direction:column;align-items:center;justify-content:center;
   text-align:center;padding:120px var(--gut) 72px;
 }
-/* ---------- needle hero ----------
+/* ---------- OO rings hero ----------
    Full-bleed slow loop (poster = the same frame graded as a still) behind the
-   wordmark: a monumental liner descending to an ink bead at the tip. The scrim
-   keeps the type clean and melts the frame into the page ground at the bottom.
-   Replaced the Flower-of-Life canvas, 2026-08-28. */
+   wordmark: interlocked obsidian rings, the logo mark, silhouetted by a
+   breathing backlight. The scrim keeps the type clean and melts the frame into
+   the page ground at the bottom. Replaced the Flower-of-Life canvas, 2026-08-28. */
 .inkhero{position:absolute;inset:0;z-index:0;overflow:hidden;pointer-events:none}
 .inkhero video{width:100%;height:100%;object-fit:cover;object-position:center 42%;display:block}
 .inkhero::after{content:"";position:absolute;inset:0;background:
