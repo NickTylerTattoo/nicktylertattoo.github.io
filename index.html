@@ -39,7 +39,12 @@
 
 <main>
   <section class="splash">
-    <div class="emblem-stage" id="emblemStage"><canvas class="emblem" id="emblem" aria-hidden="true"></canvas></div>
+    <!-- ink monolith: slow loop of a standing ink column, twin champagne seams.
+         No autoplay attribute on purpose — shell.js starts it only outside
+         ?still / prefers-reduced-motion, so those get the poster still. -->
+    <div class="inkhero" aria-hidden="true">
+      <video id="inkLoop" src="assets/hero-ink.mp4" poster="assets/hero-ink-still.jpg" muted loop playsinline preload="metadata" width="1920" height="1072"></video>
+    </div>
 
     <div class="splash-core">
       <div class="hero-kick mono">Long Island, NY &middot; Est. 2022</div>
@@ -440,7 +445,6 @@
   </footer>
 </main>
 
-<script src="assets/js/mandala.js"></script>
 <script src="assets/js/shell.js"></script>
 </body>
 </html>

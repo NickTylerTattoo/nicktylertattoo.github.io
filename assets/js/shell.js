@@ -47,6 +47,17 @@ if (track){
   }
 }
 
+/* ink monolith hero loop: markup carries no autoplay, so ?still and
+   prefers-reduced-motion simply keep the poster — the same frame as a still.
+   Otherwise it plays only while on screen and the tab is visible. */
+const ink = document.getElementById('inkLoop');
+if (ink && !STILL && !REDUCED && 'IntersectionObserver' in window){
+  let onScreen = true;
+  const sync = () => { (onScreen && !document.hidden) ? ink.play().catch(() => {}) : ink.pause(); };
+  new IntersectionObserver(es => { onScreen = es[0].isIntersecting; sync(); }, {threshold: 0}).observe(ink);
+  document.addEventListener('visibilitychange', sync, {passive: true});
+}
+
 /* scroll reveals */
 if (!STILL && !REDUCED && 'IntersectionObserver' in window){
   const io = new IntersectionObserver(es => {

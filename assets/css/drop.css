@@ -76,16 +76,14 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
   display:flex;flex-direction:column;align-items:center;justify-content:center;
   text-align:center;padding:120px var(--gut) 72px;
 }
-.emblem-stage{
-  position:absolute;left:50%;top:39%;
-  width:min(74vh,92vw,680px);height:min(74vh,92vw,680px);
-  transform:translate(-50%,calc(-50% + var(--epar,0px)));
-  pointer-events:none;z-index:0;
-  /* fade the lattice out before it reaches the body copy — the type has to stay clean */
-  -webkit-mask-image:linear-gradient(to bottom,#000 0%,#000 46%,rgba(0,0,0,.34) 76%,transparent 97%);
-  mask-image:linear-gradient(to bottom,#000 0%,#000 46%,rgba(0,0,0,.34) 76%,transparent 97%);
-}
-.emblem-stage > *{display:block;width:100%;height:100%;opacity:.82}
+/* ---------- ink monolith hero ----------
+   Full-bleed slow loop (poster = the same frame graded as a still) behind the
+   wordmark; the scrim keeps the type clean and melts the frame into the page
+   ground at the bottom. Replaced the Flower-of-Life canvas, 2026-08-28. */
+.inkhero{position:absolute;inset:0;z-index:0;overflow:hidden;pointer-events:none}
+.inkhero video{width:100%;height:100%;object-fit:cover;object-position:center 42%;display:block}
+.inkhero::after{content:"";position:absolute;inset:0;background:
+  linear-gradient(rgba(10,10,11,.28),rgba(10,10,11,.08) 45%,rgba(10,10,11,.5) 82%,var(--ink) 100%)}
 .hero-core{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;gap:22px}
 .hero-kick{color:var(--champ)}
 /* set in caps — needs positive tracking, where the mixed-case version wanted negative */
@@ -230,16 +228,6 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .splash .scrollcue{position:static;transform:none;margin:clamp(18px,2.6vh,30px) auto 0}
 .splash .scrollcue__line{height:26px}
 .splash .scrollcue:hover{color:var(--champ)}
-/* The lattice frames the wordmark rather than peeking from behind it, so its
-   diameter has to beat the wordmark's width (949px at 1440). That means it
-   outgrows the viewport vertically, so the mask fades it out well before the
-   doors: solid through the name, gone by the rule above the grid. */
-.splash .emblem-stage{
-  width:min(112vh,94vw,1180px);height:min(112vh,94vw,1180px);top:34%;
-  -webkit-mask-image:linear-gradient(to bottom,transparent 0%,rgba(0,0,0,.55) 12%,#000 26%,#000 46%,rgba(0,0,0,.38) 58%,transparent 68%);
-  mask-image:linear-gradient(to bottom,transparent 0%,rgba(0,0,0,.55) 12%,#000 26%,#000 46%,rgba(0,0,0,.38) 58%,transparent 68%);
-}
-.splash .emblem-stage > *{opacity:.9}
 .splash-core{
   position:relative;z-index:1;align-self:center;
   display:flex;flex-direction:column;align-items:center;gap:16px;text-align:center;
@@ -282,15 +270,6 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
    cells ran the splash to roughly three screens and pushed the doors under the
    mandala; the grid keeps them on one screen and clear of it. */
 @media(max-width:460px){
-  /* Pull the lattice in and fade it earlier. At full size it ran down over the
-     style line and the first row of doors, which is what made them hard to read
-     when the cells were stacked. */
-  .splash .emblem-stage{
-    width:min(46vh,74vw,420px);height:min(46vh,74vw,420px);top:31%;
-    -webkit-mask-image:linear-gradient(to bottom,#000 0%,#000 46%,rgba(0,0,0,.3) 74%,transparent 94%);
-    mask-image:linear-gradient(to bottom,#000 0%,#000 46%,rgba(0,0,0,.3) 74%,transparent 94%);
-  }
-  .splash .emblem-stage > *{opacity:.7}
   .quad{grid-template-columns:repeat(2,1fr)}
   .quad-cell{padding:18px 14px;gap:7px}
   .quad-cell .door-mark{width:32px;height:32px}
