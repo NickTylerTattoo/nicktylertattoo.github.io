@@ -35,7 +35,7 @@
   <canvas class="ink" id="ink" aria-hidden="true"></canvas>
   <a class="skip" href="#drop">Skip to the collection</a>
 
-  <header class="nav nav--longcta" id="nav">
+  <header class="nav" id="nav">
     <a class="nav-logo" href="/" data-cursor="link" aria-label="Nick Tyler Tattoo, home">
       <svg class="nav-oo" viewBox="0 0 40 20" width="40" height="20" aria-hidden="true">
         <circle cx="13" cy="10" r="8.4" fill="none" stroke="#B8A98A" stroke-width="1.7"/>
@@ -50,24 +50,39 @@
       <a href="/otaat/" class="nav-link" data-cursor="link">OTAAT</a>
       <span class="nav-stat mono"><span class="dot"></span><span id="navAvail">38</span> live</span>
     </nav>
-    <a href="/custom/" class="nav-cta" data-cursor="link" data-track="nav_cta">Start a custom request <span aria-hidden="true">&rarr;</span></a>
   </header>
 
   <main id="top">
 
+    <!-- HERO — one pre-drawn design at a time, inverted to bone-on-ink, behind the headline -->
+    <section class="fhero" id="fhero">
+      <div class="fhero__bg" aria-hidden="true">
+        <img class="fhero__art" id="fheroA" src="" alt="">
+        <img class="fhero__art" id="fheroB" src="" alt="">
+      </div>
+      <div class="fhero__scrim" aria-hidden="true"></div>
+      <div class="fhero__in">
+        <div class="shead">
+          <div>
+            <div class="sidx mono">The Collection</div>
+            <h1 class="stitle stitle--hero">Claim a one-of-one.</h1>
+            <p class="slead">Thirty-eight designs. Each tattooed once, then gone for good. Filter, tap to view, claim before it&rsquo;s gone. A $50 deposit holds it and comes off your session.</p>
+          </div>
+          <div class="dstat">
+            <div class="dstat__num"><span id="availCount">0</span><i>/38</i></div>
+            <div class="dstat__lbl mono">Live right now</div>
+          </div>
+        </div>
+        <button class="fhero__now mono" id="fheroNow" data-cursor="view" hidden>
+          <span class="fhero__now-k">On the wall</span>
+          <span id="fheroNowT"></span>
+          <span aria-hidden="true">&rarr;</span>
+        </button>
+      </div>
+    </section>
+
     <!-- THE COLLECTION — CATALOG -->
     <section class="drop" id="drop">
-      <div class="shead">
-        <div>
-          <div class="sidx mono">The Collection</div>
-          <h1 class="stitle">Claim a one-of-one.</h1>
-          <p class="slead">Thirty-eight designs. Each tattooed once, then gone for good. Filter, tap to view, claim before it&rsquo;s gone. A $50 deposit holds it and comes off your session.</p>
-        </div>
-        <div class="dstat">
-          <div class="dstat__num"><span id="availCount">0</span><i>/38</i></div>
-          <div class="dstat__lbl mono">Live right now</div>
-        </div>
-      </div>
 
       <div class="howblock" id="how">
         <div class="sec-head">
@@ -153,8 +168,8 @@
   </main>
 
   <nav class="mobilebar" id="mobilebar" aria-label="Quick actions">
-    <a href="#drop" class="mobilebar__btn mobilebar__btn--ghost" data-cursor="link" data-track="mbar_browse">Browse the Collection</a>
-    <a href="/custom/" class="mobilebar__btn mobilebar__btn--solid" data-cursor="link" data-track="mbar_request">Start a request</a>
+    <a href="#filterbar" class="mobilebar__btn mobilebar__btn--ghost" data-cursor="link" data-track="mbar_browse">Browse Collection</a>
+    <a href="/custom/" class="mobilebar__btn mobilebar__btn--solid" data-cursor="link" data-track="mbar_request">Custom Request</a>
   </nav>
 
   <!-- LIGHTBOX -->

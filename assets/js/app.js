@@ -315,6 +315,9 @@ function catalog(){
   const avail=CAT.filter(d=>d.available).length;
   $('#navAvail').textContent=avail;
   if(STILL){ $('#availCount').textContent=avail; }
+  /* the counter lives in the hero now, above the fold — waiting for #drop to
+     scroll into view would leave it reading 0 on the screen people land on */
+  else if($('#fhero')){ countUp($('#availCount'),avail); }
   else { const io=new IntersectionObserver((es)=>{ if(es[0].isIntersecting){ countUp($('#availCount'),avail); io.disconnect(); } }); io.observe($('#drop')); }
   $$('.filt').forEach(b=>b.addEventListener('click',()=>{
     $$('.filt').forEach(x=>{x.classList.remove('is-active');x.setAttribute('aria-selected','false');});
@@ -476,6 +479,50 @@ function processTimeline(){
   }
 }
 
+/* ---------- /flash/ hero: pre-drawn designs rotate behind the headline ----------
+   One live design per placement, featured first — recomputed from CAT so the
+   set self-heals as designs get claimed. Sleeves are excluded: their 600x1350
+   scans crop to empty paper at hero ratio. The caption names the piece on the
+   wall and opens it in the lightbox. */
+function flashHero(){
+  const layers=[$('#fheroA'),$('#fheroB')];
+  const nowBtn=$('#fheroNow'), nowT=$('#fheroNowT');
+  /* where the art actually sits on each placement's sheet, as the crop's
+     focal Y — a wide desktop hero shows barely a third of a 4:5 scan */
+  const FOCUS={'sternum':'center 62%','upper-back':'center 28%','full-back':'center 45%','versatile':'center 45%'};
+  const picks=[];
+  const feat=CAT.find(d=>d.status==='feat');
+  if(feat) picks.push(feat);
+  ['upper-back','full-back','versatile','sternum'].forEach(cat=>{
+    const d=CAT.find(x=>x.cat===cat && x.available && !picks.includes(x));
+    if(d) picks.push(d);
+  });
+  if(!picks.length) return;
+  let i=0, on=0, seen=true;
+  function show(idx){
+    const d=picks[idx], off=1-on;
+    const img=new Image();
+    img.onload=()=>{
+      layers[off].src=d.img;
+      layers[off].style.objectPosition=FOCUS[d.cat]||'center 40%';
+      layers[off].classList.add('is-on');
+      layers[on].classList.remove('is-on');
+      on=off;
+      nowT.textContent='No. '+String(d.n).padStart(2,'0')+' · '+d.title;
+      nowBtn.dataset.n=d.n;
+      nowBtn.hidden=false;
+    };
+    img.src=d.img;
+  }
+  show(0);
+  nowBtn.addEventListener('click',()=>openLightbox(+nowBtn.dataset.n));
+  /* the rotation itself stays on under prefers-reduced-motion — the CSS drops
+     the drift zoom and the crossfade there, so swaps become plain cuts */
+  if(STILL || picks.length<2) return;
+  new IntersectionObserver(es=>{ seen=es[0].isIntersecting; },{threshold:0}).observe($('#fhero'));
+  setInterval(()=>{ if(seen && pageVisible){ i=(i+1)%picks.length; show(i); } },6000);
+}
+
 /* ---------- Mobile CTA bar: appears once the hero is scrolled past, and
    stands down again while the form itself is on screen — no point pointing
    at something the visitor is already looking at ---------- */
@@ -578,6 +625,7 @@ function init(){
   need(['#flashGrid','#sort','#availOnly','#navAvail','#availCount','#drop'], catalog);
   need('#lightbox', lightbox);
   need('#booking', booking);
+  need(['#fhero','#fheroA','#fheroB','#fheroNow'], flashHero);
   need('#faqList', faq);
   need(['#processVideo','#ptlFill'], processTimeline);
   need('#mobilebar', mobilebarReveal);

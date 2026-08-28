@@ -58,18 +58,6 @@ body:not([data-loading]) .preloader{opacity:0;visibility:hidden;pointer-events:n
 .nav-cta{font-family:var(--mono);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;border:1px solid var(--line-2);padding:.75em 1.15em;transition:background .3s,color .3s,border-color .3s}
 .nav-cta:hover{background:var(--gold);color:var(--ink);border-color:var(--gold)}
 @media(max-width:640px){.nav-links{display:none}}
-/* The Collection's CTA is seven characters longer than the one the other
-   pages use. A flex item shrinks by default, so from roughly 640px up to
-   1000px the nav squeezed the button until its label wrapped onto a second
-   line, which grew the header and pushed the button flush against the OTAAT
-   link. Hold the button at its natural width and let the nav links take the
-   squeeze instead — they already wrap by design. */
-.nav--longcta .nav-cta{white-space:nowrap;flex:0 0 auto}
-@media(min-width:641px) and (max-width:1000px){
-  .nav--longcta .nav-cta{letter-spacing:.09em;padding:.75em .9em;margin-left:18px}
-  .nav--longcta .nav-links{gap:clamp(10px,1.5vw,18px)}
-  .nav--longcta .nav-link{font-size:.88rem}
-}
 
 /* HERO */
 .hero{position:relative;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;overflow:hidden;z-index:1}
@@ -105,6 +93,30 @@ body:not([data-loading]) .preloader{opacity:0;visibility:hidden;pointer-events:n
 .marquee__track span{display:inline-flex;align-items:center;padding:18px 0;font-size:1.35rem;text-transform:uppercase;letter-spacing:-.01em;color:var(--bone);opacity:.9}
 .marquee__track i{font-family:var(--mono);font-style:normal;font-size:.85rem;color:var(--gold);padding:0 1.6rem}
 
+/* ===== /flash/ hero =====
+   One pre-drawn design at a time behind the headline. The sheets are fine ink
+   on near-white paper; inverted they become bone linework on ink — the site's
+   own palette — so the art can run full-bleed without a scrim flattening it.
+   app.js rotates one live design per placement (4:5 sheets only; the tall
+   sleeve scans crop to nothing at hero ratio). */
+.fhero{position:relative;z-index:2;background:var(--ink);overflow:hidden;display:flex;align-items:flex-end;min-height:min(74vh,860px)}
+.fhero{min-height:min(74svh,860px)}
+.fhero__bg{position:absolute;inset:0;z-index:0}
+.fhero__art{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 32%;filter:invert(1);opacity:0;transition:opacity 1.3s var(--ease)}
+.fhero__art.is-on{opacity:.85;animation:fheroDrift 16s linear forwards}
+@keyframes fheroDrift{from{transform:scale(1.02)}to{transform:scale(1.1)}}
+@media(prefers-reduced-motion: reduce){.fhero__art{transition:none}.fhero__art.is-on{animation:none}}
+.fhero__scrim{position:absolute;inset:0;z-index:1;background:
+  radial-gradient(ellipse at 16% 82%,rgba(10,10,11,.72),transparent 55%),
+  linear-gradient(rgba(10,10,11,.42),rgba(10,10,11,.06) 45%,rgba(10,10,11,.38) 82%,var(--ink) 100%)}
+.fhero__in{position:relative;z-index:2;width:100%;max-width:1440px;margin:0 auto}
+.fhero .shead{margin-bottom:0}
+/* names the design currently on the wall; opens it in the lightbox */
+.fhero__now{display:inline-flex;align-items:center;gap:10px;margin-top:28px;min-height:44px;border:1px solid var(--line-2);background:rgba(10,10,11,.5);backdrop-filter:blur(6px);padding:.6em 1em;font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--bone-dim);transition:border-color .3s,color .3s}
+.fhero__now:hover{border-color:var(--gold);color:var(--bone)}
+.fhero__now[hidden]{display:none}
+.fhero__now-k{color:var(--gold)}
+
 /* DROP / CATALOG */
 .drop{position:relative;z-index:2;background:var(--ink);max-width:1440px;margin:0 auto}
 .shead{display:flex;justify-content:space-between;align-items:flex-end;gap:30px;flex-wrap:wrap;margin-bottom:34px}
@@ -116,7 +128,9 @@ body:not([data-loading]) .preloader{opacity:0;visibility:hidden;pointer-events:n
 .dstat__num i{font-style:normal;font-size:.4em;color:var(--bone-faint);font-weight:400}
 .dstat__lbl{font-size:.64rem;letter-spacing:.18em;text-transform:uppercase;color:var(--bone-faint);margin-top:6px}
 
-.filterbar{display:flex;justify-content:space-between;align-items:center;gap:18px;flex-wrap:wrap;margin-bottom:26px;padding-bottom:18px;border-bottom:1px solid var(--line);position:sticky;top:60px;z-index:40;background:var(--ink)}
+/* scroll-margin: the mobile bar's Browse Collection anchors here, and the
+   fixed nav would otherwise sit on top of the first pill */
+.filterbar{display:flex;justify-content:space-between;align-items:center;gap:18px;flex-wrap:wrap;margin-bottom:26px;padding-bottom:18px;border-bottom:1px solid var(--line);position:sticky;top:60px;z-index:40;background:var(--ink);scroll-margin-top:72px}
 .filters{display:flex;gap:8px;flex-wrap:wrap}
 .filt{font-family:var(--mono);font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;padding:.6em .95em;border:1px solid var(--line);color:var(--bone-dim);transition:all .3s}
 .filt:hover{border-color:var(--line-2);color:var(--bone)}
@@ -545,14 +559,6 @@ main > section:first-of-type{padding-top:clamp(104px,12vw,158px)}
    still a 44px target. */
 @media(max-width:370px){
   .nav-logo__txt{display:none}
-}
-
-/* The Collection's CTA reads "Start a custom request", seven characters longer
-   than the "Start a request" the other pages use, so it hits the clipping
-   described above at ~430px instead of ~370px. Same fix, earlier: on that
-   header only, drop the wordmark text and let the OO mark carry the brand. */
-@media(max-width:430px){
-  .nav--longcta .nav-logo__txt{display:none}
 }
 
 /* Short phones: pull the hero up so headline, rating and CTA share the fold */
