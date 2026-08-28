@@ -245,6 +245,33 @@ body:not([data-loading]) .preloader{opacity:0;visibility:hidden;pointer-events:n
 .rvw__src{display:flex;align-items:center;gap:6px}
 .rvw__g{width:14px;height:14px}
 .rvw__ok{font-size:.56rem;letter-spacing:.12em;text-transform:uppercase;color:var(--bone-faint)}
+/* Review lane: the home page's revscroll pattern applied to the .rvw cards.
+   The track carries the set twice and travels exactly -50%, so the second
+   copy arrives where the first began and the loop has no seam; the ends fade
+   so cards enter and leave instead of popping. Hover or focus pauses it. */
+.revscroll{
+  position:relative;overflow:hidden;
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent);
+          mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent);
+}
+.revscroll__track{display:flex;width:max-content;gap:14px;animation:revlane 64s linear infinite}
+.revscroll:hover .revscroll__track,
+.revscroll:focus-within .revscroll__track{animation-play-state:paused}
+@keyframes revlane{to{transform:translateX(-50%)}}
+.revscroll .rvw{flex:0 0 auto;width:clamp(266px,25vw,344px)}
+/* A parked lane clips half its cards, so both reduced-motion and still mode
+   lay them out as a grid instead; the duplicate set only exists to make the
+   loop seamless, so it goes. */
+@media(prefers-reduced-motion: reduce){
+  .revscroll{overflow:visible;-webkit-mask-image:none;mask-image:none}
+  .revscroll__track{width:auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(258px,1fr));animation:none}
+  .revscroll__track .rvw[aria-hidden="true"]{display:none}
+  .revscroll .rvw{width:auto}
+}
+body.still .revscroll{overflow:visible;-webkit-mask-image:none;mask-image:none}
+body.still .revscroll__track{width:auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(258px,1fr))}
+body.still .revscroll__track .rvw[aria-hidden="true"]{display:none}
+body.still .revscroll .rvw{width:auto}
 .rev-all{display:flex;justify-content:space-between;align-items:center;gap:14px;border:1px solid var(--line);padding:16px 20px;margin-top:14px;transition:border-color .3s,background .3s}
 .rev-all:hover{border-color:var(--gold);background:rgba(184,169,138,.05)}
 .rev-all b{font-weight:500;letter-spacing:-.01em}
