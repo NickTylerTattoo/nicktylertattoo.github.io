@@ -22,26 +22,24 @@
 <script src="/assets/js/config.js"></script>
 <noscript><img height="1" width="1" style="display:none" alt="" src="https://www.facebook.com/tr?id=598145411993915&ev=PageView&noscript=1"/></noscript>
 <style>
-/* Conversion page: everything above the calendar stays one tight block,
-   and there are no exit links between the visitor and the deposit. */
-.bsec{padding:clamp(88px,11vw,132px) clamp(18px,4vw,56px) clamp(36px,5vw,60px)}
+/* Conversion page: headline, one tabbed info box, calendar. No exit links,
+   nothing below the calendar but the deposit line and the footer. */
+.bsec{padding:clamp(88px,11vw,132px) clamp(18px,4vw,56px) clamp(48px,7vw,84px)}
 .bwrap{max-width:1280px;margin:0 auto}
 .bwrap .sidx{margin-bottom:8px}
 .btitle{font-weight:700;font-size:clamp(1.9rem,4.2vw,3rem);letter-spacing:-.03em;line-height:1.02}
-.blead{margin-top:10px;color:var(--bone-dim);max-width:62ch}
-.bmeta{display:flex;flex-wrap:wrap;gap:8px 24px;margin:16px 0 20px;font-family:var(--mono);font-size:.72rem;letter-spacing:.06em;color:var(--bone-dim)}
-.bmeta b{color:var(--gold);font-weight:400;margin-right:.55em}
+.tabbox{background:var(--surface);border:1px solid var(--line);margin:18px 0 20px}
+.tabbox__tabs{display:flex;flex-wrap:wrap;border-bottom:1px solid var(--line)}
+.tabbox__tab{font-family:var(--mono);font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;color:var(--bone-dim);padding:13px 20px;border-right:1px solid var(--line);transition:color .25s,background .25s}
+.tabbox__tab:hover{color:var(--bone)}
+.tabbox__tab[aria-selected="true"]{color:var(--gold);background:var(--surface-2)}
+.tabbox__panel{padding:18px 20px 20px;display:flex;flex-direction:column;gap:6px}
+.tabbox__panel[hidden]{display:none}
+.tabbox__v{font-size:clamp(1.15rem,2.2vw,1.5rem);font-weight:500;letter-spacing:-.01em;line-height:1.15}
+.tabbox__n{font-size:.82rem;color:var(--bone-dim);line-height:1.6;max-width:82ch}
 .calpanel{background:var(--surface);border:1px solid var(--line);padding:clamp(8px,1.2vw,16px)}
 .calpanel iframe{background:transparent}
-.reassure{margin-top:24px}
-.qa{padding:clamp(20px,3vw,36px) clamp(18px,4vw,56px) clamp(48px,7vw,84px)}
-.qa__in{max-width:1280px;margin:0 auto}
-.qa__t{font-weight:700;font-size:clamp(1.4rem,2.6vw,1.9rem);letter-spacing:-.02em;margin-bottom:22px}
-.qa dl{margin:0}
-.qrow{border-top:1px solid var(--line);padding:20px 0;display:grid;grid-template-columns:minmax(0,360px) 1fr;gap:8px 44px}
-@media(max-width:760px){.qrow{grid-template-columns:1fr}}
-.qrow dt{font-weight:700;letter-spacing:-.01em}
-.qrow dd{margin:0;color:var(--bone-dim);font-size:.95rem;line-height:1.65;max-width:70ch}
+.reassure{margin-top:24px;border-top:0;padding-top:0}
 .bfoot{max-width:1280px;margin:0 auto;display:flex;flex-wrap:wrap;gap:8px 28px;justify-content:space-between;padding:24px clamp(18px,4vw,56px) 32px;border-top:1px solid var(--line);font-size:.68rem;letter-spacing:.08em;color:var(--bone-faint)}
 </style>
 </head>
@@ -66,13 +64,32 @@
       <div class="bwrap">
         <div class="sidx mono">// You&rsquo;re approved</div>
         <h1 class="btitle">Lock in your <span class="ser">half session</span>.</h1>
-        <p class="blead">I read your request and I want to tattoo it. Pick a date below, leave your deposit, and the spot&rsquo;s yours. I&rsquo;ll take it from there.</p>
-        <div class="bmeta">
-          <span><b>//</b>Up to 3 hours in the chair</span>
-          <span><b>//</b>If we finish in 1 hour, you only pay for 1 hour</span>
-          <span><b>//</b>$150 deposit, comes off your total</span>
-          <span><b>//</b>$250 an hour</span>
+
+        <div class="tabbox">
+          <div class="tabbox__tabs" role="tablist" aria-label="Session details">
+            <button class="tabbox__tab" id="tabBlock" role="tab" aria-selected="true" aria-controls="panBlock" data-track="tab_block">Your block</button>
+            <button class="tabbox__tab" id="tabDeposit" role="tab" aria-selected="false" aria-controls="panDeposit" data-track="tab_deposit">Deposit</button>
+            <button class="tabbox__tab" id="tabRate" role="tab" aria-selected="false" aria-controls="panRate" data-track="tab_rate">Rate</button>
+            <button class="tabbox__tab" id="tabIncl" role="tab" aria-selected="false" aria-controls="panIncl" data-track="tab_included">Included</button>
+          </div>
+          <div class="tabbox__panel" id="panBlock" role="tabpanel" aria-labelledby="tabBlock">
+            <span class="tabbox__v">Up to 3 hours</span>
+            <span class="tabbox__n">I hold the full block for you either way. If we finish in 1 hour, you only pay for 1 hour.</span>
+          </div>
+          <div class="tabbox__panel" id="panDeposit" role="tabpanel" aria-labelledby="tabDeposit" hidden>
+            <span class="tabbox__v">$150</span>
+            <span class="tabbox__n">Collected right in the calendar when you book. It holds your date, covers all design prep, and comes off your total on session day. Non-refundable for cancellations.</span>
+          </div>
+          <div class="tabbox__panel" id="panRate" role="tabpanel" aria-labelledby="tabRate" hidden>
+            <span class="tabbox__v">$250 an hour</span>
+            <span class="tabbox__n">Most half sessions run $250 to $750, depending on size, placement and the amount of detail in your piece.</span>
+          </div>
+          <div class="tabbox__panel" id="panIncl" role="tabpanel" aria-labelledby="tabIncl" hidden>
+            <span class="tabbox__v">The full treatment</span>
+            <span class="tabbox__n">Complete aftercare package, a shareable photo and video gallery of your finished piece, snacks and refreshments, and nobody waiting behind you.</span>
+          </div>
         </div>
+
         <div class="calpanel">
           <iframe
             src="https://link.inkedin.tools/widget/booking/isfu5I4Xbv2sHq1691cC"
@@ -83,34 +100,8 @@
             loading="eager"></iframe>
         </div>
         <div class="reassure mono">
-          <span><span class="dot"></span>Your $150 deposit comes off your final price on session day</span>
-          <span>Deposits are non-refundable for cancellations, so double-check your date before you book</span>
+          <span><span class="dot"></span>Your $150 deposit comes off the final price on session day</span>
         </div>
-      </div>
-    </section>
-
-    <section class="qa" aria-label="Session details">
-      <div class="qa__in">
-        <div class="sidx mono">// The details</div>
-        <h2 class="qa__t">Quick answers.</h2>
-        <dl>
-          <div class="qrow">
-            <dt>How long is my session?</dt>
-            <dd>Up to 3 hours in the chair. I hold the full block for you either way, and if we finish in one hour, you only pay for one hour.</dd>
-          </div>
-          <div class="qrow">
-            <dt>How does the deposit work?</dt>
-            <dd>$150, collected right in the calendar when you book. It holds your date, covers all design prep, and comes off your total on session day. It&rsquo;s non-refundable for cancellations.</dd>
-          </div>
-          <div class="qrow">
-            <dt>What will it cost?</dt>
-            <dd>My rate is $250 an hour, so most half sessions run $250 to $750. Final cost depends on size, placement and the amount of detail in your piece.</dd>
-          </div>
-          <div class="qrow">
-            <dt>What&rsquo;s included?</dt>
-            <dd>The full treatment. Complete aftercare package, a shareable photo and video gallery of your finished piece, snacks and refreshments, and nobody waiting behind you.</dd>
-          </div>
-        </dl>
       </div>
     </section>
 
@@ -122,6 +113,21 @@
   </main>
 
   <script>
+  /* Tabbed info box */
+  (function(){
+    var tabs = document.querySelectorAll('.tabbox__tab');
+    tabs.forEach(function(t){
+      t.addEventListener('click', function(){
+        tabs.forEach(function(o){
+          var on = o === t;
+          o.setAttribute('aria-selected', on ? 'true' : 'false');
+          var pan = document.getElementById(o.getAttribute('aria-controls'));
+          if (pan) pan.hidden = !on;
+        });
+      });
+    });
+  })();
+
   /* GHL booking embed: own the reveal instead of trusting form_embed.js.
      Same guard as /custom/ and /events/ — a cached iframe can post its size
      before the stock script attaches its listener, leaving the widget
