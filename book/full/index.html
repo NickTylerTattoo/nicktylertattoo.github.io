@@ -22,14 +22,19 @@
 <script src="/assets/js/config.js"></script>
 <noscript><img height="1" width="1" style="display:none" alt="" src="https://www.facebook.com/tr?id=598145411993915&ev=PageView&noscript=1"/></noscript>
 <style>
-.util-hero{max-width:1280px;margin:0 auto;padding-top:clamp(120px,16vw,180px)}
-.util-hero .slead{max-width:52ch}
-.util-hero .stitle--hero{max-width:20ch}
-.band{max-width:1280px;margin:0 auto;border-top:1px solid var(--line)}
-.factbar{max-width:1020px}
-.calpanel{background:var(--surface);border:1px solid var(--line);padding:clamp(10px,2vw,22px)}
+/* Conversion page: everything above the calendar stays one tight block,
+   and there are no exit links between the visitor and the deposit. */
+.bsec{padding:clamp(88px,11vw,132px) clamp(18px,4vw,56px) clamp(36px,5vw,60px)}
+.bwrap{max-width:1280px;margin:0 auto}
+.bwrap .sidx{margin-bottom:8px}
+.btitle{font-weight:700;font-size:clamp(1.9rem,4.2vw,3rem);letter-spacing:-.03em;line-height:1.02}
+.blead{margin-top:10px;color:var(--bone-dim);max-width:62ch}
+.bmeta{display:flex;flex-wrap:wrap;gap:8px 24px;margin:16px 0 20px;font-family:var(--mono);font-size:.72rem;letter-spacing:.06em;color:var(--bone-dim)}
+.bmeta b{color:var(--gold);font-weight:400;margin-right:.55em}
+.calpanel{background:var(--surface);border:1px solid var(--line);padding:clamp(8px,1.2vw,16px)}
 .calpanel iframe{background:transparent}
-.reassure{margin-top:34px}
+.reassure{margin-top:24px}
+.bfoot{max-width:1280px;margin:0 auto;display:flex;flex-wrap:wrap;gap:8px 28px;justify-content:space-between;padding:24px clamp(18px,4vw,56px) 32px;border-top:1px solid var(--line);font-size:.68rem;letter-spacing:.08em;color:var(--bone-faint)}
 </style>
 </head>
 <body>
@@ -44,85 +49,42 @@
       </svg>
       <span class="nav-logo__txt">Nick&nbsp;Tyler&nbsp;Tattoo</span>
     </a>
-    <nav class="nav-links" aria-label="Primary">
-      <a href="/flash/" class="nav-link" data-cursor="link">The Collection</a>
-      <a href="/custom/" class="nav-link" data-cursor="link">Custom</a>
-      <a href="/events/" class="nav-link" data-cursor="link">Private Events</a>
-      <a href="/otaat/" class="nav-link" data-cursor="link">OTAAT</a>
-    </nav>
-    <a href="#book" class="nav-cta" data-cursor="link" data-track="nav_cta">Pick a date <span aria-hidden="true">&rarr;</span></a>
+    <a href="#book" class="nav-cta" data-cursor="link" data-track="nav_cta">Pick a date <span aria-hidden="true">&darr;</span></a>
   </header>
 
   <main id="top">
 
-    <section class="util-hero">
-      <div class="sec-head" style="margin-bottom:0">
-        <div class="sidx mono">// Custom request approved</div>
-        <h1 class="stitle stitle--hero">You&rsquo;re approved for<br>a <span class="ser">full session</span>.</h1>
-        <p class="slead">I read your request and I want to tattoo it. This is your private booking page. Pick a date below, leave your deposit, and the whole day is yours. I&rsquo;ll take it from there.</p>
-      </div>
-      <div class="factbar">
-        <div class="fact">
-          <span class="fact__k mono">Your block</span>
-          <span class="fact__v">12 to 5, all yours</span>
-          <span class="fact__n">The session covers 3 to 5 hours of tattooing and I hold the whole block either way. You&rsquo;re the only person on my books that day.</span>
+    <section class="bsec" id="book">
+      <div class="bwrap">
+        <div class="sidx mono">// You&rsquo;re approved</div>
+        <h1 class="btitle">Lock in your <span class="ser">full session</span>.</h1>
+        <p class="blead">I read your request and I want to tattoo it. Pick a date below, leave your deposit, and the whole day is yours. I&rsquo;ll take it from there.</p>
+        <div class="bmeta">
+          <span><b>//</b>The 12 to 5 block, all yours</span>
+          <span><b>//</b>$250 deposit, comes off your total</span>
+          <span><b>//</b>$250 an hour</span>
         </div>
-        <div class="fact">
-          <span class="fact__k mono">Deposit</span>
-          <span class="fact__v">$250</span>
-          <span class="fact__n">Collected when you book. It holds your date, covers all design prep, and comes off your total on session day.</span>
+        <div class="calpanel">
+          <iframe
+            src="https://link.inkedin.tools/widget/booking/LEHvDPS31uczTfZtHrAB"
+            style="width:100%;border:0;display:block;min-height:640px"
+            id="booking-LEHvDPS31uczTfZtHrAB"
+            scrolling="no"
+            title="Booking calendar: pick your date and pay your $250 deposit"
+            loading="eager"></iframe>
         </div>
-        <div class="fact">
-          <span class="fact__k mono">Rate</span>
-          <span class="fact__v">$250 an hour</span>
-          <span class="fact__n">Most full sessions run $750 to $1250, depending on size, placement and detail. If we finish in three hours, you only pay for three.</span>
-        </div>
-        <div class="fact">
-          <span class="fact__k mono">Included</span>
-          <span class="fact__v">The full treatment</span>
-          <span class="fact__n">Complete aftercare package, a shareable gallery of your finished piece, snacks and refreshments all day, and nobody waiting behind you.</span>
+        <div class="reassure mono">
+          <span><span class="dot"></span>Your $250 deposit comes off your final price on session day</span>
+          <span>Book with the same name and phone number you used on your request form</span>
+          <span>Deposits are non-refundable for cancellations, so double-check your date before you book</span>
         </div>
       </div>
     </section>
 
-    <section class="band" id="book">
-      <div class="sec-head">
-        <div class="sidx mono">// Pick your date</div>
-        <h2 class="stitle">Lock in<br><span class="ser">your session</span>.</h2>
-        <p class="slead">Times are live from my calendar. If nothing fits, text me back and we&rsquo;ll work something out.</p>
-      </div>
-      <div class="calpanel">
-        <iframe
-          src="https://link.inkedin.tools/widget/booking/LEHvDPS31uczTfZtHrAB"
-          style="width:100%;border:0;display:block;min-height:760px"
-          id="booking-LEHvDPS31uczTfZtHrAB"
-          scrolling="no"
-          title="Booking calendar: pick your date and pay your $250 deposit"
-          loading="eager"></iframe>
-      </div>
-      <div class="reassure mono">
-        <span><span class="dot"></span>Your $250 deposit comes off your final price on session day</span>
-        <span>Book with the same name and phone number you used on your request form</span>
-        <span>Designs aren&rsquo;t shared ahead of time. We collaborate, tweak and size together on session day</span>
-        <span>Deposits are non-refundable for cancellations, so double-check your date before you book</span>
-      </div>
-    </section>
-
-    <footer class="foot" id="foot">
-      <div class="foot-cta">
-        <div class="sidx mono">// Once you&rsquo;re booked</div>
-        <a href="/prepare/" class="foot-big" data-cursor="view" data-track="foot_prepare">How to prepare<span aria-hidden="true"> &nearr;</span></a>
-      </div>
-      <div class="foot-cols mono">
-        <div><b>Studio</b><p>By appointment &middot; private suite<br>Suffolk County &middot; Long Island, NY</p></div>
-        <div><b>Your session</b><p>Full // 12 to 5 block<br>$250 deposit // $250 an hour</p></div>
-        <div><b>Elsewhere</b><p><a href="/events/">Private events</a><br><a href="/otaat/">One Tattoo At A Time</a></p></div>
-        <div><b>Find me</b><p><a href="https://instagram.com/nicktylertattoo" data-cursor="link">@nicktylertattoo</a><br>5.0 &#9733; on Google</p></div>
-      </div>
-      <div class="foot-base mono">
-        <span>&copy; <span id="yr"></span> Nick Tyler Tattoo</span>
-        <span>See you in the chair</span>
-      </div>
+    <footer class="bfoot mono">
+      <span>&copy; <span id="yr"></span> Nick Tyler Tattoo</span>
+      <span>Selden, NY // By appointment</span>
+      <span>See you in the chair</span>
     </footer>
   </main>
 
