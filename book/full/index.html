@@ -34,6 +34,14 @@
 .calpanel{background:var(--surface);border:1px solid var(--line);padding:clamp(8px,1.2vw,16px)}
 .calpanel iframe{background:transparent}
 .reassure{margin-top:24px}
+.qa{padding:clamp(20px,3vw,36px) clamp(18px,4vw,56px) clamp(48px,7vw,84px)}
+.qa__in{max-width:1280px;margin:0 auto}
+.qa__t{font-weight:700;font-size:clamp(1.4rem,2.6vw,1.9rem);letter-spacing:-.02em;margin-bottom:22px}
+.qa dl{margin:0}
+.qrow{border-top:1px solid var(--line);padding:20px 0;display:grid;grid-template-columns:minmax(0,360px) 1fr;gap:8px 44px}
+@media(max-width:760px){.qrow{grid-template-columns:1fr}}
+.qrow dt{font-weight:700;letter-spacing:-.01em}
+.qrow dd{margin:0;color:var(--bone-dim);font-size:.95rem;line-height:1.65;max-width:70ch}
 .bfoot{max-width:1280px;margin:0 auto;display:flex;flex-wrap:wrap;gap:8px 28px;justify-content:space-between;padding:24px clamp(18px,4vw,56px) 32px;border-top:1px solid var(--line);font-size:.68rem;letter-spacing:.08em;color:var(--bone-faint)}
 </style>
 </head>
@@ -61,6 +69,7 @@
         <p class="blead">I read your request and I want to tattoo it. Pick a date below, leave your deposit, and the whole day is yours. I&rsquo;ll take it from there.</p>
         <div class="bmeta">
           <span><b>//</b>The 12 to 5 block, all yours</span>
+          <span><b>//</b>If we finish in 3 hours, you only pay for 3 hours</span>
           <span><b>//</b>$250 deposit, comes off your total</span>
           <span><b>//</b>$250 an hour</span>
         </div>
@@ -75,9 +84,33 @@
         </div>
         <div class="reassure mono">
           <span><span class="dot"></span>Your $250 deposit comes off your final price on session day</span>
-          <span>Book with the same name and phone number you used on your request form</span>
           <span>Deposits are non-refundable for cancellations, so double-check your date before you book</span>
         </div>
+      </div>
+    </section>
+
+    <section class="qa" aria-label="Session details">
+      <div class="qa__in">
+        <div class="sidx mono">// The details</div>
+        <h2 class="qa__t">Quick answers.</h2>
+        <dl>
+          <div class="qrow">
+            <dt>How long is my session?</dt>
+            <dd>The 12 to 5 block is all yours. The session covers 3 to 5 hours of tattooing, I hold the whole block either way, and if we finish in three hours, you only pay for three.</dd>
+          </div>
+          <div class="qrow">
+            <dt>How does the deposit work?</dt>
+            <dd>$250, collected right in the calendar when you book. It holds your date, covers all design prep, and comes off your total on session day. It&rsquo;s non-refundable for cancellations.</dd>
+          </div>
+          <div class="qrow">
+            <dt>What will it cost?</dt>
+            <dd>My rate is $250 an hour, so most full sessions run $750 to $1250. Final cost depends on size, placement and the amount of detail in your piece.</dd>
+          </div>
+          <div class="qrow">
+            <dt>What&rsquo;s included?</dt>
+            <dd>The full treatment. Complete aftercare package, a shareable photo and video gallery of your finished piece, snacks and refreshments all day, and you&rsquo;re the only person on my books.</dd>
+          </div>
+        </dl>
       </div>
     </section>
 
