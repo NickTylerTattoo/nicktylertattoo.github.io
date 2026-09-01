@@ -25,7 +25,7 @@ const CAT = [
   ['05','Veiled Mandala','versatile','Any Placement','5–6 in','3 hr',500,'live'],
   ['06b','Cathedral Sleeve','sleeve','Outer Sleeve','Single sleeve','2 sessions',1400,'live'],
   ['06a','Crescent Sleeve','sleeve','Outer Sleeve','Single sleeve','2 sessions',1400,'live'],
-  ['07a','Vespers Sleeve','sleeve','Outer Sleeve','Single sleeve','2 sessions',1400,'live'],
+  ['07a','Vespers Sleeve','sleeve','Outer Sleeve','Single sleeve','2 sessions',1400,'claimed'],
   ['07b','Sanctuary Sleeve','sleeve','Outer Sleeve','Single sleeve','2 sessions',1400,'live'],
   ['08a','Lacework Sleeve','sleeve','Outer Sleeve','Single sleeve','2 sessions',1400,'claimed'],
   ['08b','Litany Sleeve','sleeve','Outer Sleeve','Single sleeve','2 sessions',1400,'claimed'],
