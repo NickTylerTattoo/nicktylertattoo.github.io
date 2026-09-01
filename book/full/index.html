@@ -40,6 +40,10 @@
 .calpanel{background:var(--surface);border:1px solid var(--line);padding:clamp(8px,1.2vw,16px)}
 .calpanel iframe{background:transparent}
 .reassure{margin-top:24px;border-top:0;padding-top:0}
+.lockcta{max-width:1280px;margin:0 auto;padding:clamp(30px,4.5vw,52px) clamp(18px,4vw,56px);border-top:1px solid var(--line);display:flex;flex-direction:column;gap:12px}
+.lockcta__big{display:inline-flex;align-items:center;gap:.32em;font-weight:700;font-size:clamp(2.2rem,7vw,5rem);letter-spacing:-.03em;line-height:1;color:var(--bone-faint);cursor:default;user-select:none}
+.lockcta__lock{flex:none}
+.lockcta__note{font-size:.68rem;letter-spacing:.08em;color:var(--bone-dim)}
 .bfoot{max-width:1280px;margin:0 auto;display:flex;flex-wrap:wrap;gap:8px 28px;justify-content:space-between;padding:24px clamp(18px,4vw,56px) 32px;border-top:1px solid var(--line);font-size:.68rem;letter-spacing:.08em;color:var(--bone-faint)}
 </style>
 </head>
@@ -105,6 +109,11 @@
         </div>
       </div>
     </section>
+
+    <div class="lockcta">
+      <span class="lockcta__big"><svg class="lockcta__lock" viewBox="0 0 24 24" width="0.6em" height="0.6em" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="10.5" width="16" height="10"/><path d="M8 10.5V7a4 4 0 0 1 8 0v3.5"/></svg>How to prepare</span>
+      <span class="lockcta__note mono">// Booking required to unlock this link</span>
+    </div>
 
     <footer class="bfoot mono">
       <span>&copy; <span id="yr"></span> Nick Tyler Tattoo</span>
