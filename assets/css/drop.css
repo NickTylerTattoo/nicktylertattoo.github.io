@@ -13,6 +13,9 @@
   --champ-lift:#D6C8A9;
   --line:rgba(184,169,138,.16);
   --line-2:rgba(184,169,138,.34);
+  --line-3:rgba(184,169,138,.62);   /* the doors' button outline. .62 not .55: at .55 the 1px line sat at 3.26:1 on flat ink
+                                       and dipped to 2.6–2.9:1 where the poster's ring highlights run behind doors 1–2
+                                       on phones. .62 holds 3.85:1 on ink and 3.4:1 on the lightest sampled ground. */
   --sans:'Space Grotesk',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
   --mono:'Space Mono',ui-monospace,'SFMono-Regular',Menlo,monospace;
   --serif:'Cormorant Garamond','Times New Roman',serif;
@@ -35,7 +38,7 @@ a{color:inherit;text-decoration:none}
 button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 :focus-visible{outline:2px solid var(--champ);outline-offset:3px}
 
-.mono{font-family:var(--mono);font-weight:400;letter-spacing:.08em;text-transform:uppercase;font-size:12px}
+.mono{font-family:var(--mono);font-weight:400;letter-spacing:.08em;text-transform:uppercase;font-size:13px}
 /* Accent word in a headline. Was Cormorant italic; the light serif read thin
    next to Space Grotesk 700, so the accent is carried by colour alone and
    inherits the headline's face and weight. */
@@ -104,7 +107,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
   white-space:nowrap;
 }
 .hero-sub{
-  font-family:var(--mono);font-size:13px;letter-spacing:.11em;text-transform:uppercase;
+  font-family:var(--mono);font-size:14px;letter-spacing:.11em;text-transform:uppercase;
   color:var(--bone-dim);line-height:1.7;
 }
 .hero-line{max-width:36ch;color:var(--bone-dim);font-size:clamp(15px,1.7vw,18px);text-wrap:balance}
@@ -213,11 +216,14 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 /* ---------- footer ---------- */
 .foot{border-top:1px solid var(--line);padding:clamp(56px,7vw,88px) 0 34px}
 .foot-cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:32px;color:var(--bone-dim)}
-.foot-cols b{display:block;color:var(--champ);margin-bottom:9px;font-family:var(--mono);font-size:10px;letter-spacing:.13em;text-transform:uppercase}
-.foot-cols p{font-size:14px;line-height:1.8}
+.foot-cols b{display:block;color:var(--champ);margin-bottom:9px;font-family:var(--mono);font-size:11px;letter-spacing:.13em;text-transform:uppercase}
+.foot-cols p{font-size:14px;line-height:1.8}   /* not 15: uppercase mono at 15 split '$250–'/'$1,200' at 375 and 'Jul–'/'Sep 2026' at 1280 */
 .foot-base{
   display:flex;flex-wrap:wrap;gap:14px;justify-content:space-between;
   margin-top:44px;padding-top:20px;border-top:1px solid var(--line);color:var(--bone-faint);
+  /* pinned at 12px rather than inheriting the 13px .mono: at 13 the tagline
+     needed 351px in a 350px column on a 390 phone and wrapped mid-phrase */
+  font-size:12px;
 }
 
 /* ---------- reveal ---------- */
@@ -248,25 +254,48 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 }
 .splash .wm{font-size:clamp(44px,13vw,190px)}
 .splash .hero-sub{margin-top:2px}
+/* ---------- the four doors ----------
+   The complaint was "text in boxes". Judged with motion off first, because that
+   is how the owner sees this page: the go-line becomes a real outlined button —
+   1px champagne at --line-3, square-cornered like every other button here (the
+   FOLLOW button, .btn, .nav-cta) which also keeps it well clear of the 999px
+   styles tags further down, 40px tall, label plus a lifted
+   arrow — bottom-aligned across the row, so the nav reads as four buttons
+   before the words are read. The ruled cells are untouched: no fills, nothing
+   added at the hero seam. State changes are colour-only, so they still land
+   with motion off; they snap instead of easing. No idle animation: the owner
+   can never see it, and this page's own still switch says motion is sparse. */
 .quad{
   position:relative;z-index:1;
   display:grid;grid-template-columns:repeat(4,1fr);
   border-top:1px solid var(--line);
 }
 .quad-cell{
-  display:flex;flex-direction:column;gap:9px;
+  display:flex;flex-direction:column;gap:9px;min-width:0;
   padding:clamp(20px,2.6vh,32px) clamp(14px,2vw,26px);
   border-left:1px solid var(--line);
-  transition:background .5s var(--ease);
+  text-decoration:none;color:inherit;
+  transition:background-color .5s var(--ease);
 }
 .quad-cell:first-child{border-left:0}
 .quad-cell:hover{background:rgba(184,169,138,.05)}
-.quad-cell .door-mark{width:40px;height:40px;margin-bottom:2px}
-.quad-cell:hover .door-mark{opacity:1;transform:rotate(30deg)}
+.quad-cell .door-mark{width:40px;height:40px;margin-bottom:2px;transition:opacity .5s var(--ease),transform .7s var(--ease)}
+.quad-cell:hover .door-mark,.quad-cell:focus-visible .door-mark{opacity:1;transform:rotate(30deg)}
 .quad-name{font-size:clamp(16px,1.7vw,21px);font-weight:500;letter-spacing:-.01em;line-height:1.15}
-.quad-tag{color:var(--bone-faint)}
-.quad-go{color:var(--champ);margin-top:auto;padding-top:10px;transition:transform .45s var(--ease)}
-.quad-cell:hover .quad-go{transform:translateX(5px)}
+.quad-tag{color:var(--bone-faint);margin-bottom:6px}   /* + the 9px gap = 15px above the button */
+/* the button */
+.quad-go{
+  align-self:flex-start;display:inline-flex;align-items:center;gap:8px;
+  margin-top:auto;min-height:40px;padding:11px 15px 11px 16px;
+  line-height:1;white-space:nowrap;
+  color:var(--champ);border:1px solid var(--line-3);border-radius:0;
+  background:transparent;
+  transition:border-color .45s var(--ease),background-color .45s var(--ease),color .45s var(--ease);
+}
+.quad-arr{display:inline-block;font-size:13px;line-height:1;color:var(--champ-lift);transition:transform .45s var(--ease)}
+.quad-cell:hover .quad-go,.quad-cell:focus-visible .quad-go{border-color:var(--champ);background:rgba(184,169,138,.10);color:var(--champ-lift)}
+.quad-cell:active .quad-go{border-color:var(--champ-lift);background:rgba(184,169,138,.18)}
+.quad-cell:hover .quad-arr{transform:translateX(4px)}
 @media(max-width:860px){
   .splash{min-height:100svh;gap:30px;padding-top:clamp(56px,11vh,98px)}
   .quad{grid-template-columns:repeat(2,1fr)}
@@ -276,14 +305,31 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 /* Stay 2x2 all the way down rather than collapsing to a stack. Four stacked
    cells ran the splash to roughly three screens and pushed the doors under the
    mandala; the grid keeps them on one screen and clear of it. */
+/* 4-col but narrow: at 13px the 19-char OTAAT tag is 171px against a 159–170px
+   cell inner between 861 and 930, and wrapped with the middot orphaned. */
+@media(min-width:861px) and (max-width:930px){.quad-tag{font-size:12px;letter-spacing:.06em}}
+
 @media(max-width:460px){
   .quad{grid-template-columns:repeat(2,1fr)}
-  .quad-cell{padding:18px 14px;gap:7px}
+  .quad-cell{padding:18px 12px;gap:7px}
   .quad-cell .door-mark{width:32px;height:32px}
   .quad-name{font-size:16px;line-height:1.22;text-wrap:balance}
-  .quad-tag{font-size:11px;letter-spacing:.07em;line-height:1.4}
-  .quad-go{font-size:11px;letter-spacing:.07em;padding-top:9px}
+  /* Tracking 0 and 12px side padding, measured not eyeballed: the 19-char OTAAT
+     tag is 140px untracked at 12px; the cell inner is 143px at 375 and 150px at
+     390 with 12px padding. Under 14px padding and any tracking it wrapped there.
+     At 320 the cell is 115px and the tag wrapped under the old CSS too. */
+  .quad-tag{font-size:12px;letter-spacing:0;line-height:1.4}
+  .quad-go{font-size:12px;letter-spacing:.04em;padding:10px 12px;gap:6px;min-height:38px}
+  .quad-arr{font-size:12px}
 }
+
+/* Durations are zeroed by the reduce-motion blanket below; body.still is a
+   screenshot mode where nothing is hovered, so only the two transforms need
+   parking in both. */
+@media(prefers-reduced-motion:reduce){
+  .quad-cell:hover .door-mark,.quad-cell:focus-visible .door-mark,.quad-cell:hover .quad-arr{transform:none}
+}
+body.still .quad-cell:hover .door-mark,body.still .quad-cell:focus-visible .door-mark,body.still .quad-cell:hover .quad-arr{transform:none}
 
 @media (prefers-reduced-motion:reduce){
   *{animation-duration:.01ms!important;transition-duration:.01ms!important}
@@ -391,7 +437,7 @@ body.still .ig__piclink::before{animation:none}
   font-size:clamp(21px,2.6vw,30px);font-weight:500;color:var(--bone);
   line-height:1;letter-spacing:-.02em;font-variant-numeric:tabular-nums;
 }
-.ig__l{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--bone-faint)}
+.ig__l{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--bone-faint)}
 .ig__follow{
   display:inline-flex;align-items:center;justify-content:center;gap:8px;flex:0 0 auto;
   background:var(--champ);color:var(--ink);border:1px solid var(--champ);
@@ -427,12 +473,12 @@ body.still .ig__piclink::before{animation:none}
 }
 .award__medal{width:clamp(50px,5.8vw,72px);height:auto;color:var(--champ);flex:0 0 auto}
 .award__body{min-width:0}
-.award__rank{color:var(--champ);font-size:11px;letter-spacing:.2em;text-transform:uppercase}
+.award__rank{color:var(--champ);font-size:12px;letter-spacing:.2em;text-transform:uppercase}
 .award__name{
   margin-top:7px;font-size:clamp(19px,2.5vw,30px);font-weight:500;
   letter-spacing:-.018em;line-height:1.14;text-wrap:balance;
 }
-.award__by{margin-top:9px;color:var(--bone-faint);font-size:11px;letter-spacing:.08em}
+.award__by{margin-top:9px;color:var(--bone-faint);font-size:12px;letter-spacing:.08em}
 .award__by a{color:var(--champ);border-bottom:1px solid var(--line-2);transition:border-color .35s var(--ease)}
 .award__by a:hover{border-bottom-color:var(--champ)}
 /* one slow pass of light every several seconds. The only thing on the page that
@@ -459,7 +505,7 @@ body.still .ig__piclink::before{animation:none}
 }
 .rate__stars{display:inline-flex;gap:3px;font-size:clamp(13px,1.5vw,17px)}
 .rate__stars i{font-style:normal;color:var(--champ);opacity:0;transform:scale(.5) rotate(-20deg)}
-.rate__say{color:var(--bone-dim);font-size:clamp(14px,1.5vw,16px)}
+.rate__say{color:var(--bone-dim);font-size:clamp(15px,1.6vw,17px)}
 
 /* Motion is driven off the block's own reveal, so nothing moves until the
    section is actually on screen: five stars land in sequence. --i sets each
@@ -497,22 +543,22 @@ body.still .ig__piclink::before{animation:none}
   transition:border-color .45s var(--ease),background .45s var(--ease);
 }
 .rcard:hover{border-color:var(--line-2);background:var(--panel-2)}
-.rcard__q{color:var(--bone-dim);font-size:14.5px;line-height:1.62;flex:1}
+.rcard__q{color:var(--bone-dim);font-size:15.5px;line-height:1.62;flex:1}
 .rcard__foot{
   display:flex;align-items:flex-end;justify-content:space-between;
   gap:12px;margin-top:16px;padding-top:13px;border-top:1px solid var(--line);
 }
 .rcard__who{display:flex;flex-direction:column;gap:4px;min-width:0}
-.rcard__name{color:var(--bone);font-size:13px;letter-spacing:-.01em}
+.rcard__name{color:var(--bone);font-size:14px;letter-spacing:-.01em}
 /* Kept for the review dates, which are not on these cards yet: the only place
    they exist is Google itself, and the copies on the Manus page are hardcoded
    "N months ago" strings with no anchor date, so there is nothing here to
    derive a real date from. Add a .rcard__date span under the name and it lands
    correctly. */
-.rcard__date{color:var(--bone-faint);font-size:10px;letter-spacing:.08em}
+.rcard__date{color:var(--bone-faint);font-size:11px;letter-spacing:.08em}
 .rcard__src{display:flex;align-items:center;gap:6px;flex:0 0 auto}
 .rcard__g{width:14px;height:14px;flex:0 0 auto}
-.rcard__ok{color:var(--bone-faint);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase}
+.rcard__ok{color:var(--bone-faint);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase}
 
 /* Both still mode and reduced-motion want this parked. Without these the
    stars would sit at opacity:0 forever in a screenshot, because their reveal
@@ -546,17 +592,17 @@ body.still .rate__stars i{opacity:1;transform:none;animation:none}
    rather than the hairline rows, because a row per style would run the rail
    twice as long for half the information. */
 .styles{border-top:1px solid var(--line);padding-top:clamp(15px,1.9vw,19px)}
-.styles__k{color:var(--champ);font-size:10px;letter-spacing:.1em;text-transform:uppercase;margin-bottom:13px}
+.styles__k{color:var(--champ);font-size:11px;letter-spacing:.1em;text-transform:uppercase;margin-bottom:13px}
 .styles__list{list-style:none;display:flex;flex-wrap:wrap;gap:8px}
 .styles__list li{
-  font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;
+  font-family:var(--mono);font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;
   color:var(--bone-dim);padding:.66em .92em;
   border:1px solid var(--line);border-radius:999px;
   transition:border-color .4s var(--ease),color .4s var(--ease);
 }
 .styles__list li:hover{border-color:var(--champ);color:var(--bone)}
 
-.bio__p{color:var(--bone-dim);font-size:clamp(15px,1.55vw,17px);line-height:1.78;max-width:62ch}
+.bio__p{color:var(--bone-dim);font-size:clamp(16px,1.65vw,18px);line-height:1.78;max-width:62ch}
 .bio__p + .bio__p{margin-top:17px}
 .bio__link{
   color:var(--champ);border-bottom:1px solid var(--line-2);
@@ -622,7 +668,7 @@ body.still .rate__stars i{opacity:1;transform:none;animation:none}
   transition:border-color .45s var(--ease),background .45s var(--ease);
 }
 .allrev:hover{border-color:var(--champ);background:rgba(184,169,138,.05)}
-.allrev__txt{font-size:clamp(15px,1.7vw,18px);font-weight:500;letter-spacing:-.01em}
+.allrev__txt{font-size:clamp(16px,1.8vw,19px);font-weight:500;letter-spacing:-.01em}
 .allrev__go{color:var(--champ);white-space:nowrap;transition:transform .45s var(--ease)}
 .allrev:hover .allrev__go{transform:translateX(6px)}
 @media(max-width:900px){.allrev{min-height:44px}}
@@ -643,10 +689,10 @@ body.still .rate__stars i{opacity:1;transform:none;animation:none}
 .gift__body{display:flex;flex-direction:column;min-width:0}
 .gift__idx{color:var(--champ);margin-bottom:11px}
 .gift__name{font-size:clamp(20px,2.6vw,30px);font-weight:500;letter-spacing:-.015em;line-height:1.14}
-.gift__desc{margin-top:8px;color:var(--bone-dim);font-size:15px;max-width:46ch;text-wrap:balance}
+.gift__desc{margin-top:8px;color:var(--bone-dim);font-size:16px;max-width:46ch;text-wrap:balance}
 .gift__go{
   color:var(--champ);white-space:nowrap;
-  font-size:11px;letter-spacing:.1em;
+  font-size:13px;letter-spacing:.1em;
   transition:transform .45s var(--ease);
 }
 .gift:hover .gift__go{transform:translateX(6px)}
