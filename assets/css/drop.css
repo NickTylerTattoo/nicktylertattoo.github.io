@@ -83,8 +83,14 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
    the page ground at the bottom. Replaced the Flower-of-Life canvas, 2026-08-28. */
 .inkhero{position:absolute;inset:0;z-index:0;overflow:hidden;pointer-events:none}
 .inkhero video{width:100%;height:100%;object-fit:cover;object-position:center 42%;display:block}
+/* The scrim used to thin to .08 across the middle of the frame, which is
+   exactly the band the wordmark and the styles line sit in — so the rings ran
+   straight through the type. Measured contrast was never the problem (16:1 on
+   the wordmark), but reading large type over moving texture is not the same as
+   reading it over a flat ground. Holds the ramp darker through the middle and
+   lets the rings carry the corners. */
 .inkhero::after{content:"";position:absolute;inset:0;background:
-  linear-gradient(rgba(10,10,11,.28),rgba(10,10,11,.08) 45%,rgba(10,10,11,.5) 82%,var(--ink) 100%)}
+  linear-gradient(rgba(10,10,11,.46),rgba(10,10,11,.34) 45%,rgba(10,10,11,.64) 82%,var(--ink) 100%)}
 .hero-core{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;gap:22px}
 .hero-kick{color:var(--champ)}
 /* set in caps — needs positive tracking, where the mixed-case version wanted negative */
