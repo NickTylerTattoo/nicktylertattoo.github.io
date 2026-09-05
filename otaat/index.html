@@ -14,7 +14,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:wght@300;400;500;600;700&family=Special+Elite&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css?v=4">
+<link rel="stylesheet" href="css/style.css?v=5">
 <script src="/assets/js/config.js"></script>
 <noscript><img height="1" width="1" style="display:none" alt="" src="https://www.facebook.com/tr?id=598145411993915&ev=PageView&noscript=1"/></noscript>
 <noscript>
@@ -58,12 +58,13 @@
       </svg>
       <span class="nav-logo__txt">Nick&nbsp;Tyler&nbsp;Tattoo</span>
     </a>
+    <!-- Three words for the three first-visit questions: why, how, when. The
+         Post, The Collection and Artists are reached by reading down; the skip
+         link still targets #post. -->
     <nav class="nav-links" aria-label="Primary">
       <a href="#story" class="nav-link" data-cursor="link">The Story</a>
-      <a href="#post" class="nav-link" data-cursor="link">The Post</a>
-      <a href="#collection" class="nav-link" data-cursor="link">The Collection</a>
+      <a href="#ritual" class="nav-link" data-cursor="link">How it works</a>
       <a href="#july" class="nav-link" data-cursor="link">Attend</a>
-      <a href="#atlas" class="nav-link" data-cursor="link">Artists</a>
     </nav>
   </header>
 
@@ -74,25 +75,22 @@
       <div class="emblem-stage" id="emblemStage">
         <canvas class="emblem" id="emblem" aria-hidden="true"></canvas>
       </div>
+      <!-- Five layers, one button, one fact. Everything cut here is said again
+           below the fold in his own words (free: seven times; one client at a
+           time: four; the closing line is the footer), or was motion the owner
+           never sees (typewriter, caret, scroll cue). The stencil tool the old
+           second button pointed at lives inside #ritual, where the one button goes. -->
       <div class="hero-core">
-        <div class="hero-kick mono">A Nick Tyler Tattoo initiative<br>Selden, NY · Free, always</div>
+        <div class="hero-kick mono">A Nick Tyler Tattoo initiative<br>Selden, NY</div>
         <h1 class="wm" id="wm"><span class="wm-line" data-split>One Tattoo</span><br><span class="wm-line" data-split>At A Time</span></h1>
         <div class="hero-sub">Recovery · Resilience · Remembrance</div>
-        <div class="hero-type mono" id="typewriter" aria-hidden="true"><span class="hero-type__label">YOUR NUMBER:&nbsp;</span><span class="hero-type__slot"><span id="typeOut"></span><span class="caret"></span></span></div>
-        <p class="hero-line">One story. One number. <em>One tattoo at a time.</em></p>
         <div class="hero-cta">
-          <a href="#stencil" class="btn btn--solid" data-cursor="view">Try your own</a>
-          <a href="#ritual" class="btn btn--ghost" data-cursor="link">How it works</a>
+          <a href="#ritual" class="btn btn--solid" data-cursor="link">How it works</a>
         </div>
         <div class="hero-meta mono">
           <span><span class="dot"></span>Back September 27</span>
-          <span>No cost, ever</span>
-          <span>One client at a time</span>
         </div>
       </div>
-      <button class="scrollcue mono" id="scrollcue" data-cursor="view" aria-label="Scroll to the story">
-        <span>Scroll</span><span class="scrollcue__line" aria-hidden="true"></span>
-      </button>
     </section>
 
     <!-- 001 · THE STORY -->
@@ -341,9 +339,10 @@
   </main>
 
   <!-- STICKY MOBILE CTA BAR -->
+  <!-- One button, same word as the header route to the same place. "Attend",
+       not "Sign up": #july has no form, the link goes live on Instagram. -->
   <nav class="mobilebar" id="mobilebar" aria-label="Quick actions">
-    <a href="#post" class="mobilebar__btn mobilebar__btn--ghost" data-cursor="link">The post</a>
-    <a href="#july" class="mobilebar__btn mobilebar__btn--solid" data-cursor="link">Sign up</a>
+    <a href="#july" class="mobilebar__btn mobilebar__btn--solid" data-cursor="link">Attend</a>
   </nav>
 
   <div class="srlive" id="srlive" aria-live="polite"></div>
@@ -374,6 +373,6 @@
   })();
   </script>
   <script src="https://link.inkedin.tools/js/form_embed.js"></script>
-  <script src="js/app.js?v=5"></script>
+  <script src="js/app.js?v=6"></script>
 </body>
 </html>

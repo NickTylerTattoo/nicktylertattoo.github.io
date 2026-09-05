@@ -79,18 +79,8 @@ body:not([data-loading]) .preloader{opacity:0;visibility:hidden;pointer-events:n
 .wm .ch{display:inline-block;transform:translateY(1.1em);opacity:0}
 .wm .sp{display:inline-block;width:.26em}
 .hero-sub{margin-top:24px;font-size:clamp(.74rem,1.6vw,1rem);letter-spacing:.5em;text-indent:.5em;text-transform:uppercase;color:var(--bone-dim)}
-.hero-type{margin-top:22px;display:inline-flex;align-items:baseline;font-size:clamp(.9rem,2vw,1.2rem);letter-spacing:.1em;color:var(--gold);border:1px solid var(--line);padding:.7em 1.1em;background:rgba(19,17,15,.55)}
-.hero-type__label{color:var(--bone-faint);font-size:.72em;letter-spacing:.2em}
-#typeOut{font-family:var(--type);letter-spacing:.14em;min-height:1em}
-.caret{display:inline-block;width:.55em;height:1.05em;margin-left:.12em;background:var(--gold);vertical-align:text-bottom;animation:caret 1s steps(1) infinite}
-@keyframes caret{50%{opacity:0}}
-.hero-line{margin-top:22px;font-size:clamp(1rem,2vw,1.25rem);color:var(--bone-dim)}
-.hero-line em{font-family:var(--serif);font-style:italic;color:var(--bone);font-size:1.12em}
 .hero-cta{margin-top:32px;display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
 .hero-meta{margin-top:32px;display:flex;gap:8px 26px;justify-content:center;flex-wrap:wrap;font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--bone-faint)}
-.scrollcue{position:absolute;bottom:26px;left:50%;transform:translateX(-50%);z-index:3;display:flex;flex-direction:column;align-items:center;gap:10px;font-size:.6rem;letter-spacing:.24em;text-transform:uppercase;color:var(--bone-faint)}
-.scrollcue__line{width:1px;height:42px;background:linear-gradient(var(--gold),transparent);animation:cue 1.8s var(--ease) infinite}
-@keyframes cue{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}50.1%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
 
 /* BUTTONS */
 .btn{display:inline-flex;align-items:center;gap:.6em;font-family:var(--mono);font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;padding:1.05em 1.7em;transition:transform .3s var(--ease),background .3s,color .3s,border-color .3s;will-change:transform}
@@ -286,13 +276,11 @@ body:not([data-loading]) .preloader{opacity:0;visibility:hidden;pointer-events:n
 /* STICKY MOBILE CTA BAR */
 .mobilebar{position:fixed;left:0;right:0;bottom:0;z-index:90;display:none;gap:10px;padding:10px 12px;background:rgba(9,7,6,.92);backdrop-filter:blur(12px);border-top:1px solid var(--line)}
 .mobilebar__btn{flex:1;text-align:center;font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;padding:1.05em;border-radius:4px}
-.mobilebar__btn--ghost{border:1px solid var(--line-2);color:var(--bone)}
 .mobilebar__btn--solid{background:var(--gold);color:var(--ink)}
 /* mobilebar covers the 700–900px nav gap too (nav-links hide at 900) */
 @media(max-width:900px){
   .mobilebar{display:flex}
   body{padding-bottom:64px}
-  .scrollcue{display:none}   /* the bar would cover it */
 }
 
 /* SR live */
@@ -331,10 +319,8 @@ body.still #pulsePath{stroke-dashoffset:0!important}
 @media(max-width:600px){
   section{padding:clamp(46px,12vw,72px) 18px}
   .hero-sub{letter-spacing:.22em;font-size:.72rem}
-  .hero-line{font-size:1.02rem}
   .hero-cta{flex-direction:column;align-items:stretch;width:100%;gap:10px}
   .hero-cta .btn{width:100%;justify-content:center}
-  .hero-type{font-size:.86rem}
   .shead{flex-direction:column;align-items:flex-start;gap:16px}
   .dstat{text-align:left}
   .composer__row{flex-direction:column;align-items:stretch}
@@ -377,9 +363,7 @@ body.still #pulsePath{stroke-dashoffset:0!important}
   .nav-cta{white-space:nowrap;font-size:.6rem;letter-spacing:.1em;padding:.75em .85em}
 }
 
-/* Specimen box holds its height across the type/delete cycle so the CTAs
-   below never shift; emblem dimmed so the hero text reads over it. */
-.hero-type{min-height:2.78em}
+/* emblem dimmed so the hero text reads over it */
 .emblem{opacity:.45}
 #stencil{scroll-margin-top:90px}
 
@@ -406,6 +390,3 @@ body.still #pulsePath{stroke-dashoffset:0!important}
   .post-grid{grid-template-columns:1fr}
   .postcard{max-width:460px;margin:0 auto;transform:rotate(-1deg)}
 }
-/* The specimen reserves the full 10-character slot up front, so the box is
-   born at final size and never resizes while phrases type and delete. */
-.hero-type__slot{display:inline-block;min-width:12ch;text-align:left;white-space:nowrap}

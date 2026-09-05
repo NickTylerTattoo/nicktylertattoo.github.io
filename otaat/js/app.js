@@ -29,7 +29,7 @@ const WALL_OFFLINE   = "The wall isn't taking new messages right now. DM @nickty
 const ARTIST_OFFLINE = "The sign-up isn't going through right now. DM @nicktylertattoo and I'll get you on the list.";
 /* FROZEN — ?still screenshot mode: no motion, no interaction.
    REDUCED — OS "reduce motion": no autonomous motion (spins, pulses,
-   marquee, typewriter), but user-driven interaction still works.
+   marquee), but user-driven interaction still works.
    ?motion overrides the OS setting. */
 const FROZEN = params.has('still');
 const REDUCED = !FROZEN && matchMedia('(prefers-reduced-motion: reduce)').matches && !params.has('motion');
@@ -233,29 +233,6 @@ function emblem(){
   if(STILL){ mx=tmx; my=tmy; render(2.2); } else { requestAnimationFrame(loop); }
 }
 
-/* ---------- Typewriter specimen ---------- */
-const PHRASES = ['24 HOURS','03.22.2026','1 DAY','10 YEARS','5,475 DAYS','365 DAYS'];
-function typewriter(){
-  const out = $('#typeOut');
-  if (STILL){ out.textContent = PHRASES[0]; return; }
-  let pi = 0, ci = 0, deleting = false;
-  function step(){
-    const phrase = PHRASES[pi];
-    if (!deleting){
-      ci++;
-      out.textContent = phrase.slice(0, ci);
-      if (ci === phrase.length){ deleting = true; setTimeout(step, 1700); return; }
-      setTimeout(step, 95 + Math.random()*70);
-    } else {
-      ci--;
-      out.textContent = phrase.slice(0, ci);
-      if (ci === 0){ deleting = false; pi = (pi+1) % PHRASES.length; setTimeout(step, 450); return; }
-      setTimeout(step, 42);
-    }
-  }
-  setTimeout(step, 1200);
-}
-
 /* ---------- Marquee ---------- */
 function marquee(){
   /* The marquee markup was removed from every page. init() calls this
@@ -279,7 +256,6 @@ function nav(){
   const n = $('#nav');
   const on = () => n.classList.toggle('is-stuck', scrollY > 40);
   on(); addEventListener('scroll', on, {passive:true});
-  $('#scrollcue').addEventListener('click', () => $('#story').scrollIntoView({behavior:'smooth'}));
 }
 
 /* ---------- Stencil preview ---------- */
@@ -893,7 +869,7 @@ function artists(){
 function init(){
   $('#yr').textContent = new Date().getFullYear();
   splitWordmark();
-  cursor(); constellation(); emblem(); typewriter(); marquee(); nav();
+  cursor(); constellation(); emblem(); marquee(); nav();
   stencil(); stats(); reveals();
   collection(); atlas();
   // artists() retired 2026-08-24 — the sign-up is a GHL form embed now
