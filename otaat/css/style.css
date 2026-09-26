@@ -229,6 +229,10 @@ body:not([data-loading]) .preloader{opacity:0;visibility:hidden;pointer-events:n
 .aform__ok b{font-size:1.3rem;letter-spacing:-.01em}
 .aform__ok p{color:var(--bone-dim);max-width:34ch;font-size:.92rem}
 .aform__ok[hidden]{display:none}
+.register{display:grid;grid-template-columns:.8fr 1.2fr;gap:clamp(30px,5vw,72px);align-items:start;border-top:1px solid var(--line);padding:clamp(40px,6vw,70px) 0 clamp(48px,7vw,90px);scroll-margin-top:80px}
+.register-head .slead a{color:var(--gold);border-bottom:1px solid var(--line-2)}
+.calpanel{background:var(--surface);border:1px solid var(--line);padding:clamp(8px,1.2vw,16px)}
+.calpanel iframe{background:transparent}
 
 /* 006 — THE ATLAS (artist world map) */
 .atlas{position:relative;z-index:2;background:var(--ink);max-width:1280px;margin:0 auto;border-top:1px solid var(--line)}
@@ -307,6 +311,7 @@ body.still #pulsePath{stroke-dashoffset:0!important}
   .ritual{grid-template-columns:1fr}
   .ritual-right{position:static}
   .artists{grid-template-columns:1fr}
+  .register{grid-template-columns:1fr}
   .who-grid{grid-template-columns:1fr}
   .statrow{grid-template-columns:1fr 1fr}
 }

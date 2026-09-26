@@ -14,7 +14,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:wght@300;400;500;600;700&family=Special+Elite&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css?v=5">
+<link rel="stylesheet" href="css/style.css?v=6">
 <script src="/assets/js/config.js"></script>
 <noscript><img height="1" width="1" style="display:none" alt="" src="https://www.facebook.com/tr?id=598145411993915&ev=PageView&noscript=1"/></noscript>
 <noscript>
@@ -64,7 +64,7 @@
     <nav class="nav-links" aria-label="Primary">
       <a href="#story" class="nav-link" data-cursor="link">The Story</a>
       <a href="#ritual" class="nav-link" data-cursor="link">How it works</a>
-      <a href="#july" class="nav-link" data-cursor="link">Attend</a>
+      <a href="#register" class="nav-link" data-cursor="link">Book</a>
     </nav>
   </header>
 
@@ -257,11 +257,28 @@
     <section class="july" id="july">
       <div class="july-banner reveal">
         <div class="sidx mono">005 · The return</div>
-        <h2 class="july-big">OTAAT is back<br><em class="ser">September 27.</em></h2>
-        <p class="july-lead">The next event is penciled in for Sunday, September 27, and the final word drops on Instagram. The registration link goes live the day before. Free, first come, first served.</p>
+        <h2 class="july-big">OTAAT is back<br><em class="ser">Sunday, September 27.</em></h2>
+        <p class="july-lead">Registration is open. Pick your time below. Free, first come, first served, and only one client in the studio at a time. Read the rules before you book.</p>
         <div class="hero-cta">
-          <a href="https://instagram.com/nicktylertattoo" target="_blank" rel="noopener" class="btn btn--solid" data-cursor="view">Follow for the announcement</a>
+          <a href="#register" class="btn btn--solid" data-cursor="link" data-track="otaat_book_jump">Book your spot</a>
           <a href="#ritual" class="btn btn--ghost" data-cursor="link">Read the rules first</a>
+        </div>
+      </div>
+
+      <div class="register reveal" id="register">
+        <div class="register-head">
+          <div class="sidx mono">Registration · Sunday, September 27</div>
+          <h3 class="artists-title">Save your seat.</h3>
+          <p class="slead">One number or date, up to 10 characters, typewriter style. Spots are limited, and when they're gone the next date drops on <a href="https://instagram.com/nicktylertattoo" target="_blank" rel="noopener" data-cursor="link">@nicktylertattoo</a>.</p>
+        </div>
+        <div class="calpanel">
+          <iframe
+            src="https://link.inkedin.tools/widget/booking/rgKHk0r5QQ5pl7hhUs4r"
+            style="width:100%;border:0;display:block;min-height:640px"
+            id="booking-rgKHk0r5QQ5pl7hhUs4r"
+            scrolling="no"
+            title="One Tattoo At A Time registration: pick your time"
+            loading="eager"></iframe>
         </div>
       </div>
 
@@ -339,10 +356,9 @@
   </main>
 
   <!-- STICKY MOBILE CTA BAR -->
-  <!-- One button, same word as the header route to the same place. "Attend",
-       not "Sign up": #july has no form, the link goes live on Instagram. -->
+  <!-- One button straight to the registration calendar inside #july. -->
   <nav class="mobilebar" id="mobilebar" aria-label="Quick actions">
-    <a href="#july" class="mobilebar__btn mobilebar__btn--solid" data-cursor="link">Attend</a>
+    <a href="#register" class="mobilebar__btn mobilebar__btn--solid" data-cursor="link" data-track="otaat_book_mobilebar">Book your spot</a>
   </nav>
 
   <div class="srlive" id="srlive" aria-live="polite"></div>
@@ -369,6 +385,29 @@
     setTimeout(function(){
       var f = document.getElementById(ID);
       if (f && getComputedStyle(f).visibility === 'hidden') show(724);
+    }, 4000);
+  })();
+
+  /* GHL booking embed (OTAAT registration calendar): same guard as the form
+     above and /book/half/ — own the reveal, and forward any query params
+     (UTMs, prefill) into the widget. */
+  (function(){
+    var ID = 'booking-rgKHk0r5QQ5pl7hhUs4r';
+    var f = document.getElementById(ID);
+    if (f && location.search.length > 1){
+      f.src += (f.src.indexOf('?') > -1 ? '&' : '?') + location.search.slice(1);
+    }
+    function show(h){
+      if (f) f.style.cssText = 'display:block;width:100%;border:0;min-height:0;height:' + h + 'px';
+    }
+    window.addEventListener('message', function(ev){
+      if (typeof ev.data === 'string' && ev.data.indexOf('[iFrameSizer]' + ID + ':') === 0){
+        var h = parseInt(ev.data.split(':')[1], 10);
+        if (h > 200) show(h);
+      }
+    });
+    setTimeout(function(){
+      if (f && getComputedStyle(f).visibility === 'hidden') show(1100);
     }, 4000);
   })();
   </script>
