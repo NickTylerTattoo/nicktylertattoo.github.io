@@ -254,7 +254,12 @@ function nav(){
 }
 
 /* ---------- Catalog render + filter ---------- */
-const state={filter:'all',sort:'num',availOnly:false};
+/* Opening view is set in the HTML (the .filt marked is-active and the <option
+   selected> in #sort) and read back in catalog(). All + price low to high since
+   2026-09-26: a load test on a throttled phone showed opening on All costs
+   nothing at page load (grid images are lazy) and about 95 KB once the visitor
+   reaches the grid, so there's no reason to hide 32 of the 38 designs. */
+const state={filter:'all',sort:'price-asc',availOnly:false};
 let current=[];   // currently displayed list (for lightbox nav)
 function statusStamp(s){
   if(s==='feat') return '<span class="plate__stamp st-feat">★ Featured</span>';
@@ -285,9 +290,12 @@ function applyList(){
     if(state.availOnly && !d.available) return false;
     return true;
   });
-  if(state.sort==='price-asc') list.sort((a,b)=>a.price-b.price);
-  else if(state.sort==='price-desc') list.sort((a,b)=>b.price-a.price);
-  else if(state.sort==='avail') list.sort((a,b)=>(b.available-a.available)||(a.n-b.n));
+  /* price ties break available-first, then by No., so a claimed piece never
+     sits ahead of a live one at the same price */
+  const byAvailThenNo=(a,b)=>(b.available-a.available)||(a.n-b.n);
+  if(state.sort==='price-asc') list.sort((a,b)=>(a.price-b.price)||byAvailThenNo(a,b));
+  else if(state.sort==='price-desc') list.sort((a,b)=>(b.price-a.price)||byAvailThenNo(a,b));
+  else if(state.sort==='avail') list.sort(byAvailThenNo);
   else list.sort((a,b)=>a.n-b.n);
   current=list;
   const grid=$('#flashGrid');
@@ -307,10 +315,14 @@ function countUp(el, to){
   let v=0; const step=()=>{ v+=Math.max(1,Math.round((to-v)/6)); if(v>=to){el.textContent=to;return;} el.textContent=v; setTimeout(step,40); }; step();
 }
 function catalog(){
-  /* the pill marked is-active in the HTML is the opening filter — the page
-     opens on Sleeve rather than rendering all 35 plates up front */
+  /* the pill marked is-active and the <option selected> in the HTML are the
+     opening view. Reading the controls back (rather than trusting state's
+     defaults) also keeps the grid honest when the browser restores a changed
+     sort or "Available only" on a back navigation. */
   const act = $('.filt.is-active');
   if (act) state.filter = act.dataset.filter;
+  state.sort = $('#sort').value || state.sort;
+  state.availOnly = $('#availOnly').checked;
   applyList();
   const avail=CAT.filter(d=>d.available).length;
   $('#navAvail').textContent=avail;
@@ -334,6 +346,65 @@ function catalog(){
   });
 }
 
+/* ---------- Live counts ----------
+   Anything marked data-nt="avail" | "total" | "total-word" is filled from CAT,
+   on any page that loads this bundle (the /custom/ footer uses it too). Adding
+   or claiming a design in CAT updates every count on the site; no copy edits. */
+const WORDS=['Zero','One','Two','Three','Four','Five','Six','Seven','Eight','Nine','Ten','Eleven','Twelve','Thirteen','Fourteen','Fifteen','Sixteen','Seventeen','Eighteen','Nineteen'];
+const TENS=['','','Twenty','Thirty','Forty','Fifty','Sixty','Seventy','Eighty','Ninety'];
+function numberWord(n){
+  if(n<20) return WORDS[n];
+  if(n<100) return TENS[Math.floor(n/10)]+(n%10?'-'+WORDS[n%10].toLowerCase():'');
+  return String(n);
+}
+function liveCounts(){
+  const avail=CAT.filter(d=>d.available).length, total=CAT.length;
+  $$('[data-nt="avail"]').forEach(el=>el.textContent=avail);
+  $$('[data-nt="total"]').forEach(el=>el.textContent=total);
+  $$('[data-nt="total-word"]').forEach(el=>el.textContent=numberWord(total));
+}
+
+/* ---------- "Next open" date, read live from the flash booking calendar ----------
+   Same public free-slots feed the GHL booking widget calls itself, so the
+   label can't disagree with the calendar a visitor opens. GHL caps one request
+   at about 31 days, so it walks forward a month at a time, three at most.
+   Cached 10 minutes per tab. On any failure the label stays hidden: no stale
+   or guessed date is ever shown. */
+const NY='America/New_York';
+const nyKey=d=>new Intl.DateTimeFormat('en-CA',{timeZone:NY,year:'numeric',month:'2-digit',day:'2-digit'}).format(d);
+function openLabel(key){
+  if(key===nyKey(new Date())) return 'Today';
+  if(key===nyKey(new Date(Date.now()+864e5))) return 'Tomorrow';
+  const [y,m,d]=key.split('-').map(Number);
+  return new Intl.DateTimeFormat('en-US',{timeZone:'UTC',weekday:'short',month:'short',day:'numeric'}).format(new Date(Date.UTC(y,m-1,d,12)));
+}
+async function fetchNextOpen(){
+  const CK='nt_next_open';
+  try{ const c=JSON.parse(sessionStorage.getItem(CK)||'null'); if(c&&Date.now()-c.t<6e5) return c.key; }catch(e){}
+  const api=window.NT_CONFIG&&window.NT_CONFIG.flashSlots; if(!api) return null;
+  let start=Date.now();
+  for(let i=0;i<3;i++){
+    const end=start+30*864e5;
+    const r=await fetch(`${api}?startDate=${start}&endDate=${end}&timezone=${encodeURIComponent(NY)}`,{credentials:'omit'});
+    if(!r.ok) return null;
+    const j=await r.json();
+    const days=Object.keys(j).filter(k=>/^\d{4}-\d{2}-\d{2}$/.test(k)&&j[k]&&(j[k].slots||[]).length).sort();
+    if(days.length){ try{ sessionStorage.setItem(CK,JSON.stringify({t:Date.now(),key:days[0]})); }catch(e){} return days[0]; }
+    start=end+1;
+  }
+  return null;
+}
+function nextOpen(){
+  const run=()=>fetchNextOpen().then(key=>{
+    if(!key) return;
+    const label=openLabel(key);
+    $$('[data-nt="next-open"]').forEach(el=>el.textContent=label);
+    $$('[data-nt-wrap="next-open"]').forEach(el=>el.hidden=false);
+  }).catch(()=>{});
+  /* once the page has settled, so it never competes with the hero or the grid */
+  if('requestIdleCallback' in window) requestIdleCallback(run,{timeout:2500}); else setTimeout(run,1200);
+}
+
 /* ---------- Lightbox ---------- */
 let lbCurrent=null; let lastFocus=null;
 function findDesign(n){ return CAT.find(d=>d.n===n); }
@@ -354,7 +425,8 @@ function openLightbox(n){
   if(d.available){ claim.disabled=false; claim.textContent='Claim this design'; claim.style.display=''; }
   else { claim.style.display='none'; }
   $('#lbNote').textContent = d.available ? "One-of-one. $50 deposit reserves it, credited to your session." : 'This one has been claimed. Start a custom request for something similar.';
-  const lb=$('#lightbox'); lb.hidden=false; requestAnimationFrame(()=>lb.classList.add('show'));
+  const lb=$('#lightbox'); lb.classList.toggle('lb--gone', !d.available);   /* hides "Next open" on claimed pieces */
+  lb.hidden=false; requestAnimationFrame(()=>lb.classList.add('show'));
   $('#lbClose').focus();
   track('view_design',{design:d.title,no:d.n,status:d.status,price:d.price});
 }
@@ -370,12 +442,129 @@ function lightbox(){
   $('#lbNext').addEventListener('click',()=>stepLightbox(1));
   $('#lbClaim').addEventListener('click',()=>{ closeLightbox(); setTimeout(()=>openBooking(lbCurrent,'lightbox'),300); });
   $('#lbCustom').addEventListener('click',()=>{ const d=findDesign(lbCurrent); lastFocus=null; closeLightbox(); setTimeout(()=>goCustom(d),420); });
+  const zv=$('#zoomView');
+  if(zv){
+    const openZ=()=>{ const d=findDesign(lbCurrent); if(d) openZoom(d); };
+    $('#lbImg').addEventListener('click',openZ);
+    const zb=$('#lbZoom'); if(zb) zb.addEventListener('click',openZ);
+  }
   addEventListener('keydown',e=>{
     if($('#lightbox').hidden) return;
+    if(zv && !zv.hidden) return;   // the full-screen viewer handles its own keys
     if(e.key==='Escape') closeLightbox();
     if(e.key==='ArrowLeft') stepLightbox(-1);
     if(e.key==='ArrowRight') stepLightbox(1);
   });
+}
+
+/* ---------- Full-screen design viewer ----------
+   Tap the art in the design detail view to see it edge to edge. The tall
+   sleeve scans were a sliver in the detail card on a phone; here they fill
+   the screen. Pinch or double-tap to zoom (wheel or double-click on desktop),
+   drag to pan once zoomed. Opening it pushes a history entry, so a phone's
+   back gesture (or the Instagram browser's back) closes the viewer instead of
+   leaving the page. */
+let zoomApi=null;
+function openZoom(d){ if(zoomApi) zoomApi.open(d); }
+function zoomViewer(){
+  const zv=$('#zoomView'), stage=$('#zvStage'), img=$('#zvImg'), close=$('#zvClose');
+  let s=1, tx=0, ty=0, isOpen=false, returnTo=null;
+  const MAX=4;
+  const pts=new Map();
+  let g=null;                       // active gesture snapshot
+  let lastTap={t:0,x:0,y:0};
+  const rel=(x,y)=>{ const r=stage.getBoundingClientRect(); return {x:x-(r.left+r.width/2), y:y-(r.top+r.height/2)}; };
+  function clamp(){
+    const r=stage.getBoundingClientRect();
+    const mx=Math.max(0,(img.offsetWidth*s-r.width)/2), my=Math.max(0,(img.offsetHeight*s-r.height)/2);
+    tx=Math.min(mx,Math.max(-mx,tx)); ty=Math.min(my,Math.max(-my,ty));
+  }
+  function paint(anim){
+    img.style.transition=anim?'transform .3s var(--ease)':'none';
+    img.style.transform=`translate(${tx.toFixed(1)}px,${ty.toFixed(1)}px) scale(${s.toFixed(3)})`;
+    zv.classList.toggle('is-zoomed', s>1.01);
+  }
+  /* zoom to s2 keeping the point p (relative to the stage centre) under the finger */
+  function zoomAt(s2,p,anim){
+    s2=Math.min(MAX,Math.max(1,s2));
+    tx=p.x-(p.x-tx)*s2/s; ty=p.y-(p.y-ty)*s2/s; s=s2;
+    if(s<=1.01){ s=1; tx=0; ty=0; }
+    clamp(); paint(anim);
+  }
+  function reset(){ s=1; tx=0; ty=0; paint(false); }
+  function show(d){
+    returnTo=document.activeElement;
+    img.src=d.img; img.alt=d.title+', full view';
+    $('#zvCap').textContent='No. '+String(d.n).padStart(2,'0')+' · '+d.title;
+    reset(); zv.hidden=false; isOpen=true;
+    requestAnimationFrame(()=>zv.classList.add('show'));
+    try{ history.pushState({ntZoom:1},''); }catch(e){}
+    close.focus();
+    track('design_zoom',{design:d.title,no:d.n});
+  }
+  function hide(){
+    if(!isOpen) return; isOpen=false; pts.clear(); g=null;
+    zv.classList.remove('show');
+    setTimeout(()=>{ zv.hidden=true; reset(); if(returnTo&&returnTo.focus) returnTo.focus(); },300);
+  }
+  /* closing by button or Esc unwinds our own history entry; popstate then hides */
+  const requestClose=()=>{ if(history.state&&history.state.ntZoom) history.back(); else hide(); };
+  addEventListener('popstate',()=>{ if(isOpen) hide(); });
+  close.addEventListener('click',requestClose);
+  addEventListener('keydown',e=>{
+    if(!isOpen) return;
+    if(e.key==='Escape'){ e.preventDefault(); requestClose(); }
+    if(e.key==='+'||e.key==='=') zoomAt(s*1.5,{x:0,y:0},true);
+    if(e.key==='-') zoomAt(s/1.5,{x:0,y:0},true);
+  });
+  stage.addEventListener('pointerdown',e=>{
+    if(e.target.closest('button')) return;
+    stage.setPointerCapture(e.pointerId);
+    pts.set(e.pointerId,{x:e.clientX,y:e.clientY});
+    const p=[...pts.values()];
+    if(p.length===2){
+      const mid=rel((p[0].x+p[1].x)/2,(p[0].y+p[1].y)/2);
+      g={type:'pinch', d0:Math.hypot(p[0].x-p[1].x,p[0].y-p[1].y)||1, s0:s, tx0:tx, ty0:ty, m0:mid};
+    } else if(p.length===1){
+      g={type:'pan', x0:e.clientX, y0:e.clientY, tx0:tx, ty0:ty, moved:false};
+    }
+  });
+  stage.addEventListener('pointermove',e=>{
+    if(!pts.has(e.pointerId)||!g) return;
+    pts.set(e.pointerId,{x:e.clientX,y:e.clientY});
+    const p=[...pts.values()];
+    if(g.type==='pinch'&&p.length>=2){
+      const d=Math.hypot(p[0].x-p[1].x,p[0].y-p[1].y);
+      const mid=rel((p[0].x+p[1].x)/2,(p[0].y+p[1].y)/2);
+      const s2=Math.min(MAX,Math.max(1,g.s0*d/g.d0));
+      tx=mid.x-(g.m0.x-g.tx0)*s2/g.s0; ty=mid.y-(g.m0.y-g.ty0)*s2/g.s0; s=s2;
+      clamp(); paint(false);
+    } else if(g.type==='pan'){
+      const dx=e.clientX-g.x0, dy=e.clientY-g.y0;
+      if(Math.hypot(dx,dy)>8) g.moved=true;
+      if(s>1){ tx=g.tx0+dx; ty=g.ty0+dy; clamp(); paint(false); }
+    }
+  });
+  const end=e=>{
+    if(!pts.has(e.pointerId)) return;
+    pts.delete(e.pointerId);
+    if(g&&g.type==='pan'&&!g.moved&&e.type==='pointerup'){
+      /* double-tap / double-click toggles between fit and 2.5x at that spot */
+      const now=performance.now();
+      if(now-lastTap.t<320&&Math.hypot(e.clientX-lastTap.x,e.clientY-lastTap.y)<30){
+        if(s>1.01) zoomAt(1,{x:0,y:0},true); else zoomAt(2.5,rel(e.clientX,e.clientY),true);
+        lastTap={t:0,x:0,y:0};
+      } else lastTap={t:now,x:e.clientX,y:e.clientY};
+    }
+    const p=[...pts.values()];
+    /* lifting one finger of a pinch continues as a pan from where it is */
+    g=p.length===1?{type:'pan',x0:p[0].x,y0:p[0].y,tx0:tx,ty0:ty,moved:true}:null;
+  };
+  stage.addEventListener('pointerup',end);
+  stage.addEventListener('pointercancel',end);
+  stage.addEventListener('wheel',e=>{ e.preventDefault(); zoomAt(s*Math.exp(-e.deltaY*0.0022),rel(e.clientX,e.clientY),false); },{passive:false});
+  addEventListener('resize',()=>{ if(isOpen){ clamp(); paint(false); } },{passive:true});
+  zoomApi={open:show};
 }
 
 /* ---------- Booking (claim flow) — calendar opens immediately, no second click ---------- */
@@ -565,7 +754,7 @@ const FAQ = {
        so that line was dropped here rather than left contradicting the live page. */
     ['What are your rates?', "Custom pieces start at $250, with most work landing between $250 and $1,200 depending on size, placement and detail. Send your references through the request form and ask for an estimate and I'll give you an accurate number."],
     ["It's my first tattoo. Anything I should know?", "You're in good hands. Ask anything, take breaks whenever you need, and never apologize, just communicate. Your comfort comes first, always."],
-    ['Do you travel or do guest spots?', "My home studio is where I do my best work. For those traveling from out of state or over 100 miles away, I offer extended sessions, with a discount of up to $500 to cover your travel expenses to get to my studio. Ask me about my extended sessions in your request form for more information!"],
+    ['Do you travel or do guest spots?', "My private studio is where I do my best work. For those traveling from out of state or over 100 miles away, I offer extended sessions, with a discount of up to $500 to cover your travel expenses to get to my studio. Ask me about my extended sessions in your request form for more information!"],
     ["What's your cancellation policy?", "Life happens. Give me as much notice as you can. Deposits are non-refundable but they hold your spot, and I'll work with you to reschedule."],
     ['How do I care for it afterward?', "You'll get full aftercare instructions at your appointment, and I'm a text away if anything comes up while it heals."]
   ]
@@ -624,7 +813,10 @@ function init(){
   need('#nav', nav);
   need(['#flashGrid','#sort','#availOnly','#navAvail','#availCount','#drop'], catalog);
   need('#lightbox', lightbox);
+  need(['#zoomView','#zvStage','#zvImg','#zvClose'], zoomViewer);
   need('#booking', booking);
+  need('[data-nt]', liveCounts);
+  need('[data-nt="next-open"]', nextOpen);
   need(['#fhero','#fheroA','#fheroB','#fheroNow'], flashHero);
   need('#faqList', faq);
   need(['#processVideo','#ptlFill'], processTimeline);

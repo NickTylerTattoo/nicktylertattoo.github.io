@@ -16,8 +16,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Space+Mono:wght@400;700&family=Cormorant+Garamond:ital,wght@1,400;1,500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/css/app.css">
-<script src="/assets/js/config.js"></script>
+<link rel="stylesheet" href="/assets/css/app.css?v=20260926">
+<script src="/assets/js/config.js?v=20260926"></script>
 <noscript><img height="1" width="1" style="display:none" alt="" src="https://www.facebook.com/tr?id=598145411993915&ev=PageView&noscript=1"/></noscript>
 </head>
 <body>
@@ -51,46 +51,24 @@
       <div class="chero__in">
         <div class="sidx mono">Custom tattoo booking &middot; Selden, NY</div>
         <h1 class="stitle stitle--hero">Let&rsquo;s design your<br><span class="ser">custom tattoo</span>.</h1>
-        <p class="slead">Full sleeves or palm-sized pieces. The process is simple and guided, from first idea to finished tattoo.</p>
+        <p class="slead">Black and grey fine line, ornamental and illustrative work, from palm-sized pieces to full sleeves.</p>
         <div class="crate">
           <span class="crate__num">5.0</span>
           <span class="crate__stars" role="img" aria-label="Rated 5.0 out of 5">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
           <span class="crate__say">116 five star reviews on Google</span>
         </div>
+        <ol class="csteps mono" aria-label="How it works">
+          <li><span class="csteps__n">01</span>Send your idea</li>
+          <li><span class="csteps__n">02</span>Approval by text</li>
+          <li><span class="csteps__n">03</span>Book your session</li>
+        </ol>
         <div class="chero-cta">
-          <a href="#custom" class="btn btn--solid" data-cursor="link" data-track="hero_cta">Request a tattoo <span aria-hidden="true">&rarr;</span></a>
-          <a href="#process" class="btn btn--ghost" data-cursor="link" data-track="hero_how">How it works</a>
+          <a href="#custom" class="btn btn--solid" data-cursor="link" data-track="hero_cta">Start your request <span aria-hidden="true">&darr;</span></a>
         </div>
         <div class="chero-meta mono">
           <span><span class="dot"></span>Now booking &middot; 3 to 5 weeks out</span>
           <span>Custom pieces from $250</span>
           <span>Replies in 1 to 3 business days</span>
-        </div>
-      </div>
-    </section>
-
-    <section class="process" id="process">
-      <div class="sec-head">
-        <div class="sidx mono">The process</div>
-        <h2 class="stitle">Three easy steps,<br><span class="ser">one finished piece</span>.</h2>
-        <p class="slead">All custom work starts with one simple form. It lets us agree on direction and style early, so I show up on session day with the best possible tattoo ready for you.</p>
-      </div>
-      <div class="ptl" id="ptl">
-        <div class="ptl__track">
-          <div class="ptl__fill" id="ptlFill"></div>
-          <span class="ptl__node" style="left:0"></span>
-          <span class="ptl__node" style="left:calc(33.333% - 4px)"></span>
-          <span class="ptl__node" style="left:calc(66.667% - 4px)"></span>
-        </div>
-        <ol class="ptl__steps">
-          <li class="ptl__step"><span class="ptl__n mono">Step 01</span><span class="ptl__t">Submit your request</span></li>
-          <li class="ptl__step"><span class="ptl__n mono">Step 02</span><span class="ptl__t">Wait for approval</span></li>
-          <li class="ptl__step"><span class="ptl__n mono">Step 03</span><span class="ptl__t">Book your session</span></li>
-        </ol>
-      </div>
-      <div class="pvideo">
-        <div class="pvideo__frame">
-          <video id="processVideo" src="/assets/custom-flow.mp4" poster="/assets/custom-flow-poster.jpg" data-cuts="0.3333,0.6061" muted loop playsinline preload="metadata" width="880" height="1920" aria-label="Walkthrough of the custom request process: submit the form, get approval by text, then book with a private link"></video>
         </div>
       </div>
     </section>
@@ -141,6 +119,32 @@
             <span>Approval comes by text, so check your number twice</span>
           </div>
         </aside>
+      </div>
+    </section>
+
+    <section class="process" id="process">
+      <div class="sec-head">
+        <div class="sidx mono">The process</div>
+        <h2 class="stitle">Three easy steps,<br><span class="ser">one finished piece</span>.</h2>
+        <p class="slead">All custom work starts with one simple form. It lets us agree on direction and style early, so I show up on session day with the best possible tattoo ready for you.</p>
+      </div>
+      <div class="ptl" id="ptl">
+        <div class="ptl__track">
+          <div class="ptl__fill" id="ptlFill"></div>
+          <span class="ptl__node" style="left:0"></span>
+          <span class="ptl__node" style="left:calc(33.333% - 4px)"></span>
+          <span class="ptl__node" style="left:calc(66.667% - 4px)"></span>
+        </div>
+        <ol class="ptl__steps">
+          <li class="ptl__step"><span class="ptl__n mono">Step 01</span><span class="ptl__t">Submit your request</span></li>
+          <li class="ptl__step"><span class="ptl__n mono">Step 02</span><span class="ptl__t">Wait for approval</span></li>
+          <li class="ptl__step"><span class="ptl__n mono">Step 03</span><span class="ptl__t">Book your session</span></li>
+        </ol>
+      </div>
+      <div class="pvideo">
+        <div class="pvideo__frame">
+          <video id="processVideo" src="/assets/custom-flow.mp4" poster="/assets/custom-flow-poster.jpg" data-cuts="0.3333,0.6061" muted loop playsinline preload="metadata" width="880" height="1920" aria-label="Walkthrough of the custom request process: submit the form, get approval by text, then book with a private link"></video>
+        </div>
       </div>
     </section>
 
@@ -331,7 +335,7 @@
       </div>
       <div class="foot-cols mono">
         <div><b>Studio</b><p>By appointment &middot; private suite<br>Suffolk County &middot; Long Island, NY</p></div>
-        <div><b>Booking</b><p>Custom &middot; 3&ndash;5 weeks out<br>Reply in 1 to 3 business days</p></div>
+        <div><b>Booking</b><p>Custom &middot; 3&ndash;5 weeks out<br>Replies in 1 to 3 business days<br><a href="/flash/" data-cursor="link">The Collection &middot; <span data-nt="avail">29</span> of <span data-nt="total">38</span> available</a></p></div>
         <div><b>Elsewhere</b><p><a href="/events/">Private events</a><br><a href="/otaat/">One Tattoo At A Time</a></p></div>
         <div><b>Find me</b><p><a href="https://instagram.com/nicktylertattoo" data-cursor="link">@nicktylertattoo</a><br>5.0 &#9733; on Google</p></div>
       </div>
@@ -374,6 +378,6 @@
   })();
   </script>
   <script src="https://link.inkedin.tools/js/form_embed.js"></script>
-  <script src="/assets/js/app.js"></script>
+  <script src="/assets/js/app.js?v=20260926"></script>
 </body>
 </html>

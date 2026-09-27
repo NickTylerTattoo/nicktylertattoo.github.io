@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="ntt-page" content="flash">
 <title>The Collection · One-of-one flash designs · Nick Tyler Tattoo, Long Island NY</title>
-<meta name="description" content="Browse 38 one-of-one ornamental and fine-line flash designs. Each is tattooed once, then retired. Claim yours with a $50 deposit. By appointment, Long Island NY.">
+<meta name="description" content="Browse one-of-one ornamental and fine-line flash designs. Each is tattooed once, then retired. Claim yours with a $50 deposit. By appointment, Long Island NY.">
 <link rel="canonical" href="https://nicktylertattoo.com/flash/">
 <meta name="theme-color" content="#0A0A0B">
 <meta property="og:title" content="The Collection · Nick Tyler Tattoo">
@@ -16,8 +16,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Space+Mono:wght@400;700&family=Cormorant+Garamond:ital,wght@1,400;1,500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/css/app.css">
-<script src="/assets/js/config.js"></script>
+<link rel="stylesheet" href="/assets/css/app.css?v=20260926">
+<script src="/assets/js/config.js?v=20260926"></script>
 <noscript><img height="1" width="1" style="display:none" alt="" src="https://www.facebook.com/tr?id=598145411993915&ev=PageView&noscript=1"/></noscript>
 </head>
 <body data-loading>
@@ -66,11 +66,12 @@
           <div>
             <div class="sidx mono">The Collection</div>
             <h1 class="stitle stitle--hero">Let your next tattoo <span class="ser">find you</span>.</h1>
-            <p class="slead">Thirty-eight designs. Each tattooed once, then gone for good. If a design speaks to you, claim it before it&rsquo;s gone. A $50 deposit holds it and comes off your session.</p>
+            <p class="slead"><span data-nt="total-word">Thirty-eight</span> designs. Each tattooed once, then gone for good. If a design speaks to you, claim it before it&rsquo;s gone. A $50 deposit holds it and comes off your session.</p>
           </div>
           <div class="dstat">
-            <div class="dstat__num"><span id="availCount">0</span><i>/38</i></div>
+            <div class="dstat__num"><span id="availCount">0</span><i>/<span data-nt="total">38</span></i></div>
             <div class="dstat__lbl mono">Live right now</div>
+            <div class="dstat__next mono" data-nt-wrap="next-open" hidden>Next open &middot; <span data-nt="next-open"></span></div>
           </div>
         </div>
         <button class="fhero__now mono" id="fheroNow" data-cursor="view" hidden>
@@ -112,19 +113,19 @@
 
       <div class="filterbar" id="filterbar">
         <div class="filters" role="tablist" aria-label="Filter designs">
-          <button class="filt" data-filter="all" role="tab" aria-selected="false">All</button>
+          <button class="filt is-active" data-filter="all" role="tab" aria-selected="true">All</button>
           <button class="filt" data-filter="versatile" role="tab" aria-selected="false">Any&nbsp;placement</button>
-          <button class="filt is-active" data-filter="sleeve" role="tab" aria-selected="true">Sleeve</button>
+          <button class="filt" data-filter="sleeve" role="tab" aria-selected="false">Sleeve</button>
           <button class="filt" data-filter="upper-back" role="tab" aria-selected="false">Upper&nbsp;back</button>
           <button class="filt" data-filter="full-back" role="tab" aria-selected="false">Full&nbsp;back</button>
           <button class="filt" data-filter="sternum" role="tab" aria-selected="false">Sternum</button>
         </div>
         <div class="filt-right">
           <select id="sort" class="sortsel mono" aria-label="Sort designs">
-            <option value="num">No.</option>
-            <option value="price-asc">Price &uarr;</option>
-            <option value="price-desc">Price &darr;</option>
+            <option value="price-asc" selected>Price: low to high</option>
+            <option value="price-desc">Price: high to low</option>
             <option value="avail">Available first</option>
+            <option value="num">No.</option>
           </select>
           <label class="toggle mono" data-cursor="link"><input type="checkbox" id="availOnly"> Available only</label>
         </div>
@@ -311,7 +312,7 @@
       </div>
       <div class="foot-cols mono">
         <div><b>Studio</b><p>By appointment &middot; private suite<br>Suffolk County &middot; Long Island, NY</p></div>
-        <div><b>Booking</b><p>The Collection &middot; Jul&ndash;Sep 2026<br>Custom &middot; 3&ndash;5 weeks out</p></div>
+        <div><b>Booking</b><p>The Collection &middot; <span data-nt="avail">29</span> of <span data-nt="total">38</span> available<br><span data-nt-wrap="next-open" hidden>Next open date &middot; <span data-nt="next-open"></span><br></span>Custom &middot; 3&ndash;5 weeks out</p></div>
         <div><b>Elsewhere</b><p><a href="/events/">Private events</a><br><a href="/otaat/">One Tattoo At A Time</a></p></div>
         <div><b>Find me</b><p><a href="https://instagram.com/nicktylertattoo" data-cursor="link">@nicktylertattoo</a><br>5.0 &#9733; on Google</p></div>
       </div>
@@ -331,7 +332,11 @@
   <div class="lb" id="lightbox" role="dialog" aria-modal="true" aria-label="Design detail" hidden>
     <button class="lb__close" id="lbClose" aria-label="Close" data-cursor="link">&times;</button>
     <div class="lb__inner">
-      <div class="lb__img"><img id="lbImg" src="" alt=""><span class="lb__stamp mono" id="lbStamp"></span></div>
+      <div class="lb__img"><img id="lbImg" src="" alt=""><span class="lb__stamp mono" id="lbStamp"></span>
+        <button class="lb__zoom mono" id="lbZoom" type="button" data-cursor="link" aria-label="View this design full screen">
+          <svg viewBox="0 0 16 16" width="12" height="12" aria-hidden="true"><path d="M9.5 1.5h5v5M14.5 1.5 9 7M6.5 14.5h-5v-5M1.5 14.5 7 9" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>Enlarge
+        </button>
+      </div>
       <div class="lb__panel">
         <div class="lb__no mono" id="lbNo"></div>
         <h3 class="lb__title" id="lbTitle"></h3>
@@ -341,6 +346,7 @@
           <div><dt>Est. time</dt><dd id="lbTime"></dd></div>
           <div><dt>From</dt><dd id="lbPrice" class="lb__price"></dd></div>
         </dl>
+        <p class="lb__open mono" data-nt-wrap="next-open" hidden><span class="dot"></span>Next open date &middot; <b data-nt="next-open"></b></p>
         <p class="lb__note mono" id="lbNote">One-of-one. $50 deposit reserves it, credited to your session.</p>
         <div class="lb__actions">
           <button class="btn btn--solid btn--full" id="lbClaim" data-cursor="view">Claim this design</button>
@@ -351,6 +357,16 @@
     </div>
   </div>
 
+  <!-- FULL-SCREEN VIEWER: opened from the design detail image -->
+  <div class="zv" id="zoomView" role="dialog" aria-modal="true" aria-label="Design, full screen" hidden>
+    <div class="zv__stage" id="zvStage"><img id="zvImg" src="" alt="" draggable="false"></div>
+    <div class="zv__bar mono">
+      <span id="zvCap"></span>
+      <span class="zv__hint">Pinch or double-tap to zoom</span>
+    </div>
+    <button class="zv__close" id="zvClose" type="button" aria-label="Close full screen" data-cursor="link">&times;</button>
+  </div>
+
   <!-- BOOKING MODAL -->
   <div class="bk" id="booking" role="dialog" aria-modal="true" aria-label="Reserve this design" hidden>
     <button class="bk__close" id="bkClose" aria-label="Close" data-cursor="link">&times;</button>
@@ -358,6 +374,7 @@
       <div class="bk__head">
         <span class="mono" id="bkChip"></span>
         <h3 id="bkTitle">Reserve your slot</h3>
+        <p class="bk__open mono" data-nt-wrap="next-open" hidden><span class="dot"></span>Next open date &middot; <b data-nt="next-open"></b></p>
         <p class="mono">Choose your date &amp; time below &middot; $50 deposit holds it, credited to your session</p>
       </div>
       <div class="bk__frame" id="bkFrame"></div>
@@ -367,6 +384,6 @@
   <div class="srlive" id="srlive" aria-live="polite"></div>
 
   <script src="https://link.inkedin.tools/js/form_embed.js"></script>
-  <script src="/assets/js/app.js"></script>
+  <script src="/assets/js/app.js?v=20260926"></script>
 </body>
 </html>

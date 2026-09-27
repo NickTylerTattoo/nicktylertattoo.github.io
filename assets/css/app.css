@@ -593,3 +593,49 @@ main > section:first-of-type{padding-top:clamp(104px,12vw,158px)}
   main > section:first-of-type{padding-top:86px}
   .stitle--hero{font-size:clamp(30px,8.4vw,40px)}
 }
+
+/* ===== 2026-09-26: live availability, full-screen viewer, custom hero ===== */
+
+/* "Next open" date, filled from the flash calendar by app.js. Everything that
+   carries it starts hidden and only appears once a real date comes back. */
+[data-nt-wrap][hidden]{display:none!important}
+.dstat__next{font-size:.64rem;letter-spacing:.14em;text-transform:uppercase;color:var(--bone-dim);margin-top:10px}
+.lb__open,.bk__open{display:flex;align-items:center;font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;color:var(--bone-dim);margin:-4px 0 12px}
+.lb__open b,.bk__open b{color:var(--gold);font-weight:400;margin-left:.45em}
+.bk__open{justify-content:center;margin:12px 0 0}
+.lb--gone .lb__open{display:none!important}
+
+/* Design detail: the art itself opens the full-screen viewer */
+.lb__img img{cursor:zoom-in}
+.lb__zoom{position:absolute;right:12px;bottom:12px;z-index:2;display:inline-flex;align-items:center;gap:7px;min-height:36px;padding:.5em .85em;font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;color:var(--bone);background:rgba(10,10,11,.72);border:1px solid var(--line-2);backdrop-filter:blur(6px);transition:border-color .3s,color .3s}
+.lb__zoom:hover{border-color:var(--gold);color:var(--gold)}
+@media(max-width:900px){.lb__zoom{min-height:44px}}
+
+/* Full-screen viewer */
+.zv{position:fixed;inset:0;z-index:230;background:#050506;opacity:0;transition:opacity .3s var(--ease)}
+.zv.show{opacity:1}
+.zv[hidden]{display:none}
+.zv__stage{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;overflow:hidden;touch-action:none;cursor:zoom-in;-webkit-user-select:none;user-select:none}
+.zv.is-zoomed .zv__stage{cursor:grab}
+.zv__stage img{max-width:100%;max-height:100%;width:auto;height:auto;transform-origin:center center;will-change:transform;-webkit-user-drag:none}
+.zv__close{position:absolute;top:max(12px,env(safe-area-inset-top));right:12px;z-index:2;width:48px;height:48px;font-size:2rem;line-height:1;color:var(--bone);background:rgba(10,10,11,.6);border:1px solid var(--line-2);border-radius:50%;display:flex;align-items:center;justify-content:center}
+.zv__bar{position:absolute;left:0;right:0;bottom:0;z-index:2;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:40px 16px calc(14px + env(safe-area-inset-bottom));font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--bone);background:linear-gradient(rgba(5,5,6,0),rgba(5,5,6,.92) 65%);pointer-events:none;transition:opacity .3s}
+.zv__hint{color:var(--bone-dim)}
+.zv.is-zoomed .zv__bar{opacity:0}
+@media(prefers-reduced-motion: reduce){.zv{transition:none}}
+
+/* Custom hero: the three steps sit in the hero now (the process video moved
+   below the form), and the form follows the hero directly. */
+.csteps{list-style:none;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));margin-top:26px;max-width:620px;border:1px solid var(--line-2);background:rgba(10,10,11,.5);backdrop-filter:blur(4px)}
+.csteps li{display:flex;flex-direction:column;gap:6px;padding:12px 14px;font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;color:var(--bone);line-height:1.35}
+.csteps li+li{border-left:1px solid var(--line-2)}
+.csteps__n{color:var(--gold);font-size:.6rem;letter-spacing:.16em}
+.chero .chero-cta{margin-top:24px}
+.chero .chero-meta{margin-top:24px}
+.chero{padding-bottom:clamp(28px,4vw,56px)}
+.chero + .cform-sec{padding-top:clamp(28px,4vw,56px);border-top:0}
+@media(max-width:600px){
+  .chero .chero-cta .btn{width:100%;justify-content:center}
+  .csteps li{padding:10px 10px;font-size:.6rem;letter-spacing:.06em}
+  .chero-meta{gap:8px 20px}
+}
