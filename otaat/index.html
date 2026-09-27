@@ -14,7 +14,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:wght@300;400;500;600;700&family=Special+Elite&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css?v=6">
+<link rel="stylesheet" href="css/style.css?v=7">
 <script src="/assets/js/config.js"></script>
 <noscript><img height="1" width="1" style="display:none" alt="" src="https://www.facebook.com/tr?id=598145411993915&ev=PageView&noscript=1"/></noscript>
 <noscript>
@@ -258,7 +258,7 @@
       <div class="july-banner reveal">
         <div class="sidx mono">005 · The return</div>
         <h2 class="july-big">OTAAT is back<br><em class="ser">Sunday, September 27.</em></h2>
-        <p class="july-lead">Registration is open. Pick your time below. Free, first come, first served, and only one client in the studio at a time. Read the rules before you book.</p>
+        <p class="july-lead" id="julyLead">Registration is open. Pick your time below. Free, first come, first served, and only one client in the studio at a time. Read the rules before you book.</p>
         <div class="hero-cta">
           <a href="#register" class="btn btn--solid" data-cursor="link" data-track="otaat_book_jump">Book your spot</a>
           <a href="#ritual" class="btn btn--ghost" data-cursor="link">Read the rules first</a>
@@ -279,8 +279,48 @@
             scrolling="no"
             title="One Tattoo At A Time registration: pick your time"
             loading="eager"></iframe>
+          <div class="calgate" id="calgate" role="status" aria-live="polite" hidden>
+            <div class="sidx mono">Registration opens</div>
+            <div class="calgate__big">Tonight at 9 PM</div>
+            <div class="calgate__count" id="calgateCount" aria-hidden="true">00:00:00</div>
+            <p class="calgate__note">The calendar unlocks right here when the clock hits zero. No refresh needed.</p>
+          </div>
         </div>
       </div>
+      <script>
+      /* Registration gate: the calendar stays covered until the announcement,
+         then opens on its own for anyone already on the page. The widget loads
+         underneath from the start so the resizer sizes it normally. */
+      (function(){
+        var OPEN = Date.UTC(2026, 8, 27, 1, 0, 0); /* Sat 9/26, 9:00 PM Eastern */
+        if (Date.now() >= OPEN) return;
+        var gate = document.getElementById('calgate');
+        var cal = document.getElementById('booking-rgKHk0r5QQ5pl7hhUs4r');
+        var count = document.getElementById('calgateCount');
+        var lead = document.getElementById('julyLead');
+        var openLead = lead ? lead.textContent : '';
+        if (lead) lead.textContent = 'Registration opens tonight at 9 PM, right here on this page. Free, first come, first served, and only one client in the studio at a time. Read the rules before you book.';
+        gate.hidden = false;
+        cal.setAttribute('inert', '');
+        cal.setAttribute('aria-hidden', 'true');
+        function pad(n){ return (n < 10 ? '0' : '') + n; }
+        function tick(){
+          var left = OPEN - Date.now();
+          if (left <= 0){
+            clearInterval(timer);
+            gate.hidden = true;
+            cal.removeAttribute('inert');
+            cal.removeAttribute('aria-hidden');
+            if (lead) lead.textContent = openLead;
+            return;
+          }
+          var s = Math.floor(left / 1000);
+          count.textContent = pad(Math.floor(s / 3600)) + ':' + pad(Math.floor(s % 3600 / 60)) + ':' + pad(s % 60);
+        }
+        var timer = setInterval(tick, 1000);
+        tick();
+      })();
+      </script>
 
       <div class="artists reveal" id="artists">
         <div class="artists-left">
