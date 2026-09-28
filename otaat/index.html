@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="ntt-page" content="otaat">
 <title>One Tattoo At A Time · Free recovery tattoos · Nick Tyler Tattoo, Selden NY</title>
-<meta name="description" content="A completely free monthly tattoo event honoring addiction recovery, remembrance, and the people who stand beside them. Numbers and dates, typewriter style, one client at a time. Returns September 2026.">
+<meta name="description" content="A completely free monthly tattoo event honoring addiction recovery, remembrance, and the people who stand beside them. Numbers and dates, typewriter style, one client at a time. Back in October 2026.">
 <meta name="theme-color" content="#090706">
 <meta property="og:title" content="One Tattoo At A Time · a Nick Tyler Tattoo initiative">
 <meta property="og:description" content="One story. One number. One tattoo at a time. Free recovery tattoos, the post that started it, and the words people left underneath.">
@@ -88,7 +88,7 @@
           <a href="#ritual" class="btn btn--solid" data-cursor="link">How it works</a>
         </div>
         <div class="hero-meta mono">
-          <span><span class="dot"></span>Back September 27</span>
+          <span><span class="dot"></span>Back in October</span>
         </div>
       </div>
     </section>
@@ -257,17 +257,17 @@
     <section class="july" id="july">
       <div class="july-banner reveal">
         <div class="sidx mono">005 · The return</div>
-        <h2 class="july-big">OTAAT is back<br><em class="ser">Sunday, September 27.</em></h2>
-        <p class="july-lead" id="julyLead">Registration is open. Pick your time below. Free, first come, first served, and only one client in the studio at a time. Read the rules before you book.</p>
+        <h2 class="july-big">OTAAT is back<br><em class="ser">this October.</em></h2>
+        <p class="july-lead" id="julyLead">The October date is being set now, and registration opens right here as soon as it's announced. Free, first come, first served, and only one client in the studio at a time. Read the rules before you book.</p>
         <div class="hero-cta">
-          <a href="#register" class="btn btn--solid" data-cursor="link" data-track="otaat_book_jump">Book your spot</a>
+          <a href="#register" class="btn btn--solid" data-cursor="link" data-track="otaat_book_jump">Registration details</a>
           <a href="#ritual" class="btn btn--ghost" data-cursor="link">Read the rules first</a>
         </div>
       </div>
 
       <div class="register reveal" id="register">
         <div class="register-head">
-          <div class="sidx mono">Registration · Sunday, September 27</div>
+          <div class="sidx mono">Registration · October date TBA</div>
           <h3 class="artists-title">Save your seat.</h3>
           <p class="slead">One number or date, up to 10 characters, typewriter style. Spots are limited, and when they're gone the next date drops on <a href="https://instagram.com/nicktylertattoo" target="_blank" rel="noopener" data-cursor="link">@nicktylertattoo</a>.</p>
         </div>
@@ -292,11 +292,24 @@
          then opens on its own for anyone already on the page. The widget loads
          underneath from the start so the resizer sizes it normally. */
       (function(){
+        /* DATE_TBA: set true between events. Covers the calendar with a
+           "date coming" panel and no countdown. When the next date is set,
+           flip to false and point OPEN at the moment registration unlocks. */
+        var DATE_TBA = true;
         var OPEN = Date.UTC(2026, 8, 27, 1, 0, 0); /* Sat 9/26, 9:00 PM Eastern */
-        if (Date.now() >= OPEN) return;
         var gate = document.getElementById('calgate');
         var cal = document.getElementById('booking-rgKHk0r5QQ5pl7hhUs4r');
         var count = document.getElementById('calgateCount');
+        if (DATE_TBA){
+          gate.querySelector('.calgate__big').textContent = 'October date coming soon';
+          gate.querySelector('.calgate__note').innerHTML = 'The date drops on <a href="https://instagram.com/nicktylertattoo" target="_blank" rel="noopener">@nicktylertattoo</a> first. The calendar opens right here once it\'s set.';
+          count.hidden = true;
+          gate.hidden = false;
+          cal.setAttribute('inert', '');
+          cal.setAttribute('aria-hidden', 'true');
+          return;
+        }
+        if (Date.now() >= OPEN) return;
         var lead = document.getElementById('julyLead');
         var openLead = lead ? lead.textContent : '';
         if (lead) lead.textContent = 'Registration opens tonight at 9 PM, right here on this page. Free, first come, first served, and only one client in the studio at a time. Read the rules before you book.';
@@ -383,7 +396,7 @@
         <a href="https://www.instagram.com/p/DU_-eqjAVF3/" target="_blank" rel="noopener" class="foot-big" data-cursor="view" data-track="wall_post_foot">Add your message on the post<span aria-hidden="true"> ↗</span></a>
       </div>
       <div class="foot-cols mono">
-        <div><b>The event</b><p>Free recovery tattoos · monthly<br>Numbers &amp; dates · typewriter style<br>Back September 27</p></div>
+        <div><b>The event</b><p>Free recovery tattoos · monthly<br>Numbers &amp; dates · typewriter style<br>Back in October</p></div>
         <div><b>The studio</b><p>Private studio · Selden, NY<br>Suffolk County · Long Island<br>One client at a time, always</p></div>
         <div><b>Find us</b><p><a href="https://instagram.com/nicktylertattoo" data-cursor="link">@nicktylertattoo</a><br><a href="https://nicktylertattoo.com" data-cursor="link">nicktylertattoo.com</a></p></div>
         <div><b>Need help now</b><p>Call or text <a href="tel:988" data-cursor="link">988</a> · 24/7<br>SAMHSA <a href="tel:18006624357" data-cursor="link">1-800-662-HELP</a></p></div>
