@@ -43,8 +43,8 @@ const MOBILE = innerWidth < 700;
 
 /* ---------- The Collection ----------
    Each entry: [number/date text, category, imgPath|null]
-   First six = real OTAAT pieces (photos supplied 2026-07-11; five from the
-   3.22.26 inaugural event, one from 6.29.26). Add more: drop files in
+   All nine = real OTAAT pieces (01-06 supplied 2026-07-11: five from the
+   3.22.26 inaugural event, one from 6.29.26; 07-09 from the 9.27.26 event). Add more: drop files in
    public/assets/collection/ and set the third field. Text plate shows
    until a photo exists. */
 const COLLECTION = [
@@ -53,7 +53,10 @@ const COLLECTION = [
   ['2,590', 'Counted in days', 'assets/collection/otaat-03.jpg'],
   ['03.05.2024', 'One date, carried together', 'assets/collection/otaat-04.jpg'],
   ['03.05.2024', 'One date, carried together', 'assets/collection/otaat-05.jpg'],
-  ['09.20', 'Marked 6.29.26', 'assets/collection/otaat-06.jpg']
+  ['09.20', 'Marked 6.29.26', 'assets/collection/otaat-06.jpg'],
+  ['10.04.24', 'Second event · 9.27.26', 'assets/collection/otaat-07.jpg'],
+  ['24 hours', 'One day at a time', 'assets/collection/otaat-08.jpg'],
+  ['24', 'One day at a time', 'assets/collection/otaat-09.jpg']
 ];
 
 /* ---------- Participating artists — the world map ----------
