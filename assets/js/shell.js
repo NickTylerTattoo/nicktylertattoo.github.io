@@ -24,7 +24,7 @@ if (track){
   const BEATS = [
     'Fine line &middot; Ornamental &middot; Floral &middot; Blackwork &middot; Geometric',
     'By appointment &middot; Long Island, NY',
-    '5.0 &#9733; &middot; 116 Google reviews',
+    '5.0 &#9733; &middot; 129 Google reviews',
     'Private suite &middot; Est. 2022',
     'Travel sessions available'
   ];
@@ -66,6 +66,15 @@ if (!STILL && !REDUCED && 'IntersectionObserver' in window){
   document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 } else {
   document.querySelectorAll('.reveal').forEach(el => el.classList.add('in'));
+}
+
+/* live flash counts: same rule as app.js, read from /assets/js/catalog.js.
+   The markup keeps a fallback number, so a failed load still shows something. */
+const CAT = window.NTT_CATALOG;
+if (Array.isArray(CAT) && CAT.length){
+  const avail = CAT.filter(d => d[7] === 'live' || d[7] === 'feat').length;
+  document.querySelectorAll('[data-nt="avail"]').forEach(el => el.textContent = avail);
+  document.querySelectorAll('[data-nt="total"]').forEach(el => el.textContent = CAT.length);
 }
 
 const yr = document.getElementById('yr');
