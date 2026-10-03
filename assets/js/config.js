@@ -10,6 +10,10 @@ window.gtag = window.gtag || function(){ window.dataLayer.push(arguments); };  /
 window.NT_CONFIG = {
   flashBooking: 'https://link.inkedin.tools/widget/booking/y6R2c7YWViyMwwviIN2h',
   flashSlots:   'https://backend.leadconnectorhq.com/calendars/y6R2c7YWViyMwwviIN2h/free-slots',  /* same calendar's public open-dates feed, powers the "Next open" label */
+  customSlots:  [   /* Half and Full session calendars' public open-dates feeds, power every "N weeks out" label */
+    'https://backend.leadconnectorhq.com/calendars/isfu5I4Xbv2sHq1691cC/free-slots',
+    'https://backend.leadconnectorhq.com/calendars/LEHvDPS31uczTfZtHrAB/free-slots'
+  ],
   customForm:   'https://link.inkedin.tools/widget/form/3AkoAcnNx29uAvO2x7n3',
   designParam:  'single_line_38z92',   /* GHL "Design ID" field key — booking calendar prefill */
   ideaParam:    'tattoo_design',        /* GHL "Describe your tattoo idea/vision" field key — custom-form prefill */
