@@ -5,7 +5,7 @@
 'use strict';
 
 window.dataLayer = window.dataLayer || [];
-window.gtag = window.gtag || function(){ window.dataLayer.push(arguments); };  /* GA4 stub until ga4Id is set */
+window.gtag = window.gtag || function(){ window.dataLayer.push(arguments); };  /* GA4 queue; the library loads below when ga4Id is set */
 
 window.NT_CONFIG = {
   flashBooking: 'https://link.inkedin.tools/widget/booking/y6R2c7YWViyMwwviIN2h',
@@ -18,7 +18,7 @@ window.NT_CONFIG = {
   designParam:  'single_line_38z92',   /* GHL "Design ID" field key — booking calendar prefill */
   ideaParam:    'tattoo_design',        /* GHL "Describe your tattoo idea/vision" field key — custom-form prefill */
   metaPixelId:  '598145411993915',
-  ga4Id:        ''                      /* <-- paste GA4 Measurement ID to enable GA4 */
+  ga4Id:        'G-Y9Z1VR6P6E'          /* GA4 Measurement ID. Set to '' to switch GA4 off. */
 };
 
 /* Meta Pixel */
@@ -29,4 +29,14 @@ t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,do
 'https://connect.facebook.net/en_US/fbevents.js');
 fbq('init', window.NT_CONFIG.metaPixelId);
 fbq('track','PageView');
+
+/* Google Analytics (GA4): loads only when ga4Id is set above. */
+if (window.NT_CONFIG.ga4Id) {
+  var ga = document.createElement('script');
+  ga.async = true;
+  ga.src = 'https://www.googletagmanager.com/gtag/js?id=' + encodeURIComponent(window.NT_CONFIG.ga4Id);
+  document.head.appendChild(ga);
+  window.gtag('js', new Date());
+  window.gtag('config', window.NT_CONFIG.ga4Id);
+}
 })();
