@@ -333,6 +333,8 @@ body.still .revscroll .rvw{width:auto}
 .foot-cols p{color:var(--bone-dim);line-height:1.9}
 .foot-cols a:hover{color:var(--bone)}
 .foot-base{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;margin-top:40px;font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;color:var(--bone-faint)}
+.foot-base a{text-decoration:underline;text-decoration-color:var(--line);text-underline-offset:.3em}
+.foot-base a:hover{color:var(--bone)}
 @media(max-width:640px){.foot-cols{grid-template-columns:1fr 1fr}}
 
 /* LIGHTBOX */
