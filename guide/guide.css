@@ -245,6 +245,7 @@ a:hover{color:var(--bone)}
 .tablewrap td{padding:12px 14px;border-top:1px solid var(--line);vertical-align:top;font-size:15px;line-height:1.45;color:var(--body)}
 .tablewrap td:first-child{color:var(--bone);font-weight:500}
 .tablewrap tr.is-total td{color:var(--bone);font-weight:600;background:rgba(184,169,138,.08)}
+@media (max-width:520px){.tablewrap th,.tablewrap td{padding:10px 8px}.tablewrap td{font-size:14px}}
 
 .lanes{display:flex;flex-direction:column;gap:12px}
 .lanes .lanes__head,.lanes .lanes__grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px 10px}
