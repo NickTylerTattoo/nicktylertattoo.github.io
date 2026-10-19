@@ -54,7 +54,9 @@ const Track = (() => {
   function track(event, data = {}){
     const payload = { event, ...data, lead_id: A.lead_id, ts: new Date().toISOString() };
     window.dataLayer.push(payload);
-    try { window.gtag('event', event, data); } catch(e){}
+    /* GA4 already records a page view on every page through its config call in config.js,
+       so page_view is not sent to GA4 again here (it was counting those pages twice). */
+    if (event !== 'page_view') { try { window.gtag('event', event, data); } catch(e){} }
     try { window.fbq('trackCustom', event, data); if(FB_STD[event]) window.fbq('track', FB_STD[event], data); } catch(e){}
     console.log('%c[NT track] ' + event, 'color:#B8A98A', data);
   }
