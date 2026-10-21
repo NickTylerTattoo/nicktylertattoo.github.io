@@ -1,4 +1,4 @@
-/* ===== Custom backlog, read live from the Half and Full booking calendars =====
+/* ===== Custom backlog, read live from the Full Session booking calendar =====
    Fills every element marked data-nt="custom-wait" with how far out the next
    open custom session is ("5 weeks out"), using the same public free-slots
    feed the GHL booking widget calls. Calendar feeds live in config.js
