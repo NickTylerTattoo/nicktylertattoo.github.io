@@ -32,7 +32,7 @@ window.NTT_CATALOG = [
   ['21','Aura Drape','sternum','Sternum / Underboob','5–7 in','3–5 hr',625,'claimed'],
   ['22','Delicate Drape','sternum','Sternum / Underboob','6–8 in','3–5 hr',750,'live'],
   ['23','Lacework Drape','sternum','Sternum / Underboob','6–8 in','3–5 hr',750,'live'],
-  ['24','Sanctuary Drape','sternum','Sternum / Underboob','5–7 in','4–5 hr',625,'feat'],
+  ['24','Sanctuary Drape','sternum','Sternum / Underboob','5–7 in','4–5 hr',625,'claimed'],
   ['25','Chandelier Cascade','sternum','Sternum / Underboob','7–9 in','3–5 hr',750,'live'],
   ['26','Diadem Cascade','sternum','Sternum / Underboob','5–7 in','3–5 hr',625,'live'],
   ['27','Ornamental Cascade','sternum','Sternum / Underboob','6–8 in','3–5 hr',750,'live'],
