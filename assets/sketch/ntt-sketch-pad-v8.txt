@@ -1,0 +1,892 @@
+<!--
+  NTT Sketch Pad v8
+  For the custom request form (GHL form 3AkoAcnNx29uAvO2x7n3).
+
+  Paste this whole block into the form's "Html" element (anywhere in the
+  form). It takes the place of "Size & Placement Reference Photos": the
+  pad moves itself into that spot and hides the old upload box, and when
+  the client taps "Add sketch to my request" the sketch (with the body
+  template and any words they added) is saved into that same placement
+  photo field as a PNG named for the body view, e.g.
+  tattoo-sketch-front.png. Keep the placement field in the form (it just
+  won't be visible). Nothing else about submission or tracking changes.
+
+  v8: Outer / Inner side switch as the last row of the body picker. It applies
+  to the full arm, full leg and foot (inner templates are <name>-inner.jpg
+  and <name>-inner-m.jpg) and greys out for Blank, hand, neck, front, back
+  and ribs. The body list is simplified to Arm (full, hand), Body (neck,
+  front, back, ribs) and Leg (full, foot); the upper and lower arm and leg
+  views are gone. Saved sketches are named e.g.
+  tattoo-sketch-full-arm-inner-male.png.
+  v7: Female / Male body switch (male templates are <name>-m.jpg).
+  v6: Shade tool removed (tools are Pen, Text, Erase).
+  v5: text has a size slider and a rotate slider.
+  v4: replaces the Size & Placement Reference Photos section.
+  v3: body templates grouped by Arm / Body / Leg (full arm, upper arm,
+  lower arm, hand, neck, front, back, ribs, full leg, upper leg, lower
+  leg, foot), Text tool, smoother pen lines. Each template loads from
+  nicktylertattoo.com/assets/sketch/ only when a client taps it.
+-->
+<div id="ntt-sketch-root"></div>
+
+<style>
+#ntt-sketch{--paper:#FCEFE7;--gold:#B8A98A;--cream:#EDEAE3;--field:#1C1A17;--muted:rgba(237,234,227,.62);--warn:#E3B7A1;
+  font-family:inherit;color:var(--cream);margin:0 0 18px;text-align:left}
+#ntt-sketch *{box-sizing:border-box}
+#ntt-sketch [hidden]{display:none!important}
+#ntt-sketch .nsk-label{display:block;font-size:14px;line-height:1.4;margin:0 0 4px;font-weight:400}
+#ntt-sketch .nsk-opt{color:var(--muted)}
+#ntt-sketch .nsk-hint{font-size:12.5px;line-height:1.5;color:var(--muted);margin:0 0 10px}
+#ntt-sketch .nsk-card{border:1px dashed var(--gold);border-radius:5px;background:var(--field);padding:10px}
+#ntt-sketch .nsk-bodyrow{padding-bottom:10px;margin-bottom:10px;border-bottom:1px solid rgba(184,169,138,.22)}
+#ntt-sketch .nsk-mini{display:block;font-size:10.5px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:0 0 7px}
+#ntt-sketch .nsk-bodyhead{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px;margin:0 0 8px}
+#ntt-sketch .nsk-seg{display:inline-flex;gap:2px;padding:2px;border:1px solid rgba(184,169,138,.5);border-radius:60px}
+#ntt-sketch .nsk-bodyrow .nsk-seg button{border:0;padding:7px 13px}
+#ntt-sketch .nsk-side{margin-top:10px;padding-top:10px;border-top:1px solid rgba(184,169,138,.22)}
+#ntt-sketch .nsk-side .nsk-seg{transition:opacity .15s}
+#ntt-sketch .nsk-side .nsk-seg.off{opacity:.38}
+#ntt-sketch .nsk-side .nsk-seg.off button{cursor:default}
+#ntt-sketch .nsk-sidenote{font-size:11px;line-height:1.3;color:var(--muted);flex:1 1 auto;min-width:0}
+#ntt-sketch .nsk-grp{display:flex;align-items:center;gap:8px;margin-top:6px}
+#ntt-sketch .nsk-grplbl{flex:0 0 40px;font-size:10.5px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+#ntt-sketch .nsk-chips{display:flex;flex-wrap:wrap;gap:6px;flex:1 1 auto;min-width:0}
+#ntt-sketch .nsk-bodyrow button{font-size:10.5px;padding:7px 11px}
+#ntt-sketch .nsk-bar,#ntt-sketch .nsk-foot{display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:space-between}
+#ntt-sketch .nsk-bar{margin-bottom:10px}
+#ntt-sketch .nsk-foot{margin-top:10px}
+#ntt-sketch .nsk-group{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+#ntt-sketch button{font:inherit;font-size:11.5px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;line-height:1;
+  color:var(--cream);background:transparent;border:1px solid rgba(184,169,138,.5);border-radius:60px;padding:8px 13px;margin:0;
+  cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:6px;-webkit-tap-highlight-color:transparent;
+  transition:background .15s,border-color .15s,color .15s,opacity .15s}
+#ntt-sketch button:hover{border-color:var(--gold)}
+#ntt-sketch button[aria-pressed="true"]{background:var(--gold);border-color:var(--gold);color:#141414}
+#ntt-sketch button:disabled{opacity:.38;cursor:default}
+#ntt-sketch button:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+#ntt-sketch .nsk-size{width:32px;height:32px;padding:0}
+#ntt-sketch .nsk-dot{display:block;border-radius:50%;background:currentColor}
+#ntt-sketch .nsk-stage{position:relative;width:100%;max-width:460px;margin:0 auto;background:var(--paper);border-radius:3px;overflow:hidden}
+#ntt-sketch .nsk-stage:before{content:"";display:block;padding-top:125%}
+#ntt-sketch canvas{position:absolute;top:0;left:0;width:100%;height:100%;display:block;cursor:crosshair;
+  touch-action:none;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
+#ntt-sketch .nsk-ph{position:absolute;top:0;left:0;right:0;bottom:0;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:6px;padding:24px;text-align:center;pointer-events:none;transition:opacity .2s;color:rgba(17,17,17,.4)}
+#ntt-sketch .nsk-ph b{font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase}
+#ntt-sketch .nsk-ph span{font-size:12px}
+#ntt-sketch .nsk-textbar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;max-width:460px;margin:10px auto 0}
+#ntt-sketch input.nsk-textin{flex:1 1 150px;min-width:0;width:auto;height:auto;margin:0;font:inherit;font-size:16px;line-height:1.3;
+  color:var(--cream);background:#141414;border:1px dashed var(--gold);border-radius:5px;padding:9px 12px;outline:none;box-shadow:none;
+  -webkit-appearance:none;appearance:none}
+#ntt-sketch input.nsk-textin:focus{border-style:solid}
+#ntt-sketch input.nsk-textin::placeholder{color:rgba(237,234,227,.42)}
+#ntt-sketch .nsk-sliders{display:flex;flex-wrap:wrap;gap:6px 18px;width:100%;margin-top:2px}
+#ntt-sketch .nsk-sl{display:flex;align-items:center;gap:10px;flex:1 1 190px;min-width:0;margin:0;cursor:pointer}
+#ntt-sketch .nsk-sl span{flex:0 0 46px;font-size:10.5px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+#ntt-sketch .nsk-sl em{flex:0 0 34px;font-style:normal;font-size:11.5px;color:var(--muted);text-align:right}
+#ntt-sketch input[type=range].nsk-range{-webkit-appearance:none;appearance:none;flex:1 1 auto;min-width:0;width:auto;height:32px;margin:0;padding:0;
+  background:transparent;border:0;box-shadow:none;outline:none;touch-action:pan-y}
+#ntt-sketch input[type=range].nsk-range::-webkit-slider-runnable-track{height:3px;background:rgba(184,169,138,.38);border-radius:2px}
+#ntt-sketch input[type=range].nsk-range::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:22px;height:22px;margin-top:-9.5px;border-radius:50%;background:var(--gold);border:0}
+#ntt-sketch input[type=range].nsk-range::-moz-range-track{height:3px;background:rgba(184,169,138,.38);border:0;border-radius:2px}
+#ntt-sketch input[type=range].nsk-range::-moz-range-thumb{width:22px;height:22px;border-radius:50%;background:var(--gold);border:0}
+#ntt-sketch input[type=range].nsk-range:focus-visible::-webkit-slider-thumb{outline:2px solid var(--cream);outline-offset:2px}
+#ntt-sketch .nsk-primary{background:var(--gold);border-color:var(--gold);color:#141414;padding:10px 16px}
+#ntt-sketch .nsk-primary:disabled{opacity:.45}
+#ntt-sketch .nsk-status{font-size:12.5px;line-height:1.5;margin:10px 0 0;color:var(--muted)}
+#ntt-sketch .nsk-status:empty{display:none}
+#ntt-sketch .nsk-status.ok{color:var(--gold)}
+#ntt-sketch .nsk-status.warn{color:var(--warn)}
+#ntt-sketch button.nsk-link{display:inline;border:0;border-radius:0;background:none;padding:0;margin:12px 0 0;font-size:12px;font-weight:400;
+  letter-spacing:0;text-transform:none;color:var(--muted);text-decoration:underline;text-underline-offset:3px}
+#ntt-sketch button.nsk-link:hover{color:var(--cream)}
+html.nsk-on:not(.nsk-photo) [id*="_kmnRmPytKeysLInmmiBa_"]{display:none!important}
+@media (max-width:440px){#ntt-sketch .nsk-foot .nsk-primary{flex:1 1 100%}}
+</style>
+
+<script>
+(function () {
+  var CFG = {
+    /* Where the sketch is saved. First match wins; the second is a backup if the placement field is ever removed. */
+    targets: [
+      { id: 'kmnRmPytKeysLInmmiBa', match: /size\s*&\s*placement|placement reference/i, max: 3 },   /* Size & Placement Reference Photos */
+      { id: '3ujKKVBz9a1jDJ7046nW', match: /design reference/i, max: 5 }                         /* Design Reference Photos */
+    ],
+    allowPhoto: true,                  /* small "use a photo instead" link that reveals the old upload box */
+    exportPx: 1500,                    /* saved sketch is 1500 x 1875 PNG */
+    aspect: 1.25,                      /* pad is 4:5, same as the flash images */
+    basePx: 460,                       /* sizes below are tuned for a 460px wide pad */
+    sizes: [2, 4.5, 9],                /* pen: fine, medium, bold */
+    textSize: { min: 12, max: 72, start: 24 },   /* text size slider, in px on a 460px wide pad */
+    smoothing: 0.7,                    /* pen steadiness: 0 = raw input, 0.85 = very smooth */
+    font: '"DM Sans", "Helvetica Neue", Helvetica, Arial, sans-serif',
+    paper: '#FCEFE7',
+    ink: '#111111',
+    shade: 'rgba(17,17,17,0.2)'
+  };
+
+  /* Body templates (NTT flash style), hosted on the website and loaded on demand.
+     Each one is grayscale and gets multiplied onto the paper. */
+  var TEMPLATE_BASE = 'https://nicktylertattoo.com/assets/sketch/';
+  var TEMPLATE_VERSION = '2';
+  var BODY_GROUPS = [
+    ['Arm', [['arm-full', 'Full', 'Full arm'], ['hand', 'Hand', 'Hand']]],
+    ['Body', [['neck', 'Neck', 'Neck'], ['front', 'Front', 'Front'], ['back', 'Back', 'Back'], ['ribs', 'Ribs', 'Ribs']]],
+    ['Leg', [['leg-full', 'Full', 'Full leg'], ['foot', 'Foot', 'Foot']]]
+  ];
+  /* Parts that have an inner-side template (<name>-inner.jpg / <name>-inner-m.jpg). The Outer / Inner switch greys out for the rest. */
+  var HAS_INNER = { 'arm-full': 1, 'leg-full': 1, 'foot': 1 };
+
+  function findWrap(t) {
+    var w = document.querySelector('[id*="_' + t.id + '_"]');
+    if (!w) {
+      var all = document.querySelectorAll('.form-field-wrapper');
+      for (var i = 0; i < all.length; i++) {
+        if (all[i].id !== 'nsk-slot' && t.match.test(all[i].textContent || '') && all[i].querySelector('input[type="file"]')) { w = all[i]; break; }
+      }
+    }
+    return w;
+  }
+  function findUpload() {
+    for (var i = 0; i < CFG.targets.length; i++) {
+      var w = findWrap(CFG.targets[i]);
+      var input = w && w.querySelector('input[type="file"]');
+      if (input) return { wrap: w, input: input, max: CFG.targets[i].max, placement: i === 0 };
+    }
+    return null;
+  }
+  /* Put the pad where the Size & Placement photos field sits, and hide that field's upload box. */
+  function takePlacementSpot(el) {
+    var P = findWrap(CFG.targets[0]);
+    if (!P || !P.parentNode) return false;
+    var H = el.parentNode && el.parentNode.closest ? el.parentNode.closest('.form-field-wrapper') : null;
+    if (!(H && H.nextElementSibling === P)) {
+      var slot = document.createElement('div');
+      slot.id = 'nsk-slot';
+      slot.className = 'col-12 form-field-wrapper';
+      P.parentNode.insertBefore(slot, P);
+      slot.appendChild(el);
+      if (H && H.id && !H.contains(el)) {
+        var st = document.createElement('style');
+        st.textContent = '#' + (window.CSS && CSS.escape ? CSS.escape(H.id) : H.id) + '{display:none!important}';
+        document.head.appendChild(st);
+      }
+    }
+    document.documentElement.classList.add('nsk-on');
+    return true;
+  }
+
+  /* Wait for the form to render, then mount in the Html element (or right above the upload as a backup). */
+  var t0 = Date.now();
+  var poll = setInterval(function () {
+    if (document.getElementById('ntt-sketch')) { clearInterval(poll); return; }
+    var root = document.getElementById('ntt-sketch-root');
+    if (root) { clearInterval(poll); build(root, null); return; }
+    var up = findUpload();
+    if (up && Date.now() - t0 > 1500) { clearInterval(poll); build(null, up.wrap); return; }   /* no Html element found: mount by the upload */
+    if (Date.now() - t0 > 20000) clearInterval(poll);
+  }, 200);
+
+  function build(root, beforeEl) {
+    var chips = '';
+    for (var g = 0; g < BODY_GROUPS.length; g++) {
+      chips += '<div class="nsk-grp"><span class="nsk-grplbl">' + BODY_GROUPS[g][0] + '</span><div class="nsk-chips">';
+      for (var i = 0; i < BODY_GROUPS[g][1].length; i++) {
+        var it = BODY_GROUPS[g][1][i];
+        chips += '<button type="button" data-body="' + it[0] + '" aria-pressed="false" aria-label="' + it[2] + '">' + it[1] + '</button>';
+      }
+      chips += '</div></div>';
+    }
+    var el = document.createElement('div');
+    el.id = 'ntt-sketch';
+    el.innerHTML =
+      '<div class="nsk-label" id="nsk-title">Size &amp; placement <span class="nsk-opt">(optional)</span></div>' +
+      '<p class="nsk-hint">Pick the body part (outer or inner side for arms and legs), then sketch roughly where it goes and how big. No art skills needed. Use Text to add notes like left or right side.</p>' +
+      '<div class="nsk-card">' +
+        '<div class="nsk-bodyrow" role="group" aria-labelledby="nsk-bodylbl">' +
+          '<span class="nsk-mini" id="nsk-bodylbl">Draw on</span>' +
+          '<div class="nsk-bodyhead">' +
+            '<div class="nsk-seg" role="group" aria-label="Body type">' +
+              '<button type="button" data-sex="f" aria-pressed="true">Female</button>' +
+              '<button type="button" data-sex="m" aria-pressed="false">Male</button>' +
+            '</div>' +
+            '<button type="button" data-body="" aria-pressed="true" aria-label="Blank paper">Blank</button>' +
+          '</div>' +
+          chips +
+          '<div class="nsk-grp nsk-side">' +
+            '<span class="nsk-grplbl" id="nsk-sidelbl">Side</span>' +
+            '<div class="nsk-seg off" role="group" aria-labelledby="nsk-sidelbl">' +
+              '<button type="button" data-side="outer" aria-pressed="true" aria-disabled="true" aria-label="Outer side">Outer</button>' +
+              '<button type="button" data-side="inner" aria-pressed="false" aria-disabled="true" aria-label="Inner side">Inner</button>' +
+            '</div>' +
+            '<span class="nsk-sidenote">For arms and legs</span>' +
+          '</div>' +
+        '</div>' +
+        '<div class="nsk-bar">' +
+          '<div class="nsk-group" role="group" aria-label="Tool">' +
+            '<button type="button" data-tool="pen" aria-pressed="true">Pen</button>' +
+            '<button type="button" data-tool="text" aria-pressed="false">Text</button>' +
+            '<button type="button" data-tool="erase" aria-pressed="false">Erase</button>' +
+          '</div>' +
+          '<div class="nsk-group nsk-sizes" role="group" aria-label="Brush size">' +
+            '<button type="button" class="nsk-size" data-size="0" aria-pressed="false" aria-label="Small"><span class="nsk-dot" style="width:4px;height:4px"></span></button>' +
+            '<button type="button" class="nsk-size" data-size="1" aria-pressed="true" aria-label="Medium"><span class="nsk-dot" style="width:7px;height:7px"></span></button>' +
+            '<button type="button" class="nsk-size" data-size="2" aria-pressed="false" aria-label="Large"><span class="nsk-dot" style="width:12px;height:12px"></span></button>' +
+          '</div>' +
+        '</div>' +
+        '<div class="nsk-stage">' +
+          '<canvas role="img" aria-labelledby="nsk-title"></canvas>' +
+          '<div class="nsk-ph"><b>Sketch here</b><span>Rough is perfect</span></div>' +
+        '</div>' +
+        '<div class="nsk-textbar" hidden>' +
+          '<input type="text" class="nsk-textin" maxlength="80" placeholder="Type your words" enterkeyhint="done" autocomplete="off" aria-label="Words to add to your sketch">' +
+          '<button type="button" data-act="textdel" hidden>Delete</button>' +
+          '<button type="button" data-act="textdone">Done</button>' +
+          '<div class="nsk-sliders">' +
+            '<label class="nsk-sl"><span>Size</span><input type="range" class="nsk-range" data-sl="size" min="' + CFG.textSize.min + '" max="' + CFG.textSize.max + '" step="1" value="' + CFG.textSize.start + '" aria-label="Text size"><em aria-hidden="true"></em></label>' +
+            '<label class="nsk-sl"><span>Rotate</span><input type="range" class="nsk-range" data-sl="rot" min="-180" max="180" step="1" value="0" aria-label="Text rotation"><em class="nsk-rotval">0\u00B0</em></label>' +
+          '</div>' +
+        '</div>' +
+        '<div class="nsk-foot">' +
+          '<div class="nsk-group">' +
+            '<button type="button" data-act="undo" disabled>Undo</button>' +
+            '<button type="button" data-act="clear" disabled>Clear</button>' +
+            '<button type="button" data-act="save" hidden>Save sketch</button>' +
+          '</div>' +
+          '<button type="button" class="nsk-primary" data-act="attach" disabled>Add sketch to my request</button>' +
+        '</div>' +
+        '<p class="nsk-status" role="status" aria-live="polite"></p>' +
+      '</div>' +
+      '<button type="button" class="nsk-link" data-act="photo" hidden>Have a placement photo instead? Upload it here</button>';
+    if (root) root.appendChild(el); else beforeEl.parentNode.insertBefore(el, beforeEl);
+    var moved = takePlacementSpot(el);
+    init(el, moved);
+  }
+
+  function mk(w, h) { var c = document.createElement('canvas'); c.width = w; c.height = h || w; return c; }
+  function r4(v) { return Math.round(v * 10000) / 10000; }
+
+  var IMGS = {}, READY = {}, FAILED = {}, WAITERS = {};
+  function slugFor(key) {
+    for (var g = 0; g < BODY_GROUPS.length; g++)
+      for (var i = 0; i < BODY_GROUPS[g][1].length; i++)
+        if (BODY_GROUPS[g][1][i][0] === key) return BODY_GROUPS[g][1][i][2].toLowerCase().replace(/\s+/g, '-');
+    return key;
+  }
+  function loadTemplate(key, done) {
+    if (!key) return;
+    if (READY[key] || FAILED[key]) { done(key); return; }
+    (WAITERS[key] = WAITERS[key] || []).push(done);
+    if (IMGS[key]) return;
+    var im = new Image();
+    im.crossOrigin = 'anonymous';   /* keeps the canvas exportable */
+    im.onload = function () { READY[key] = true; flush(key); };
+    im.onerror = function () { FAILED[key] = true; flush(key); };
+    im.src = TEMPLATE_BASE + key + '.jpg?v=' + TEMPLATE_VERSION;
+    IMGS[key] = im;
+  }
+  function flush(key) { var w = WAITERS[key] || []; WAITERS[key] = []; for (var i = 0; i < w.length; i++) w[i](key); }
+  function drawBody(c, w, h, key) {
+    if (!key || !READY[key]) return;
+    c.save();
+    c.globalCompositeOperation = 'multiply';
+    c.imageSmoothingEnabled = true;
+    try { c.imageSmoothingQuality = 'high'; } catch (_) {}
+    c.drawImage(IMGS[key], 0, 0, w, h);
+    c.restore();
+  }
+
+  function init(el, inPlacementSpot) {
+    var cv = el.querySelector('canvas'), ctx = cv.getContext('2d');
+    var stage = el.querySelector('.nsk-stage'), ph = el.querySelector('.nsk-ph');
+    var under = mk(1, 1), uctx = under.getContext('2d');   /* paper + body outline */
+    var base = mk(1, 1), bctx = base.getContext('2d');     /* everything the client drew */
+    var live = mk(1, 1), lctx = live.getContext('2d');     /* scratch layer for live erasing */
+    var mctx = mk(1, 1).getContext('2d');                  /* text measuring */
+    var bAttach = el.querySelector('[data-act="attach"]');
+    var bUndo = el.querySelector('[data-act="undo"]');
+    var bClear = el.querySelector('[data-act="clear"]');
+    var bSave = el.querySelector('[data-act="save"]');
+    var bDone = el.querySelector('[data-act="textdone"]');
+    var bDel = el.querySelector('[data-act="textdel"]');
+    var textbar = el.querySelector('.nsk-textbar'), textIn = el.querySelector('.nsk-textin');
+    var slSize = el.querySelector('[data-sl="size"]'), slRot = el.querySelector('[data-sl="rot"]');
+    var rotVal = el.querySelector('.nsk-rotval'), sizesGroup = el.querySelector('.nsk-sizes');
+    var statusEl = el.querySelector('.nsk-status');
+    var bPhoto = el.querySelector('[data-act="photo"]');
+    if (inPlacementSpot && CFG.allowPhoto) bPhoto.hidden = false;
+
+    var strokes = [], history = [], cur = null, activeId = null, rect = null, W = 0;
+    var tool = 'pen', sizeIdx = 1, body = '', sex = 'f', side = 'outer', textZ = CFG.textSize.start;
+    var sideSeg = el.querySelector('.nsk-side .nsk-seg'), sideNote = el.querySelector('.nsk-sidenote');
+    function sideApplies() { return !!(body && HAS_INNER[body]); }
+    function inner() { return side === 'inner' && sideApplies(); }
+    /* template file for the current body part + side + body type */
+    function fileKey() { return body ? body + (inner() ? '-inner' : '') + (sex === 'm' ? '-m' : '') : ''; }
+    function syncSide() {
+      var on = sideApplies();
+      sideSeg.className = 'nsk-seg' + (on ? '' : ' off');
+      var bs = sideSeg.querySelectorAll('button');
+      for (var i = 0; i < bs.length; i++) bs[i].setAttribute('aria-disabled', on ? 'false' : 'true');
+      sideNote.textContent = on ? '' : 'For arms and legs';
+    }
+    var float = null, drag = null, raf = 0;
+    var attachedName = null, dirty = false, busy = false, version = 0, savedFile = null;
+
+    /* ---------- drawing ---------- */
+    /* Text sits on its centre point (x, y), at size z (px on a 460px pad) and rotation r (degrees). */
+    function textLayout(s, w) {
+      var fs = (s.z || CFG.textSize.start) / CFG.basePx * w;
+      mctx.font = '500 ' + fs + 'px ' + CFG.font;
+      var tw = s.text ? mctx.measureText(s.text).width : fs * 0.6;
+      var max = w * 0.94;
+      if (tw > max) { fs = fs * max / tw; tw = max; }
+      var m = w * 0.02;
+      var cx = Math.max(m, Math.min(s.x * w, w - m));
+      var cy = Math.max(m, Math.min(s.y * w, w * CFG.aspect - m));
+      return { fs: fs, cx: cx, cy: cy, w: tw, h: fs * 1.3, a: (s.r || 0) * Math.PI / 180 };
+    }
+    function drawStroke(c, s, w) {
+      if (s.t === 'text') {
+        if (!s.text) return;
+        var L = textLayout(s, w);
+        c.save();
+        c.translate(L.cx, L.cy);
+        if (L.a) c.rotate(L.a);
+        c.font = '500 ' + L.fs + 'px ' + CFG.font;
+        c.textBaseline = 'middle'; c.textAlign = 'center';
+        c.fillStyle = CFG.ink;
+        c.fillText(s.text, 0, 0);
+        c.restore();
+        return;
+      }
+      var mult = s.t === 'shade' ? 3.2 : s.t === 'erase' ? 2.6 : 1;
+      var lw = s.w / CFG.basePx * w * mult;
+      var col = s.t === 'shade' ? CFG.shade : CFG.ink;
+      var p = s.p, n = p.length / 2, i;
+      if (!n) return;
+      c.save();
+      if (s.t === 'erase') c.globalCompositeOperation = 'destination-out';
+      c.lineCap = 'round'; c.lineJoin = 'round'; c.lineWidth = lw;
+      c.strokeStyle = col; c.fillStyle = col;
+      c.beginPath();
+      if (n === 1) {
+        c.arc(p[0] * w, p[1] * w, lw / 2, 0, Math.PI * 2); c.fill();
+      } else {
+        c.moveTo(p[0] * w, p[1] * w);
+        for (i = 1; i < n - 1; i++) {
+          var x = p[i * 2] * w, y = p[i * 2 + 1] * w, nx = p[i * 2 + 2] * w, ny = p[i * 2 + 3] * w;
+          c.quadraticCurveTo(x, y, (x + nx) / 2, (y + ny) / 2);
+        }
+        c.lineTo(p[(n - 1) * 2] * w, p[(n - 1) * 2 + 1] * w);
+        c.stroke();
+      }
+      c.restore();
+    }
+    function buildUnder() {
+      uctx.fillStyle = CFG.paper; uctx.fillRect(0, 0, under.width, under.height);
+      drawBody(uctx, under.width, under.height, fileKey());
+    }
+    function redrawBase() {
+      bctx.clearRect(0, 0, base.width, base.height);
+      for (var i = 0; i < strokes.length; i++) drawStroke(bctx, strokes[i], W);
+    }
+    function present() {
+      if (raf) { (window.cancelAnimationFrame || clearTimeout)(raf); raf = 0; }
+      ctx.drawImage(under, 0, 0);
+      if (cur && cur.t === 'erase') {
+        lctx.clearRect(0, 0, live.width, live.height);
+        lctx.drawImage(base, 0, 0);
+        drawStroke(lctx, cur, W);
+        ctx.drawImage(live, 0, 0);
+      } else {
+        ctx.drawImage(base, 0, 0);
+        if (cur) drawStroke(ctx, cur, W);
+      }
+      if (float) {
+        drawStroke(ctx, float.item, W);
+        if (float.editing || drag) {
+          var L = textLayout(float.item, W), pd = W * 0.012;
+          ctx.save();
+          ctx.translate(L.cx, L.cy);
+          if (L.a) ctx.rotate(L.a);
+          if (ctx.setLineDash) ctx.setLineDash([W * 0.012, W * 0.008]);
+          ctx.lineWidth = Math.max(1, W / 460);
+          ctx.strokeStyle = 'rgba(17,17,17,0.45)';
+          ctx.strokeRect(-L.w / 2 - pd, -L.h / 2 - pd / 2, L.w + pd * 2, L.h + pd);
+          ctx.restore();
+        }
+      }
+    }
+    function schedule() {
+      if (raf) return;
+      raf = (window.requestAnimationFrame || function (f) { return setTimeout(f, 16); })(function () { raf = 0; present(); });
+    }
+    function fit() {
+      var r = stage.getBoundingClientRect();
+      if (r.width < 10) return;
+      var dpr = Math.min(window.devicePixelRatio || 1, 3);
+      var w = Math.round(r.width * dpr), h = Math.round(w * CFG.aspect);
+      if (cv.width === w && W === w) return;
+      cv.width = under.width = base.width = live.width = w;
+      cv.height = under.height = base.height = live.height = h;
+      W = w;
+      buildUnder(); redrawBase(); present();
+    }
+    if (window.ResizeObserver) new ResizeObserver(fit).observe(stage);
+    else window.addEventListener('resize', fit);
+    fit(); (window.requestAnimationFrame || setTimeout)(fit);
+
+    /* ---------- pointer input ---------- */
+    function norm(e) { return { x: (e.clientX - rect.left) / rect.width, y: (e.clientY - rect.top) / rect.width }; }
+    function addPt(q, raw) {
+      var x = q.x, y = q.y;
+      if (!raw && cur.t !== 'erase' && CFG.smoothing > 0) {
+        var a = 1 - Math.min(CFG.smoothing, 0.9);
+        cur.fx += (x - cur.fx) * a; cur.fy += (y - cur.fy) * a;
+        x = cur.fx; y = cur.fy;
+      }
+      var p = cur.p, n = p.length;
+      if (n >= 2) { var dx = x - p[n - 2], dy = y - p[n - 1]; if (dx * dx + dy * dy < 0.0000064) return; }
+      p.push(r4(x), r4(y));
+    }
+    function relax(p) {
+      var n = p.length / 2;
+      if (n < 4) return p;
+      var o = p.slice();
+      for (var i = 1; i < n - 1; i++) {
+        o[i * 2] = r4(p[i * 2 - 2] * 0.25 + p[i * 2] * 0.5 + p[i * 2 + 2] * 0.25);
+        o[i * 2 + 1] = r4(p[i * 2 - 1] * 0.25 + p[i * 2 + 1] * 0.5 + p[i * 2 + 3] * 0.25);
+      }
+      return o;
+    }
+    function hitText(s, q) {
+      var L = textLayout(s, W), dx = q.x * W - L.cx, dy = q.y * W - L.cy, pd = W * 0.025;
+      var cs = Math.cos(L.a), sn = Math.sin(L.a);
+      var lx = dx * cs + dy * sn, ly = -dx * sn + dy * cs;   /* point in the text's own (unrotated) frame */
+      return Math.abs(lx) <= L.w / 2 + pd && Math.abs(ly) <= L.h / 2 + pd;
+    }
+    function topTextAt(q) {
+      for (var i = strokes.length - 1; i >= 0; i--) if (strokes[i].t === 'text' && hitText(strokes[i], q)) return i;
+      return -1;
+    }
+    function settle(it) { var L = textLayout(it, W); it.x = r4(L.cx / W); it.y = r4(L.cy / W); }
+
+    cv.addEventListener('pointerdown', function (e) {
+      if (activeId !== null || (e.button && e.button !== 0)) return;
+      e.preventDefault();
+      rect = cv.getBoundingClientRect();
+      var q = norm(e);
+      if (tool === 'text') {
+        if (float && float.editing) {
+          if (!hitText(float.item, q)) { commitText(); return; }
+          settle(float.item);
+          drag = { kind: 'float', sx: q.x, sy: q.y, ox: float.item.x, oy: float.item.y, moved: false };
+        } else {
+          var idx = topTextAt(q);
+          if (idx >= 0) {
+            var o = strokes[idx];
+            float = { item: { t: 'text', x: o.x, y: o.y, z: o.z, r: o.r || 0, text: o.text }, index: idx, snapshot: strokes.slice(), editing: false, moved: false };
+            settle(float.item);
+            strokes.splice(idx, 1); redrawBase();
+            drag = { kind: 'item', sx: q.x, sy: q.y, ox: float.item.x, oy: float.item.y, moved: false };
+          } else {
+            drag = { kind: 'new', sx: q.x, sy: q.y, moved: false };
+          }
+        }
+        activeId = e.pointerId;
+        try { cv.setPointerCapture(e.pointerId); } catch (_) {}
+        present();
+        return;
+      }
+      if (float) commitText();
+      activeId = e.pointerId;
+      try { cv.setPointerCapture(e.pointerId); } catch (_) {}
+      cur = { t: tool, w: CFG.sizes[sizeIdx], p: [], fx: q.x, fy: q.y };
+      addPt(q, true); present();
+    });
+    cv.addEventListener('pointermove', function (e) {
+      if (e.pointerId !== activeId) return;
+      e.preventDefault();
+      if (drag) {
+        var q = norm(e), dx = q.x - drag.sx, dy = q.y - drag.sy;
+        if (!drag.moved && dx * dx + dy * dy > 0.0001) drag.moved = true;
+        if (drag.moved && drag.kind !== 'new') {
+          float.item.x = drag.ox + dx; float.item.y = drag.oy + dy; float.moved = true;
+          schedule();
+        }
+        return;
+      }
+      if (!cur) return;
+      var list = e.getCoalescedEvents ? e.getCoalescedEvents() : [];
+      if (!list || !list.length) list = [e];
+      for (var i = 0; i < list.length; i++) addPt(norm(list[i]), false);
+      schedule();
+    });
+    function endStroke(e) {
+      activeId = null;
+      if (!cur) return;
+      if (e && typeof e.clientX === 'number') {
+        var q = norm(e);
+        if (cur.t !== 'erase' && CFG.smoothing > 0) {
+          /* ease from the smoothed pen position to where the finger lifted, so loops close without a hook */
+          var fx = cur.fx, fy = cur.fy;
+          addPt({ x: fx + (q.x - fx) * 0.5, y: fy + (q.y - fy) * 0.5 }, true);
+          addPt({ x: fx + (q.x - fx) * 0.85, y: fy + (q.y - fy) * 0.85 }, true);
+        }
+        addPt(q, true);
+      }
+      var s = cur; cur = null;
+      delete s.fx; delete s.fy;
+      if (s.t !== 'erase') s.p = relax(relax(s.p));
+      history.push(strokes.slice());
+      strokes.push(s);
+      drawStroke(bctx, s, W); present();
+      changed();
+    }
+    function endDrag(e, cancelled) {
+      var d = drag; drag = null; activeId = null;
+      if (d.kind === 'new') {
+        if (!cancelled) openText({ t: 'text', x: d.sx, y: d.sy, z: textZ, r: 0, text: '' }, -1);
+        else present();
+        return;
+      }
+      settle(float.item);
+      if (d.kind === 'float') { present(); if (!cancelled) focusText(); return; }
+      if (d.moved) {
+        strokes.splice(float.index, 0, float.item);
+        history.push(float.snapshot);
+        float = null; redrawBase(); present(); changed();
+      } else if (cancelled) {
+        strokes = float.snapshot; float = null; redrawBase(); present(); refresh();
+      } else {
+        float.editing = true; showBar();
+      }
+    }
+    function onUp(cancelled) {
+      return function (e) {
+        if (e.pointerId !== activeId) return;
+        if (drag) endDrag(e, cancelled);
+        else endStroke(cancelled ? null : e);
+      };
+    }
+    cv.addEventListener('pointerup', onUp(false));
+    cv.addEventListener('pointercancel', onUp(true));
+    cv.addEventListener('contextmenu', function (e) { e.preventDefault(); });
+
+    function undo() {
+      if (!history.length) return;
+      strokes = history.pop(); redrawBase(); present(); changed();
+    }
+    function clearAll() {
+      if (!strokes.length) return;
+      history.push(strokes.slice()); strokes = []; redrawBase(); present(); changed();
+    }
+
+    /* ---------- text ---------- */
+    function focusText() {
+      try { textIn.focus({ preventScroll: true }); } catch (_) { textIn.focus(); }
+      try { var n = textIn.value.length; textIn.setSelectionRange(n, n); } catch (_) {}
+    }
+    function showBar() {
+      textbar.hidden = false;
+      bDel.hidden = float.index < 0;
+      textIn.value = float.item.text;
+      slSize.value = float.item.z;
+      slRot.value = float.item.r || 0;
+      rotVal.textContent = (float.item.r || 0) + '\u00B0';
+      present(); refresh();
+      focusText();
+    }
+    function hideBar() {
+      textbar.hidden = true;
+      if (document.activeElement === textIn) textIn.blur();
+    }
+    function openText(item, idx) {
+      float = { item: item, index: idx, snapshot: strokes.slice(), editing: true, moved: false };
+      showBar();
+    }
+    function commitText() {
+      if (!float) return;
+      var f = float; float = null; hideBar();
+      var it = f.item, txt = (it.text || '').replace(/\s+/g, ' ').replace(/^\s+|\s+$/g, ''), did = false;
+      if (f.index >= 0) {
+        var o = f.snapshot[f.index];
+        if (!txt) did = true;
+        else if (txt === o.text && it.z === o.z && (it.r || 0) === (o.r || 0) && !f.moved) strokes.splice(f.index, 0, o);
+        else { it.text = txt; settle(it); strokes.splice(f.index, 0, it); did = true; }
+      } else if (txt) {
+        it.text = txt; settle(it); strokes.push(it); did = true;
+      }
+      if (did) history.push(f.snapshot);
+      redrawBase(); present();
+      if (did) changed(); else refresh();
+    }
+    function cancelText() {
+      if (!float) return;
+      strokes = float.snapshot; float = null; hideBar();
+      redrawBase(); present(); refresh();
+    }
+    textIn.addEventListener('input', function () {
+      if (!float) return;
+      float.item.text = textIn.value; present(); refresh();
+    });
+    textIn.addEventListener('keydown', function (e) {
+      if (e.isComposing) return;
+      if (e.key === 'Enter' || e.keyCode === 13) { e.preventDefault(); e.stopPropagation(); commitText(); }
+      else if (e.key === 'Escape' || e.key === 'Esc') { e.preventDefault(); e.stopPropagation(); cancelText(); }
+    });
+    function onSize() {
+      if (!float) return;
+      float.item.z = textZ = +slSize.value;
+      float.moved = true;   /* marks the edit as a change */
+      present(); refresh();
+    }
+    function onRot() {
+      if (!float) return;
+      var v = +slRot.value;
+      if (Math.abs(v) <= 4) v = 0;                       /* snap to level */
+      else if (Math.abs(Math.abs(v) - 90) <= 4) v = v > 0 ? 90 : -90;
+      float.item.r = v; float.moved = true;
+      rotVal.textContent = v + '\u00B0';
+      present(); refresh();
+    }
+    slSize.addEventListener('input', onSize); slSize.addEventListener('change', onSize);
+    slRot.addEventListener('input', onRot); slRot.addEventListener('change', onRot);
+    [slSize, slRot].forEach(function (sl) {
+      sl.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.keyCode === 13) { e.preventDefault(); e.stopPropagation(); commitText(); } });
+    });
+    textIn.addEventListener('keypress', function (e) {
+      if (e.key === 'Enter' || e.keyCode === 13) { e.preventDefault(); e.stopPropagation(); }
+    });
+
+    /* ---------- controls ---------- */
+    function press(sel, btn) {
+      var all = el.querySelectorAll(sel);
+      for (var i = 0; i < all.length; i++) all[i].setAttribute('aria-pressed', all[i] === btn ? 'true' : 'false');
+    }
+    el.addEventListener('click', function (e) {
+      var b = e.target.closest ? e.target.closest('button') : null;
+      if (!b || !el.contains(b)) return;
+      e.preventDefault();
+      if (b.hasAttribute('data-tool')) {
+        var nt = b.getAttribute('data-tool');
+        if (float && nt !== 'text') commitText();
+        tool = nt; press('[data-tool]', b);
+        cv.style.cursor = tool === 'text' ? 'text' : 'crosshair';
+        sizesGroup.hidden = tool === 'text';
+        if (tool === 'text' && !float && statusEl.className.indexOf('warn') < 0) say('Tap the pad where you want words. Drag words to move them, tap them to edit, size, or rotate.', '');
+      }
+      else if (b.hasAttribute('data-size')) {
+        sizeIdx = +b.getAttribute('data-size'); press('[data-size]', b);
+      }
+      else if (b.hasAttribute('data-body')) {
+        var nb = b.getAttribute('data-body');
+        if (nb === body) return;
+        body = nb; press('[data-body]', b);
+        syncSide();
+        swapTemplate();
+      }
+      else if (b.hasAttribute('data-sex')) {
+        var ns = b.getAttribute('data-sex');
+        if (ns === sex) return;
+        sex = ns; press('[data-sex]', b);
+        if (body) swapTemplate();
+      }
+      else if (b.hasAttribute('data-side')) {
+        var nd = b.getAttribute('data-side');
+        if (!sideApplies() || nd === side) return;
+        side = nd; press('[data-side]', b);
+        swapTemplate();
+      }
+      else if (b === bUndo) { if (float) cancelText(); else undo(); }
+      else if (b === bClear) { if (float) cancelText(); clearAll(); }
+      else if (b === bDone) commitText();
+      else if (b === bDel) { if (float) { float.item.text = ''; commitText(); } }
+      else if (b === bAttach) { if (attachedName && !inkOrPending()) removeSketch(); else attach(); }
+      else if (b === bPhoto) togglePhoto();
+      else if (b === bSave) saveCopy();
+    });
+    el.addEventListener('keydown', function (e) {
+      if (e.target === textIn) return;
+      if ((e.metaKey || e.ctrlKey) && !e.shiftKey && (e.key === 'z' || e.key === 'Z')) { e.preventDefault(); if (float) cancelText(); else undo(); }
+    });
+
+    function swapTemplate() {
+      buildUnder(); present();
+      if (strokes.length || attachedName) changed(); else refresh();
+      loadTemplate(fileKey(), function (k) {
+        if (k !== fileKey()) return;
+        buildUnder(); present(); refresh();
+        if (FAILED[k] && statusEl.className.indexOf('warn') < 0) say('That outline didn\'t load. You can still sketch and describe the placement with Text.', '');
+      });
+    }
+    function inkOrPending() { return hasInk() || !!(float && float.item.text.replace(/\s/g, '')); }
+    function removeSketch() {
+      var up = findUpload();
+      if (up && attachedName) removeFromUpload(up.wrap, attachedName);
+      attachedName = null; dirty = false;
+      say('Sketch removed from your request.', '');
+      refresh();
+    }
+    function setPhoto(open) {
+      if (open) document.documentElement.classList.add('nsk-photo'); else document.documentElement.classList.remove('nsk-photo');
+      bPhoto.textContent = open ? 'Hide the photo upload' : 'Have a placement photo instead? Upload it here';
+    }
+    function togglePhoto() {
+      var open = !document.documentElement.classList.contains('nsk-photo');
+      setPhoto(open);
+      if (open) { var P = findWrap(CFG.targets[0]); if (P && P.scrollIntoView) P.scrollIntoView({ block: 'nearest', behavior: 'smooth' }); }
+    }
+    function hasInk() {
+      for (var i = 0; i < strokes.length; i++) if (strokes[i].t !== 'erase') return true;
+      return false;
+    }
+    function say(msg, cls) {
+      statusEl.textContent = msg || '';
+      statusEl.className = 'nsk-status' + (cls ? ' ' + cls : '');
+    }
+    function refresh() {
+      if (attachedName && !busy) {
+        /* the client may have deleted the sketch themselves from the photo box */
+        var upc = findUpload();
+        if (upc && !leafWithText(upc.wrap, attachedName)) { attachedName = null; dirty = false; }
+      }
+      var pending = !!(float && float.item.text.replace(/\s/g, ''));
+      var ink = hasInk() || pending;
+      var fk = fileKey(), loading = !!(fk && !READY[fk] && !FAILED[fk]);
+      var showPh = loading || !(strokes.length || float || body);
+      if (showPh) ph.innerHTML = loading ? '<b>Loading</b>' : '<b>Sketch here</b><span>Rough is perfect</span>';
+      ph.style.opacity = showPh ? '1' : '0';
+      bUndo.disabled = !history.length && !float;
+      bClear.disabled = !strokes.length && !float;
+      if (busy) return;
+      if (!attachedName) { bAttach.textContent = 'Add sketch to my request'; bAttach.disabled = !ink; }
+      else if (!ink) { bAttach.textContent = 'Remove sketch'; bAttach.disabled = false; }
+      else if (dirty || pending) { bAttach.textContent = 'Update sketch'; bAttach.disabled = false; }
+      else { bAttach.textContent = 'Sketch added'; bAttach.disabled = true; }
+    }
+    function changed() {
+      if (attachedName) {
+        dirty = true;
+        if (hasInk()) say('Tap Update sketch to swap in this version.', '');
+        else say('Your last sketch is still on your request. Tap Remove sketch to take it off.', '');
+      }
+      if (!bSave.hidden) exportFile().then(function (f) { savedFile = f; }, function () {});
+      refresh();
+    }
+
+    /* ---------- export + attach ---------- */
+    function nextName() {
+      version++;
+      return 'tattoo-sketch' + (body ? '-' + slugFor(body) + (inner() ? '-inner' : '') + (sex === 'm' ? '-male' : '') : '') + (version === 1 ? '' : '-' + version) + '.png';
+    }
+    function exportFile(name, noBody) {
+      return new Promise(function (resolve, reject) {
+        var n = CFG.exportPx, nh = Math.round(n * CFG.aspect), c = mk(n, nh), x = c.getContext('2d');
+        x.fillStyle = CFG.paper; x.fillRect(0, 0, n, nh);
+        if (!noBody) drawBody(x, n, nh, fileKey());
+        var ink = mk(n, nh), ix = ink.getContext('2d');
+        for (var i = 0; i < strokes.length; i++) drawStroke(ix, strokes[i], n);
+        x.drawImage(ink, 0, 0);
+        if (!c.toBlob) return reject(new Error('no toBlob'));
+        try {
+          c.toBlob(function (blob) {
+            if (!blob) return reject(new Error('no blob'));
+            try { resolve(new File([blob], name || 'tattoo-sketch.png', { type: 'image/png', lastModified: Date.now() })); }
+            catch (err) { reject(err); }
+          }, 'image/png');
+        } catch (err) {
+          if (!noBody && body) exportFile(name, true).then(resolve, reject); else reject(err);
+        }
+      });
+    }
+    function leafWithText(wrap, text) {
+      var els = wrap.querySelectorAll('*');
+      for (var i = 0; i < els.length; i++) {
+        if (!els[i].children.length && (els[i].textContent || '').trim() === text) return els[i];
+      }
+      return null;
+    }
+    function removeFromUpload(wrap, name) {
+      var n = leafWithText(wrap, name);
+      while (n && n !== wrap && !n.querySelector('button')) n = n.parentElement;
+      if (!n || n === wrap) return false;
+      n.querySelector('button').click();
+      return true;
+    }
+    function fileCount(wrap) {
+      var c = wrap.querySelectorAll('.upload-card').length;
+      if (c) return c;
+      var m = (wrap.textContent || '').match(/(\d+)\s+files?\s+selected/i);
+      return m ? +m[1] : 0;
+    }
+    function wait(ms) { return new Promise(function (r) { setTimeout(r, ms); }); }
+    function until(test, ms) {
+      var end = Date.now() + ms;
+      return new Promise(function (resolve) {
+        (function tick() {
+          if (test()) return resolve(true);
+          if (Date.now() > end) return resolve(false);
+          setTimeout(tick, 120);
+        })();
+      });
+    }
+
+    function attach() {
+      if (busy) return;
+      if (float) commitText();
+      if (!hasInk()) return;
+      busy = true; bAttach.disabled = true; bAttach.textContent = 'Adding...';
+      var up = findUpload();
+      var name = nextName();
+      exportFile(name).then(function (file) {
+        savedFile = file;
+        if (!up || typeof DataTransfer === 'undefined') { fallback(); return; }
+        var mine = attachedName && leafWithText(up.wrap, attachedName);
+        if (fileCount(up.wrap) - (mine ? 1 : 0) >= up.max) {
+          if (up.placement) setPhoto(true);
+          say('That upload is full (' + up.max + ' max). Remove a photo from it below, then try again.', 'warn');
+          return;
+        }
+        if (mine) removeFromUpload(up.wrap, attachedName);
+        return wait(mine ? 300 : 0).then(function () {
+          var dt = new DataTransfer();
+          dt.items.add(file);
+          up.input.files = dt.files;
+          up.input.dispatchEvent(new Event('change', { bubbles: true }));
+          return until(function () { return !!leafWithText(up.wrap, name); }, 3500);
+        }).then(function (ok) {
+          if (!ok) { fallback(); return; }
+          attachedName = name; dirty = false; bSave.hidden = true;
+          say(up.placement ? 'Added to your request. Keep drawing and tap Update sketch to change it.'
+                           : 'Added to Design Reference Photos below. Keep drawing and tap Update sketch to change it.', 'ok');
+        });
+      }).catch(function () { fallback(); }).then(function () { busy = false; refresh(); });
+    }
+
+    function fallback() {
+      bSave.hidden = false;
+      var up = findUpload();
+      if (up && up.placement) setPhoto(true);
+      say('Couldn\'t add it automatically. Tap Save sketch, then upload the saved image in the box below.', 'warn');
+    }
+    function saveCopy() {
+      var file = savedFile;
+      if (!file) return;
+      var mobile = /iP(hone|ad|od)|Android/i.test(navigator.userAgent);
+      if (mobile && navigator.canShare && navigator.canShare({ files: [file] })) {
+        navigator.share({ files: [file] }).catch(function () {});
+        return;
+      }
+      var url = URL.createObjectURL(file), a = document.createElement('a');
+      a.href = url; a.download = file.name;
+      document.body.appendChild(a); a.click(); a.remove();
+      setTimeout(function () { URL.revokeObjectURL(url); }, 4000);
+    }
+
+    syncSide();
+    refresh();
+  }
+})();
+</script>
