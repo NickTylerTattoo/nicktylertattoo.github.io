@@ -28,7 +28,7 @@ window.NTT_CATALOG = [
   ['17','Lacework Halo','full-back','Full Back','Full Back','2 sessions',2400,'live'],
   ['18','Veiled Reliquary','full-back','Full Back','Full Back','2 sessions',2400,'claimed'],
   ['19','Liturgy Mandala','full-back','Full Back','Full Back','2 sessions',2400,'live'],
-  ['20','Pendulum Drape','sternum','Sternum / Underboob','5–7 in','3–5 hr',625,'live'],
+  ['20','Pendulum Drape','sternum','Sternum / Underboob','5–7 in','3–5 hr',625,'feat'],
   ['21','Aura Drape','sternum','Sternum / Underboob','5–7 in','3–5 hr',625,'claimed'],
   ['22','Delicate Drape','sternum','Sternum / Underboob','6–8 in','3–5 hr',750,'live'],
   ['23','Lacework Drape','sternum','Sternum / Underboob','6–8 in','3–5 hr',750,'live'],
