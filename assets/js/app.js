@@ -719,7 +719,7 @@ const FAQ = {
     ['What are your rates?', "Custom pieces start at $250, with most work landing between $250 and $1,200 depending on size, placement and detail. Send your references through the request form and ask for an estimate and I'll give you an accurate number."],
     ["It's my first tattoo. Anything I should know?", "You're in good hands. Ask anything, take breaks whenever you need, and never apologize, just communicate. Your comfort comes first, always."],
     ['Do you travel or do guest spots?', "My private studio is where I do my best work. For those traveling from out of state or over 100 miles away, I offer extended sessions, with a discount of up to $500 to cover your travel expenses to get to my studio. Ask me about my extended sessions in your request form for more information!"],
-    ["What's your cancellation policy?", "Life happens. Give me as much notice as you can. Deposits are non-refundable but they hold your spot, and I'll work with you to reschedule."],
+    ["What's your cancellation policy?", "Life happens. Deposits are non-refundable for cancellations but transferable for reschedules with more than 72 hours notice."],
     ['How do I care for it afterward?', "You'll get full aftercare instructions at your appointment, and I'm a text away if anything comes up while it heals."]
   ]
 };
