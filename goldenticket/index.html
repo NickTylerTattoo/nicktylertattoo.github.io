@@ -1,0 +1,942 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="ntt-page" content="goldenticket">
+<title>50K Golden Ticket · Nick Tyler Tattoo</title>
+<link rel="canonical" href="https://nicktylertattoo.com/goldenticket/">
+<meta name="description" content="Round two of the Golden Ticket. Grab an entry pack or enter free once a day for a shot at free tattoo sessions and gift cards from Nick Tyler Tattoo, drawn live on Instagram Sunday, November 22.">
+<meta name="theme-color" content="#0b0a09">
+<meta property="og:title" content="The 50K Golden Ticket · Nick Tyler Tattoo">
+<meta property="og:description" content="Entry packs or a free daily entry. Drawn live on Instagram Sunday, November 22.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://nicktylertattoo.com/goldenticket/">
+<meta property="og:image" content="https://nicktylertattoo.com/goldenticket/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/assets/favicon-96.png" sizes="96x96" type="image/png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<script src="/assets/js/config.js"></script>
+<noscript><img height="1" width="1" style="display:none" alt="" src="https://www.facebook.com/tr?id=598145411993915&ev=PageView&noscript=1"/></noscript>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Space+Mono:wght@400;700&display=swap">
+<style>
+/* Layout: one dark ticket-stub column; the hero is a ticket, the offer is three entry packs, the payoff is a tap-to-reveal golden ticket. NTT brand: Space Grotesk / Space Mono, gold foil on near-black. Single dark look by choice. */
+:root{
+  --bg:#0b0a09; --panel:#141110; --panel-2:#1c1815; --line:#2b2520; --line-lt:#3a322b;
+  --ch:#cbb994; --ch-lt:#ddd0b0; --ch-dk:#9a8a68; --cream:#efe7d8; --body:#b9b1a5; --muted:#8f867b;
+  --tbd-bg:rgba(203,185,148,.12);
+  --gold:#d9b35a; --gold-lt:#f4dc95; --gold-dk:#9c7623; --ink:#1a1407; --night:#070605; --err:#e7a07a;
+  --foil:linear-gradient(115deg,#9c7623 0%,#e9c873 22%,#fff1c2 34%,#d9b35a 48%,#a9822c 66%,#f0d27e 84%,#b8913a 100%);
+  --f-display:"Space Grotesk",system-ui,-apple-system,"Segoe UI",Helvetica,Arial,sans-serif;
+  --f-mono:"Space Mono",ui-monospace,"SFMono-Regular",Menlo,Consolas,monospace;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{background:var(--bg);color:var(--body);font:400 18px/1.6 var(--f-display);
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.wrap{max-width:1040px;margin:0 auto;display:flex;flex-direction:column;gap:96px;padding-block:28px 72px}
+h1,h2,h3{color:var(--cream);font-family:var(--f-display);margin:0;text-wrap:balance}
+h2{font-size:clamp(34px,5vw,52px);line-height:1.05;letter-spacing:-.01em}
+h3{font-size:22px;line-height:1.25}
+p{margin:0}
+a{color:var(--ch-lt)}
+.eyebrow{font:700 16px/1.2 var(--f-mono);letter-spacing:.14em;text-transform:uppercase;color:var(--gold)}
+.gold{background:var(--foil);background-size:200% 100%;-webkit-background-clip:text;background-clip:text;color:transparent}
+.lead{font-size:20px;color:var(--body);max-width:60ch}
+.tbd{background:var(--tbd-bg);color:var(--ch-lt);font-family:var(--f-mono);font-size:.82em;padding:.1em .45em;border:1px dashed var(--ch-dk);white-space:normal}
+.sec{display:flex;flex-direction:column;gap:28px}
+.sec-head{display:flex;flex-direction:column;gap:14px}
+.note{font:400 15px/1.5 var(--f-mono);color:var(--muted)}
+
+/* preview banner */
+.draft{display:flex;flex-wrap:wrap;gap:8px 16px;align-items:center;justify-content:space-between;border:1px dashed var(--ch-dk);padding:12px 16px;font:400 15px/1.4 var(--f-mono);color:var(--ch-lt)}
+.draft b{color:var(--cream)}
+
+/* hero ticket */
+.ticket{position:relative;display:grid;grid-template-columns:minmax(0,1fr) 230px;border:3px solid transparent;background:radial-gradient(90% 120% at 15% 0%,rgba(217,179,90,.10),transparent 60%) padding-box,linear-gradient(var(--panel),var(--panel)) padding-box,var(--foil) border-box;box-shadow:0 0 0 1px rgba(217,179,90,.15),0 30px 80px -30px rgba(217,179,90,.35)}
+.ticket::before,.ticket::after{content:"";position:absolute;right:214px;width:32px;height:32px;border-radius:50%;background:var(--bg);border:3px solid var(--gold)}
+.ticket::before{top:-19px;clip-path:inset(50% 0 0 0)}
+.ticket::after{bottom:-19px;clip-path:inset(0 0 50% 0)}
+.t-main{padding:clamp(28px,5vw,56px);display:flex;flex-direction:column;gap:18px;min-width:0}
+.t-big{font:700 clamp(96px,18vw,200px)/.85 var(--f-display);letter-spacing:-.045em;
+  background:var(--foil);background-size:220% 100%;background-position:100% 0;-webkit-background-clip:text;background-clip:text;color:transparent;
+  filter:drop-shadow(0 8px 28px rgba(217,179,90,.28));animation:sheen 2.6s cubic-bezier(.3,.7,.2,1) .3s 1 both}
+@keyframes sheen{from{background-position:100% 0}to{background-position:0 0}}
+.t-title{font:700 clamp(40px,7vw,76px)/1 var(--f-display);text-transform:uppercase;letter-spacing:.01em;color:var(--cream)}
+.t-sub{font:400 clamp(17px,2.2vw,20px)/1.5 var(--f-mono);color:var(--ch-lt);max-width:46ch}
+.t-stub{border-left:3px dotted var(--gold);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:22px;padding:32px 16px;text-align:center}
+.vesica{width:120px;height:80px}
+.t-stub .lbl{font:700 22px/1.25 var(--f-mono);letter-spacing:.16em;color:var(--gold-lt);text-transform:uppercase}
+.t-stub .no{font:400 20px/1 var(--f-mono);color:var(--cream)}
+.cta-row{display:flex;flex-wrap:wrap;gap:14px 22px;align-items:center;margin-top:8px}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:54px;padding:0 28px;background:var(--foil);background-size:160% 100%;background-position:0 0;color:var(--ink);transition:background-position .5s ease,box-shadow .3s;box-shadow:0 10px 30px -12px rgba(217,179,90,.6);
+  font:700 16px/1 var(--f-mono);letter-spacing:.14em;text-transform:uppercase;text-decoration:none;border:0;cursor:pointer;text-align:center}
+.btn:hover{background-position:100% 0;box-shadow:0 12px 36px -10px rgba(217,179,90,.8)}
+.btn.alt{background:transparent;color:var(--gold-lt);border:1px solid var(--gold-dk);box-shadow:none}
+.btn.alt:hover{border-color:var(--gold);background:rgba(217,179,90,.08)}
+.btn:focus-visible,.ghost:focus-visible,summary:focus-visible,.play:focus-visible,input:focus-visible,.card3d:focus-visible,.rv-snd:focus-visible,.rv-x:focus-visible{outline:2px dashed var(--gold-lt);outline-offset:4px}
+.ghost{font:700 15px/1 var(--f-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--gold-lt);text-decoration:none;border-bottom:1px solid var(--gold-dk);padding-bottom:4px}
+
+/* countdown */
+.count{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);box-shadow:inset 0 2px 0 var(--gold)}
+.count div{background:var(--panel);padding:18px 10px;text-align:center}
+.count b{display:block;font:700 clamp(34px,6vw,54px)/1 var(--f-display);color:var(--gold-lt);font-variant-numeric:tabular-nums}
+.count span{font:400 14px/1 var(--f-mono);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.count-note{font:400 15px/1.4 var(--f-mono);color:var(--muted)}
+
+/* video */
+.vid{display:grid;grid-template-columns:minmax(0,340px) minmax(0,1fr);gap:40px;align-items:center}
+.play{position:relative;display:flex;flex-direction:column;justify-content:flex-end;gap:10px;aspect-ratio:9/16;max-width:100%;padding:24px;
+  background:radial-gradient(120% 70% at 50% 35%,rgba(203,185,148,.18),transparent 70%),var(--panel-2);border:1px solid var(--line-lt);text-decoration:none;color:var(--cream)}
+.play .tri{position:absolute;left:50%;top:42%;transform:translate(-50%,-50%);width:88px;height:88px;border-radius:50%;border:2px solid var(--gold);box-shadow:0 0 40px rgba(217,179,90,.25);display:grid;place-items:center}
+.play .tri::after{content:"";margin-left:6px;border-left:26px solid var(--gold);border-top:16px solid transparent;border-bottom:16px solid transparent}
+.play:hover .tri{background:rgba(217,179,90,.14)}
+.play .cap{font:700 15px/1.3 var(--f-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--gold)}
+.play .ttl{font:700 26px/1.15 var(--f-display)}
+.vid-copy{display:flex;flex-direction:column;gap:18px;min-width:0}
+.stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line)}
+.stats div{background:var(--panel);padding:18px 16px}
+.stats b{display:block;font:700 30px/1.05 var(--f-display);color:var(--gold-lt);font-variant-numeric:tabular-nums}
+.stats span{font:400 14px/1.35 var(--f-mono);color:var(--muted)}
+
+/* prizes */
+.prizes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.prize{border:1px solid var(--line-lt);background:var(--panel);padding:28px 24px;display:flex;flex-direction:column;gap:12px;min-width:0}
+.prize.grand{border:3px solid transparent;background:linear-gradient(var(--panel),var(--panel)) padding-box,var(--foil) border-box;box-shadow:0 24px 60px -30px rgba(217,179,90,.45)}
+.prize .rank{font:700 15px/1 var(--f-mono);letter-spacing:.14em;text-transform:uppercase;color:var(--gold)}
+.prize .val{font:700 40px/1 var(--f-display);color:var(--cream)}
+
+/* packs */
+.launch{display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center;justify-content:center;padding:14px 18px;border:1px dashed var(--gold-dk);background:rgba(217,179,90,.06);font:700 15px/1.45 var(--f-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--gold-lt);text-align:center}
+.packs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px;align-items:stretch;padding-top:14px}
+@media (max-width:1000px){.packs{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:34px}}
+.pack{position:relative;display:flex;flex-direction:column;gap:16px;padding:34px 20px 24px;background:var(--panel);border:1px solid var(--line-lt);min-width:0}
+.pack.feat{border:3px solid transparent;background:radial-gradient(100% 55% at 50% 0%,rgba(217,179,90,.17),transparent 70%) padding-box,linear-gradient(var(--panel),var(--panel)) padding-box,var(--foil) border-box;box-shadow:0 30px 70px -28px rgba(217,179,90,.55);transform:translateY(-14px)}
+.badge{position:absolute;top:-16px;left:22px;padding:8px 12px;font:700 14px/1 var(--f-mono);letter-spacing:.14em;text-transform:uppercase;background:var(--foil);color:var(--ink)}
+.badge.dark{background:var(--bg);color:var(--gold-lt);border:1px solid var(--gold-dk)}
+.p-name{font:700 16px/1.2 var(--f-mono);letter-spacing:.14em;text-transform:uppercase;color:var(--gold)}
+.p-price{font:700 60px/1 var(--f-display);color:var(--cream);letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.p-ent{display:flex;align-items:baseline;gap:10px;padding:14px 0;border-block:1px solid var(--line-lt)}
+.p-ent b{font:700 50px/1 var(--f-display);font-variant-numeric:tabular-nums;background:var(--foil);-webkit-background-clip:text;background-clip:text;color:transparent}
+.p-ent span{font:700 15px/1 var(--f-mono);letter-spacing:.14em;text-transform:uppercase;color:var(--gold-lt)}
+.p-per{font:700 21px/1.3 var(--f-display);color:var(--cream)}
+.p-per small{display:block;font:400 15px/1.45 var(--f-mono);color:var(--muted);margin-top:4px}
+.p-blurb{font-size:17px;line-height:1.5;color:var(--body)}
+.pack .btn{margin-top:auto;width:100%;padding:0 16px}
+.pack.wide{grid-column:1/-1;flex-direction:row;flex-wrap:wrap;align-items:center;gap:20px 40px;padding:36px 32px 30px;transform:none}
+.pack.wide>div{display:flex;flex-direction:column;gap:14px;min-width:0}
+.pw-a{flex:0 0 auto}
+.pw-b{flex:1 1 220px}
+.pw-c{flex:1 1 260px}
+.pack.wide .p-ent{padding:0;border:0}
+.pack.wide .btn{margin-top:0}
+@media (max-width:760px){.pack.wide{flex-direction:column;align-items:stretch;gap:16px}.pack.wide>div{flex:none}}
+.pack-foot{display:flex;flex-direction:column;gap:8px}
+
+/* No-Lose switch */
+.nl{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px 24px;padding:22px 24px;border:3px solid transparent;
+  background:radial-gradient(70% 140% at 0% 0%,rgba(217,179,90,.14),transparent 70%) padding-box,linear-gradient(var(--panel),var(--panel)) padding-box,var(--foil) border-box}
+.nl-copy{display:flex;flex-direction:column;gap:6px;min-width:0;flex:1 1 320px}
+.nl-eye{font:700 15px/1 var(--f-mono);letter-spacing:.14em;text-transform:uppercase;color:var(--gold)}
+.nl-head{font:700 24px/1.25 var(--f-display);color:var(--cream)}
+.nl-sub{font-size:17px;line-height:1.5;color:var(--body)}
+.nl-switch{display:inline-flex;align-items:center;gap:14px;min-height:52px;padding:0 6px;background:none;border:0;cursor:pointer;color:var(--cream);font:700 16px/1 var(--f-mono);letter-spacing:.1em;text-transform:uppercase;flex:none}
+.nl-switch:focus-visible{outline:2px dashed var(--gold-lt);outline-offset:4px}
+.nl-track{position:relative;width:64px;height:34px;border-radius:999px;background:var(--panel-2);border:1px solid var(--line-lt);transition:background .25s,border-color .25s}
+.nl-knob{position:absolute;top:3px;left:3px;width:26px;height:26px;border-radius:50%;background:var(--ch-dk);transition:transform .25s cubic-bezier(.2,.8,.2,1),background .25s}
+.nl-switch[aria-checked="true"] .nl-track{background:var(--foil);border-color:var(--gold)}
+.nl-switch[aria-checked="true"] .nl-knob{transform:translateX(30px);background:var(--ink)}
+.nl.on{box-shadow:0 24px 60px -30px rgba(217,179,90,.6)}
+.pack .p-price{transition:color .2s}
+.pack.nl-on .p-price{color:var(--gold-lt)}
+
+/* community unlocks */
+.unlock{display:flex;flex-direction:column;gap:16px;padding:24px;border:1px solid var(--line-lt);background:var(--panel)}
+.u-title{font:700 26px/1.2 var(--f-display);color:var(--cream)}
+.u-sub{font-size:17px;line-height:1.5;color:var(--body);max-width:60ch}
+.u-track{position:relative;height:14px;background:var(--panel-2);border:1px solid var(--line-lt);margin:6px 8px 0}
+.u-track i{position:absolute;left:0;top:0;bottom:0;width:0;background:var(--foil);transition:width 1s cubic-bezier(.2,.8,.2,1)}
+.u-mark{position:absolute;top:50%;width:22px;height:22px;margin:-11px 0 0 -11px;border-radius:50%;background:var(--bg);border:3px solid var(--gold-dk)}
+.u-mark.hit{background:var(--gold);border-color:var(--gold-lt)}
+.u-steps{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px 20px}
+.u-step{display:flex;flex-direction:column;gap:4px;min-width:0;padding-top:4px}
+.u-step b{font:700 16px/1.2 var(--f-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--gold-lt)}
+.u-step span{font-size:17px;line-height:1.45;color:var(--cream)}
+.u-step.hit b::after{content:" \00b7  Unlocked";color:var(--gold)}
+.proof{font:400 16px/1.5 var(--f-mono);color:var(--ch-lt)}
+
+/* steps */
+.steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;counter-reset:s}
+.step{border-top:2px solid var(--gold);padding-top:18px;display:flex;flex-direction:column;gap:10px;min-width:0}
+.step::before{counter-increment:s;content:"STEP " counter(s);font:700 15px/1 var(--f-mono);letter-spacing:.14em;color:var(--gold)}
+
+/* free entry */
+.enter{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:40px;border:1px solid var(--line-lt);background:radial-gradient(80% 100% at 100% 0%,rgba(217,179,90,.07),transparent 60%),var(--panel);padding:clamp(24px,4vw,48px)}
+form{display:flex;flex-direction:column;gap:16px;min-width:0}
+label{display:flex;flex-direction:column;gap:6px;font:700 14px/1 var(--f-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--ch-lt)}
+input{width:100%;min-height:52px;background:var(--bg);border:1px solid var(--line-lt);color:var(--cream);padding:0 14px;font:400 18px var(--f-display)}
+.check{flex-direction:row;align-items:flex-start;gap:10px;text-transform:none;letter-spacing:0;font:400 15px/1.45 var(--f-display);color:var(--body)}
+.check input{width:20px;min-height:20px;height:20px;margin-top:2px;accent-color:var(--gold);flex:none}
+.form-msg{font:400 15px/1.45 var(--f-mono);color:var(--ch-lt);min-height:1.45em}
+.form-msg.err{color:var(--err)}
+.free-big{font:700 clamp(64px,10vw,96px)/.9 var(--f-display);letter-spacing:-.03em;color:var(--cream)}
+.free-big span{font:700 18px/1 var(--f-mono);letter-spacing:.14em;text-transform:uppercase;color:var(--gold-lt);margin-left:10px;vertical-align:middle}
+
+/* faq */
+.faq{display:flex;flex-direction:column;border-top:1px solid var(--line-lt)}
+details{border-bottom:1px solid var(--line-lt)}
+summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:16px;padding:22px 0;font:500 21px/1.3 var(--f-display);color:var(--cream)}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";font:400 26px/1 var(--f-mono);color:var(--gold);flex:none}
+details[open] summary::after{content:"\2212"}
+details p{padding:0 0 22px;max-width:65ch}
+details ul{margin:0 0 22px;padding-left:20px;display:grid;gap:8px;max-width:65ch}
+
+footer{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space-between;border-top:1px solid var(--line);padding-top:28px;font:400 15px/1.5 var(--f-mono);color:var(--muted)}
+
+/* reveal */
+.rv{position:fixed;inset:0;z-index:50;display:flex;flex-direction:column;align-items:center;overflow-y:auto;overscroll-behavior:contain;
+  background:radial-gradient(70% 50% at 50% 42%,rgba(217,179,90,.20),transparent 70%),var(--night);
+  padding:calc(env(safe-area-inset-top,0px) + 14px) max(16px,env(safe-area-inset-right,0px)) calc(env(safe-area-inset-bottom,0px) + 28px) max(16px,env(safe-area-inset-left,0px));
+  animation:fadeIn .35s ease both}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+#fx{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:60}
+.rv-top{width:100%;max-width:560px;display:flex;align-items:center;gap:10px}
+.rv-tag{flex:1;min-width:0;font:400 14px/1.35 var(--f-mono);color:var(--muted)}
+.rv-snd,.rv-x{background:none;border:1px solid var(--line-lt);color:var(--ch-lt);font:700 14px/1 var(--f-mono);letter-spacing:.08em;text-transform:uppercase;min-height:44px;padding:0 14px;cursor:pointer;flex:none}
+.rv-x{font-size:24px;width:44px;padding:0}
+.rv-stage{flex:1;width:100%;max-width:560px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;padding-block:14px}
+.rv-kicker{font:700 16px/1.35 var(--f-mono);letter-spacing:.16em;text-transform:uppercase;color:var(--gold);text-align:center}
+.card3d{appearance:none;background:none;border:0;padding:0;cursor:pointer;width:min(76vw,320px);max-width:100%;aspect-ratio:320/500;perspective:1400px;animation:rise .7s cubic-bezier(.2,.8,.2,1) both;color:inherit;font:inherit;flex:none;container-type:inline-size;transition:width .55s cubic-bezier(.2,.8,.2,1)}
+.card3d.settle{width:min(62vw,250px)}
+@keyframes rise{from{transform:translateY(60px) scale(.92);opacity:0}to{transform:none;opacity:1}}
+.c-wob{display:block;width:100%;height:100%}
+.card3d.idle .c-wob{animation:float 3s ease-in-out infinite}
+@keyframes float{50%{transform:translateY(-8px)}}
+.card3d.charge .c-wob{animation:charge .45s ease-in-out}
+@keyframes charge{0%,100%{transform:none}20%{transform:rotate(-3deg) scale(1.02)}40%{transform:rotate(3deg) scale(1.04)}60%{transform:rotate(-2deg) scale(1.05)}80%{transform:rotate(2deg) scale(1.06)}}
+.c-inner{position:relative;display:block;width:100%;height:100%;transform-style:preserve-3d;transition:transform .85s cubic-bezier(.3,.1,.2,1)}
+.card3d.flipped .c-inner{transform:rotateY(180deg)}
+.card3d.instant .c-inner{transition:none}
+.c-face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;display:flex;flex-direction:column;overflow:hidden}
+.c-back{background:var(--foil);background-size:260% 260%;animation:foilmove 3.2s linear infinite alternate;color:var(--ink);align-items:center;justify-content:center;gap:18px;box-shadow:0 30px 90px -20px rgba(217,179,90,.6)}
+@keyframes foilmove{from{background-position:0% 40%}to{background-position:100% 60%}}
+.cb-eye{font:700 max(12px,4.7cqw)/1 var(--f-mono);letter-spacing:.18em;text-transform:uppercase;color:rgba(26,20,7,.75)}
+.cb-50k{font:700 34cqw/.85 var(--f-display);letter-spacing:-.045em;color:rgba(26,20,7,.88)}
+.cb-ves{width:30cqw;height:20cqw}
+.cb-tap{font:700 max(13px,5cqw)/1 var(--f-mono);letter-spacing:.2em;text-transform:uppercase;padding:4cqw 5cqw;border:2px solid rgba(26,20,7,.75);animation:pulse 1.4s ease-in-out infinite}
+@keyframes pulse{50%{opacity:.4}}
+.c-front{transform:rotateY(180deg);border:3px solid transparent;
+  background:radial-gradient(90% 55% at 50% 22%,rgba(217,179,90,.18),transparent 70%) padding-box,linear-gradient(var(--panel),var(--panel)) padding-box,var(--foil) border-box;
+  box-shadow:0 30px 90px -20px rgba(217,179,90,.5)}
+.cf-top{display:flex;flex-direction:column;gap:2.5cqw;padding:8cqw 7.5cqw 0}
+.cf-eye{font:700 max(12px,4.4cqw)/1 var(--f-mono);letter-spacing:.16em;text-transform:uppercase;color:var(--gold)}
+.cf-title{font:700 9.4cqw/1.02 var(--f-display);text-transform:uppercase;color:var(--cream)}
+.cf-mid{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1.2cqw;padding:0 5.6cqw}
+.cf-num{font:700 40cqw/.9 var(--f-display);letter-spacing:-.04em;font-variant-numeric:tabular-nums;background:var(--foil);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 6px 22px rgba(217,179,90,.35))}
+.cf-lbl{font:700 max(13px,5.6cqw)/1 var(--f-mono);letter-spacing:.2em;text-transform:uppercase;color:var(--gold-lt)}
+.cf-stamp{margin-top:5cqw;display:inline-block;padding:3cqw 4.4cqw;border:2px solid var(--gold);color:var(--gold-lt);font:700 max(12px,5cqw)/1.1 var(--f-mono);letter-spacing:.1em;text-transform:uppercase;opacity:0;transform:scale(2.2) rotate(-6deg);transition:opacity .2s ease,transform .34s cubic-bezier(.2,1.6,.4,1)}
+.cf-stamp.on{opacity:1;transform:scale(1) rotate(-6deg)}
+.cf-stub{position:relative;border-top:3px dotted var(--gold);display:flex;flex-direction:column;align-items:center;gap:2cqw;padding:5.6cqw 5cqw 7cqw;text-align:center}
+.cf-stub::before,.cf-stub::after{content:"";position:absolute;top:-5.3cqw;width:9.4cqw;height:9.4cqw;border-radius:50%;background:var(--night)}
+.cf-stub::before{left:-5.6cqw}.cf-stub::after{right:-5.6cqw}
+.cf-stub span{font:700 max(12px,4.4cqw)/1 var(--f-mono);letter-spacing:.16em;text-transform:uppercase;color:var(--gold)}
+.cf-stub b{font:700 max(14px,6.25cqw)/1.2 var(--f-display);color:var(--cream)}
+.rv-after{width:100%;display:flex;flex-direction:column;align-items:center;gap:12px;text-align:center}
+.rv-after.in{animation:upIn .5s cubic-bezier(.2,.8,.2,1) both}
+@keyframes upIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+.ra-head{font:700 clamp(30px,6vw,40px)/1.1 var(--f-display);color:var(--cream)}
+.meter{width:100%;max-width:420px;display:flex;flex-direction:column;gap:8px}
+.m-bar{height:12px;background:var(--panel-2);border:1px solid var(--line-lt);overflow:hidden}
+.m-bar i{display:block;height:100%;width:0;background:var(--foil);transition:width 1s cubic-bezier(.2,.8,.2,1)}
+.m-txt{font:400 15px/1.3 var(--f-mono);color:var(--ch-lt)}
+.m-txt b{color:var(--gold-lt);font-variant-numeric:tabular-nums}
+.ra-sub{font-size:17px;line-height:1.5;color:var(--body);max-width:40ch}
+.ra-ctas{display:flex;flex-direction:column;align-items:center;gap:6px;width:100%}
+.ra-ctas .btn{width:100%;max-width:300px}
+.ra-link{background:none;border:0;cursor:pointer;min-height:44px;padding:0 8px;font:700 15px/1 var(--f-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--gold-lt);text-decoration:underline;text-decoration-color:var(--gold-dk);text-underline-offset:6px}
+.ra-link:focus-visible{outline:2px dashed var(--gold-lt);outline-offset:4px}
+.card3d.settle .cf-eye{letter-spacing:.08em;white-space:nowrap}
+.card3d.settle .cf-stamp{letter-spacing:.04em;white-space:nowrap}
+
+/* story image */
+.sm{position:fixed;inset:0;z-index:70;display:flex;align-items:center;justify-content:center;background:var(--night);
+  padding:calc(env(safe-area-inset-top,0px) + 16px) max(16px,env(safe-area-inset-right,0px)) calc(env(safe-area-inset-bottom,0px) + 16px) max(16px,env(safe-area-inset-left,0px));animation:fadeIn .25s ease both}
+.sm-box{display:flex;flex-direction:column;align-items:center;gap:16px;max-width:420px;width:100%;text-align:center}
+.sm-box img{display:block;max-height:64vh;width:auto;max-width:100%;border:1px solid var(--line-lt)}
+.sm-box p{font:400 15px/1.5 var(--f-mono);color:var(--ch-lt)}
+
+@media (max-width:760px){
+  .ticket{grid-template-columns:minmax(0,1fr)}
+  .ticket::before,.ticket::after{display:none}
+  .t-stub{border-left:0;border-top:3px dotted var(--gold);flex-direction:row;flex-wrap:wrap;padding:22px 16px}
+  .vesica{width:84px;height:56px}
+  .vid,.enter{grid-template-columns:minmax(0,1fr)}
+  .play{max-width:340px}
+  .prizes,.steps,.packs{grid-template-columns:minmax(0,1fr)}
+  .packs{gap:30px}
+  .pack.feat{transform:none}
+  .u-steps{grid-template-columns:minmax(0,1fr)}
+  .nl{padding:20px 18px}
+  .wrap{gap:72px}
+}
+@media (max-width:420px){
+  .stats{grid-template-columns:minmax(0,1fr)}
+  .count b{font-size:30px}
+}
+@media (max-height:700px){ .card3d{width:min(64vw,270px)} .card3d.settle{width:min(50vw,210px)} }
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+/* live site: entry window and the empty preview tag */
+.rv-tag:empty{display:none}
+.gated [data-buy],.gated #entry button[type=submit]{opacity:.45;cursor:not-allowed}
+.gate{font:700 16px/1.45 var(--f-mono);color:var(--gold-lt);letter-spacing:.02em}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <!-- HERO -->
+  <header class="ticket" aria-label="50K Golden Ticket">
+    <div class="t-main">
+      <div class="eyebrow">// Nick Tyler Tattoo</div>
+      <div class="t-big" aria-hidden="true">50K</div>
+      <h1 class="t-title">Golden Ticket</h1>
+      <p class="t-sub">50,000 of you showed up, so round two is here. Seven winners, $3,500 in tattoos, and six more winners we can unlock together. Drawn live Sunday, November 22.</p>
+      <div class="cta-row">
+        <a class="btn" href="#packs">Get your Golden Ticket</a>
+        <a class="ghost" href="#watch">Watch last year's draw</a>
+      </div>
+    </div>
+    <div class="t-stub">
+      <svg class="vesica" viewBox="0 0 120 80" aria-hidden="true"><circle cx="45" cy="40" r="34" fill="none" stroke="#d9b35a" stroke-width="2.5"/><circle cx="75" cy="40" r="34" fill="none" stroke="#d9b35a" stroke-width="2.5"/></svg>
+      <div class="lbl">Admit<br>One</div>
+      <div class="no">No. 50,000</div>
+    </div>
+  </header>
+
+  <!-- COUNTDOWN -->
+  <section class="sec" aria-labelledby="cd-h">
+    <div class="sec-head"><div class="eyebrow" id="cd-h">Entries open in</div></div>
+    <div class="count" id="count">
+      <div><b id="cd-d">--</b><span>Days</span></div>
+      <div><b id="cd-h2">--</b><span>Hours</span></div>
+      <div><b id="cd-m">--</b><span>Minutes</span></div>
+      <div><b id="cd-s">--</b><span>Seconds</span></div>
+    </div>
+    <p class="count-note" id="cd-note">Entries open Sunday, November 1 at 12:00 PM ET. Live drawing Sunday, November 22 at 8:00 PM ET.</p>
+  </section>
+
+  <!-- VIDEO -->
+  <section class="sec" id="watch" aria-labelledby="w-h">
+    <div class="vid">
+      <a class="play" href="https://www.instagram.com/reel/DQSxHKfEThd/" target="_blank" rel="noopener">
+        <span class="tri" aria-hidden="true"></span>
+        <span class="cap">40K Golden Ticket</span>
+        <span class="ttl">Watch the live draw</span>
+      </a>
+      <div class="vid-copy">
+        <div class="eyebrow">Round one</div>
+        <h2 id="w-h">Last time, real people walked away with <span class="gold">real tattoos.</span></h2>
+        <p class="lead">At 40K I ran the first Golden Ticket. The draw happened live on camera, and over $5,000 in prizes went home with people from this community.</p>
+        <div class="stats">
+          <div><b>$5,000+</b><span>in prizes at 40K</span></div>
+          <div><b>84</b><span>people got a ticket</span></div>
+          <div><b>131</b><span>Google reviews</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRIZES -->
+  <section class="sec" aria-labelledby="p-h">
+    <div class="sec-head">
+      <div class="eyebrow">What's in the pot</div>
+      <h2 id="p-h">The <span class="gold">prizes</span></h2>
+    </div>
+    <div class="prizes">
+      <article class="prize grand"><div class="rank">Grand prize</div><div class="val">Full session</div><p>Six hours in my chair, free. A $1,500 value.</p></article>
+      <article class="prize"><div class="rank">Second prize</div><div class="val">Half session</div><p>Three hours in my chair, free. A $750 value.</p></article>
+      <article class="prize"><div class="rank">Third prize &middot; 5 winners</div><div class="val">5 &times; $250</div><p>Five winners each get a $250 gift card to use in my chair.</p></article>
+    </div>
+    <div class="unlock" id="unlock">
+      <div class="sec-head">
+        <div class="eyebrow">Community unlocks</div>
+        <p class="u-title">More entries, more winners.</p>
+        <p class="u-sub">Every entry counts toward the unlocks, free ones too. Share the link and we unlock them together.</p>
+      </div>
+      <div class="u-track" aria-hidden="true"><i id="u-fill"></i><span class="u-mark" data-at="400" style="left:66.667%"></span><span class="u-mark" data-at="600" style="left:100%"></span></div>
+      <div class="u-steps">
+        <div class="u-step" data-at="400"><b>400 entries</b><span>Five more winners, each with a $100 gift card.</span></div>
+        <div class="u-step" data-at="600"><b>600 entries</b><span>One more winner gets a free Half session.</span></div>
+      </div>
+      <p class="note" id="u-count">Counting starts Sunday, November 1.</p>
+    </div>
+    <p class="note">Seven winners and $3,500 to start. Hit both unlocks and it's 13 winners and $4,750. All prizes are for black and grey work: fine line, ornamental, floral, geometric and blackwork.</p>
+  </section>
+
+  <!-- PACKS -->
+  <section class="sec" id="packs" aria-labelledby="k-h">
+    <div class="sec-head">
+      <div class="eyebrow">Golden Tickets</div>
+      <h2 id="k-h">Pick your <span class="gold">pack</span></h2>
+      <p class="lead">Every entry goes into the same live draw. The max is 20 entries per person, so nobody can buy their way past everyone else.</p>
+      <p class="gate" id="k-gate" aria-live="polite" hidden></p>
+    </div>
+    <div class="nl" id="nl">
+      <div class="nl-copy">
+        <div class="nl-eye">The No-Lose</div>
+        <p class="nl-head">Make any pack No-Lose for $50 more.</p>
+        <p class="nl-sub">You also get a $100 gift card. Win or not, $100 comes back to you.</p>
+      </div>
+      <button class="nl-switch" id="nl-switch" type="button" role="switch" aria-checked="false"><span class="nl-track" aria-hidden="true"><span class="nl-knob"></span></span><span id="nl-state">No-Lose off</span></button>
+    </div>
+    <div class="packs">
+      <article class="pack feat wide" data-pack="max">
+        <div class="badge">Best value</div>
+        <div class="pw-a">
+          <div class="p-name">The Max</div>
+          <div class="p-price" data-price>$180</div>
+        </div>
+        <div class="pw-b">
+          <div class="p-ent"><b>20</b><span>Entries</span></div>
+          <div class="p-per" data-per>$9 an entry<small>Save $120 vs. buying singles</small></div>
+        </div>
+        <div class="pw-c">
+          <p class="p-blurb">The most entries one person can hold.</p>
+          <button class="btn" type="button" data-buy="max">Get 20 entries</button>
+        </div>
+      </article>
+      <article class="pack" data-pack="ten">
+        <div class="p-name">The Ten</div>
+        <div class="p-price" data-price>$100</div>
+        <div class="p-ent"><b>10</b><span>Entries</span></div>
+        <div class="p-per" data-per>$10 an entry<small>Save $50 vs. buying singles</small></div>
+        <p class="p-blurb">Last year's biggest pack.</p>
+        <button class="btn alt" type="button" data-buy="ten">Get 10 entries</button>
+      </article>
+      <article class="pack" data-pack="six">
+        <div class="p-name">The Six</div>
+        <div class="p-price" data-price>$65</div>
+        <div class="p-ent"><b>6</b><span>Entries</span></div>
+        <div class="p-per" data-per>$10.83 an entry<small>Save $25 vs. buying singles</small></div>
+        <p class="p-blurb">Double the Triple, for less than two of them.</p>
+        <button class="btn alt" type="button" data-buy="six">Get 6 entries</button>
+      </article>
+      <article class="pack" data-pack="triple">
+        <div class="badge dark">40K favorite</div>
+        <div class="p-name">The Triple</div>
+        <div class="p-price" data-price>$35</div>
+        <div class="p-ent"><b>3</b><span>Entries</span></div>
+        <div class="p-per" data-per>$11.67 an entry<small>Save $10 vs. buying singles</small></div>
+        <p class="p-blurb">What most of you went with at 40K.</p>
+        <button class="btn alt" type="button" data-buy="triple">Get 3 entries</button>
+      </article>
+      <article class="pack" data-pack="single">
+        <div class="p-name">The Single</div>
+        <div class="p-price" data-price>$15</div>
+        <div class="p-ent"><b>1</b><span>Entry</span></div>
+        <div class="p-per" data-per>$15 an entry<small>One shot at the prizes</small></div>
+        <p class="p-blurb">Just want your name in the hat? This is it.</p>
+        <button class="btn alt" type="button" data-buy="single">Get 1 entry</button>
+      </article>
+    </div>
+    <div class="pack-foot">
+      <p class="proof">84 people grabbed a Golden Ticket at 40K.</p>
+      <p class="note">Max 20 entries per person, from packs and free entries combined. Gift cards come off the balance of a Half or Full session, and you still pay the usual deposit when you book. No purchase necessary: <a href="#free">see free entry</a>.</p>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="sec" aria-labelledby="h-h">
+    <div class="sec-head">
+      <div class="eyebrow">How it works</div>
+      <h2 id="h-h">Three steps to the chair</h2>
+    </div>
+    <div class="steps">
+      <div class="step"><h3>Get your entries</h3><p>Grab a pack, or claim a free entry once a day. Every entry counts the same.</p></div>
+      <div class="step"><h3>Tune in live</h3><p>Sunday, November 22 at 8 PM on Instagram @nicktylertattoo. Entries close at 6 PM that day. Winners get pulled on camera.</p></div>
+      <div class="step"><h3>Book your session</h3><p>Winners get a text from me within 2 hours and book their session at my private studio in Selden, Long Island.</p></div>
+    </div>
+  </section>
+
+  <!-- FREE ENTRY -->
+  <section class="enter" id="free" aria-labelledby="e-h">
+    <div class="sec-head">
+      <div class="eyebrow">No purchase necessary</div>
+      <h2 id="e-h">Free entry</h2>
+      
+      <p class="lead">Claim a free entry once a day, up to the same 20-entry max as the packs. Free entries go in the same draw with the same odds.</p>
+      <p class="note">Your entry lands with the studio right away. Come back each day for another, up to 20.</p>
+    </div>
+    <form id="entry" novalidate>
+      <label for="f-name">Full name<input id="f-name" name="name" autocomplete="name" placeholder="First and last"></label>
+      <label for="f-phone">Mobile number<input id="f-phone" name="phone" type="tel" autocomplete="tel" placeholder="(631) 555-0123"></label>
+      <label for="f-email">Email<input id="f-email" name="email" type="email" autocomplete="email" placeholder="you@email.com"></label>
+      <label class="check" for="f-age"><input id="f-age" type="checkbox"> I'm 18 or older and agree to the official rules.</label>
+      <label class="check" for="f-mkt"><input id="f-mkt" name="marketing" type="checkbox"> Optional: text and email me about specials and flash days. Not required to enter. Msg &amp; data rates may apply. Reply STOP to opt out.</label>
+      <div class="hp" aria-hidden="true"><label>Company<input id="f-hp" name="company" tabindex="-1" autocomplete="off"></label></div>
+      <button class="btn" type="submit">Claim my free entry</button>
+      <p class="form-msg" id="form-msg" aria-live="polite"></p>
+    </form>
+  </section>
+
+  <!-- FAQ -->
+  <section class="sec" aria-labelledby="f-h">
+    <div class="sec-head">
+      <div class="eyebrow">Questions</div>
+      <h2 id="f-h">Good to know</h2>
+    </div>
+    <div class="faq">
+      <details><summary>What's No-Lose?</summary><p>Add $50 to any pack and you also get a $100 gift card. Win or not, $100 comes back to you. The Max with No-Lose is $230 for all 20 entries plus the gift card.</p></details>
+      <details><summary>How do the gift cards work?</summary><p>Gift cards, from prizes or No-Lose, come off the balance of a Half or Full session on the day of your tattoo. You still pay the usual deposit when you book. They're good for at least 9 years.</p></details>
+      <details><summary>How many entries can I get?</summary><p>Up to 20 per person, from packs and free entries combined. Grab a pack, enter free once a day, or both, until you hit 20.</p></details>
+      <details><summary>Is there a free way to enter?</summary><p>Yes. Claim a free entry once a day, no purchase needed. Free entries count exactly the same as pack entries, and everyone has the same 20-entry max.</p></details>
+      <details><summary>Who can enter?</summary><p>Anyone 18 or older who is a legal resident of New York, New Jersey or Connecticut. New York law doesn't allow tattooing anyone under 18.</p></details>
+      <details><summary>When and where is the drawing?</summary><p>Sunday, November 22 at 8 PM, live on Instagram @nicktylertattoo. Entries close at 6 PM that day. Turn on notifications so you don't miss it.</p></details>
+      <details><summary>How will I know if I won?</summary><p>I'll text every winner within 2 hours of the live with a private booking link. Book your date within 14 days.</p></details>
+      <details><summary>What kind of tattoo can I get?</summary><p>I work in black and grey only: fine line, ornamental, floral, geometric and blackwork. If you're dreaming in color, I'm happy to point you to someone great.</p></details>
+      <details><summary>Where is the studio?</summary><p>A private studio in Selden, Long Island. Winners get the exact address when they book.</p></details>
+      <details><summary>Do prizes expire or transfer?</summary><p>Prize sessions are booked within 14 days of the draw, for a date from December 9, 2026 through February 27, 2027. They're for the winner and can't be traded for cash. Gift cards are good for at least 9 years and can be given to someone else.</p></details>
+      <details><summary>Official rules</summary>
+        <ul>
+          <li>No purchase necessary to enter or win. A purchase does not raise your max entries or your odds per entry.</li>
+          <li>Entry period: Sunday, Nov 1, 2026 at 12:00 PM ET to Sunday, Nov 22, 2026 at 6:00 PM ET.</li>
+          <li>Free entry: 1 entry per person per day. Max 20 entries per person from all methods combined. Opting in to texts or emails is optional and never affects your entries or odds.</li>
+          <li>Drawing: Sunday, Nov 22, 2026 at 8:00 PM ET, live on Instagram. Odds depend on the number of entries received.</li>
+          <li>Prizes: one Full session ($1,500 value), one Half session ($750 value) and five $250 gift cards, $3,500 total. If 400 total entries are received, five $100 gift cards are added. If 600 are received, one more Half session ($750 value) is added. Maximum total prize value: $4,750.</li>
+          <li>Winners are texted within 2 hours of the drawing and book within 14 days. Prize sessions run December 9, 2026 through February 27, 2027.</li>
+          <li>No-Lose adds a $100 gift card to any pack for $50. All gift cards are good for at least 9 years and apply to the balance of a Half or Full session.</li>
+          <li>Entries past the 20 max don't count, and any purchase past it is refunded.</li>
+          <li>Sponsor: Nick Tyler Tattoo, Selden, NY. This giveaway isn't sponsored, endorsed or run by Instagram.</li>
+        </ul>
+      </details>
+    </div>
+  </section>
+
+  <footer>
+    <span>Nick Tyler Tattoo // Private studio, Selden NY</span>
+    <span>@nicktylertattoo</span>
+  </footer>
+</div>
+
+<!-- REVEAL -->
+<div class="rv" id="rv" role="dialog" aria-modal="true" aria-labelledby="rv-kicker" hidden>
+  <div class="rv-top">
+    <span class="rv-tag" id="rv-tag"></span>
+    <button class="rv-snd" id="rv-snd" type="button" aria-pressed="true">Sound on</button>
+    <button class="rv-x" id="rv-x" type="button" aria-label="Close">&times;</button>
+  </div>
+  <div class="rv-stage">
+    <p class="rv-kicker" id="rv-kicker">Your Golden Ticket is here</p>
+    <button class="card3d" id="card3d" type="button" aria-label="Tap to reveal your Golden Ticket">
+      <span class="c-wob"><span class="c-inner">
+        <span class="c-face c-back" aria-hidden="true">
+          <span class="cb-eye">// Nick Tyler Tattoo</span>
+          <span class="cb-50k">50K</span>
+          <svg class="cb-ves" viewBox="0 0 120 80"><circle cx="45" cy="40" r="34" fill="none" stroke="#1a1407" stroke-opacity=".8" stroke-width="3"/><circle cx="75" cy="40" r="34" fill="none" stroke="#1a1407" stroke-opacity=".8" stroke-width="3"/></svg>
+          <span class="cb-tap">Tap to reveal</span>
+        </span>
+        <span class="c-face c-front">
+          <span class="cf-top"><span class="cf-eye">// Nick Tyler Tattoo</span><span class="cf-title">50K Golden<br>Ticket</span></span>
+          <span class="cf-mid"><span class="cf-num" id="cf-num">0</span><span class="cf-lbl" id="cf-lbl">Entries</span><span class="cf-stamp" id="cf-stamp">$120 studio credit</span></span>
+          <span class="cf-stub"><span>Live draw</span><b>Sun Nov 22 &middot; 8 PM</b></span>
+        </span>
+      </span></span>
+    </button>
+    <div class="rv-after" id="rv-after" hidden>
+      <p class="ra-head" id="ra-head">You're in.</p>
+      <div class="meter"><div class="m-bar"><i id="m-fill"></i></div><div class="m-txt"><b id="m-n">0</b> of <span id="m-max">20</span> max entries</div></div>
+      <p class="ra-sub" id="ra-sub"></p>
+      <div class="ra-ctas">
+        <button class="btn" id="ra-story" type="button">Share to story</button>
+        <button class="ra-link" id="ra-more" type="button">Add more entries</button>
+      </div>
+    </div>
+  </div>
+</div>
+<canvas id="fx" aria-hidden="true"></canvas>
+
+<!-- STORY IMAGE -->
+<div class="sm" id="sm" role="dialog" aria-modal="true" aria-label="Your story image" hidden>
+  <div class="sm-box">
+    <img id="sm-img" alt="Your 50K Golden Ticket story image">
+    <p>Press and hold the image to save it (right-click on a computer). Then post it to your story and tag @nicktylertattoo.</p>
+    <button class="btn alt" id="sm-x" type="button">Done</button>
+  </div>
+</div>
+
+<script>
+/* ---------- settings: change these, nothing else ---------- */
+const CFG = {
+  preview: false,                                 // live site: pack buttons go to checkout, free entries go to GHL
+  freeEntryHook: "https://services.leadconnectorhq.com/hooks/rG91PG0PfPxspxHXNgmW/webhook-trigger/8b24baef-fc20-4575-875a-62d598f9531e",  // GHL workflow "50K Golden Ticket · Free entry"
+  openAt:  "2026-11-01T12:00:00-05:00",           // entries open (Nov 1 is after the clocks fall back)
+  closeAt: "2026-11-22T18:00:00-05:00",           // entries close
+  drawAt:  "2026-11-22T20:00:00-05:00",           // live drawing
+  maxEntries: 20, freePerDay: 1,
+  packs: {
+    max:    { name: "The Max",    price: 180, entries: 20, stamp: "Max entries" },
+    ten:    { name: "The Ten",    price: 100, entries: 10, stamp: "Ten entries" },
+    six:    { name: "The Six",    price: 65,  entries: 6,  stamp: "Six entries" },
+    triple: { name: "The Triple", price: 35,  entries: 3,  stamp: "Triple entry" },
+    single: { name: "The Single", price: 15,  entries: 1,  stamp: "Golden Ticket" }
+  },
+  noLose: { add: 50, card: 100 },                 // No-Lose add-on: +$50 on any pack for a $100 gift card
+  unlocks: [400, 600],                            // entry totals that add winners
+  entriesSoFar: null,                             // update daily once entries open (null = not counting yet)
+  checkout: {                                     // GHL payment links, one per pack
+    max:    "https://link.inkedin.tools/payment-link/6ae55e3900921ddbe8ee086d",
+    ten:    "https://link.inkedin.tools/payment-link/6ae55ea700921ddbe8ee086e",
+    six:    "https://link.inkedin.tools/payment-link/6ae55eec5b49394de8f58467",
+    triple: "https://link.inkedin.tools/payment-link/6ae55f2500921ddbe8ee0870",
+    single: "https://link.inkedin.tools/payment-link/6ae55fb900921ddbe8ee0873"
+  },
+  checkoutNoLose: {                               // same packs with the No-Lose add-on
+    max:    "https://link.inkedin.tools/payment-link/6ae5600c00921ddbe8ee0874",
+    ten:    "https://link.inkedin.tools/payment-link/6ae560525b49394de8f58474",
+    six:    "https://link.inkedin.tools/payment-link/6ae5609e5b49394de8f58475",
+    triple: "https://link.inkedin.tools/payment-link/6ae560e55b49394de8f58476",
+    single: "https://link.inkedin.tools/payment-link/6ae561285b49394de8f58478"
+  },
+  upgrade: { ten: "", six: "", triple: "", single: "", noLose: "" }       // optional: pay the difference to go max, or max to No-Lose
+};
+const $ = id => document.getElementById(id);
+const T = { open: +new Date(CFG.openAt), close: +new Date(CFG.closeAt), draw: +new Date(CFG.drawAt) };
+const fmt = ms => new Date(ms).toLocaleString("en-US", { timeZone: "America/New_York", weekday: "long", month: "long", day: "numeric", hour: "numeric", minute: "2-digit" }) + " ET";
+const phase = now => now < T.open ? "pre" : now < T.close ? "open" : now < T.draw ? "closed" : "done";
+const wait = ms => new Promise(r => setTimeout(r, ms));
+const reduced = () => matchMedia("(prefers-reduced-motion: reduce)").matches;
+/* entry window: packs and free entries work only between openAt and closeAt */
+const gateMsg = () => {
+  const p = phase(Date.now());
+  if (p === "pre") return `Entries open ${fmt(T.open)}.`;
+  if (p === "closed") return `Entries are closed. The live draw is ${fmt(T.draw)} on Instagram @nicktylertattoo.`;
+  if (p === "done") return "The 50K drawing is done. Thank you for being part of it.";
+  return "";
+};
+function applyGate() {
+  const m = CFG.preview ? "" : gateMsg(), g = $("k-gate");
+  document.body.classList.toggle("gated", !!m);
+  if (g) { g.textContent = m; g.hidden = !m; }
+}
+const etDay = () => new Intl.DateTimeFormat("en-CA", { timeZone: "America/New_York", year: "numeric", month: "2-digit", day: "2-digit" }).format(new Date());
+const e164 = v => { const d = v.replace(/\D/g, ""); return d.length === 10 ? "+1" + d : (d.length === 11 && d[0] === "1") ? "+" + d : v.trim(); };
+const store = { get(k) { try { return localStorage.getItem(k); } catch (e) { return null; } }, set(k, v) { try { localStorage.setItem(k, v); } catch (e) {} } };
+let sending = false;
+/* checkout opens in a new tab when the page sits inside a frame, same tab otherwise */
+const go = url => { try { if (window.top !== window.self) { window.open(url, "_blank", "noopener"); return; } } catch (e) {} location.href = url; };
+
+/* ---------- countdown ---------- */
+(function () {
+  const ids = ["cd-d", "cd-h2", "cd-m", "cd-s"].map($), head = $("cd-h"), note = $("cd-note");
+  const map = {
+    pre:    ["Entries open in",  T.open,  "Entries open "],
+    open:   ["Entries close in", T.close, "Entries close "],
+    closed: ["Live drawing in",  T.draw,  "Live on Instagram @nicktylertattoo "],
+    done:   ["The drawing is done", null, ""]
+  };
+  function tick() {
+    const now = Date.now(), [label, target, pre] = map[phase(now)];
+    head.textContent = label;
+    if (!target) { ids.forEach(e => e.textContent = "00"); note.textContent = "Thank you for being part of it."; return; }
+    const s = Math.max(0, Math.floor((target - now) / 1000));
+    const v = [Math.floor(s / 86400), Math.floor(s % 86400 / 3600), Math.floor(s % 3600 / 60), s % 60];
+    ids.forEach((e, i) => e.textContent = String(v[i]).padStart(2, "0"));
+    note.textContent = pre + fmt(target) + (phase(now) === "pre" ? ". Live drawing " + fmt(T.draw) + "." : ".");
+  }
+  tick(); setInterval(tick, 1000);
+})();
+
+/* ---------- sound (Web Audio, starts on the buyer's tap) ---------- */
+let AC = null, soundOn = true;
+function ac() {
+  if (!soundOn) return null;
+  try {
+    if (!AC) { const C = window.AudioContext || window.webkitAudioContext; if (!C) return null; AC = new C(); }
+    if (AC.state === "suspended") AC.resume();
+  } catch (e) { return null; }
+  return AC;
+}
+function tone(freq, t0, dur, type, gain) {
+  const a = ac(); if (!a) return;
+  const o = a.createOscillator(), g = a.createGain(), t = a.currentTime + t0;
+  o.type = type; o.frequency.value = freq;
+  g.gain.setValueAtTime(0.0001, t);
+  g.gain.exponentialRampToValueAtTime(gain, t + 0.012);
+  g.gain.exponentialRampToValueAtTime(0.0001, t + dur);
+  o.connect(g).connect(a.destination); o.start(t); o.stop(t + dur + 0.05);
+}
+function whoosh() {
+  const a = ac(); if (!a) return;
+  const len = Math.floor(a.sampleRate * 0.5), buf = a.createBuffer(1, len, a.sampleRate), d = buf.getChannelData(0);
+  for (let i = 0; i < len; i++) d[i] = (Math.random() * 2 - 1) * (1 - i / len);
+  const src = a.createBufferSource(), f = a.createBiquadFilter(), g = a.createGain(), t = a.currentTime;
+  src.buffer = buf; f.type = "bandpass"; f.Q.value = 1.2;
+  f.frequency.setValueAtTime(500, t); f.frequency.exponentialRampToValueAtTime(3800, t + 0.42);
+  g.gain.setValueAtTime(0.0001, t); g.gain.exponentialRampToValueAtTime(0.22, t + 0.08); g.gain.exponentialRampToValueAtTime(0.0001, t + 0.48);
+  src.connect(f).connect(g).connect(a.destination); src.start(t);
+}
+function chime() { [659.25, 830.61, 987.77, 1318.51].forEach((f, i) => { tone(f, i * 0.075, 1.5, "triangle", 0.15); tone(f * 2, i * 0.075, 0.7, "sine", 0.035); }); }
+function tick() { tone(2100, 0, 0.03, "square", 0.022); }
+function thud() { tone(105, 0, 0.3, "sine", 0.3); tone(1567.98, 0.03, 1.1, "triangle", 0.1); tone(2093, 0.1, 0.9, "sine", 0.05); }
+function buzz(p) { try { navigator.vibrate && navigator.vibrate(p); } catch (e) {} }
+
+/* ---------- gold confetti ---------- */
+const fx = $("fx"), cx = fx.getContext("2d"), parts = [];
+const GOLDS = ["#fff1c2", "#f4dc95", "#e9c873", "#d9b35a", "#b8913a", "#9c7623", "#efe7d8"];
+let fxRun = false;
+function sizeFx() { const r = Math.min(2, window.devicePixelRatio || 1); fx.width = innerWidth * r; fx.height = innerHeight * r; cx.setTransform(r, 0, 0, r, 0, 0); }
+function burst(x, y, n, spread, power, dir) {
+  const base = dir === undefined ? -Math.PI / 2 : dir;
+  for (let i = 0; i < n; i++) {
+    const a = base + (Math.random() - 0.5) * spread, v = power * (0.45 + Math.random() * 0.75), r = Math.random();
+    parts.push({ x, y, vx: Math.cos(a) * v, vy: Math.sin(a) * v, w: 6 + Math.random() * 8, h: 3 + Math.random() * 6,
+      rot: Math.random() * 6.28, vr: (Math.random() - 0.5) * 0.35, c: GOLDS[(Math.random() * GOLDS.length) | 0],
+      life: 0, max: 120 + Math.random() * 80, kind: r < 0.14 ? "star" : r < 0.55 ? "rect" : "dot" });
+  }
+  if (!fxRun) { fxRun = true; requestAnimationFrame(loop); }
+}
+function star(x, y, s) { cx.beginPath(); for (let i = 0; i < 8; i++) { const a = i * Math.PI / 4, rr = i % 2 ? s * 0.32 : s; cx.lineTo(x + Math.cos(a) * rr, y + Math.sin(a) * rr); } cx.closePath(); cx.fill(); }
+function loop() {
+  cx.clearRect(0, 0, innerWidth, innerHeight);
+  for (let i = parts.length - 1; i >= 0; i--) {
+    const p = parts[i];
+    p.vy += 0.32; p.vx *= 0.985; p.vy *= 0.985; p.x += p.vx; p.y += p.vy; p.rot += p.vr; p.life++;
+    if (p.life > p.max || p.y > innerHeight + 40) { parts.splice(i, 1); continue; }
+    cx.globalAlpha = Math.max(0, 1 - p.life / p.max);
+    cx.fillStyle = p.c;
+    if (p.kind === "dot") { cx.beginPath(); cx.arc(p.x, p.y, p.h * 0.55, 0, 6.283); cx.fill(); }
+    else if (p.kind === "star") star(p.x, p.y, p.w * 0.9);
+    else { cx.save(); cx.translate(p.x, p.y); cx.rotate(p.rot); cx.scale(1, Math.cos(p.rot * 2)); cx.fillRect(-p.w / 2, -p.h / 2, p.w, p.h); cx.restore(); }
+  }
+  cx.globalAlpha = 1;
+  if (parts.length) requestAnimationFrame(loop); else { fxRun = false; cx.clearRect(0, 0, innerWidth, innerHeight); }
+}
+
+/* ---------- No-Lose switch + pack prices ---------- */
+let noLose = false;
+const money = v => "$" + (Math.round(v * 100) / 100).toFixed(v % 1 ? 2 : 0);
+function renderPacks() {
+  const single = CFG.packs.single.price;
+  document.querySelectorAll(".pack[data-pack]").forEach(el => {
+    const p = CFG.packs[el.dataset.pack]; if (!p) return;
+    el.classList.toggle("nl-on", noLose);
+    el.querySelector("[data-price]").textContent = money(p.price + (noLose ? CFG.noLose.add : 0));
+    const per = el.querySelector("[data-per]");
+    if (noLose) per.innerHTML = `+ $${CFG.noLose.card} gift card<small>Win or not, $${CFG.noLose.card} comes back to you</small>`;
+    else if (p.entries === 1) per.innerHTML = `${money(p.price)} an entry<small>One shot at the prizes</small>`;
+    else per.innerHTML = `${money(p.price / p.entries)} an entry<small>Save $${p.entries * single - p.price} vs. buying singles</small>`;
+    const b = el.querySelector("[data-buy]");
+    b.textContent = noLose ? "Go No-Lose" : `Get ${p.entries} ${p.entries === 1 ? "entry" : "entries"}`;
+  });
+  const sw = $("nl-switch");
+  sw.setAttribute("aria-checked", String(noLose));
+  $("nl-state").textContent = noLose ? "No-Lose on" : "No-Lose off";
+  $("nl").classList.toggle("on", noLose);
+}
+$("nl-switch").addEventListener("click", () => { noLose = !noLose; renderPacks(); });
+renderPacks();
+
+/* ---------- community unlocks ---------- */
+(function () {
+  const n = CFG.entriesSoFar, top = CFG.unlocks[CFG.unlocks.length - 1];
+  if (n === null || n === undefined) return;
+  $("u-fill").style.width = Math.min(100, n / top * 100) + "%";
+  document.querySelectorAll("[data-at]").forEach(el => el.classList.toggle("hit", n >= +el.dataset.at));
+  const next = CFG.unlocks.find(u => n < u);
+  $("u-count").textContent = next ? `${n.toLocaleString()} entries so far. ${next - n} to the next unlock.` : `${n.toLocaleString()} entries so far. Both unlocks are in.`;
+})();
+
+/* ---------- the reveal ---------- */
+const rv = $("rv"), card = $("card3d"), num = $("cf-num"), stamp = $("cf-stamp"), after = $("rv-after");
+const RV = { mode: null, nl: false, entries: 0, busy: false, done: false, trigger: null };
+
+function openReveal(mode, trigger, nl) {
+  RV.mode = mode; RV.nl = !!nl && mode !== "free"; RV.trigger = trigger || null; RV.busy = false; RV.done = false;
+  if (mode === "free") { RV.entries = CFG.freePerDay; stamp.textContent = "Free entry"; $("rv-kicker").textContent = "Your free entry is in"; }
+  else { const p = CFG.packs[mode]; RV.entries = p.entries; stamp.textContent = RV.nl ? `+ $${CFG.noLose.card} gift card` : p.stamp; $("rv-kicker").textContent = "Your Golden Ticket is here"; }
+  $("cf-lbl").textContent = RV.entries === 1 ? "Entry" : "Entries";
+  $("rv-tag").textContent = CFG.preview ? (mode === "free" ? "Preview: what someone sees after a free entry" : "Preview: what a buyer sees right after checkout") : "";
+  card.className = "card3d idle"; num.textContent = "0"; stamp.classList.remove("on");
+  after.hidden = true; after.classList.remove("in"); $("m-fill").style.width = "0";
+  card.setAttribute("aria-label", "Tap to reveal your Golden Ticket");
+  rv.hidden = false; document.documentElement.style.overflow = "hidden"; sizeFx();
+  setTimeout(() => card.focus({ preventScroll: true }), 50);
+}
+function closeReveal() {
+  rv.hidden = true; document.documentElement.style.overflow = ""; parts.length = 0;
+  if (RV.trigger) RV.trigger.focus({ preventScroll: true });
+}
+function countUp(el, n, dur) {
+  return new Promise(res => {
+    const t0 = performance.now(); let last = -1, lastTick = 0;
+    (function f(t) {
+      const k = Math.min(1, (t - t0) / dur), v = Math.round(n * (1 - Math.pow(1 - k, 3)));
+      if (v !== last) { el.textContent = v; last = v; if (t - lastTick > 45) { tick(); lastTick = t; } }
+      if (k < 1) requestAnimationFrame(f); else res();
+    })(t0);
+  });
+}
+async function reveal() {
+  if (RV.busy || RV.done) return;
+  RV.busy = true;
+  whoosh(); buzz(15);
+  const centre = () => { const r = card.getBoundingClientRect(); return [r.left + r.width / 2, r.top + r.height * 0.45]; };
+  if (reduced()) {
+    card.classList.remove("idle"); card.classList.add("instant", "flipped");
+    num.textContent = RV.entries; stamp.classList.add("on"); chime(); finish(); return;
+  }
+  card.classList.remove("idle"); card.classList.add("charge");
+  await wait(450);
+  card.classList.add("flipped");
+  await wait(380);
+  let [x, y] = centre();
+  burst(x, y, 170, Math.PI * 1.15, 17); chime(); buzz([20, 40, 30, 40, 60]);
+  await wait(480);
+  await countUp(num, RV.entries, Math.min(1100, 300 + RV.entries * 110));
+  stamp.classList.add("on"); thud(); buzz(40);
+  [x, y] = centre();
+  burst(x, y + 60, 60, Math.PI * 0.9, 12);
+  burst(0, innerHeight * 0.75, 45, 0.7, 19, -Math.PI / 3);
+  burst(innerWidth, innerHeight * 0.75, 45, 0.7, 19, -2 * Math.PI / 3);
+  await wait(420);
+  finish();
+}
+function finish() {
+  const n = RV.entries, max = CFG.maxEntries;
+  card.setAttribute("aria-label", `Your Golden Ticket: ${n} entries`);
+  $("ra-head").textContent = RV.mode === "free" ? "Your free entry is in." : RV.nl ? "You're in, and you can't lose." : "You're in.";
+  $("m-n").textContent = n; $("m-max").textContent = max;
+  let sub, more = true;
+  if (RV.mode === "free") { sub = `Skip the wait: go straight to ${max} with the Max pack. Or come back tomorrow for another free one.`; $("ra-more").textContent = "See the packs"; }
+  else if (n >= max && RV.nl) { sub = `You're at the max, and your $${CFG.noLose.card} gift card is on its way. See you at the live on Sunday, November 22 at 8 PM.`; more = false; }
+  else if (n >= max) { sub = `You're at the max. Want it No-Lose? Add a $${CFG.noLose.card} gift card for $${CFG.noLose.add} more.`; $("ra-more").textContent = "Make it No-Lose"; }
+  else { sub = (RV.nl ? `Your $${CFG.noLose.card} gift card is on its way. ` : "") + `More entries, more chances. Top up to ${max} anytime.`; $("ra-more").textContent = "Go max"; }
+  $("ra-sub").textContent = sub;
+  $("ra-more").hidden = !more;
+  card.classList.add("settle");
+  after.hidden = false; after.classList.add("in");
+  requestAnimationFrame(() => requestAnimationFrame(() => { $("m-fill").style.width = Math.min(100, n / max * 100) + "%"; }));
+  RV.busy = false; RV.done = true;
+}
+card.addEventListener("click", reveal);
+$("rv-x").addEventListener("click", closeReveal);
+$("rv-snd").addEventListener("click", e => {
+  soundOn = !soundOn; e.currentTarget.textContent = soundOn ? "Sound on" : "Sound off"; e.currentTarget.setAttribute("aria-pressed", String(soundOn));
+});
+$("ra-more").addEventListener("click", () => {
+  const up = RV.entries >= CFG.maxEntries ? CFG.upgrade.noLose : CFG.upgrade[RV.mode];
+  if (!CFG.preview && up) { go(up); return; }
+  closeReveal(); $("packs").scrollIntoView({ behavior: reduced() ? "auto" : "smooth" });
+});
+$("ra-story").addEventListener("click", makeStory);
+addEventListener("resize", () => { if (!rv.hidden) sizeFx(); });
+addEventListener("keydown", e => {
+  if (e.key !== "Escape") return;
+  if (!$("sm").hidden) { $("sm").hidden = true; return; }
+  if (!rv.hidden) closeReveal();
+});
+
+/* ---------- story image ---------- */
+async function makeStory() {
+  try { await Promise.all([document.fonts.load('700 120px "Space Grotesk"'), document.fonts.load('700 40px "Space Mono"')]); } catch (e) {}
+  const W = 1080, H = 1920, c = document.createElement("canvas"); c.width = W; c.height = H;
+  const g = c.getContext("2d"), n = RV.entries;
+  const foil = (x0, y0, x1, y1) => { const l = g.createLinearGradient(x0, y0, x1, y1); [["#9c7623", 0], ["#e9c873", .22], ["#fff1c2", .36], ["#d9b35a", .5], ["#a9822c", .68], ["#f0d27e", .86], ["#b8913a", 1]].forEach(([s, o]) => l.addColorStop(o, s)); return l; };
+  const sp = v => { if ("letterSpacing" in g) g.letterSpacing = v; };
+  g.fillStyle = "#0b0a09"; g.fillRect(0, 0, W, H);
+  const rg = g.createRadialGradient(540, 900, 40, 540, 900, 900); rg.addColorStop(0, "rgba(217,179,90,0.24)"); rg.addColorStop(1, "rgba(217,179,90,0)");
+  g.fillStyle = rg; g.fillRect(0, 0, W, H);
+  let seed = 50000; const rnd = () => (seed = seed * 16807 % 2147483647) / 2147483647;
+  for (let i = 0; i < 9000; i++) {
+    const x = rnd() * W, y = rnd() * H, d = Math.min(x, y, W - x, H - y), p = Math.pow(Math.max(0, 1 - d / 170), 2.2);
+    if (rnd() < p) { g.fillStyle = `rgba(217,179,90,${0.25 + 0.5 * rnd()})`; g.beginPath(); g.arc(x, y, 1 + rnd() * 2.2, 0, 6.283); g.fill(); }
+  }
+  const X = 150, Y = 330, TW = 780, TH = 1080, PY = Y + 850;
+  const fit = (txt, wght, size, fam, maxW) => { let s = size; do { g.font = `${wght} ${s}px ${fam}`; s -= 2; } while (g.measureText(txt).width > maxW && s > 20); };
+  g.fillStyle = "#141110"; g.fillRect(X, Y, TW, TH);
+  g.lineWidth = 7; g.strokeStyle = foil(X, Y, X + TW, Y + TH); g.strokeRect(X, Y, TW, TH);
+  g.fillStyle = "#0b0a09"; [X, X + TW].forEach(cxp => { g.beginPath(); g.arc(cxp, PY, 30, 0, 6.283); g.fill(); g.strokeStyle = "#d9b35a"; g.lineWidth = 5; g.stroke(); });
+  g.fillStyle = "#d9b35a"; for (let x = X + 60; x < X + TW - 40; x += 26) { g.beginPath(); g.arc(x, PY, 4, 0, 6.283); g.fill(); }
+  g.textBaseline = "alphabetic"; g.textAlign = "left";
+  const L = X + 70, inner = TW - 140;
+  sp("6px"); g.fillStyle = "#d9b35a"; fit("// NICK TYLER TATTOO", 700, 42, '"Space Mono", monospace', inner); g.fillText("// NICK TYLER TATTOO", L, Y + 110);
+  sp("0px"); g.fillStyle = "#efe7d8"; g.font = '700 150px "Space Grotesk", sans-serif'; g.fillText("I'M IN.", L - 8, Y + 290);
+  g.fillStyle = foil(X, Y + 380, X + TW, Y + 640); fit(String(n), 700, 300, '"Space Grotesk", sans-serif', inner); g.fillText(String(n), L - 18, Y + 610);
+  sp("8px"); g.fillStyle = "#f4dc95"; g.font = '700 54px "Space Mono", monospace'; g.fillText(n === 1 ? "ENTRY" : "ENTRIES", L, Y + 690);
+  sp("0px"); g.fillStyle = "#efe7d8"; fit("IN THE 50K GOLDEN TICKET", 700, 58, '"Space Grotesk", sans-serif', inner); g.fillText("IN THE 50K GOLDEN TICKET", L, Y + 790);
+  sp("6px"); g.fillStyle = "#d9b35a"; g.font = '700 42px "Space Mono", monospace'; g.fillText("LIVE DRAW", L, PY + 100);
+  sp("0px"); g.fillStyle = "#efe7d8"; fit("SUN NOV 22 \u00b7 8 PM", 700, 66, '"Space Grotesk", sans-serif', inner); g.fillText("SUN NOV 22 \u00b7 8 PM", L, PY + 180);
+  g.strokeStyle = "#d9b35a"; g.lineWidth = 5; [W / 2 - 24, W / 2 + 24].forEach(a2 => { g.beginPath(); g.arc(a2, 1495, 42, 0, 6.283); g.stroke(); });
+  g.textAlign = "center"; sp("4px");
+  g.fillStyle = "#f4dc95"; g.font = '700 52px "Space Mono", monospace'; g.fillText("@NICKTYLERTATTOO", W / 2, 1610);
+  sp("2px"); g.fillStyle = "#ddd0b0"; g.font = '400 44px "Space Mono", monospace'; g.fillText("Get yours: link in bio", W / 2, 1680);
+  $("sm-img").src = c.toDataURL("image/png");
+  $("sm").hidden = false; $("sm-x").focus();
+}
+$("sm-x").addEventListener("click", () => { $("sm").hidden = true; $("ra-story").focus(); });
+
+/* ---------- pack buttons + free entry ---------- */
+document.querySelectorAll("[data-buy]").forEach(b => b.addEventListener("click", () => {
+  const k = b.dataset.buy;
+  if (CFG.preview) { openReveal(k, b, noLose); return; }
+  const gm = gateMsg();
+  if (gm) { const g = $("k-gate"); g.textContent = gm; g.hidden = false; g.scrollIntoView({ behavior: reduced() ? "auto" : "smooth", block: "center" }); return; }
+  const url = noLose ? CFG.checkoutNoLose[k] : CFG.checkout[k];
+  if (url) go(url);
+}));
+$("entry").addEventListener("submit", async e => {
+  e.preventDefault();
+  const msg = $("form-msg"), name = $("f-name").value.trim(), phone = $("f-phone").value.trim(), email = $("f-email").value.trim();
+  const trigger = e.submitter || $("entry").querySelector("button[type=submit]");
+  msg.classList.remove("err");
+  if (!name || !phone || !email) { msg.classList.add("err"); msg.textContent = "Add your name, mobile number and email so I can reach you if you win."; return; }
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { msg.classList.add("err"); msg.textContent = "That email doesn't look right. Check it and try again."; return; }
+  if (phone.replace(/\D/g, "").length < 10) { msg.classList.add("err"); msg.textContent = "Add a mobile number with area code so I can text you if you win."; return; }
+  if (!$("f-age").checked) { msg.classList.add("err"); msg.textContent = "Check the box to confirm you're 18 or older."; return; }
+  if (CFG.preview) { msg.textContent = "Preview only. On the live page this sends your entries straight to the studio."; openReveal("free", trigger); return; }
+  const gm = gateMsg();
+  if (gm) { msg.classList.add("err"); msg.textContent = gm; return; }
+  const day = etDay();
+  if (store.get("ntt50k-free") === day) { msg.textContent = "You've claimed today's free entry. Come back tomorrow for another."; return; }
+  if ($("f-hp").value) { openReveal("free", trigger); return; }
+  if (sending) return;
+  sending = true;
+  const btn = $("entry").querySelector("button[type=submit]"), label = btn.textContent;
+  btn.disabled = true; btn.textContent = "Sending...";
+  const parts = name.split(/\s+/);
+  const data = {
+    first_name: parts[0], last_name: parts.slice(1).join(" "), full_name: name,
+    phone: e164(phone), email: email,
+    marketing_opt_in: $("f-mkt").checked ? "yes" : "no", age_confirmed: "yes",
+    entry_type: "free", entry_date: day, submitted_at: new Date().toISOString(),
+    source: "50K Golden Ticket page", page: location.origin + location.pathname
+  };
+  let ok = false;
+  try {
+    const r = await fetch(CFG.freeEntryHook, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(data) });
+    ok = r.ok;
+  } catch (err) { ok = false; }
+  sending = false; btn.disabled = false; btn.textContent = label;
+  if (!ok) { msg.classList.add("err"); msg.textContent = "That didn't go through. Check your connection and try again."; return; }
+  store.set("ntt50k-free", day);
+  msg.textContent = "Your free entry is in. Come back tomorrow for another.";
+  openReveal("free", trigger);
+});
+
+applyGate(); setInterval(applyGate, 30000);
+/* live site: checkout sends buyers back with ?pack=max (or ten, six, triple, single), plus &nl=1 for No-Lose */
+try { const s = new URLSearchParams(location.search), q = s.get("pack"); if (q && CFG.packs[q]) { openReveal(q, null, s.get("nl") === "1"); history.replaceState(null, "", location.pathname + location.hash); } } catch (e) {}
+</script>
+</body>
+</html>
