@@ -936,7 +936,7 @@ $("entry").addEventListener("submit", async e => {
 
 applyGate(); setInterval(applyGate, 30000);
 /* live site: checkout sends buyers back with ?pack=max (or ten, six, triple, single), plus &nl=1 for No-Lose */
-try { const s = new URLSearchParams(location.search), q = s.get("pack"); if (q && CFG.packs[q]) { openReveal(q, null, s.get("nl") === "1"); history.replaceState(null, "", location.pathname + location.hash); } } catch (e) {}
+try { const qs = location.search, q = (qs.match(/[?&]pack=([a-z]+)/) || [])[1]; if (q && CFG.packs[q]) { openReveal(q, null, /[?&]nl=1(?!\d)/.test(qs)); history.replaceState(null, "", location.pathname + location.hash); } } catch (e) {}
 </script>
 </body>
 </html>
