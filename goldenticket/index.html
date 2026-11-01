@@ -6,7 +6,7 @@
 <meta name="ntt-page" content="goldenticket">
 <title>50K Golden Ticket · Nick Tyler Tattoo</title>
 <link rel="canonical" href="https://nicktylertattoo.com/goldenticket/">
-<meta name="description" content="Round two of the Golden Ticket. Grab an entry pack or enter free once a day for a shot at free tattoo sessions and gift cards from Nick Tyler Tattoo, drawn live on Instagram Sunday, November 22.">
+<meta name="description" content="Round two of the Golden Ticket. Grab an entry pack or claim your free entry for a shot at free tattoo sessions and gift cards from Nick Tyler Tattoo, drawn live on Instagram Sunday, November 22.">
 <meta name="theme-color" content="#0b0a09">
 <meta property="og:title" content="The 50K Golden Ticket · Nick Tyler Tattoo">
 <meta property="og:description" content="Entry packs or a free daily entry. Drawn live on Instagram Sunday, November 22.">
@@ -171,6 +171,10 @@ a{color:var(--ch-lt)}
 .u-step b{font:700 16px/1.2 var(--f-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--gold-lt)}
 .u-step span{font-size:17px;line-height:1.45;color:var(--cream)}
 .u-step.hit b::after{content:" \00b7  Unlocked";color:var(--gold)}
+.u-stats{display:flex;flex-wrap:wrap;gap:16px 44px;align-items:flex-end}
+.u-stat{display:flex;flex-direction:column;gap:6px;min-width:0}
+.u-stat b{font:700 52px/1 var(--f-display);color:var(--gold-lt);letter-spacing:-.01em}
+.u-stat span{font:700 15px/1.3 var(--f-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--ch-lt)}
 .proof{font:400 16px/1.5 var(--f-mono);color:var(--ch-lt)}
 
 /* steps */
@@ -313,7 +317,7 @@ footer{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space-between;b
       <div class="eyebrow">// Nick Tyler Tattoo</div>
       <div class="t-big" aria-hidden="true">50K</div>
       <h1 class="t-title">Golden Ticket</h1>
-      <p class="t-sub">50,000 of you showed up, so round two is here. Seven winners, $3,500 in tattoos, and six more winners we can unlock together. Drawn live Sunday, November 22.</p>
+      <p class="t-sub">50,000 of you showed up, so round two is here. Seven winners to start, plus another winner for every 50 entries. Drawn live Sunday, November 22.</p>
       <div class="cta-row">
         <a class="btn" href="#packs">Get your Golden Ticket</a>
         <a class="ghost" href="#watch">Watch last year's draw</a>
@@ -373,17 +377,17 @@ footer{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space-between;b
     <div class="unlock" id="unlock">
       <div class="sec-head">
         <div class="eyebrow">Community unlocks</div>
-        <p class="u-title">More entries, more winners.</p>
-        <p class="u-sub">Every entry counts toward the unlocks, free ones too. Share the link and we unlock them together.</p>
+        <p class="u-title">A winner for every 50 entries.</p>
+        <p class="u-sub">Seven winners to start. Every 50 entries, free ones included, adds another winner with a $100 gift card. Share the link and the pot keeps growing.</p>
       </div>
-      <div class="u-track" aria-hidden="true"><i id="u-fill"></i><span class="u-mark" data-at="400" style="left:66.667%"></span><span class="u-mark" data-at="600" style="left:100%"></span></div>
-      <div class="u-steps">
-        <div class="u-step" data-at="400"><b>400 entries</b><span>Five more winners, each with a $100 gift card.</span></div>
-        <div class="u-step" data-at="600"><b>600 entries</b><span>One more winner gets a free Half session.</span></div>
+      <div class="u-stats">
+        <div class="u-stat"><b id="u-win">7</b><span>Winners so far</span></div>
+        <div class="u-stat"><b id="u-next">50</b><span>Entries to the next winner</span></div>
       </div>
-      <p class="note" id="u-count">Counting starts Sunday, November 1.</p>
+      <div class="u-track" aria-hidden="true"><i id="u-fill"></i></div>
+      <p class="note" id="u-count">The count updates every day.</p>
     </div>
-    <p class="note">Seven winners and $3,500 to start. Hit both unlocks and it's 13 winners and $4,750. All prizes are for black and grey work: fine line, ornamental, floral, geometric and blackwork.</p>
+    <p class="note">Seven winners and $3,500 to start, plus one more winner for every 50 entries. All prizes are for black and grey work: fine line, ornamental, floral, geometric and blackwork.</p>
   </section>
 
   <!-- PACKS -->
@@ -391,7 +395,7 @@ footer{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space-between;b
     <div class="sec-head">
       <div class="eyebrow">Golden Tickets</div>
       <h2 id="k-h">Pick your <span class="gold">pack</span></h2>
-      <p class="lead">Every entry goes into the same live draw. The max is 20 entries per person, so nobody can buy their way past everyone else.</p>
+      <p class="lead">Every entry goes into the same live draw. Packs top out at 20 entries per person, so nobody can buy their way past everyone else.</p>
       <p class="gate" id="k-gate" aria-live="polite" hidden></p>
     </div>
     <div class="nl" id="nl">
@@ -454,7 +458,7 @@ footer{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space-between;b
     </div>
     <div class="pack-foot">
       <p class="proof">84 people grabbed a Golden Ticket at 40K.</p>
-      <p class="note">Max 20 entries per person, from packs and free entries combined. Gift cards come off the balance of a Half or Full session, and you still pay the usual deposit when you book. No purchase necessary: <a href="#free">see free entry</a>.</p>
+      <p class="note">Packs max out at 20 entries per person, plus everyone's one free entry. Gift cards come off the balance of a Half or Full session, and you still pay the usual deposit when you book. No purchase necessary: <a href="#free">see free entry</a>.</p>
     </div>
   </section>
 
@@ -465,7 +469,7 @@ footer{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space-between;b
       <h2 id="h-h">Three steps to the chair</h2>
     </div>
     <div class="steps">
-      <div class="step"><h3>Get your entries</h3><p>Grab a pack, or claim a free entry once a day. Every entry counts the same.</p></div>
+      <div class="step"><h3>Get your entries</h3><p>Claim your free entry, then grab a pack for more chances. Every entry counts the same.</p></div>
       <div class="step"><h3>Tune in live</h3><p>Sunday, November 22 at 8 PM on Instagram @nicktylertattoo. Entries close at 6 PM that day. Winners get pulled on camera.</p></div>
       <div class="step"><h3>Book your session</h3><p>Winners get a text from me within 2 hours and book their session at my private studio in Selden, Long Island.</p></div>
     </div>
@@ -477,8 +481,8 @@ footer{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space-between;b
       <div class="eyebrow">No purchase necessary</div>
       <h2 id="e-h">Free entry</h2>
       
-      <p class="lead">Claim a free entry once a day, up to the same 20-entry max as the packs. Free entries go in the same draw with the same odds.</p>
-      <p class="note">Your entry lands with the studio right away. Come back each day for another, up to 20.</p>
+      <p class="lead">Your first entry's on me. Claim it here and it goes in the same draw as the packs.</p>
+      <p class="note">One free entry per person. Want more chances? Packs add up to 20 more.</p>
     </div>
     <form id="entry" novalidate>
       <label for="f-name">Full name<input id="f-name" name="name" autocomplete="name" placeholder="First and last"></label>
@@ -501,8 +505,8 @@ footer{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space-between;b
     <div class="faq">
       <details><summary>What's No-Lose?</summary><p>Add $50 to any pack and you also get a $100 gift card. Win or not, $100 comes back to you. The Max with No-Lose is $230 for all 20 entries plus the gift card.</p></details>
       <details><summary>How do the gift cards work?</summary><p>Gift cards, from prizes or No-Lose, come off the balance of a Half or Full session on the day of your tattoo. You still pay the usual deposit when you book. They're good for at least 9 years.</p></details>
-      <details><summary>How many entries can I get?</summary><p>Up to 20 per person, from packs and free entries combined. Grab a pack, enter free once a day, or both, until you hit 20.</p></details>
-      <details><summary>Is there a free way to enter?</summary><p>Yes. Claim a free entry once a day, no purchase needed. Free entries count exactly the same as pack entries, and everyone has the same 20-entry max.</p></details>
+      <details><summary>How many entries can I get?</summary><p>Everyone gets one free entry, plus up to 20 more from packs. That's 21 max per person.</p></details>
+      <details><summary>Is there a free way to enter?</summary><p>Yes. Everyone can claim one free entry, no purchase needed. It goes in the same draw as pack entries.</p></details>
       <details><summary>Who can enter?</summary><p>Anyone 18 or older who is a legal resident of New York, New Jersey or Connecticut. New York law doesn't allow tattooing anyone under 18.</p></details>
       <details><summary>When and where is the drawing?</summary><p>Sunday, November 22 at 8 PM, live on Instagram @nicktylertattoo. Entries close at 6 PM that day. Turn on notifications so you don't miss it.</p></details>
       <details><summary>How will I know if I won?</summary><p>I'll text every winner within 2 hours of the live with a private booking link. Book your date within 14 days.</p></details>
@@ -511,14 +515,14 @@ footer{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space-between;b
       <details><summary>Do prizes expire or transfer?</summary><p>Prize sessions are booked within 14 days of the draw, for a date from December 9, 2026 through February 27, 2027. They're for the winner and can't be traded for cash. Gift cards are good for at least 9 years and can be given to someone else.</p></details>
       <details><summary>Official rules</summary>
         <ul>
-          <li>No purchase necessary to enter or win. A purchase does not raise your max entries or your odds per entry.</li>
+          <li>No purchase necessary to enter or win. Everyone can claim one free entry. Packs add up to 20 more entries per person. Every entry has the same chance of being drawn, so more entries mean better odds.</li>
           <li>Entry period: Sunday, Nov 1, 2026 at 12:00 PM ET to Sunday, Nov 22, 2026 at 6:00 PM ET.</li>
-          <li>Free entry: 1 entry per person per day. Max 20 entries per person from all methods combined. Opting in to texts or emails is optional and never affects your entries or odds.</li>
+          <li>Free entry: 1 per person for the whole giveaway. Pack entries: up to 20 per person. Opting in to texts or emails is optional and never affects your entries or odds.</li>
           <li>Drawing: Sunday, Nov 22, 2026 at 8:00 PM ET, live on Instagram. Odds depend on the number of entries received.</li>
-          <li>Prizes: one Full session ($1,500 value), one Half session ($750 value) and five $250 gift cards, $3,500 total. If 400 total entries are received, five $100 gift cards are added. If 600 are received, one more Half session ($750 value) is added. Maximum total prize value: $4,750.</li>
+          <li>Prizes: one Full session ($1,500 value), one Half session ($750 value) and five $250 gift cards, $3,500 total. For every 50 total entries received, free and paid, one more winner is added with a $100 gift card.</li>
           <li>Winners are texted within 2 hours of the drawing and book within 14 days. Prize sessions run December 9, 2026 through February 27, 2027.</li>
           <li>No-Lose adds a $100 gift card to any pack for $50. All gift cards are good for at least 9 years and apply to the balance of a Half or Full session.</li>
-          <li>Entries past the 20 max don't count, and any purchase past it is refunded.</li>
+          <li>Pack entries past 20 per person don't count, and any purchase past it is refunded.</li>
           <li>Sponsor: Nick Tyler Tattoo, Selden, NY. This giveaway isn't sponsored, endorsed or run by Instagram.</li>
         </ul>
       </details>
@@ -557,7 +561,7 @@ footer{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space-between;b
     </button>
     <div class="rv-after" id="rv-after" hidden>
       <p class="ra-head" id="ra-head">You're in.</p>
-      <div class="meter"><div class="m-bar"><i id="m-fill"></i></div><div class="m-txt"><b id="m-n">0</b> of <span id="m-max">20</span> max entries</div></div>
+      <div class="meter"><div class="m-bar"><i id="m-fill"></i></div><div class="m-txt"><b id="m-n">0</b> of <span id="m-max">20</span> pack entries</div></div>
       <p class="ra-sub" id="ra-sub"></p>
       <div class="ra-ctas">
         <button class="btn" id="ra-story" type="button">Share to story</button>
@@ -585,7 +589,7 @@ const CFG = {
   openAt:  "2026-11-01T12:00:00-05:00",           // entries open (Nov 1 is after the clocks fall back)
   closeAt: "2026-11-22T18:00:00-05:00",           // entries close
   drawAt:  "2026-11-22T20:00:00-05:00",           // live drawing
-  maxEntries: 20, freePerDay: 1,
+  maxEntries: 20, freeEntries: 1,                // packs: 20 per person, plus one free entry each
   packs: {
     max:    { name: "The Max",    price: 180, entries: 20, stamp: "Max entries" },
     ten:    { name: "The Ten",    price: 100, entries: 10, stamp: "Ten entries" },
@@ -594,8 +598,8 @@ const CFG = {
     single: { name: "The Single", price: 15,  entries: 1,  stamp: "Golden Ticket" }
   },
   noLose: { add: 50, card: 100 },                 // No-Lose add-on: +$50 on any pack for a $100 gift card
-  unlocks: [400, 600],                            // entry totals that add winners
-  entriesSoFar: null,                             // update daily once entries open (null = not counting yet)
+  baseWinners: 7, unlockEvery: 50, unlockCard: 100,   // a $100 gift card winner for every 50 entries
+  countUrl: "count.json",                       // {entries, people, updatedAt}, refreshed daily by a scheduled task
   checkout: {                                     // GHL payment links, one per pack
     max:    "https://link.inkedin.tools/payment-link/6ae55e3900921ddbe8ee086d",
     ten:    "https://link.inkedin.tools/payment-link/6ae55ea700921ddbe8ee086e",
@@ -757,14 +761,19 @@ function renderPacks() {
 $("nl-switch").addEventListener("click", () => { noLose = !noLose; renderPacks(); });
 renderPacks();
 
-/* ---------- community unlocks ---------- */
-(function () {
-  const n = CFG.entriesSoFar, top = CFG.unlocks[CFG.unlocks.length - 1];
-  if (n === null || n === undefined) return;
-  $("u-fill").style.width = Math.min(100, n / top * 100) + "%";
-  document.querySelectorAll("[data-at]").forEach(el => el.classList.toggle("hit", n >= +el.dataset.at));
-  const next = CFG.unlocks.find(u => n < u);
-  $("u-count").textContent = next ? `${n.toLocaleString()} entries so far. ${next - n} to the next unlock.` : `${n.toLocaleString()} entries so far. Both unlocks are in.`;
+/* ---------- community unlocks: a winner for every 50 entries ---------- */
+(async function () {
+  let c = null;
+  try { const r = await fetch(CFG.countUrl + "?t=" + Date.now(), { cache: "no-store" }); if (r.ok) c = await r.json(); } catch (e) {}
+  const n = c && Number.isFinite(+c.entries) ? Math.max(0, Math.floor(+c.entries)) : null;
+  if (n === null) return;
+  const step = CFG.unlockEvery, into = n % step;
+  $("u-win").textContent = CFG.baseWinners + Math.floor(n / step);
+  $("u-next").textContent = step - into;
+  requestAnimationFrame(() => requestAnimationFrame(() => { $("u-fill").style.width = (into / step * 100) + "%"; }));
+  const t = c.updatedAt ? new Date(c.updatedAt) : null;
+  const when = t && !isNaN(t) ? t.toLocaleString("en-US", { timeZone: "America/New_York", weekday: "short", month: "short", day: "numeric", hour: "numeric", minute: "2-digit" }) + " ET" : "";
+  $("u-count").textContent = when ? `Updated ${when}. The count refreshes every day.` : "The count refreshes every day.";
 })();
 
 /* ---------- the reveal ---------- */
@@ -773,7 +782,7 @@ const RV = { mode: null, nl: false, entries: 0, busy: false, done: false, trigge
 
 function openReveal(mode, trigger, nl) {
   RV.mode = mode; RV.nl = !!nl && mode !== "free"; RV.trigger = trigger || null; RV.busy = false; RV.done = false;
-  if (mode === "free") { RV.entries = CFG.freePerDay; stamp.textContent = "Free entry"; $("rv-kicker").textContent = "Your free entry is in"; }
+  if (mode === "free") { RV.entries = CFG.freeEntries; stamp.textContent = "Free entry"; $("rv-kicker").textContent = "Your free entry is in"; }
   else { const p = CFG.packs[mode]; RV.entries = p.entries; stamp.textContent = RV.nl ? `+ $${CFG.noLose.card} gift card` : p.stamp; $("rv-kicker").textContent = "Your Golden Ticket is here"; }
   $("cf-lbl").textContent = RV.entries === 1 ? "Entry" : "Entries";
   $("rv-tag").textContent = CFG.preview ? (mode === "free" ? "Preview: what someone sees after a free entry" : "Preview: what a buyer sees right after checkout") : "";
@@ -827,8 +836,9 @@ function finish() {
   card.setAttribute("aria-label", `Your Golden Ticket: ${n} entries`);
   $("ra-head").textContent = RV.mode === "free" ? "Your free entry is in." : RV.nl ? "You're in, and you can't lose." : "You're in.";
   $("m-n").textContent = n; $("m-max").textContent = max;
+  document.querySelector(".meter").hidden = RV.mode === "free";
   let sub, more = true;
-  if (RV.mode === "free") { sub = `Skip the wait: go straight to ${max} with the Max pack. Or come back tomorrow for another free one.`; $("ra-more").textContent = "See the packs"; }
+  if (RV.mode === "free") { sub = `That's your free one. Want more chances? Packs add up to ${max} more entries.`; $("ra-more").textContent = "See the packs"; }
   else if (n >= max && RV.nl) { sub = `You're at the max, and your $${CFG.noLose.card} gift card is on its way. See you at the live on Sunday, November 22 at 8 PM.`; more = false; }
   else if (n >= max) { sub = `You're at the max. Want it No-Lose? Add a $${CFG.noLose.card} gift card for $${CFG.noLose.add} more.`; $("ra-more").textContent = "Make it No-Lose"; }
   else { sub = (RV.nl ? `Your $${CFG.noLose.card} gift card is on its way. ` : "") + `More entries, more chances. Top up to ${max} anytime.`; $("ra-more").textContent = "Go max"; }
@@ -918,7 +928,7 @@ $("entry").addEventListener("submit", async e => {
   const gm = gateMsg();
   if (gm) { msg.classList.add("err"); msg.textContent = gm; return; }
   const day = etDay();
-  if (store.get("ntt50k-free") === day) { msg.textContent = "You've claimed today's free entry. Come back tomorrow for another."; return; }
+  if (store.get("ntt50k-free")) { msg.textContent = "You've already claimed your free entry. Want more chances? The packs add up to 20 more."; return; }
   if ($("f-hp").value) { openReveal("free", trigger); return; }
   if (sending) return;
   sending = true;
@@ -940,7 +950,7 @@ $("entry").addEventListener("submit", async e => {
   sending = false; btn.disabled = false; btn.textContent = label;
   if (!ok) { msg.classList.add("err"); msg.textContent = "That didn't go through. Check your connection and try again."; return; }
   store.set("ntt50k-free", day);
-  msg.textContent = "Your free entry is in. Come back tomorrow for another.";
+  msg.textContent = "Your free entry is in. Want more chances? The packs add up to 20 more.";
   openReveal("free", trigger);
 });
 
