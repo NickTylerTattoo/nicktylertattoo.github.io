@@ -9,7 +9,7 @@
 <meta name="description" content="Round two of the Golden Ticket. Grab an entry pack or claim your free entry for a shot at free tattoo sessions and gift cards from Nick Tyler Tattoo, drawn live on Instagram Sunday, November 22.">
 <meta name="theme-color" content="#0b0a09">
 <meta property="og:title" content="The 50K Golden Ticket · Nick Tyler Tattoo">
-<meta property="og:description" content="Entry packs or a free daily entry. Drawn live on Instagram Sunday, November 22.">
+<meta property="og:description" content="Entry packs or one free entry. Drawn live on Instagram Sunday, November 22.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://nicktylertattoo.com/goldenticket/">
 <meta property="og:image" content="https://nicktylertattoo.com/goldenticket/og.jpg">
@@ -83,7 +83,8 @@ a{color:var(--ch-lt)}
 .btn.alt{background:transparent;color:var(--gold-lt);border:1px solid var(--gold-dk);box-shadow:none}
 .btn.alt:hover{border-color:var(--gold);background:rgba(217,179,90,.08)}
 .btn:focus-visible,.ghost:focus-visible,summary:focus-visible,.play:focus-visible,input:focus-visible,.card3d:focus-visible,.rv-snd:focus-visible,.rv-x:focus-visible{outline:2px dashed var(--gold-lt);outline-offset:4px}
-.ghost{font:700 15px/1 var(--f-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--gold-lt);text-decoration:none;border-bottom:1px solid var(--gold-dk);padding-bottom:4px}
+.btn.hero-btn{min-height:68px;padding:0 44px;font-size:19px;letter-spacing:.12em}
+.ghost{font:700 13px/1 var(--f-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--gold-lt);text-decoration:none;border-bottom:1px solid var(--gold-dk);padding-bottom:4px}
 
 /* countdown */
 .count{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);box-shadow:inset 0 2px 0 var(--gold)}
@@ -328,6 +329,7 @@ footer{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space-between;b
   .pack.feat{transform:none}
   .u-steps{grid-template-columns:minmax(0,1fr)}
   .nl{padding:20px 18px}
+  .btn.hero-btn{width:100%;padding:0 12px;font-size:17px;letter-spacing:.06em}
   .nl-act{flex:1 1 100%}
   .nl-btn{gap:12px;min-height:66px;padding:10px 16px 10px 12px;font-size:16px;letter-spacing:.08em}
   .wrap{gap:72px}
@@ -359,7 +361,7 @@ footer{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space-between;b
       <h1 class="t-title">Golden Ticket</h1>
       <p class="t-sub">50,000 of you showed up, so round two is here. Seven winners to start, plus another winner for every 50 entries. Drawn live Sunday, November 22.</p>
       <div class="cta-row">
-        <a class="btn" href="#packs">Get your Golden Ticket</a>
+        <a class="btn hero-btn" href="#packs">Get your Golden Ticket</a>
         <a class="ghost" href="#watch">Watch last year's draw</a>
       </div>
     </div>
@@ -379,7 +381,7 @@ footer{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space-between;b
       <div><b id="cd-m">--</b><span>Minutes</span></div>
       <div><b id="cd-s">--</b><span>Seconds</span></div>
     </div>
-    <p class="count-note" id="cd-note">Entries open Sunday, November 1 at 12:00 PM ET. Live drawing Sunday, November 22 at 8:00 PM ET.</p>
+    <p class="count-note" id="cd-note">Entries open Sunday, November 1 at 6:00 PM ET. Live drawing Sunday, November 22 at 8:00 PM ET.</p>
   </section>
 
   <!-- VIDEO -->
@@ -392,12 +394,12 @@ footer{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space-between;b
       </a>
       <div class="vid-copy">
         <div class="eyebrow">Round one</div>
-        <h2 id="w-h">Last time, real people walked away with <span class="gold">real tattoos.</span></h2>
-        <p class="lead">At 40K I ran the first Golden Ticket. The draw happened live on camera, and over $5,000 in prizes went home with people from this community.</p>
+        <h2 id="w-h">At 40K, more than 15 winners walked away with <span class="gold">$4,000+ in free ink.</span></h2>
+        <p class="lead">At 40K I ran the first Golden Ticket. The draw happened live on camera, and every prize went home with someone from this community.</p>
         <div class="stats">
-          <div><b>$5,000+</b><span>in prizes at 40K</span></div>
+          <div><b>$4,000+</b><span>in free ink at 40K</span></div>
           <div><b>84</b><span>people got a ticket</span></div>
-          <div><b>131</b><span>Google reviews</span></div>
+          <div><b>15+</b><span>winners</span></div>
         </div>
       </div>
     </div>
@@ -417,8 +419,8 @@ footer{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space-between;b
     <div class="unlock" id="unlock">
       <div class="sec-head">
         <div class="eyebrow">Community unlocks</div>
-        <p class="u-title">A winner for every 50 entries.</p>
-        <p class="u-sub">Seven winners to start. Every 50 entries, free ones included, adds another winner with a $100 gift card. Share the link and the pot keeps growing.</p>
+        <p class="u-title">An additional winner added every 50 entries.</p>
+        <p class="u-sub">At least 7 winners no matter what. Then every 50 entries, free ones included, an additional $100 gift card is added to the prize pool. Share the link and watch it grow.</p>
       </div>
       <div class="u-stats">
         <div class="u-stat"><b id="u-win">7</b><span>Winners so far</span></div>
@@ -427,7 +429,6 @@ footer{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space-between;b
       <div class="u-track" aria-hidden="true"><i id="u-fill"></i></div>
       <p class="note" id="u-count">The count updates every day.</p>
     </div>
-    <p class="note">Seven winners and $3,500 to start, plus one more winner for every 50 entries. All prizes are for black and grey work: fine line, ornamental, floral, geometric and blackwork.</p>
   </section>
 
   <!-- PACKS -->
@@ -435,7 +436,7 @@ footer{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space-between;b
     <div class="sec-head">
       <div class="eyebrow">Golden Tickets</div>
       <h2 id="k-h">Pick your <span class="gold">pack</span></h2>
-      <p class="lead">Every entry goes into the same live draw. Packs top out at 20 entries per person, so nobody can buy their way past everyone else.</p>
+      <p class="lead">Every entry goes into the same live draw. 20 entries max per person, so nobody can buy their way past everyone else.</p>
       <p class="gate" id="k-gate" aria-live="polite" hidden></p>
     </div>
     <div class="nl" id="nl">
@@ -506,10 +507,6 @@ footer{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space-between;b
         <button class="btn alt" type="button" data-buy="single">Get 1 entry</button>
       </article>
     </div>
-    <div class="pack-foot">
-      <p class="proof">84 people grabbed a Golden Ticket at 40K.</p>
-      <p class="note">Packs max out at 20 entries per person, plus everyone's one free entry. Gift cards come off the balance of a Half or Full session, and you still pay the usual deposit when you book. No purchase necessary: <a href="#free">see free entry</a>.</p>
-    </div>
   </section>
 
   <!-- HOW IT WORKS -->
@@ -554,7 +551,7 @@ footer{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space-between;b
     </div>
     <div class="faq">
       <details><summary>What's No-Lose?</summary><p>Add $50 to any pack and you also get a $100 gift card. Win or not, $100 comes back to you. The Max with No-Lose is $200 for all 20 entries plus the gift card.</p></details>
-      <details><summary>How do the gift cards work?</summary><p>Gift cards, from prizes or No-Lose, come off the balance of a Half or Full session on the day of your tattoo. You still pay the usual deposit when you book. They're good for at least 9 years.</p></details>
+      <details><summary>How do the gift cards work?</summary><p>Gift cards, from prizes or No-Lose, come off the balance of a Half or Full session on the day of your tattoo. You still pay the usual deposit when you book.</p></details>
       <details><summary>How many entries can I get?</summary><p>Everyone gets one free entry, plus up to 20 more from packs. That's 21 max per person.</p></details>
       <details><summary>Is there a free way to enter?</summary><p>Yes. Everyone can claim one free entry, no purchase needed. It goes in the same draw as pack entries.</p></details>
       <details><summary>Who can enter?</summary><p>Anyone 18 or older who is a legal resident of New York, New Jersey or Connecticut. New York law doesn't allow tattooing anyone under 18.</p></details>
@@ -562,16 +559,16 @@ footer{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space-between;b
       <details><summary>How will I know if I won?</summary><p>I'll text every winner within 2 hours of the live with a private booking link. Book your date within 14 days.</p></details>
       <details><summary>What kind of tattoo can I get?</summary><p>I work in black and grey only: fine line, ornamental, floral, geometric and blackwork. If you're dreaming in color, I'm happy to point you to someone great.</p></details>
       <details><summary>Where is the studio?</summary><p>A private studio in Selden, Long Island. Winners get the exact address when they book.</p></details>
-      <details><summary>Do prizes expire or transfer?</summary><p>Prize sessions are booked within 14 days of the draw, for a date from December 9, 2026 through February 27, 2027. They're for the winner and can't be traded for cash. Gift cards are good for at least 9 years and can be given to someone else.</p></details>
+      <details><summary>Do prizes expire or transfer?</summary><p>Prize sessions are booked within 14 days of the draw, for a date from December 9, 2026 through February 27, 2027. They're for the winner and can't be traded for cash. Gift cards can be given to someone else.</p></details>
       <details><summary>Official rules</summary>
         <ul>
           <li>No purchase necessary to enter or win. Everyone can claim one free entry. Packs add up to 20 more entries per person. Every entry has the same chance of being drawn, so more entries mean better odds.</li>
-          <li>Entry period: Sunday, Nov 1, 2026 at 12:00 PM ET to Sunday, Nov 22, 2026 at 6:00 PM ET.</li>
+          <li>Entry period: Sunday, Nov 1, 2026 at 6:00 PM ET to Sunday, Nov 22, 2026 at 6:00 PM ET.</li>
           <li>Free entry: 1 per person for the whole giveaway. Pack entries: up to 20 per person. Opting in to texts or emails is optional and never affects your entries or odds.</li>
           <li>Drawing: Sunday, Nov 22, 2026 at 8:00 PM ET, live on Instagram. Odds depend on the number of entries received.</li>
           <li>Prizes: one Full session ($1,500 value), one Half session ($750 value) and five $250 gift cards, $3,500 total. For every 50 total entries received, free and paid, one more winner is added with a $100 gift card.</li>
           <li>Winners are texted within 2 hours of the drawing and book within 14 days. Prize sessions run December 9, 2026 through February 27, 2027.</li>
-          <li>No-Lose adds a $100 gift card to any pack for $50. All gift cards are good for at least 9 years and apply to the balance of a Half or Full session.</li>
+          <li>No-Lose adds a $100 gift card to any pack for $50. All gift cards apply to the balance of a Half or Full session.</li>
           <li>Pack entries past 20 per person don't count, and any purchase past it is refunded.</li>
           <li>Sponsor: Nick Tyler Tattoo, Selden, NY. This giveaway isn't sponsored, endorsed or run by Instagram.</li>
         </ul>
@@ -636,7 +633,7 @@ footer{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space-between;b
 const CFG = {
   preview: false,                                 // live site: pack buttons go to checkout, free entries go to GHL
   freeEntryHook: "https://services.leadconnectorhq.com/hooks/rG91PG0PfPxspxHXNgmW/webhook-trigger/8b24baef-fc20-4575-875a-62d598f9531e",  // GHL workflow "50K Golden Ticket · Free entry"
-  openAt:  "2026-11-01T12:00:00-05:00",           // entries open (Nov 1 is after the clocks fall back)
+  openAt:  "2026-11-01T18:00:00-05:00",           // entries open (Nov 1 is after the clocks fall back)
   closeAt: "2026-11-22T18:00:00-05:00",           // entries close
   drawAt:  "2026-11-22T20:00:00-05:00",           // live drawing
   maxEntries: 20, freeEntries: 1,                // packs: 20 per person, plus one free entry each
