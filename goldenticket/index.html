@@ -141,22 +141,60 @@ a{color:var(--ch-lt)}
 @media (max-width:760px){.pack.wide{flex-direction:column;align-items:stretch;gap:16px}.pack.wide>div{flex:none}}
 .pack-foot{display:flex;flex-direction:column;gap:8px}
 
-/* No-Lose switch */
-.nl{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px 24px;padding:22px 24px;border:3px solid transparent;
-  background:radial-gradient(70% 140% at 0% 0%,rgba(217,179,90,.14),transparent 70%) padding-box,linear-gradient(var(--panel),var(--panel)) padding-box,var(--foil) border-box}
+/* No-Lose activation button */
+.nl{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:18px 28px;padding:24px;border:3px solid transparent;
+  background:radial-gradient(70% 140% at 0% 0%,rgba(217,179,90,.14),transparent 70%) padding-box,linear-gradient(var(--panel),var(--panel)) padding-box,var(--foil) border-box;
+  background-size:auto,auto,220% 100%;transition:box-shadow .4s}
+.nl.on{box-shadow:0 24px 60px -30px rgba(217,179,90,.6);animation:nl-foil 3.6s ease-in-out infinite alternate}
+@keyframes nl-foil{from{background-position:0 0,0 0,0 0}to{background-position:0 0,0 0,100% 0}}
 .nl-copy{display:flex;flex-direction:column;gap:6px;min-width:0;flex:1 1 320px}
 .nl-eye{font:700 15px/1 var(--f-mono);letter-spacing:.14em;text-transform:uppercase;color:var(--gold)}
 .nl-head{font:700 24px/1.25 var(--f-display);color:var(--cream)}
 .nl-sub{font-size:17px;line-height:1.5;color:var(--body)}
-.nl-switch{display:inline-flex;align-items:center;gap:14px;min-height:52px;padding:0 6px;background:none;border:0;cursor:pointer;color:var(--cream);font:700 16px/1 var(--f-mono);letter-spacing:.1em;text-transform:uppercase;flex:none}
-.nl-switch:focus-visible{outline:2px dashed var(--gold-lt);outline-offset:4px}
-.nl-track{position:relative;width:64px;height:34px;border-radius:999px;background:var(--panel-2);border:1px solid var(--line-lt);transition:background .25s,border-color .25s}
-.nl-knob{position:absolute;top:3px;left:3px;width:26px;height:26px;border-radius:50%;background:var(--ch-dk);transition:transform .25s cubic-bezier(.2,.8,.2,1),background .25s}
-.nl-switch[aria-checked="true"] .nl-track{background:var(--foil);border-color:var(--gold)}
-.nl-switch[aria-checked="true"] .nl-knob{transform:translateX(30px);background:var(--ink)}
-.nl.on{box-shadow:0 24px 60px -30px rgba(217,179,90,.6)}
-.pack .p-price{transition:color .2s}
+.nl-act{display:flex;flex-direction:column;align-items:stretch;gap:10px;flex:0 1 auto;min-width:0}
+.nl-bw{position:relative}
+.nl-btn{position:relative;isolation:isolate;overflow:hidden;display:flex;align-items:center;justify-content:center;gap:14px;width:100%;min-height:70px;padding:12px 26px 12px 14px;
+  border:0;border-radius:0;background:#3b311f;color:var(--cream);cursor:pointer;-webkit-tap-highlight-color:transparent;
+  font:700 18px/1.2 var(--f-mono);letter-spacing:.12em;text-transform:uppercase;text-align:left;
+  animation:nl-breathe 2.4s ease-in-out infinite;transition:transform .12s ease,color .25s ease .12s}
+/* the chasing light: a spinning conic gradient behind a 3px dark inset */
+.nl-btn::before{content:"";position:absolute;left:50%;top:50%;z-index:-2;width:160%;aspect-ratio:1;transform:translate(-50%,-50%);
+  background:conic-gradient(from 0deg,transparent 0 16%,rgba(217,179,90,.25) 22%,#d9b35a 40%,#fff1c2 49%,transparent 50% 66%,rgba(217,179,90,.25) 72%,#d9b35a 90%,#fff1c2 99%,transparent 100%);
+  animation:nl-spin 2.8s linear infinite;transition:opacity .3s}
+.nl-btn::after{content:"";position:absolute;inset:3px;z-index:-1;background:radial-gradient(90% 160% at 0% 50%,rgba(217,179,90,.18),transparent 62%),#15110d;transition:background-color .3s}
+@keyframes nl-spin{to{transform:translate(-50%,-50%) rotate(360deg)}}
+@keyframes nl-breathe{0%,100%{box-shadow:0 14px 34px -18px rgba(217,179,90,.4)}50%{box-shadow:0 0 28px 2px rgba(217,179,90,.3),0 14px 34px -18px rgba(217,179,90,.65)}}
+.nl-btn:hover::after{background-color:#1d1812}
+.nl-btn:active{transform:scale(.98)}
+.nl-btn:focus-visible{outline:2px dashed var(--gold-lt);outline-offset:5px}
+.nl-fill{position:absolute;inset:0;background:var(--foil);background-size:220% 100%;transform:scaleX(0);transform-origin:0 50%;transition:transform .45s cubic-bezier(.2,.8,.2,1)}
+.nl-ico,.nl-lbl{position:relative}
+.nl-ico{display:grid;place-items:center;flex:none;width:42px;height:42px;border-radius:50%;border:2px solid var(--gold);color:var(--gold-lt);transition:border-color .25s ease .1s,color .25s ease .1s}
+.nl-ico svg{grid-area:1/1;width:22px;height:22px;transition:opacity .25s,transform .35s cubic-bezier(.2,.8,.2,1)}
+.nl-ico .i-on{opacity:0;transform:scale(.4)}
+.nl-ping{position:absolute;inset:-2px;border-radius:50%;border:2px solid var(--gold-lt);pointer-events:none;animation:nl-ping 2.4s cubic-bezier(0,0,.2,1) infinite}
+@keyframes nl-ping{0%{transform:scale(1);opacity:.75}70%,100%{transform:scale(1.55);opacity:0}}
+.nl-lbl{min-width:0}
+.nl-btn[aria-checked="true"]{color:var(--ink);animation:none;box-shadow:0 0 0 1px rgba(244,220,149,.5),0 0 34px 4px rgba(217,179,90,.32)}
+.nl-btn[aria-checked="true"]::before{opacity:0}
+.nl-btn[aria-checked="true"] .nl-fill{transform:none;animation:nl-shimmer 3.2s ease-in-out .45s infinite alternate}
+@keyframes nl-shimmer{from{background-position:0 0}to{background-position:100% 0}}
+.nl-btn[aria-checked="true"] .nl-ico{border-color:var(--ink);color:var(--ink)}
+.nl-btn[aria-checked="true"] .i-off{opacity:0;transform:scale(.4)}
+.nl-btn[aria-checked="true"] .i-on{opacity:1;transform:none}
+.nl-btn[aria-checked="true"] .nl-ping{display:none}
+.nl-wave{position:absolute;inset:0;opacity:0;pointer-events:none;box-shadow:0 0 0 2px rgba(255,241,194,.95),0 0 26px 6px rgba(217,179,90,.6)}
+.nl-act.pop .nl-wave{animation:nl-wave .7s cubic-bezier(.2,.7,.3,1) both}
+@keyframes nl-wave{0%{opacity:1;transform:none}100%{opacity:0;transform:scale(1.08,1.45)}}
+.nl-hint{font:400 15px/1.4 var(--f-mono);color:var(--muted);text-align:center}
+.nl.on .nl-hint{color:var(--ch-lt)}
+.pack .p-price{transition:color .2s;transform-origin:0 70%}
 .pack.nl-on .p-price{color:var(--gold-lt)}
+/* when No-Lose turns on, a shine runs across each pack, one after another */
+.pack.nl-flash::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(105deg,transparent 38%,rgba(255,241,194,.2) 50%,transparent 62%) no-repeat;background-size:260% 100%;animation:nl-sweep .95s cubic-bezier(.3,.7,.2,1) var(--d,0ms) both}
+@keyframes nl-sweep{from{background-position:120% 0}to{background-position:-20% 0}}
+.pack.nl-flash .p-price{animation:nl-bump .55s cubic-bezier(.2,.8,.2,1) var(--d,0ms) both}
+@keyframes nl-bump{0%,100%{transform:none}45%{transform:scale(1.07)}}
 
 /* community unlocks */
 .unlock{display:flex;flex-direction:column;gap:16px;padding:24px;border:1px solid var(--line-lt);background:var(--panel)}
@@ -290,6 +328,8 @@ footer{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space-between;b
   .pack.feat{transform:none}
   .u-steps{grid-template-columns:minmax(0,1fr)}
   .nl{padding:20px 18px}
+  .nl-act{flex:1 1 100%}
+  .nl-btn{gap:12px;min-height:66px;padding:10px 16px 10px 12px;font-size:16px;letter-spacing:.08em}
   .wrap{gap:72px}
 }
 @media (max-width:420px){
@@ -401,10 +441,20 @@ footer{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space-between;b
     <div class="nl" id="nl">
       <div class="nl-copy">
         <div class="nl-eye">The No-Lose</div>
-        <p class="nl-head">Make any pack No-Lose for $50 more.</p>
+        <p class="nl-head" id="nl-head">Make any pack No-Lose for $50 more.</p>
         <p class="nl-sub">You also get a $100 gift card. Win or not, $100 comes back to you.</p>
       </div>
-      <button class="nl-switch" id="nl-switch" type="button" role="switch" aria-checked="false"><span class="nl-track" aria-hidden="true"><span class="nl-knob"></span></span><span id="nl-state">No-Lose off</span></button>
+      <div class="nl-act" id="nl-act">
+        <div class="nl-bw">
+          <button class="nl-btn" id="nl-switch" type="button" role="switch" aria-checked="false">
+            <span class="nl-fill" aria-hidden="true"></span>
+            <span class="nl-ico" aria-hidden="true"><svg class="i-off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 3.5v8"/><path d="M6.7 6.9a7.5 7.5 0 1 0 10.6 0"/></svg><svg class="i-on" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.6 4.6L19 7.6"/></svg><i class="nl-ping"></i></span>
+            <span class="nl-lbl" id="nl-state">Press to activate</span>
+          </button>
+          <span class="nl-wave" aria-hidden="true"></span>
+        </div>
+        <p class="nl-hint" id="nl-hint">Works on every pack below.</p>
+      </div>
     </div>
     <div class="packs">
       <article class="pack feat wide" data-pack="max">
@@ -737,7 +787,7 @@ function loop() {
   if (parts.length) requestAnimationFrame(loop); else { fxRun = false; cx.clearRect(0, 0, innerWidth, innerHeight); }
 }
 
-/* ---------- No-Lose switch + pack prices ---------- */
+/* ---------- No-Lose activation button + pack prices ---------- */
 let noLose = false;
 const money = v => "$" + (Math.round(v * 100) / 100).toFixed(v % 1 ? 2 : 0);
 function renderPacks() {
@@ -753,12 +803,23 @@ function renderPacks() {
     const b = el.querySelector("[data-buy]");
     b.textContent = noLose ? "Go No-Lose" : `Get ${p.entries} ${p.entries === 1 ? "entry" : "entries"}`;
   });
-  const sw = $("nl-switch");
-  sw.setAttribute("aria-checked", String(noLose));
-  $("nl-state").textContent = noLose ? "No-Lose on" : "No-Lose off";
+  $("nl-switch").setAttribute("aria-checked", String(noLose));
+  $("nl-state").textContent = noLose ? "No-Lose activated" : "Press to activate";
+  $("nl-head").textContent = noLose ? "No-Lose is on for every pack below." : `Make any pack No-Lose for $${CFG.noLose.add} more.`;
+  $("nl-hint").textContent = noLose ? "Press again to turn it off." : "Works on every pack below.";
   $("nl").classList.toggle("on", noLose);
 }
-$("nl-switch").addEventListener("click", () => { noLose = !noLose; renderPacks(); });
+function replay(el, cls) { el.classList.remove(cls); void el.offsetWidth; el.classList.add(cls); }
+$("nl-switch").addEventListener("click", e => {
+  noLose = !noLose; renderPacks();
+  if (!noLose) return;
+  buzz(25);
+  replay($("nl-act"), "pop");
+  document.querySelectorAll(".pack[data-pack]").forEach((el, i) => { el.style.setProperty("--d", i * 90 + "ms"); replay(el, "nl-flash"); });
+  if (reduced()) return;
+  const r = e.currentTarget.getBoundingClientRect();
+  sizeFx(); burst(r.left + r.width / 2, r.top + r.height / 2, 44, Math.PI * 1.15, 11);
+});
 renderPacks();
 
 /* ---------- community unlocks: a winner for every 50 entries ---------- */
