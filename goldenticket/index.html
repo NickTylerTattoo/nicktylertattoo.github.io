@@ -411,11 +411,11 @@ footer{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space-between;b
         <div class="badge">Best value</div>
         <div class="pw-a">
           <div class="p-name">The Max</div>
-          <div class="p-price" data-price>$180</div>
+          <div class="p-price" data-price>$150</div>
         </div>
         <div class="pw-b">
           <div class="p-ent"><b>20</b><span>Entries</span></div>
-          <div class="p-per" data-per>$9 an entry<small>Save $120 vs. buying singles</small></div>
+          <div class="p-per" data-per>$7.50 an entry<small>Save $150 vs. buying singles</small></div>
         </div>
         <div class="pw-c">
           <p class="p-blurb">The most entries one person can hold.</p>
@@ -431,12 +431,12 @@ footer{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space-between;b
         <button class="btn alt" type="button" data-buy="ten">Get 10 entries</button>
       </article>
       <article class="pack" data-pack="six">
-        <div class="p-name">The Six</div>
-        <div class="p-price" data-price>$65</div>
-        <div class="p-ent"><b>6</b><span>Entries</span></div>
-        <div class="p-per" data-per>$10.83 an entry<small>Save $25 vs. buying singles</small></div>
-        <p class="p-blurb">Double the Triple, for less than two of them.</p>
-        <button class="btn alt" type="button" data-buy="six">Get 6 entries</button>
+        <div class="p-name">Lucky Seven</div>
+        <div class="p-price" data-price>$77</div>
+        <div class="p-ent"><b>7</b><span>Entries</span></div>
+        <div class="p-per" data-per>$11 an entry<small>Save $28 vs. buying singles</small></div>
+        <p class="p-blurb">Lucky number, lucky price.</p>
+        <button class="btn alt" type="button" data-buy="six">Get 7 entries</button>
       </article>
       <article class="pack" data-pack="triple">
         <div class="badge dark">40K favorite</div>
@@ -503,7 +503,7 @@ footer{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space-between;b
       <h2 id="f-h">Good to know</h2>
     </div>
     <div class="faq">
-      <details><summary>What's No-Lose?</summary><p>Add $50 to any pack and you also get a $100 gift card. Win or not, $100 comes back to you. The Max with No-Lose is $230 for all 20 entries plus the gift card.</p></details>
+      <details><summary>What's No-Lose?</summary><p>Add $50 to any pack and you also get a $100 gift card. Win or not, $100 comes back to you. The Max with No-Lose is $200 for all 20 entries plus the gift card.</p></details>
       <details><summary>How do the gift cards work?</summary><p>Gift cards, from prizes or No-Lose, come off the balance of a Half or Full session on the day of your tattoo. You still pay the usual deposit when you book. They're good for at least 9 years.</p></details>
       <details><summary>How many entries can I get?</summary><p>Everyone gets one free entry, plus up to 20 more from packs. That's 21 max per person.</p></details>
       <details><summary>Is there a free way to enter?</summary><p>Yes. Everyone can claim one free entry, no purchase needed. It goes in the same draw as pack entries.</p></details>
@@ -591,9 +591,9 @@ const CFG = {
   drawAt:  "2026-11-22T20:00:00-05:00",           // live drawing
   maxEntries: 20, freeEntries: 1,                // packs: 20 per person, plus one free entry each
   packs: {
-    max:    { name: "The Max",    price: 180, entries: 20, stamp: "Max entries" },
+    max:    { name: "The Max",    price: 150, entries: 20, stamp: "Max entries" },
     ten:    { name: "The Ten",    price: 100, entries: 10, stamp: "Ten entries" },
-    six:    { name: "The Six",    price: 65,  entries: 6,  stamp: "Six entries" },
+    six:    { name: "Lucky Seven", price: 77, entries: 7,  stamp: "Lucky Seven" },   // key stays "six" for the GHL return links
     triple: { name: "The Triple", price: 35,  entries: 3,  stamp: "Triple entry" },
     single: { name: "The Single", price: 15,  entries: 1,  stamp: "Golden Ticket" }
   },
