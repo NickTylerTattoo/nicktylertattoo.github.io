@@ -363,6 +363,7 @@ footer{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space-between;b
       <div class="cta-row">
         <a class="btn hero-btn" href="#packs">Get your Golden Ticket</a>
         <a class="ghost" href="#watch">Watch last year's draw</a>
+        <a class="ghost" id="free-link" href="#free" hidden>Claim your free entry</a>
       </div>
     </div>
     <div class="t-stub">
@@ -1023,6 +1024,8 @@ $("entry").addEventListener("submit", async e => {
   openReveal("free", trigger);
 });
 
+/* ads promise a free entry, so visitors from Meta ads get a straight link to it in the hero */
+try { if (/[?&](utm_source=meta|fbclid=)/i.test(location.search) || sessionStorage.getItem("ntt50k-ad")) { sessionStorage.setItem("ntt50k-ad", "1"); $("free-link").hidden = false; } } catch (e) {}
 applyGate(); setInterval(applyGate, 30000);
 if (early && phase(Date.now()) === "pre") {
   const bar = document.createElement("div");
