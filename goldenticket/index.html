@@ -141,6 +141,15 @@ a{color:var(--ch-lt)}
 .pack.wide .btn{margin-top:0}
 @media (max-width:760px){.pack.wide{flex-direction:column;align-items:stretch;gap:16px}.pack.wide>div{flex:none}}
 .pack-foot{display:flex;flex-direction:column;gap:8px}
+/* odds on each pack: the chance at least one entry is drawn, figured at the 500-entry cap (17 winners) */
+.p-odds{display:flex;flex-direction:column;gap:8px}
+.po-top{display:flex;align-items:center;gap:6px 10px;flex-wrap:wrap}
+.po-top b{font:700 36px/1 var(--f-display);font-variant-numeric:tabular-nums;letter-spacing:-.02em;background:var(--foil);-webkit-background-clip:text;background-clip:text;color:transparent}
+.po-top span{font:700 15px/1.25 var(--f-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--gold-lt)}
+.po-bar{position:relative;height:10px;background:var(--panel-2);border:1px solid var(--line-lt)}
+.po-bar i{position:absolute;left:0;top:0;bottom:0;background:var(--foil)}
+.p-odds small{font:400 15px/1.4 var(--f-mono);color:var(--muted);text-wrap:balance}
+.odds-note{font:400 16px/1.55 var(--f-mono);color:var(--ch-lt);max-width:78ch}
 
 /* No-Lose activation button */
 .nl{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:18px 28px;padding:24px;border:3px solid transparent;
@@ -359,7 +368,7 @@ footer{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space-between;b
       <div class="eyebrow">// Nick Tyler Tattoo</div>
       <div class="t-big" aria-hidden="true">50K</div>
       <h1 class="t-title">Golden Ticket</h1>
-      <p class="t-sub">50,000 of you showed up, so round two is here. Seven winners to start, plus another winner for every 50 entries, up to 22 winners. Drawn live Sunday, November 22.</p>
+      <p class="t-sub">50,000 of you showed up, so round two is here. Seven winners to start, plus another winner for every 50 entries, up to 17 winners. Entries are capped at 500. Drawn live Sunday, November 22.</p>
       <div class="cta-row">
         <a class="btn hero-btn" href="#packs">Get your Golden Ticket</a>
         <a class="ghost" href="#watch">Watch last year's draw</a>
@@ -421,7 +430,7 @@ footer{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space-between;b
       <div class="sec-head">
         <div class="eyebrow">Community unlocks</div>
         <p class="u-title">An additional winner added every 50 entries.</p>
-        <p class="u-sub">At least 7 winners no matter what. Then every 50 entries, free ones included, an additional $100 gift card winner is added, up to 15 more for 22 winners in all. Share the link and watch it grow.</p>
+        <p class="u-sub">At least 7 winners no matter what. Then every 50 entries, free ones included, an additional $100 gift card winner is added, up to 10 more for 17 winners in all at the 500-entry cap. Share the link and watch it grow.</p>
       </div>
       <div class="u-stats">
         <div class="u-stat"><b id="u-win">7</b><span>Winners so far</span></div>
@@ -467,6 +476,7 @@ footer{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space-between;b
         </div>
         <div class="pw-b">
           <div class="p-ent"><b>20</b><span>Entries</span></div>
+          <div class="p-odds"><div class="po-top"><b>51%</b><span>Chance</span></div><div class="po-bar" aria-hidden="true"><i style="width:50.6%"></i></div><small>About 1 in 2 to win a prize</small></div>
           <div class="p-per" data-per>$7.50 an entry<small>Save $150 vs. buying singles</small></div>
         </div>
         <div class="pw-c">
@@ -478,6 +488,7 @@ footer{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space-between;b
         <div class="p-name">The Ten</div>
         <div class="p-price" data-price>$100</div>
         <div class="p-ent"><b>10</b><span>Entries</span></div>
+        <div class="p-odds"><div class="po-top"><b>30%</b><span>Chance</span></div><div class="po-bar" aria-hidden="true"><i style="width:29.5%"></i></div><small>About 1 in 3 to win a prize</small></div>
         <div class="p-per" data-per>$10 an entry<small>Save $50 vs. buying singles</small></div>
         <p class="p-blurb">Last year's biggest pack.</p>
         <button class="btn alt" type="button" data-buy="ten">Get 10 entries</button>
@@ -486,6 +497,7 @@ footer{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space-between;b
         <div class="p-name">Lucky Seven</div>
         <div class="p-price" data-price>$77</div>
         <div class="p-ent"><b>7</b><span>Entries</span></div>
+        <div class="p-odds"><div class="po-top"><b>22%</b><span>Chance</span></div><div class="po-bar" aria-hidden="true"><i style="width:21.6%"></i></div><small>About 1 in 5 to win a prize</small></div>
         <div class="p-per" data-per>$11 an entry<small>Save $28 vs. buying singles</small></div>
         <p class="p-blurb">Lucky number, lucky price.</p>
         <button class="btn alt" type="button" data-buy="six">Get 7 entries</button>
@@ -495,6 +507,7 @@ footer{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space-between;b
         <div class="p-name">The Triple</div>
         <div class="p-price" data-price>$35</div>
         <div class="p-ent"><b>3</b><span>Entries</span></div>
+        <div class="p-odds"><div class="po-top"><b>9.9%</b><span>Chance</span></div><div class="po-bar" aria-hidden="true"><i style="width:9.9%"></i></div><small>About 1 in 10 to win a prize</small></div>
         <div class="p-per" data-per>$11.67 an entry<small>Save $10 vs. buying singles</small></div>
         <p class="p-blurb">What most of you went with at 40K.</p>
         <button class="btn alt" type="button" data-buy="triple">Get 3 entries</button>
@@ -503,11 +516,13 @@ footer{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space-between;b
         <div class="p-name">The Single</div>
         <div class="p-price" data-price>$15</div>
         <div class="p-ent"><b>1</b><span>Entry</span></div>
+        <div class="p-odds"><div class="po-top"><b>3.4%</b><span>Chance</span></div><div class="po-bar" aria-hidden="true"><i style="width:3.4%"></i></div><small>About 1 in 29 to win a prize</small></div>
         <div class="p-per" data-per>$15 an entry<small>One shot at the prizes</small></div>
         <p class="p-blurb">Just want your name in the hat? This is it.</p>
         <button class="btn alt" type="button" data-buy="single">Get 1 entry</button>
       </article>
     </div>
+    <p class="odds-note">Odds are figured at the 500-entry cap, when there are 17 winners: the chance at least one of your entries gets pulled. Your free entry stacks on top of any pack.</p>
   </section>
 
   <!-- HOW IT WORKS -->
@@ -530,7 +545,7 @@ footer{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space-between;b
       <h2 id="e-h">Free entry</h2>
       
       <p class="lead">Your first entry's on me. Claim it here and it goes in the same draw as the packs.</p>
-      <p class="note">One free entry per person. Want more chances? Packs add up to 20 more.</p>
+      <p class="note">One free entry per person, about a 3.4% chance at a prize at the 500-entry cap. Want more chances? Packs add up to 20 more.</p>
     </div>
     <form id="entry" novalidate>
       <label for="f-name">Full name<input id="f-name" name="name" autocomplete="name" placeholder="First and last"></label>
@@ -554,6 +569,7 @@ footer{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space-between;b
       <details><summary>What's No-Lose?</summary><p>Add $50 to any pack and you also get a $100 gift card. Win or not, $100 comes back to you. The Max with No-Lose is $200 for all 20 entries plus the gift card.</p></details>
       <details><summary>How do the gift cards work?</summary><p>Gift cards, from prizes or No-Lose, come off the balance of a Half or Full session on the day of your tattoo. You still pay the usual deposit when you book.</p></details>
       <details><summary>How many entries can I get?</summary><p>Everyone gets one free entry, plus up to 20 more from packs. That's 21 max per person.</p></details>
+      <details><summary>What are my odds?</summary><p>Entries are capped at 500, and at 500 entries there are 17 winners. Here's the chance at least one of your entries gets pulled: 20 entries, about 51%. 10 entries, about 30%. 7 entries, about 22%. 3 entries, about 9.9%. 1 entry or your free entry, about 3.4%. The final odds depend on how many entries come in.</p></details>
       <details><summary>Is there a free way to enter?</summary><p>Yes. Everyone can claim one free entry, no purchase needed. It goes in the same draw as pack entries.</p></details>
       <details><summary>Who can enter?</summary><p>Anyone 18 or older who is a legal resident of New York, New Jersey or Connecticut. New York law doesn't allow tattooing anyone under 18.</p></details>
       <details><summary>When and where is the drawing?</summary><p>Sunday, November 22 at 8 PM, live on Instagram @nicktylertattoo. Entries close at 6 PM that day. Turn on notifications so you don't miss it.</p></details>
@@ -567,7 +583,8 @@ footer{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space-between;b
           <li>Entry period: Sunday, Nov 1, 2026 at 6:00 PM ET to Sunday, Nov 22, 2026 at 6:00 PM ET.</li>
           <li>Free entry: 1 per person for the whole giveaway. Pack entries: up to 20 per person. Opting in to texts or emails is optional and never affects your entries or odds.</li>
           <li>Drawing: Sunday, Nov 22, 2026 at 8:00 PM ET, live on Instagram. Odds depend on the number of entries received.</li>
-          <li>Prizes: one Full session ($1,500 value), one Half session ($750 value) and five $250 gift cards, $3,500 total. For every 50 total entries received, free and paid, one more winner is added with a $100 gift card, up to 15 added winners. Maximum: 22 winners and $5,000 in total prize value.</li>
+          <li>Prizes: one Full session ($1,500 value), one Half session ($750 value) and five $250 gift cards, $3,500 total. For every 50 total entries received, free and paid, one more winner is added with a $100 gift card, up to 10 added winners. Maximum: 17 winners and $4,500 in total prize value.</li>
+          <li>Entry cap: 500 total entries, free and paid. Once 500 entries are in, entries close early. Entries received after that don't count, and any purchase past the cap is refunded in full.</li>
           <li>Winners are texted within 2 hours of the drawing and book within 14 days. Prize sessions run December 9, 2026 through February 27, 2027.</li>
           <li>No-Lose adds a $100 gift card to any pack for $50. All gift cards apply to the balance of a Half or Full session.</li>
           <li>Pack entries past 20 per person don't count, and any purchase past it is refunded.</li>
@@ -647,7 +664,9 @@ const CFG = {
   },
   noLose: { add: 50, card: 100 },                 // No-Lose add-on: +$50 on any pack for a $100 gift card
   baseWinners: 7, unlockEvery: 50, unlockCard: 100,   // a $100 gift card winner for every 50 entries
-  maxUnlocks: 15,                                // ...up to 15 added winners (22 total, $5,000 in prizes: stays at NY's $5,000 line)
+  maxUnlocks: 10,                                // ...up to 10 added winners (17 total, $4,500 in prizes)
+  entryCap: 500,                                 // total entries, free and paid; packs and free entry close once count.json reaches it
+                                                 // the odds on the pack cards are figured at this cap with 17 winners: update them if either changes
   countUrl: "count.json",                       // {entries, people, updatedAt}, refreshed daily by a scheduled task
   checkout: {                                     // GHL payment links, one per pack
     max:    "https://link.inkedin.tools/payment-link/6ae55e3900921ddbe8ee086d",
@@ -679,12 +698,14 @@ const early = (() => {
     return localStorage.getItem("ntt50k-early") === "1";
   } catch (e) { return false; }
 })();
-/* entry window: packs and free entries work only between openAt and closeAt */
+/* entry window: packs and free entries work only between openAt and closeAt, and until the entry cap is reached */
+let soldOut = false;
 const gateMsg = () => {
   const p = phase(Date.now());
   if (p === "pre") return early ? "" : `Entries open ${fmt(T.open)}.`;
   if (p === "closed") return `Entries are closed. The live draw is ${fmt(T.draw)} on Instagram @nicktylertattoo.`;
   if (p === "done") return "The 50K drawing is done. Thank you for being part of it.";
+  if (soldOut) return `All ${CFG.entryCap} entries are in, so entries are closed. The live draw is ${fmt(T.draw)} on Instagram @nicktylertattoo.`;
   return "";
 };
 function applyGate() {
@@ -827,6 +848,7 @@ renderPacks();
   try { const r = await fetch(CFG.countUrl + "?t=" + Date.now(), { cache: "no-store" }); if (r.ok) c = await r.json(); } catch (e) {}
   const n = c && Number.isFinite(+c.entries) ? Math.max(0, Math.floor(+c.entries)) : null;
   if (n === null) return;
+  if (n >= CFG.entryCap) { soldOut = true; applyGate(); }
   const step = CFG.unlockEvery, extra = Math.min(CFG.maxUnlocks, Math.floor(n / step)), maxed = extra >= CFG.maxUnlocks, into = n % step;
   $("u-win").textContent = CFG.baseWinners + extra;
   $("u-next").textContent = maxed ? "Max" : step - into;
