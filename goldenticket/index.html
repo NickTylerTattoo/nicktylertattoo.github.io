@@ -359,7 +359,7 @@ footer{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space-between;b
       <div class="eyebrow">// Nick Tyler Tattoo</div>
       <div class="t-big" aria-hidden="true">50K</div>
       <h1 class="t-title">Golden Ticket</h1>
-      <p class="t-sub">50,000 of you showed up, so round two is here. Seven winners to start, plus another winner for every 50 entries. Drawn live Sunday, November 22.</p>
+      <p class="t-sub">50,000 of you showed up, so round two is here. Seven winners to start, plus another winner for every 50 entries, up to 22 winners. Drawn live Sunday, November 22.</p>
       <div class="cta-row">
         <a class="btn hero-btn" href="#packs">Get your Golden Ticket</a>
         <a class="ghost" href="#watch">Watch last year's draw</a>
@@ -420,7 +420,7 @@ footer{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space-between;b
       <div class="sec-head">
         <div class="eyebrow">Community unlocks</div>
         <p class="u-title">An additional winner added every 50 entries.</p>
-        <p class="u-sub">At least 7 winners no matter what. Then every 50 entries, free ones included, an additional $100 gift card is added to the prize pool. Share the link and watch it grow.</p>
+        <p class="u-sub">At least 7 winners no matter what. Then every 50 entries, free ones included, an additional $100 gift card winner is added, up to 15 more for 22 winners in all. Share the link and watch it grow.</p>
       </div>
       <div class="u-stats">
         <div class="u-stat"><b id="u-win">7</b><span>Winners so far</span></div>
@@ -566,7 +566,7 @@ footer{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space-between;b
           <li>Entry period: Sunday, Nov 1, 2026 at 6:00 PM ET to Sunday, Nov 22, 2026 at 6:00 PM ET.</li>
           <li>Free entry: 1 per person for the whole giveaway. Pack entries: up to 20 per person. Opting in to texts or emails is optional and never affects your entries or odds.</li>
           <li>Drawing: Sunday, Nov 22, 2026 at 8:00 PM ET, live on Instagram. Odds depend on the number of entries received.</li>
-          <li>Prizes: one Full session ($1,500 value), one Half session ($750 value) and five $250 gift cards, $3,500 total. For every 50 total entries received, free and paid, one more winner is added with a $100 gift card.</li>
+          <li>Prizes: one Full session ($1,500 value), one Half session ($750 value) and five $250 gift cards, $3,500 total. For every 50 total entries received, free and paid, one more winner is added with a $100 gift card, up to 15 added winners. Maximum: 22 winners and $5,000 in total prize value.</li>
           <li>Winners are texted within 2 hours of the drawing and book within 14 days. Prize sessions run December 9, 2026 through February 27, 2027.</li>
           <li>No-Lose adds a $100 gift card to any pack for $50. All gift cards apply to the balance of a Half or Full session.</li>
           <li>Pack entries past 20 per person don't count, and any purchase past it is refunded.</li>
@@ -646,6 +646,7 @@ const CFG = {
   },
   noLose: { add: 50, card: 100 },                 // No-Lose add-on: +$50 on any pack for a $100 gift card
   baseWinners: 7, unlockEvery: 50, unlockCard: 100,   // a $100 gift card winner for every 50 entries
+  maxUnlocks: 15,                                // ...up to 15 added winners (22 total, $5,000 in prizes: stays at NY's $5,000 line)
   countUrl: "count.json",                       // {entries, people, updatedAt}, refreshed daily by a scheduled task
   checkout: {                                     // GHL payment links, one per pack
     max:    "https://link.inkedin.tools/payment-link/6ae55e3900921ddbe8ee086d",
@@ -825,10 +826,11 @@ renderPacks();
   try { const r = await fetch(CFG.countUrl + "?t=" + Date.now(), { cache: "no-store" }); if (r.ok) c = await r.json(); } catch (e) {}
   const n = c && Number.isFinite(+c.entries) ? Math.max(0, Math.floor(+c.entries)) : null;
   if (n === null) return;
-  const step = CFG.unlockEvery, into = n % step;
-  $("u-win").textContent = CFG.baseWinners + Math.floor(n / step);
-  $("u-next").textContent = step - into;
-  requestAnimationFrame(() => requestAnimationFrame(() => { $("u-fill").style.width = (into / step * 100) + "%"; }));
+  const step = CFG.unlockEvery, extra = Math.min(CFG.maxUnlocks, Math.floor(n / step)), maxed = extra >= CFG.maxUnlocks, into = n % step;
+  $("u-win").textContent = CFG.baseWinners + extra;
+  $("u-next").textContent = maxed ? "Max" : step - into;
+  if (maxed) $("u-next").nextElementSibling.textContent = `All ${CFG.baseWinners + CFG.maxUnlocks} winners unlocked`;
+  requestAnimationFrame(() => requestAnimationFrame(() => { $("u-fill").style.width = (maxed ? 100 : into / step * 100) + "%"; }));
   const t = c.updatedAt ? new Date(c.updatedAt) : null;
   const when = t && !isNaN(t) ? t.toLocaleString("en-US", { timeZone: "America/New_York", weekday: "short", month: "short", day: "numeric", hour: "numeric", minute: "2-digit" }) + " ET" : "";
   $("u-count").textContent = when ? `Updated ${when}. The count refreshes every day.` : "The count refreshes every day.";
@@ -964,6 +966,12 @@ async function makeStory() {
 }
 $("sm-x").addEventListener("click", () => { $("sm").hidden = true; $("ra-story").focus(); });
 
+/* ---------- Meta Pixel events for the 50K ads ----------
+   Custom event names on purpose, so the booking Lead/Purchase events stay clean.
+   GoldenTicketCheckout = pack tapped, GoldenTicketPurchase = buyer back from checkout, GoldenTicketFreeEntry = free entry in. */
+const px = (ev, data) => { try { if (window.fbq) fbq("trackCustom", ev, data || {}); } catch (e) {} };
+const packVal = (k, nl) => { const p = CFG.packs[k]; return p ? { value: p.price + (nl ? CFG.noLose.add : 0), currency: "USD", content_name: "50K " + p.name + (nl ? " + No-Lose" : ""), num_entries: p.entries } : {}; };
+
 /* ---------- pack buttons + free entry ---------- */
 document.querySelectorAll("[data-buy]").forEach(b => b.addEventListener("click", () => {
   const k = b.dataset.buy;
@@ -971,7 +979,9 @@ document.querySelectorAll("[data-buy]").forEach(b => b.addEventListener("click",
   const gm = gateMsg();
   if (gm) { const g = $("k-gate"); g.textContent = gm; g.hidden = false; g.scrollIntoView({ behavior: reduced() ? "auto" : "smooth", block: "center" }); return; }
   const url = noLose ? CFG.checkoutNoLose[k] : CFG.checkout[k];
-  if (url) go(url);
+  if (!url) return;
+  px("GoldenTicketCheckout", packVal(k, noLose));
+  setTimeout(() => go(url), 250);   /* a beat for the pixel to send before the page leaves */
 }));
 $("entry").addEventListener("submit", async e => {
   e.preventDefault();
@@ -1008,6 +1018,7 @@ $("entry").addEventListener("submit", async e => {
   sending = false; btn.disabled = false; btn.textContent = label;
   if (!ok) { msg.classList.add("err"); msg.textContent = "That didn't go through. Check your connection and try again."; return; }
   store.set("ntt50k-free", day);
+  px("GoldenTicketFreeEntry", { content_name: "50K free entry" });
   msg.textContent = "Your free entry is in. Want more chances? The packs add up to 20 more.";
   openReveal("free", trigger);
 });
@@ -1020,7 +1031,7 @@ if (early && phase(Date.now()) === "pre") {
   document.querySelector(".wrap").prepend(bar);
 }
 /* live site: checkout sends buyers back with ?pack=max (or ten, six, triple, single), plus &nl=1 for No-Lose */
-try { const qs = location.search, q = (qs.match(/[?&]pack=([a-z]+)/) || [])[1], back = !!(q && CFG.packs[q]); if (back) openReveal(q, null, /[?&]nl=1(?!\d)/.test(qs)); if (back || /[?&]early=/.test(qs)) history.replaceState(null, "", location.pathname + location.hash); } catch (e) {}
+try { const qs = location.search, q = (qs.match(/[?&]pack=([a-z]+)/) || [])[1], back = !!(q && CFG.packs[q]); if (back) { const nl = /[?&]nl=1(?!\d)/.test(qs); px("GoldenTicketPurchase", packVal(q, nl)); openReveal(q, null, nl); } if (back || /[?&]early=/.test(qs)) history.replaceState(null, "", location.pathname + location.hash); } catch (e) {}
 </script>
 </body>
 </html>
