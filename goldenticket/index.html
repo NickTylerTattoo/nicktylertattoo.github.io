@@ -6,7 +6,7 @@
 <meta name="ntt-page" content="goldenticket">
 <title>50K Golden Ticket · Nick Tyler Tattoo</title>
 <link rel="canonical" href="https://nicktylertattoo.com/goldenticket/">
-<meta name="description" content="Round two of the Golden Ticket. Grab an entry pack or claim your free entry for a shot at free tattoo sessions and gift cards from Nick Tyler Tattoo, drawn live on Instagram Sunday, November 22.">
+<meta name="description" content="The 50K Golden Ticket. Grab an entry pack or claim your free entry for a shot at free tattoo sessions and gift cards from Nick Tyler Tattoo, drawn live on Instagram Sunday, November 22.">
 <meta name="theme-color" content="#0b0a09">
 <meta property="og:title" content="The 50K Golden Ticket · Nick Tyler Tattoo">
 <meta property="og:description" content="Entry packs or one free entry. Drawn live on Instagram Sunday, November 22.">
@@ -82,7 +82,8 @@ a{color:var(--ch-lt)}
 .btn:hover{background-position:100% 0;box-shadow:0 12px 36px -10px rgba(217,179,90,.8)}
 .btn.alt{background:transparent;color:var(--gold-lt);border:1px solid var(--gold-dk);box-shadow:none}
 .btn.alt:hover{border-color:var(--gold);background:rgba(217,179,90,.08)}
-.btn:focus-visible,.ghost:focus-visible,summary:focus-visible,.play:focus-visible,input:focus-visible,.card3d:focus-visible,.rv-snd:focus-visible,.rv-x:focus-visible{outline:2px dashed var(--gold-lt);outline-offset:4px}
+.btn.compact{min-height:46px;padding:10px 18px;font-size:15px;line-height:1.3;letter-spacing:.1em}
+.btn:focus-visible,.ghost:focus-visible,summary:focus-visible,input:focus-visible,.card3d:focus-visible,.rv-snd:focus-visible,.rv-x:focus-visible{outline:2px dashed var(--gold-lt);outline-offset:4px}
 .btn.hero-btn{min-height:68px;padding:0 44px;font-size:19px;letter-spacing:.12em}
 .ghost{font:700 13px/1 var(--f-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--gold-lt);text-decoration:none;border-bottom:1px solid var(--gold-dk);padding-bottom:4px}
 
@@ -92,21 +93,6 @@ a{color:var(--ch-lt)}
 .count b{display:block;font:700 clamp(34px,6vw,54px)/1 var(--f-display);color:var(--gold-lt);font-variant-numeric:tabular-nums}
 .count span{font:400 14px/1 var(--f-mono);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
 .count-note{font:400 15px/1.4 var(--f-mono);color:var(--muted)}
-
-/* video */
-.vid{display:grid;grid-template-columns:minmax(0,340px) minmax(0,1fr);gap:40px;align-items:center}
-.play{position:relative;display:flex;flex-direction:column;justify-content:flex-end;gap:10px;aspect-ratio:9/16;max-width:100%;padding:24px;
-  background:radial-gradient(120% 70% at 50% 35%,rgba(203,185,148,.18),transparent 70%),var(--panel-2);border:1px solid var(--line-lt);text-decoration:none;color:var(--cream)}
-.play .tri{position:absolute;left:50%;top:42%;transform:translate(-50%,-50%);width:88px;height:88px;border-radius:50%;border:2px solid var(--gold);box-shadow:0 0 40px rgba(217,179,90,.25);display:grid;place-items:center}
-.play .tri::after{content:"";margin-left:6px;border-left:26px solid var(--gold);border-top:16px solid transparent;border-bottom:16px solid transparent}
-.play:hover .tri{background:rgba(217,179,90,.14)}
-.play .cap{font:700 15px/1.3 var(--f-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--gold)}
-.play .ttl{font:700 26px/1.15 var(--f-display)}
-.vid-copy{display:flex;flex-direction:column;gap:18px;min-width:0}
-.stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line)}
-.stats div{background:var(--panel);padding:18px 16px}
-.stats b{display:block;font:700 30px/1.05 var(--f-display);color:var(--gold-lt);font-variant-numeric:tabular-nums}
-.stats span{font:400 14px/1.35 var(--f-mono);color:var(--muted)}
 
 /* prizes */
 .prizes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
@@ -331,8 +317,7 @@ footer{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space-between;b
   .ticket::before,.ticket::after{display:none}
   .t-stub{border-left:0;border-top:3px dotted var(--gold);flex-direction:row;flex-wrap:wrap;padding:22px 16px}
   .vesica{width:84px;height:56px}
-  .vid,.enter{grid-template-columns:minmax(0,1fr)}
-  .play{max-width:340px}
+  .enter{grid-template-columns:minmax(0,1fr)}
   .prizes,.steps,.packs{grid-template-columns:minmax(0,1fr)}
   .packs{gap:30px}
   .pack.feat{transform:none}
@@ -344,7 +329,6 @@ footer{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space-between;b
   .wrap{gap:72px}
 }
 @media (max-width:420px){
-  .stats{grid-template-columns:minmax(0,1fr)}
   .count b{font-size:30px}
 }
 @media (max-height:700px){ .card3d{width:min(64vw,270px)} .card3d.settle{width:min(50vw,210px)} }
@@ -368,10 +352,9 @@ footer{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space-between;b
       <div class="eyebrow">// Nick Tyler Tattoo</div>
       <div class="t-big" aria-hidden="true">50K</div>
       <h1 class="t-title">Golden Ticket</h1>
-      <p class="t-sub">50,000 of you showed up, so round two is here. Seven winners to start, plus another winner for every 50 entries, up to 17 winners. Entries are capped at 500. Drawn live Sunday, November 22.</p>
+      <p class="t-sub">50,000 of you showed up, so this is my thank you. Seven winners to start, plus another winner for every 50 entries, up to 17 winners. Entries are capped at 500. Drawn live Sunday, November 22.</p>
       <div class="cta-row">
         <a class="btn hero-btn" href="#packs">Get your Golden Ticket</a>
-        <a class="ghost" href="#watch">Watch last year's draw</a>
         <a class="ghost" id="free-link" href="#free" hidden>Claim your free entry</a>
       </div>
     </div>
@@ -392,27 +375,6 @@ footer{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space-between;b
       <div><b id="cd-s">--</b><span>Seconds</span></div>
     </div>
     <p class="count-note" id="cd-note">Entries open Sunday, November 1 at 6:00 PM ET. Live drawing Sunday, November 22 at 8:00 PM ET.</p>
-  </section>
-
-  <!-- VIDEO -->
-  <section class="sec" id="watch" aria-labelledby="w-h">
-    <div class="vid">
-      <a class="play" href="https://www.instagram.com/reel/DQSxHKfEThd/" target="_blank" rel="noopener">
-        <span class="tri" aria-hidden="true"></span>
-        <span class="cap">40K Golden Ticket</span>
-        <span class="ttl">Watch the live draw</span>
-      </a>
-      <div class="vid-copy">
-        <div class="eyebrow">Round one</div>
-        <h2 id="w-h">At 40K, more than 15 winners walked away with <span class="gold">$4,000+ in free ink.</span></h2>
-        <p class="lead">At 40K I ran the first Golden Ticket. The draw happened live on camera, and every prize went home with someone from this community.</p>
-        <div class="stats">
-          <div><b>$4,000+</b><span>in free ink at 40K</span></div>
-          <div><b>84</b><span>people got a ticket</span></div>
-          <div><b>15+</b><span>winners</span></div>
-        </div>
-      </div>
-    </div>
   </section>
 
   <!-- PRIZES -->
@@ -490,7 +452,7 @@ footer{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space-between;b
         <div class="p-ent"><b>10</b><span>Entries</span></div>
         <div class="p-odds"><div class="po-top"><b>30%</b><span>Chance</span></div><div class="po-bar" aria-hidden="true"><i style="width:29.5%"></i></div><small>About 1 in 3 to win a prize</small></div>
         <div class="p-per" data-per>$10 an entry<small>Save $50 vs. buying singles</small></div>
-        <p class="p-blurb">Last year's biggest pack.</p>
+        <p class="p-blurb">Your name in the hat ten times.</p>
         <button class="btn alt" type="button" data-buy="ten">Get 10 entries</button>
       </article>
       <article class="pack" data-pack="six">
@@ -503,13 +465,12 @@ footer{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space-between;b
         <button class="btn alt" type="button" data-buy="six">Get 7 entries</button>
       </article>
       <article class="pack" data-pack="triple">
-        <div class="badge dark">40K favorite</div>
         <div class="p-name">The Triple</div>
         <div class="p-price" data-price>$35</div>
         <div class="p-ent"><b>3</b><span>Entries</span></div>
         <div class="p-odds"><div class="po-top"><b>9.9%</b><span>Chance</span></div><div class="po-bar" aria-hidden="true"><i style="width:9.9%"></i></div><small>About 1 in 10 to win a prize</small></div>
         <div class="p-per" data-per>$11.67 an entry<small>Save $10 vs. buying singles</small></div>
-        <p class="p-blurb">What most of you went with at 40K.</p>
+        <p class="p-blurb">Three shots at the prizes.</p>
         <button class="btn alt" type="button" data-buy="triple">Get 3 entries</button>
       </article>
       <article class="pack" data-pack="single">
@@ -561,6 +522,7 @@ footer{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space-between;b
 
   <!-- FAQ -->
   <section class="sec" aria-labelledby="f-h">
+    <div class="cta-row"><a class="btn alt compact" href="https://www.instagram.com/reel/DQSxHKfEThd/" target="_blank" rel="noopener">Watch last year's live draw</a></div>
     <div class="sec-head">
       <div class="eyebrow">Questions</div>
       <h2 id="f-h">Good to know</h2>
